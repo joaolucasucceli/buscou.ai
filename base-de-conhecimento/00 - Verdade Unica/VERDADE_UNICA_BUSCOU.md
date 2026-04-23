@@ -1,7 +1,7 @@
 ---
 tipo: indice
 area: Empresa
-tags: [verdade-unica, canonico, posicionamento, produto, oferta, icp, trava]
+tags: [verdade-unica, canonico, posicionamento, produto, oferta, icp, contato, trava]
 atualizado: 2026-04-23
 status: CANONICO — NAO ALTERAR SEM DECISION LOG
 ---
@@ -13,8 +13,9 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 > aqui **esta errado** e deve ser corrigido para refletir este documento.
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
-> **Ultima alteracao Nivel 1:** 2026-04-23 — novo modelo comercial com infra mensal
-> (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
+> **Ultimas alteracoes Nivel 1 (2026-04-23):**
+> - Secao 11 — contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
+> - Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
 
 ---
 
@@ -279,6 +280,10 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 
 Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda longo. A call e opcional (20-30 min) para clientes que quiserem tirar duvidas antes de pagar.
 
+### Canal de contato (V1)
+
+O unico canal oficial de leads entrantes e **WhatsApp** (ver secao 11 — Contato oficial). Nao ha formulario, nao ha email de vendas publico, nao ha chat widget. CTA primario da landing, emails de prospeccao e materiais de vendas apontam todos pro mesmo numero.
+
 ---
 
 ## 9. METRICAS QUE IMPORTAM
@@ -332,6 +337,34 @@ Se qualquer arquivo do vault contradizer esta verdade:
 
 ---
 
+## 11. CONTATO OFICIAL
+
+Canal unico de atendimento e leads entrantes na V1 (ver [[Decision Log - 2026-04-23 - Contato Oficial]]):
+
+| Campo | Valor |
+|---|---|
+| **WhatsApp (formato humano)** | `+55 27 99696-0847` |
+| **Formato internacional (tecnico)** | `5527996960847` |
+| **Link wa.me padrao** | `https://wa.me/5527996960847` |
+| **Mensagem pre-preenchida padrao** | `"Oi, vi o site da buscou.ai e quero entender melhor como funciona."` |
+
+### Uso canonico
+
+- **CTA principal** da landing em `www.buscouai.com` — todos os botoes de conversao apontam pra `wa.me/5527996960847` com mensagem pre-preenchida.
+- **Emails de prospeccao** (Agente Prospeccao) — numero aparece como call-to-action textual + link clicavel.
+- **Materiais de vendas** — deck, one-pager, qualquer artefato de conversao puxa dessa mesma constante.
+- **Suporte pos-venda** — nao e esse canal (ver [[Agente Suporte]] para suporte de clientes ativos).
+
+### Regra de consistencia
+
+Todo codigo de produto que referenciar o numero deve puxar de **uma constante centralizada** (ex: `src/lib/constants.ts`) — nunca hardcodar em multiplos lugares. Se for trocar o numero no futuro, troca em 1 arquivo e propaga.
+
+### Gatilho de revisao
+
+Essa decisao (WhatsApp como canal unico) sera revisada quando o volume de leads passar a exigir curadoria/automacao antes do contato humano. Enquanto o volume couber no atendimento direto do dono, mantido como esta.
+
+---
+
 ## Links cruzados
 
 - [[Governanca - Decisoes Canonicas]] — como propor mudancas
@@ -344,3 +377,4 @@ Se qualquer arquivo do vault contradizer esta verdade:
 - [[Modelo de Negocio]] — unit economics
 - [[Conceito e Posicionamento]] — narrativa de marca
 - [[Agente Pagamento]] — operador dos dois fluxos de cobranca
+- [[Decision Log - 2026-04-23 - Contato Oficial]] — justificativa da secao 11
