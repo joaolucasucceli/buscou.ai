@@ -48,3 +48,5 @@ desktop.ini
 *.pid.lock
 coverage/
 .nyc_output/
+
+.vercel
