@@ -1,0 +1,40 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "bg": {
+      "base":   { "value": "#08090D", "type": "color", "description": "Fundo padrao. Dark-first." },
+      "elev-1": { "value": "#0F1117", "type": "color", "description": "Primeira elevacao (paineis)." },
+      "elev-2": { "value": "#161823", "type": "color", "description": "Segunda elevacao (cards)." },
+      "elev-3": { "value": "#1C1F2C", "type": "color", "description": "Terceira elevacao (chips, inputs)." }
+    },
+    "border": {
+      "default": { "value": "#1F2230", "type": "color" },
+      "strong":  { "value": "#2E3142", "type": "color" }
+    },
+    "text": {
+      "primary":      { "value": "#ECEDF0", "type": "color", "description": "Texto principal sobre fundo escuro." },
+      "secondary":    { "value": "#A4A7B3", "type": "color" },
+      "tertiary":     { "value": "#6B6E7B", "type": "color" },
+      "quaternary":   { "value": "#4A4D5A", "type": "color", "description": "Uso raro. Disabled." }
+    },
+    "brand": {
+      "default": { "value": "#7C5CFF", "type": "color", "description": "Violeta eletrico. Tecnologia." },
+      "600":     { "value": "#6D4CF0", "type": "color" },
+      "300":     { "value": "#A88FFF", "type": "color" },
+      "100":     { "value": "#E4DEFF", "type": "color" },
+      "soft":    { "value": "rgba(124, 92, 255, 0.12)", "type": "color" }
+    },
+    "ai": {
+      "default": { "value": "#00E5A0", "type": "color", "description": "Signal Mint. Voz da IA. Uso <= 10%." },
+      "300":     { "value": "#57F0C0", "type": "color" },
+      "dark":    { "value": "#00B37A", "type": "color", "description": "Variante para fundo claro." },
+      "soft":    { "value": "rgba(0, 229, 160, 0.08)", "type": "color" },
+      "glow":    { "value": "rgba(0, 229, 160, 0.45)", "type": "color" }
+    },
+    "feedback": {
+      "coral":   { "value": "#FF6B3D", "type": "color", "description": "Erro, alerta critico. Uso <= 2%." },
+      "warn":    { "value": "#FFB84D", "type": "color" },
+      "success": { "value": "#00E5A0", "type": "color" }
+    }
+  }
+}

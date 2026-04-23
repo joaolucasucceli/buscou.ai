@@ -1,0 +1,15 @@
+/**
+ * buscou.ai — Font loading
+ * Geist (sans) + Geist Mono (mono) + Instrument Serif (editorial).
+ *
+ * Em Next.js, prefira `next/font` para auto-hosting e melhor LCP:
+ *   import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', monospace;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, 'Times New Roman', serif;
+}

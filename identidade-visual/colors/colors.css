@@ -1,0 +1,36 @@
+:root {
+  /* === Background === */
+  --color-bg:        #08090D;
+  --color-bg-elev-1: #0F1117;
+  --color-bg-elev-2: #161823;
+  --color-bg-elev-3: #1C1F2C;
+
+  /* === Border === */
+  --color-border:        #1F2230;
+  --color-border-strong: #2E3142;
+
+  /* === Text === */
+  --color-text:              #ECEDF0;
+  --color-text-secondary:    #A4A7B3;
+  --color-text-tertiary:     #6B6E7B;
+  --color-text-quaternary:   #4A4D5A;
+
+  /* === Brand (Electric Violet) === */
+  --color-brand:     #7C5CFF;
+  --color-brand-600: #6D4CF0;
+  --color-brand-300: #A88FFF;
+  --color-brand-100: #E4DEFF;
+  --color-brand-soft: rgba(124, 92, 255, 0.12);
+
+  /* === AI (Signal Mint) === */
+  --color-ai:      #00E5A0;
+  --color-ai-300:  #57F0C0;
+  --color-ai-dark: #00B37A; /* use em fundos claros */
+  --color-ai-soft: rgba(0, 229, 160, 0.08);
+  --color-ai-glow: rgba(0, 229, 160, 0.45);
+
+  /* === Feedback === */
+  --color-coral:   #FF6B3D;
+  --color-warn:    #FFB84D;
+  --color-success: #00E5A0;
+}

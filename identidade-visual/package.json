@@ -1,0 +1,25 @@
+{
+  "name": "@buscou/design-system",
+  "version": "1.0.0",
+  "description": "Design System oficial da buscou.ai — tokens, logos, icones e componentes base.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "style": "index.css",
+  "sideEffects": ["*.css"],
+  "files": [
+    "logos",
+    "icons",
+    "colors",
+    "typography",
+    "tokens",
+    "components",
+    "docs",
+    "index.ts",
+    "index.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "keywords": ["buscou.ai", "design-system", "tokens", "react", "saas"]
+}

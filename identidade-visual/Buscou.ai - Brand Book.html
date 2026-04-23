@@ -1,0 +1,3280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>buscou.ai — Brand Book v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   DESIGN TOKENS
+============================================ */
+:root {
+  --bg:           #08090D;
+  --bg-elev-1:    #0F1117;
+  --bg-elev-2:    #161823;
+  --bg-elev-3:    #1C1F2C;
+  --border:       #1F2230;
+  --border-strong:#2E3142;
+  --text:         #ECEDF0;
+  --text-2:       #A4A7B3;
+  --text-3:       #6B6E7B;
+  --text-4:       #4A4D5A;
+
+  --brand:        #7C5CFF;
+  --brand-600:    #6D4CF0;
+  --brand-300:    #A88FFF;
+  --brand-100:    #E4DEFF;
+  --brand-soft:   rgba(124, 92, 255, 0.12);
+
+  --ai:           #00E5A0;
+  --ai-300:       #57F0C0;
+  --ai-glow:      rgba(0, 229, 160, 0.45);
+  --ai-soft:      rgba(0, 229, 160, 0.08);
+
+  --coral:        #FF6B3D;
+  --warn:         #FFB84D;
+
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+
+  --container: 1240px;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  letter-spacing: -0.005em;
+}
+
+::selection { background: var(--ai); color: var(--bg); }
+
+/* Grid background */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+}
+
+/* Noise overlay */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+main { position: relative; z-index: 2; }
+
+/* Typography */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.eyebrow .dot-ai { color: var(--ai); }
+
+h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+h1 { font-size: clamp(56px, 9vw, 148px); }
+h2 { font-size: clamp(36px, 5vw, 72px); letter-spacing: -0.035em; }
+h3 { font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.025em; line-height: 1.2; }
+h4 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+
+p { color: var(--text-2); font-size: 16px; line-height: 1.65; }
+p.lead { color: var(--text); font-size: clamp(18px, 1.5vw, 22px); line-height: 1.5; font-weight: 400; }
+
+.serif { font-family: var(--font-serif); font-style: italic; letter-spacing: -0.01em; }
+.mono  { font-family: var(--font-mono); letter-spacing: 0; }
+
+/* Utility */
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+section {
+  position: relative;
+  padding: 140px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 48px;
+  margin-bottom: 80px;
+  align-items: baseline;
+}
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-strong);
+}
+.section-title h2 { margin-bottom: 18px; }
+.section-title .kicker {
+  color: var(--text-2);
+  max-width: 680px;
+  font-size: 18px;
+}
+
+/* ============================================
+   LOGO LOCKUP
+============================================ */
+.logo {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  display: inline-flex;
+  align-items: baseline;
+}
+.logo .dot-ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  position: relative;
+  text-shadow: 0 0 16px var(--ai-glow), 0 0 40px rgba(0,229,160,0.2);
+}
+.logo .dot { color: var(--ai); }
+
+/* ============================================
+   COVER
+============================================ */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0 60px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 70% 50%, rgba(124,92,255,0.15), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 30% 80%, rgba(0,229,160,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.cover-top .logo { font-size: 22px; }
+
+.cover-meta {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.cover-meta span::before {
+  content: '●';
+  color: var(--ai);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+
+.cover-main {
+  position: relative;
+  z-index: 2;
+  padding: 60px 0;
+}
+
+.cover-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.cover-kicker .pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ai);
+  box-shadow: 0 0 0 0 var(--ai-glow);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,229,160,0.6); }
+  70%  { box-shadow: 0 0 0 12px rgba(0,229,160,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,229,160,0); }
+}
+
+.cover-title {
+  font-size: clamp(72px, 14vw, 220px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  margin-bottom: 32px;
+}
+.cover-title .dot-ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  text-shadow:
+    0 0 24px var(--ai-glow),
+    0 0 80px rgba(0,229,160,0.25);
+}
+
+.cover-cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.8em;
+  background: var(--ai);
+  margin-left: 0.05em;
+  vertical-align: baseline;
+  animation: blink 1.1s steps(1) infinite;
+  box-shadow: 0 0 16px var(--ai-glow);
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.cover-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(24px, 3vw, 40px);
+  color: var(--text-2);
+  max-width: 780px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-top: 40px;
+}
+.cover-tagline strong { color: var(--text); font-style: normal; font-family: var(--font-sans); font-weight: 500; }
+
+.cover-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.cover-footer-item .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cover-footer-item .value {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Ambient search bar on cover */
+.cover-search {
+  position: absolute;
+  right: 32px;
+  bottom: 25%;
+  width: 420px;
+  padding: 14px 20px;
+  background: rgba(15,17,23,0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-2);
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.cover-search svg { flex-shrink: 0; opacity: 0.6; }
+.cover-search::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--ai);
+  animation: blink 1.1s steps(1) infinite;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .cover-search { display: none; }
+  .cover-footer { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   NAV INDEX
+============================================ */
+.index {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev-1);
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.index-item {
+  background: var(--bg-elev-1);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.index-item:hover { background: var(--bg-elev-2); }
+.index-item .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+}
+.index-item .title { font-size: 16px; color: var(--text); font-weight: 500; }
+
+@media (max-width: 768px) {
+  .index-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   CONCEPT SECTION
+============================================ */
+.concept-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  max-width: 1080px;
+  margin-bottom: 80px;
+}
+.concept-quote .accent { color: var(--ai); font-style: italic; }
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+.concept-card {
+  padding: 32px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--ai);
+}
+.concept-card h4 { margin-bottom: 12px; font-size: 18px; }
+.concept-card p { font-size: 14px; color: var(--text-2); }
+
+/* Flow diagram */
+.flow {
+  margin: 96px 0 48px;
+  padding: 48px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.flow-step {
+  text-align: center;
+  padding: 24px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+}
+.flow-step .icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elev-3);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--ai);
+}
+.flow-step .num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.flow-step .label { font-weight: 500; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.flow-step .desc { font-size: 12px; color: var(--text-3); line-height: 1.4; }
+
+.flow-arrow {
+  color: var(--text-4);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  position: relative;
+}
+.flow-arrow::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ai), transparent);
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  animation: flow-dash 2s linear infinite;
+}
+@keyframes flow-dash {
+  0%   { opacity: 0; transform: translateX(-10px); }
+  50%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(10px); }
+}
+
+@media (max-width: 900px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow-arrow { transform: rotate(90deg); justify-self: center; }
+  .concept-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   POSITIONING
+============================================ */
+.pos-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.pos-col {
+  padding: 40px;
+  background: var(--bg-elev-1);
+}
+.pos-col .tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pos-col.is {  }
+.pos-col.is .tag { background: var(--ai-soft); color: var(--ai); }
+.pos-col.isnt .tag { background: rgba(255,107,61,0.1); color: var(--coral); }
+.pos-col h3 { margin-bottom: 24px; font-size: 24px; }
+.pos-col ul { list-style: none; }
+.pos-col li {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-2);
+  font-size: 15px;
+}
+.pos-col li:last-child { border: none; }
+.pos-col.is li::before { content: '→'; color: var(--ai); font-family: var(--font-mono); }
+.pos-col.isnt li::before { content: '×'; color: var(--coral); font-family: var(--font-mono); }
+
+@media (max-width: 900px) {
+  .pos-two { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   NAME USAGE
+============================================ */
+.name-hero {
+  padding: 80px 48px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.name-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, var(--brand-soft), transparent 60%);
+  pointer-events: none;
+}
+.name-showcase {
+  font-size: clamp(72px, 14vw, 200px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  position: relative;
+  z-index: 1;
+}
+.name-showcase .buscou { color: var(--text); }
+.name-showcase .dot-ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  text-shadow: 0 0 32px var(--ai-glow), 0 0 80px rgba(0,229,160,0.2);
+}
+
+.name-annotations {
+  position: relative;
+  z-index: 2;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.name-annotations span { display: flex; align-items: center; gap: 8px; }
+.name-annotations .sw { width: 10px; height: 10px; border-radius: 2px; background: var(--text); }
+.name-annotations .sw.ai { background: var(--ai); box-shadow: 0 0 12px var(--ai-glow); }
+
+.name-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.name-form {
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.name-form .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.name-form .form {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+.name-form .form .dot-ai { color: var(--ai); font-family: var(--font-mono); }
+.name-form .desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+.name-rules {
+  margin-top: 48px;
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.name-rules h4 { margin-bottom: 24px; color: var(--text); }
+.name-rules ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+.name-rules li { font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative; line-height: 1.6; }
+.name-rules li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ai);
+  font-size: 8px;
+  transform: translateY(6px);
+}
+
+@media (max-width: 768px) {
+  .name-forms, .name-rules ul { grid-template-columns: 1fr; }
+  .name-annotations { flex-direction: column; gap: 12px; align-items: center; }
+}
+
+/* ============================================
+   LOGO SECTION
+============================================ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.logo-tile {
+  position: relative;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+.logo-tile.dark  { background: var(--bg-elev-1); }
+.logo-tile.light { background: #F5F6F8; color: #08090D; }
+.logo-tile .logo-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 24px 0;
+}
+.logo-tile .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.logo-tile.dark .meta { color: var(--text-3); }
+.logo-tile.light .meta { color: #6B6E7B; }
+.logo-tile .meta .type {
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.logo-tile.dark .meta .type { background: var(--bg-elev-3); color: var(--text-2); }
+.logo-tile.light .meta .type { background: #E4E6EC; color: #08090D; }
+
+/* Logo sizes */
+.logo-primary { font-size: 64px; font-weight: 500; letter-spacing: -0.04em; }
+.logo-primary .dot-ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  text-shadow: 0 0 20px var(--ai-glow);
+}
+.logo-tile.light .logo-primary { color: #08090D; }
+.logo-tile.light .logo-primary .dot-ai { color: #00B37A; text-shadow: 0 0 12px rgba(0,179,122,0.3); }
+
+.logo-compact { font-size: 36px; font-weight: 500; letter-spacing: -0.04em; }
+.logo-compact .dot-ai { color: var(--ai); font-family: var(--font-mono); text-shadow: 0 0 14px var(--ai-glow); }
+
+.logo-mono .dot-ai { color: var(--text); text-shadow: none; font-family: var(--font-mono); }
+
+/* Favicon variants */
+.fav-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.fav {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: -0.05em;
+  position: relative;
+}
+.fav .b { color: var(--text); }
+.fav .d { color: var(--ai); text-shadow: 0 0 12px var(--ai-glow); }
+
+.fav.sm { width: 48px; height: 48px; border-radius: 10px; font-size: 20px; }
+.fav.xs { width: 28px; height: 28px; border-radius: 6px; font-size: 12px; }
+
+.fav.ai-bg {
+  background: var(--ai);
+  border: none;
+}
+.fav.ai-bg .b, .fav.ai-bg .d { color: var(--bg); text-shadow: none; }
+
+/* Clearspace diagram */
+.clearspace {
+  padding: 48px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.clearspace h4 { margin-bottom: 16px; }
+.clearspace p { font-size: 14px; color: var(--text-2); margin-bottom: 16px; }
+.clearspace .cs-box {
+  position: relative;
+  padding: 80px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255,255,255,0.015) 8px, rgba(255,255,255,0.015) 9px);
+}
+.clearspace .cs-inner {
+  padding: 32px;
+  border: 1px solid rgba(0,229,160,0.15);
+  border-radius: 4px;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.clearspace .cs-inner .dot-ai { color: var(--ai); font-family: var(--font-mono); }
+.clearspace .measure {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ai);
+  letter-spacing: 0.1em;
+}
+.clearspace .measure.top    { top: 28px; left: 50%; transform: translateX(-50%); }
+.clearspace .measure.bottom { bottom: 28px; left: 50%; transform: translateX(-50%); }
+.clearspace .measure.left   { left: 28px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+.clearspace .measure.right  { right: 28px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+@media (max-width: 900px) {
+  .logo-grid { grid-template-columns: 1fr; }
+  .clearspace { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   COLOR SECTION
+============================================ */
+.color-hero {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 48px;
+  height: 380px;
+  background: var(--border);
+}
+.color-block {
+  padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.color-block.primary-bg  { background: var(--bg); color: var(--text); flex: 3; grid-column: span 2; }
+.color-block.surface     { background: var(--bg-elev-2); color: var(--text); }
+.color-block.brand-c     { background: var(--brand); color: var(--text); }
+.color-block.ai-c        { background: var(--ai); color: var(--bg); }
+.color-block.coral-c     { background: var(--coral); color: var(--bg); }
+
+.color-block .cb-name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.color-block .cb-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+.color-block .cb-values {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.color-swatch {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.color-swatch .chip {
+  height: 120px;
+  width: 100%;
+}
+.color-swatch .info { padding: 16px 20px; }
+.color-swatch .name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+.color-swatch .hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+
+.color-usage {
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.color-usage h4 { margin-bottom: 20px; }
+.usage-bar {
+  height: 44px;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.usage-bar > div { display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; }
+.usage-bar .u-bg    { background: var(--bg);        color: var(--text-2); flex: 60; border: 1px solid var(--border); }
+.usage-bar .u-surf  { background: var(--bg-elev-2); color: var(--text-2); flex: 20; }
+.usage-bar .u-brand { background: var(--brand);     color: #fff;          flex: 12; }
+.usage-bar .u-ai    { background: var(--ai);        color: var(--bg);     flex: 6; }
+.usage-bar .u-coral { background: var(--coral);     color: var(--bg);     flex: 2; }
+.usage-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.usage-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.usage-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+@media (max-width: 900px) {
+  .color-hero { grid-template-columns: 1fr 1fr; height: auto; }
+  .color-block.primary-bg { grid-column: span 2; }
+  .color-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   TYPOGRAPHY
+============================================ */
+.type-hero {
+  padding: 60px 48px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 48px;
+}
+.type-specimen {
+  font-size: clamp(80px, 14vw, 220px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  color: var(--text);
+  margin-bottom: 24px;
+  font-family: var(--font-sans);
+}
+.type-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.type-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.type-card {
+  padding: 32px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.type-card .role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.type-card .family {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.type-card .family.serif { font-family: var(--font-serif); font-style: italic; }
+.type-card .family.mono  { font-family: var(--font-mono); letter-spacing: -0.04em; }
+.type-card .weights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.type-card .weights span { font-size: 13px; color: var(--text-2); }
+.type-card .use {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.type-scale {
+  margin-top: 48px;
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.type-scale h4 { margin-bottom: 32px; }
+.scale-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--border);
+  align-items: baseline;
+}
+.scale-row:last-child { border: none; }
+.scale-row .meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+}
+.scale-row .meta strong { display: block; color: var(--text); font-weight: 500; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.12em; font-size: 10px; }
+.scale-row .sample { font-weight: 500; letter-spacing: -0.025em; color: var(--text); }
+.scale-row .sample.h1 { font-size: 56px; letter-spacing: -0.04em; }
+.scale-row .sample.h2 { font-size: 40px; letter-spacing: -0.035em; }
+.scale-row .sample.h3 { font-size: 28px; letter-spacing: -0.025em; }
+.scale-row .sample.body { font-size: 16px; font-weight: 400; color: var(--text-2); }
+.scale-row .sample.mono { font-family: var(--font-mono); font-size: 14px; color: var(--ai); }
+
+@media (max-width: 900px) {
+  .type-row { grid-template-columns: 1fr; }
+  .scale-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ============================================
+   ICONS
+============================================ */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.icon-cell {
+  aspect-ratio: 1;
+  background: var(--bg-elev-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+.icon-cell:hover { background: var(--bg-elev-2); }
+.icon-cell svg { color: var(--text); transition: color 0.2s; }
+.icon-cell:hover svg { color: var(--ai); }
+.icon-cell .name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.icon-principles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.icon-principle {
+  padding: 24px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.icon-principle .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ai);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.icon-principle .v { font-size: 15px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+.icon-principle .d { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .icon-grid { grid-template-columns: repeat(3, 1fr); }
+  .icon-principles { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   VISUAL ELEMENTS
+============================================ */
+.vis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.vis-card {
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.vis-card .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.vis-card h4 { margin-bottom: 8px; }
+.vis-card p { font-size: 13px; color: var(--text-3); margin-bottom: 24px; }
+
+/* Search bar element */
+.el-searchbar {
+  padding: 18px 24px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-2);
+}
+.el-searchbar svg { flex-shrink: 0; color: var(--text-3); }
+.el-searchbar .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  background: var(--ai);
+  margin-left: auto;
+  animation: blink 1.1s steps(1) infinite;
+  box-shadow: 0 0 12px var(--ai-glow);
+}
+.el-searchbar .text-c { color: var(--text); }
+
+/* Flow connection */
+.el-flow {
+  padding: 32px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  height: 140px;
+}
+.el-flow::before {
+  content: '';
+  position: absolute;
+  left: 10%; right: 10%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
+}
+.el-flow::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 15%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ai));
+  box-shadow: 0 0 8px var(--ai-glow);
+  animation: flow-move 2.5s ease-in-out infinite;
+}
+@keyframes flow-move {
+  0%   { left: 10%; opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { left: 75%; opacity: 0; }
+}
+.el-flow .node {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-2);
+  z-index: 1;
+  position: relative;
+}
+.el-flow .node.active {
+  border-color: var(--ai);
+  color: var(--ai);
+  box-shadow: 0 0 24px rgba(0,229,160,0.2);
+}
+
+/* Response appearing */
+.el-response {
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  border-left: 2px solid var(--ai);
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  position: relative;
+}
+.el-response .tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--ai-soft);
+  color: var(--ai);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.el-response strong { color: var(--text); font-weight: 500; }
+
+/* Cursor typing */
+.el-cursor {
+  padding: 24px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text);
+}
+.el-cursor .prompt { color: var(--ai); margin-right: 8px; }
+.el-cursor .caret {
+  display: inline-block;
+  width: 10px;
+  height: 1.1em;
+  background: var(--ai);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: blink 1.1s steps(1) infinite;
+  box-shadow: 0 0 12px var(--ai-glow);
+}
+
+@media (max-width: 900px) {
+  .vis-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   APPLICATIONS
+============================================ */
+.app-stack { display: flex; flex-direction: column; gap: 32px; }
+
+.browser {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.browser-bar {
+  padding: 12px 16px;
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.browser-dots { display: flex; gap: 6px; }
+.browser-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+.browser-url {
+  margin-left: 16px;
+  padding: 6px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.browser-url svg { color: var(--ai); flex-shrink: 0; }
+
+.browser-content { min-height: 480px; }
+
+/* HOMEPAGE MOCKUP */
+.hp-nav {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.hp-nav .logo { font-size: 18px; font-weight: 500; }
+.hp-nav ul { display: flex; gap: 28px; list-style: none; }
+.hp-nav li { font-size: 13px; color: var(--text-2); }
+.hp-nav .cta {
+  padding: 8px 14px;
+  background: var(--ai);
+  color: var(--bg);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hp-hero {
+  padding: 80px 40px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 100%, var(--brand-soft), transparent 60%);
+  position: relative;
+}
+.hp-hero .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--ai-soft);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ai);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hp-hero h1 {
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.hp-hero h1 .accent { color: var(--ai); font-family: var(--font-mono); }
+.hp-hero p {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+.hp-hero .buttons { display: flex; gap: 12px; justify-content: center; }
+.hp-hero .btn-primary {
+  padding: 12px 20px;
+  background: var(--ai);
+  color: var(--bg);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.hp-hero .btn-ghost {
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-size: 13px;
+}
+
+.hp-logos {
+  padding: 32px 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+/* DASHBOARD MOCKUP */
+.dash {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 520px;
+}
+.dash-side {
+  padding: 24px 16px;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+.dash-side .logo { font-size: 18px; font-weight: 500; padding: 0 10px; margin-bottom: 32px; display: block; }
+.dash-side .group {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0 10px;
+  margin: 24px 0 8px;
+}
+.dash-side ul { list-style: none; }
+.dash-side li {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+.dash-side li.active { background: var(--bg-elev-2); color: var(--text); }
+.dash-side li svg { color: var(--text-3); }
+.dash-side li.active svg { color: var(--ai); }
+
+.dash-main { padding: 32px 40px; }
+.dash-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+.dash-head h3 { font-size: 22px; }
+.dash-head .search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+}
+.dash-head .search svg { color: var(--text-3); }
+
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi {
+  padding: 20px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.kpi .l { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+.kpi .v { font-size: 28px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); }
+.kpi .d { font-family: var(--font-mono); font-size: 11px; color: var(--ai); margin-top: 4px; }
+.kpi.highlight { border-color: rgba(0,229,160,0.2); background: linear-gradient(180deg, rgba(0,229,160,0.04), transparent); }
+
+.dash-chart {
+  padding: 24px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dash-chart .ct { display: flex; justify-content: space-between; align-items: flex-start; }
+.dash-chart h4 { font-size: 14px; font-weight: 500; }
+.dash-chart .legend { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ARTICLE MOCKUP */
+.art-page {
+  padding: 48px 64px;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 48px;
+}
+.art-main .art-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.art-main h1 {
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.art-main h1 .accent { color: var(--ai); font-family: var(--font-mono); }
+.art-main .deck {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.art-main p { font-size: 14px; line-height: 1.7; color: var(--text-2); margin-bottom: 14px; }
+.art-main .pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--text);
+  line-height: 1.3;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 24px 0;
+}
+.art-side { padding-left: 24px; border-left: 1px solid var(--border); }
+.art-side .title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+.art-side .item { padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.art-side .item:last-child { border: none; }
+.art-side .item .h { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.3; margin-bottom: 4px; }
+.art-side .item .d { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.1em; }
+
+/* SOCIAL POSTS */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.social {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+}
+
+.social.s1 {
+  background:
+    radial-gradient(circle at 20% 80%, var(--brand-soft), transparent 50%),
+    var(--bg);
+}
+.social.s1 .headline {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.social.s1 .headline .accent { color: var(--ai); font-family: var(--font-mono); }
+
+.social.s2 {
+  background: var(--ai);
+  color: var(--bg);
+}
+.social.s2 .headline {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--bg);
+}
+.social.s2 .sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(8,9,13,0.6);
+  margin-bottom: 12px;
+}
+.social.s2 .logo-mini { font-weight: 500; font-size: 16px; color: var(--bg); letter-spacing: -0.04em; }
+.social.s2 .logo-mini .dot { opacity: 0.4; }
+.social.s2 .logo-mini .ai { font-family: var(--font-mono); font-weight: 600; }
+
+.social.s3 {
+  background: var(--bg-elev-2);
+  position: relative;
+}
+.social.s3::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  background:
+    linear-gradient(to right, var(--border) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px) 0 0 / 40px 40px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.social.s3 .headline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 30px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  z-index: 1;
+  position: relative;
+}
+.social.s3 .headline .accent { color: var(--ai); font-family: var(--font-mono); font-style: normal; }
+
+.social .foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  z-index: 1;
+  position: relative;
+}
+.social .foot .handle { color: var(--text-2); }
+.social.s1 .foot .handle .ai { color: var(--ai); }
+.social.s2 .foot { color: rgba(8,9,13,0.7); }
+
+/* WHATSAPP */
+.whats {
+  background: #0B141A;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.whats-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 20px;
+}
+.whats-head .av {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.04em;
+}
+.whats-head .av .d { color: var(--ai); font-family: var(--font-mono); }
+.whats-head .n { font-size: 14px; font-weight: 500; color: #E9EDEF; }
+.whats-head .n small { display: block; font-size: 11px; color: #8696A0; font-weight: 400; font-family: var(--font-mono); letter-spacing: 0.05em; margin-top: 2px; }
+.whats-msg {
+  padding: 10px 14px;
+  background: #202C33;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  max-width: 85%;
+  font-size: 13px;
+  color: #E9EDEF;
+  line-height: 1.5;
+}
+.whats-msg .hl { color: var(--ai); font-family: var(--font-mono); font-size: 12px; }
+.whats-msg.own { background: #005C4B; margin-left: auto; }
+.whats-msg .time { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.5); display: block; text-align: right; margin-top: 4px; letter-spacing: 0.08em; }
+
+/* PROSPECTING EMAIL */
+.email {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.email-head {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px 16px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+.email-head .l { color: var(--text-3); text-transform: uppercase; font-size: 10px; letter-spacing: 0.15em; }
+.email-head .v { color: var(--text-2); }
+.email-head .v strong { color: var(--text); font-weight: 500; }
+.email-body { padding: 24px; font-size: 14px; color: var(--text-2); line-height: 1.7; }
+.email-body strong { color: var(--text); font-weight: 500; }
+.email-body .sig { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--border); }
+.email-body .sig .logo { font-size: 16px; font-weight: 500; letter-spacing: -0.03em; }
+
+@media (max-width: 1000px) {
+  .dash { grid-template-columns: 1fr; }
+  .dash-side { border-right: none; border-bottom: 1px solid var(--border); }
+  .art-page { grid-template-columns: 1fr; padding: 32px; }
+  .art-side { padding-left: 0; border-left: none; padding-top: 24px; border-top: 1px solid var(--border); }
+  .social-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   DO & DON'T
+============================================ */
+.dont-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.dont-card {
+  padding: 32px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.dont-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--coral);
+}
+.dont-card .cross {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,107,61,0.12);
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.dont-card .demo {
+  padding: 32px 16px;
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.dont-card h4 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+.dont-card p { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .dont-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   MARKETING / PRODUCT DIRECTION
+============================================ */
+.direction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.direction-card {
+  padding: 40px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.direction-card h3 { margin-bottom: 24px; }
+.direction-card .pair {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px 24px;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--border);
+  align-items: baseline;
+}
+.direction-card .pair:last-child { border: none; }
+.direction-card .pair .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  min-width: 80px;
+}
+.direction-card .pair .v { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+.copy-samples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.copy-sample {
+  padding: 28px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-left: 2px solid var(--ai);
+}
+.copy-sample .ctx {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.copy-sample .txt {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.copy-sample .txt .accent { color: var(--ai); font-family: var(--font-mono); font-style: normal; }
+
+@media (max-width: 900px) {
+  .direction-grid, .copy-samples { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   PHRASES
+============================================ */
+.phrases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 48px;
+}
+.phrase {
+  padding: 40px 48px;
+  background: var(--bg-elev-1);
+  display: grid;
+  grid-template-columns: 80px 1fr 160px;
+  gap: 32px;
+  align-items: center;
+}
+.phrase .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+}
+.phrase .quote {
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1.15;
+}
+.phrase .quote .accent { color: var(--ai); font-family: var(--font-mono); }
+.phrase .context {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .phrase { grid-template-columns: 1fr; gap: 12px; }
+  .phrase .context { text-align: left; }
+}
+
+/* ============================================
+   SUMMARY / FOOTER
+============================================ */
+.summary {
+  padding: 140px 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(124,92,255,0.1), transparent 60%),
+    var(--bg);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.summary .logo-xl {
+  font-size: clamp(72px, 14vw, 180px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  margin-bottom: 40px;
+}
+.summary .logo-xl .dot-ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  text-shadow: 0 0 40px var(--ai-glow), 0 0 120px rgba(0,229,160,0.2);
+}
+.summary .tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--text-2);
+  max-width: 720px;
+  margin: 0 auto 48px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.summary-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.summary-pillars .p {
+  padding: 24px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.summary-pillars .p .n {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ai);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.summary-pillars .p .t { font-size: 15px; color: var(--text); font-weight: 500; }
+
+footer {
+  padding: 48px 0;
+  background: var(--bg);
+}
+footer .ft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .summary-pillars { grid-template-columns: 1fr 1fr; }
+  footer .ft { flex-direction: column; gap: 20px; }
+}
+
+/* ============================================
+   PRINT
+============================================ */
+@media print {
+  section { page-break-after: always; padding: 40px 0; }
+  .noise, .grid-bg { display: none; }
+  body { background: #fff; color: #000; }
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="noise"></div>
+
+<main>
+
+<!-- =====================================================
+     CAPA
+===================================================== -->
+<section class="cover">
+  <div class="container">
+    <div class="cover-top">
+      <div class="logo">buscou<span class="dot-ai">.ai</span></div>
+      <div class="cover-meta">
+        <span>Brand Book v1.0</span>
+        <span>2026</span>
+      </div>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-kicker">
+        <span class="pulse"></span>
+        Manual oficial da marca
+      </div>
+
+      <h1 class="cover-title">buscou<span class="dot-ai">.ai</span><span class="cover-cursor"></span></h1>
+
+      <p class="cover-tagline">
+        <strong>Se alguém buscou,</strong> você precisa aparecer.
+      </p>
+    </div>
+
+    <div class="cover-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      melhor clínica odontológica
+    </div>
+
+    <div class="cover-footer">
+      <div class="cover-footer-item">
+        <div class="label">Cliente</div>
+        <div class="value">BuscouAI</div>
+      </div>
+      <div class="cover-footer-item">
+        <div class="label">Categoria</div>
+        <div class="value">SaaS de Performance</div>
+      </div>
+      <div class="cover-footer-item">
+        <div class="label">Data</div>
+        <div class="value">Abr 2026</div>
+      </div>
+      <div class="cover-footer-item">
+        <div class="label">Versão</div>
+        <div class="value">1.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     ÍNDICE
+===================================================== -->
+<section class="index">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">Índice / 00</div>
+      <div class="section-title">
+        <h2>Navegação</h2>
+        <p class="kicker">Este manual define toda a identidade visual e verbal de buscou.ai. Uso obrigatório em qualquer aplicação da marca.</p>
+      </div>
+    </div>
+
+    <div class="index-grid">
+      <a href="#conceito" class="index-item"><span class="num">01</span><span class="title">Conceito da marca</span></a>
+      <a href="#posicionamento" class="index-item"><span class="num">02</span><span class="title">Posicionamento</span></a>
+      <a href="#nome" class="index-item"><span class="num">03</span><span class="title">Uso do nome</span></a>
+      <a href="#logo" class="index-item"><span class="num">04</span><span class="title">Logo e variações</span></a>
+      <a href="#cores" class="index-item"><span class="num">05</span><span class="title">Cores</span></a>
+      <a href="#tipografia" class="index-item"><span class="num">06</span><span class="title">Tipografia</span></a>
+      <a href="#icones" class="index-item"><span class="num">07</span><span class="title">Ícones</span></a>
+      <a href="#visuais" class="index-item"><span class="num">08</span><span class="title">Elementos visuais</span></a>
+      <a href="#aplicacoes" class="index-item"><span class="num">09</span><span class="title">Aplicações</span></a>
+      <a href="#regras" class="index-item"><span class="num">10</span><span class="title">Regras de uso</span></a>
+      <a href="#erros" class="index-item"><span class="num">11</span><span class="title">Erros comuns</span></a>
+      <a href="#marketing" class="index-item"><span class="num">12</span><span class="title">Direção de marketing</span></a>
+      <a href="#produto" class="index-item"><span class="num">13</span><span class="title">Direção de produto</span></a>
+      <a href="#frases" class="index-item"><span class="num">14</span><span class="title">Frases da marca</span></a>
+      <a href="#resumo" class="index-item"><span class="num">15</span><span class="title">Resumo final</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     01 — CONCEITO
+===================================================== -->
+<section id="conceito">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">01 / Conceito</div>
+      <div class="section-title">
+        <h2>O conceito da marca</h2>
+        <p class="kicker">Uma ideia única que organiza tudo o que buscou.ai faz, diz e mostra.</p>
+      </div>
+    </div>
+
+    <p class="concept-quote">
+      Se alguém<br>
+      buscou,<br>
+      <span class="accent">você precisa aparecer.</span>
+    </p>
+
+    <p class="lead" style="max-width: 780px; margin-bottom: 32px;">
+      buscou.ai é a ponte entre uma pergunta e uma resposta. Quando um cliente em potencial digita algo — no Google, no ChatGPT, em qualquer IA — a marca existe para garantir que a sua empresa seja o resultado. Não por acaso. Por sistema.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <div class="num">01</div>
+        <div class="label">Alguém busca</div>
+        <div class="desc">Cliente digita no Google ou pergunta à IA</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/><path d="m16.2 16.2 2.8 2.8"/><path d="M12 18v4"/><path d="m7.8 16.2-2.8 2.8"/><path d="M6 12H2"/><path d="m7.8 7.8-2.8-2.8"/></svg>
+        </div>
+        <div class="num">02</div>
+        <div class="label">buscou.ai processa</div>
+        <div class="desc">Sistema otimiza presença automaticamente</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="num">03</div>
+        <div class="label">Você aparece</div>
+        <div class="desc">Sua empresa no topo do resultado</div>
+      </div>
+    </div>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Busca</h4>
+        <p>Toda decisão começa com uma pergunta. buscou.ai nasce na origem do processo de compra — a busca.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Resposta</h4>
+        <p>Hoje, a resposta não vem só do Google. Vem de IAs, assistentes, chats. A marca existe em todos esses lugares.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Presença</h4>
+        <p>Aparecer não é sorte. É engenharia. buscou.ai transforma visibilidade em sistema repetível.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     02 — POSICIONAMENTO
+===================================================== -->
+<section id="posicionamento">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">02 / Posicionamento</div>
+      <div class="section-title">
+        <h2>O que buscou.ai é — e o que não é</h2>
+        <p class="kicker">Clareza de território é defesa de marca. Antes de falar o que somos, definimos o que não somos.</p>
+      </div>
+    </div>
+
+    <div class="pos-two">
+      <div class="pos-col is">
+        <span class="tag">buscou.ai É</span>
+        <h3>Um produto de tecnologia que automatiza a presença da sua empresa nos lugares onde o cliente procura.</h3>
+        <ul>
+          <li>Plataforma SaaS de performance</li>
+          <li>Sistema automatizado de visibilidade</li>
+          <li>Ferramenta orientada a resultado</li>
+          <li>Ponte entre busca e resposta</li>
+          <li>Aquisição de clientes em escala</li>
+          <li>Presença no Google + IAs (ChatGPT, Gemini, Claude, Perplexity)</li>
+        </ul>
+      </div>
+      <div class="pos-col isnt">
+        <span class="tag">buscou.ai NÃO É</span>
+        <h3>Agência, consultoria ou serviço manual. Não vendemos horas — entregamos presença.</h3>
+        <ul>
+          <li>Agência de marketing</li>
+          <li>Serviço de SEO tradicional</li>
+          <li>Consultoria de mídia paga</li>
+          <li>Produção de conteúdo manual</li>
+          <li>Pacote fechado e estático</li>
+          <li>Ferramenta genérica de automação</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; padding: 48px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius-lg);">
+      <div class="eyebrow" style="margin-bottom: 20px;">Uma frase define</div>
+      <p style="font-family: var(--font-serif); font-style: italic; font-size: clamp(28px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.02em; color: var(--text);">
+        buscou.ai é o <span style="color: var(--ai); font-family: var(--font-mono); font-style: normal;">sistema operacional</span> da presença digital de uma empresa na era da IA.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     03 — USO DO NOME
+===================================================== -->
+<section id="nome">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">03 / Nome</div>
+      <div class="section-title">
+        <h2>Uso do nome</h2>
+        <p class="kicker">O nome da marca sempre é escrito com o domínio visualmente embutido. O ".ai" não é um detalhe técnico — é identidade.</p>
+      </div>
+    </div>
+
+    <div class="name-hero">
+      <div class="name-showcase">
+        <span class="buscou">buscou</span><span class="dot-ai">.ai</span>
+      </div>
+      <div class="name-annotations">
+        <span><i class="sw"></i>buscou — minúsculo, texto</span>
+        <span><i class="sw ai"></i>.ai — monospace, cor de destaque, glow</span>
+      </div>
+    </div>
+
+    <div class="name-forms">
+      <div class="name-form">
+        <div class="label">Forma principal</div>
+        <div class="form">buscou<span class="dot-ai">.ai</span></div>
+        <div class="desc">Usar em todo contexto visual: logo, site, dashboard, redes sociais, campanhas, comunicação de produto. É a forma padrão e preferida da marca.</div>
+      </div>
+      <div class="name-form">
+        <div class="label">Forma secundária / institucional</div>
+        <div class="form" style="letter-spacing: -0.025em;">BuscouAI</div>
+        <div class="desc">Usar apenas em textos jurídicos, imprensa, contratos, documentos oficiais e contextos onde o ponto não é renderizado ou pode causar confusão técnica.</div>
+      </div>
+    </div>
+
+    <div class="name-rules">
+      <h4>Regras obrigatórias</h4>
+      <ul>
+        <li>Sempre escrever em minúsculo, exceto em textos institucionais (BuscouAI)</li>
+        <li>O "b" nunca tem maiúscula em buscou.ai</li>
+        <li>O ".ai" deve receber tratamento visual distintivo sempre que possível</li>
+        <li>O ponto "." faz parte da identidade — nunca usar espaço no lugar</li>
+        <li>Não separar "buscou" e ".ai" em linhas diferentes</li>
+        <li>Domínio real: buscouai.com — nunca buscou.ai como URL</li>
+        <li>Nunca escrever "Buscou.ai" (capitalizado misto sem padrão)</li>
+        <li>Nunca traduzir — o nome é o mesmo em qualquer idioma</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     04 — LOGO
+===================================================== -->
+<section id="logo">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">04 / Logo</div>
+      <div class="section-title">
+        <h2>Logo e variações</h2>
+        <p class="kicker">A tipografia É o logo. Nada de ícones decorativos sobrepostos. A marca é feita de letras com tensão tipográfica entre o sans e o mono.</p>
+      </div>
+    </div>
+
+    <div class="logo-grid">
+      <!-- Primary dark -->
+      <div class="logo-tile dark">
+        <div class="meta">
+          <span>01 / Principal — fundo escuro</span>
+          <span class="type">Primário</span>
+        </div>
+        <div class="logo-display">
+          <div class="logo logo-primary">buscou<span class="dot-ai">.ai</span></div>
+        </div>
+        <div class="meta">
+          <span>Aplicação padrão · website · dashboard</span>
+          <span>RGB</span>
+        </div>
+      </div>
+
+      <!-- Primary light -->
+      <div class="logo-tile light">
+        <div class="meta">
+          <span>02 / Principal — fundo claro</span>
+          <span class="type">Primário</span>
+        </div>
+        <div class="logo-display">
+          <div class="logo logo-primary">buscou<span class="dot-ai">.ai</span></div>
+        </div>
+        <div class="meta">
+          <span>Docs · impressão · contexto claro</span>
+          <span>RGB</span>
+        </div>
+      </div>
+
+      <!-- Compact -->
+      <div class="logo-tile dark">
+        <div class="meta">
+          <span>03 / Versão reduzida</span>
+          <span class="type">Compacto</span>
+        </div>
+        <div class="logo-display">
+          <div class="logo logo-compact">buscou<span class="dot-ai">.ai</span></div>
+        </div>
+        <div class="meta">
+          <span>Header · rodapé · mobile</span>
+          <span>Até 200px</span>
+        </div>
+      </div>
+
+      <!-- Monochrome -->
+      <div class="logo-tile dark">
+        <div class="meta">
+          <span>04 / Monocromática</span>
+          <span class="type">Mono</span>
+        </div>
+        <div class="logo-display">
+          <div class="logo logo-primary logo-mono">buscou<span class="dot-ai">.ai</span></div>
+        </div>
+        <div class="meta">
+          <span>Impressão 1 cor · imprensa</span>
+          <span>Grayscale</span>
+        </div>
+      </div>
+
+      <!-- Favicon dark -->
+      <div class="logo-tile dark">
+        <div class="meta">
+          <span>05 / Favicon / Ícone</span>
+          <span class="type">Ícone</span>
+        </div>
+        <div class="logo-display">
+          <div class="fav-row">
+            <div class="fav"><span class="b">b</span><span class="d">.</span></div>
+            <div class="fav sm"><span class="b">b</span><span class="d">.</span></div>
+            <div class="fav xs"><span class="b">b</span><span class="d">.</span></div>
+          </div>
+        </div>
+        <div class="meta">
+          <span>App icon · social avatar · 512/64/16px</span>
+          <span>Quadrado</span>
+        </div>
+      </div>
+
+      <!-- Favicon inverted -->
+      <div class="logo-tile dark">
+        <div class="meta">
+          <span>06 / Ícone invertido</span>
+          <span class="type">Ícone alt</span>
+        </div>
+        <div class="logo-display">
+          <div class="fav-row">
+            <div class="fav ai-bg"><span class="b">b</span><span class="d">.</span></div>
+            <div class="fav ai-bg sm"><span class="b">b</span><span class="d">.</span></div>
+            <div class="fav ai-bg xs"><span class="b">b</span><span class="d">.</span></div>
+          </div>
+        </div>
+        <div class="meta">
+          <span>Alto contraste · stickers · ads</span>
+          <span>Sobre cor IA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clearspace -->
+    <div class="clearspace">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 12px;">Clearspace</div>
+        <h4>Respiro obrigatório</h4>
+        <p>Mantenha uma margem equivalente à altura do ".ai" em todos os lados do logo. Nunca posicione elementos ou textos dentro dessa zona.</p>
+        <p>Tamanho mínimo: <strong style="color: var(--text); font-family: var(--font-mono);">80px</strong> de largura em digital · <strong style="color: var(--text); font-family: var(--font-mono);">24mm</strong> em impressão.</p>
+      </div>
+      <div class="cs-box">
+        <span class="measure top">·ai</span>
+        <span class="measure bottom">·ai</span>
+        <span class="measure left">·ai</span>
+        <span class="measure right">·ai</span>
+        <div class="cs-inner">buscou<span class="dot-ai">.ai</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     05 — CORES
+===================================================== -->
+<section id="cores">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">05 / Cores</div>
+      <div class="section-title">
+        <h2>Sistema cromático</h2>
+        <p class="kicker">Dark-first. A marca vive em fundo escuro. Violeta representa a tecnologia e o produto. Mint é a voz da IA — usado com precisão cirúrgica.</p>
+      </div>
+    </div>
+
+    <div class="color-hero">
+      <div class="color-block primary-bg">
+        <div>
+          <div class="cb-role">Base</div>
+          <div class="cb-name">Deep Black</div>
+        </div>
+        <div class="cb-values">#08090D<br>RGB 8 9 13</div>
+      </div>
+      <div class="color-block surface">
+        <div>
+          <div class="cb-role">Superfície</div>
+          <div class="cb-name">Carbon</div>
+        </div>
+        <div class="cb-values">#161823<br>RGB 22 24 35</div>
+      </div>
+      <div class="color-block brand-c">
+        <div>
+          <div class="cb-role">Primária · Tecnologia</div>
+          <div class="cb-name">Electric Violet</div>
+        </div>
+        <div class="cb-values">#7C5CFF<br>RGB 124 92 255</div>
+      </div>
+      <div class="color-block ai-c">
+        <div>
+          <div class="cb-role">Destaque · IA</div>
+          <div class="cb-name">Signal Mint</div>
+        </div>
+        <div class="cb-values">#00E5A0<br>RGB 0 229 160</div>
+      </div>
+      <div class="color-block coral-c">
+        <div>
+          <div class="cb-role">Acento</div>
+          <div class="cb-name">Live Coral</div>
+        </div>
+        <div class="cb-values">#FF6B3D<br>RGB 255 107 61</div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 24px;">Escala estendida</h3>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="chip" style="background:#08090D"></div><div class="info"><div class="name">bg</div><div class="hex">#08090D</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#0F1117"></div><div class="info"><div class="name">bg-elev-1</div><div class="hex">#0F1117</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#161823"></div><div class="info"><div class="name">bg-elev-2</div><div class="hex">#161823</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#1C1F2C"></div><div class="info"><div class="name">bg-elev-3</div><div class="hex">#1C1F2C</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#ECEDF0"></div><div class="info"><div class="name">text</div><div class="hex">#ECEDF0</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#A4A7B3"></div><div class="info"><div class="name">text-2</div><div class="hex">#A4A7B3</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#7C5CFF"></div><div class="info"><div class="name">brand</div><div class="hex">#7C5CFF</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#6D4CF0"></div><div class="info"><div class="name">brand-600</div><div class="hex">#6D4CF0</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#00E5A0"></div><div class="info"><div class="name">ai</div><div class="hex">#00E5A0</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#57F0C0"></div><div class="info"><div class="name">ai-300</div><div class="hex">#57F0C0</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#FF6B3D"></div><div class="info"><div class="name">coral</div><div class="hex">#FF6B3D</div></div></div>
+      <div class="color-swatch"><div class="chip" style="background:#FFB84D"></div><div class="info"><div class="name">warn</div><div class="hex">#FFB84D</div></div></div>
+    </div>
+
+    <div class="color-usage">
+      <h4>Proporção de uso</h4>
+      <p style="font-size: 14px; margin-bottom: 24px;">A cor IA (mint) é um acento, nunca uma base. Se mais de 10% da composição estiver em mint, algo está errado.</p>
+      <div class="usage-bar">
+        <div class="u-bg">60% · fundo</div>
+        <div class="u-surf">20% · superfícies</div>
+        <div class="u-brand">12% · brand</div>
+        <div class="u-ai">6% · IA</div>
+        <div class="u-coral">2%</div>
+      </div>
+      <div class="usage-legend">
+        <span><i style="background: var(--bg); border: 1px solid var(--border);"></i>Deep Black</span>
+        <span><i style="background: var(--bg-elev-2);"></i>Carbon</span>
+        <span><i style="background: var(--brand);"></i>Electric Violet</span>
+        <span><i style="background: var(--ai);"></i>Signal Mint</span>
+        <span><i style="background: var(--coral);"></i>Live Coral</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     06 — TIPOGRAFIA
+===================================================== -->
+<section id="tipografia">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">06 / Tipografia</div>
+      <div class="section-title">
+        <h2>Sistema tipográfico</h2>
+        <p class="kicker">Duas famílias em tensão. Geist para voz humana; Geist Mono para voz da máquina. A oscilação entre elas é a assinatura tipográfica da marca.</p>
+      </div>
+    </div>
+
+    <div class="type-hero">
+      <div class="type-specimen">Aa<span style="color: var(--ai); font-family: var(--font-mono);">Aa</span></div>
+      <div class="type-meta">
+        <span>Geist / Sans-serif geométrico</span>
+        <span>Geist Mono / Monospace técnico</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-card">
+        <div class="role">Principal</div>
+        <div class="family">Geist</div>
+        <div class="weights">
+          <span style="font-weight: 300;">300 · Light</span>
+          <span style="font-weight: 400;">400 · Regular</span>
+          <span style="font-weight: 500;">500 · Medium</span>
+          <span style="font-weight: 600;">600 · Semibold</span>
+        </div>
+        <div class="use">Títulos, subtítulos, corpo de texto, UI. A voz principal da marca. Sempre com tracking levemente negativo em displays.</div>
+      </div>
+      <div class="type-card">
+        <div class="role">Mono / Técnica</div>
+        <div class="family mono">Geist Mono</div>
+        <div class="weights">
+          <span style="font-family: var(--font-mono); font-weight: 400;">400 · Regular</span>
+          <span style="font-family: var(--font-mono); font-weight: 500;">500 · Medium</span>
+          <span style="font-family: var(--font-mono); font-weight: 600;">600 · Semibold</span>
+        </div>
+        <div class="use">O ".ai", labels, metadados, código, números em destaque, KPIs. Sinaliza tecnologia e sistema. Uppercase com tracking +0.12em para eyebrows.</div>
+      </div>
+      <div class="type-card">
+        <div class="role">Editorial</div>
+        <div class="family serif">Instrument Serif</div>
+        <div class="weights">
+          <span style="font-family: var(--font-serif); font-style: italic;">Regular</span>
+          <span style="font-family: var(--font-serif); font-style: italic;">Italic</span>
+        </div>
+        <div class="use">Uso restrito em citações, manifestos, frases da marca e headlines editoriais. Traz humanidade a um sistema técnico. Sempre em itálico.</div>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <h4>Escala hierárquica</h4>
+      <div class="scale-row">
+        <div class="meta"><strong>Display</strong>Geist · 500 · -0.055em</div>
+        <div class="sample h1">buscou<span style="color: var(--ai); font-family: var(--font-mono);">.ai</span></div>
+      </div>
+      <div class="scale-row">
+        <div class="meta"><strong>H1 · Título</strong>Geist · 500 · -0.04em</div>
+        <div class="sample h1" style="font-size: 56px;">Se alguém buscou</div>
+      </div>
+      <div class="scale-row">
+        <div class="meta"><strong>H2 · Seção</strong>Geist · 500 · -0.035em</div>
+        <div class="sample h2">Você aparece no topo</div>
+      </div>
+      <div class="scale-row">
+        <div class="meta"><strong>H3 · Subseção</strong>Geist · 500 · -0.025em</div>
+        <div class="sample h3">Presença automatizada em IAs</div>
+      </div>
+      <div class="scale-row">
+        <div class="meta"><strong>Body</strong>Geist · 400 · normal</div>
+        <div class="sample body">Transformamos cada busca do seu cliente em uma chance real de aparecer — no Google e nas respostas de IA.</div>
+      </div>
+      <div class="scale-row">
+        <div class="meta"><strong>Mono · Label</strong>Geist Mono · 500 · uppercase · +0.12em</div>
+        <div class="sample mono">POWERED BY BUSCOU.AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     07 — ÍCONES
+===================================================== -->
+<section id="icones">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">07 / Ícones</div>
+      <div class="section-title">
+        <h2>Sistema de ícones</h2>
+        <p class="kicker">Linhas finas, cantos levemente arredondados, stroke 1.6–1.8px. Nunca preenchidos. Nunca coloridos. Herdam a cor do texto ao redor.</p>
+      </div>
+    </div>
+
+    <div class="icon-grid">
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <div class="name">Search</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/><path d="m16.2 16.2 2.8 2.8"/><path d="M12 18v4"/><path d="m7.8 16.2-2.8 2.8"/><path d="M6 12H2"/><path d="m7.8 7.8-2.8-2.8"/></svg>
+        <div class="name">AI</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="name">Pulse</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        <div class="name">Growth</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div class="name">Realtime</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div class="name">Ranked</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        <div class="name">Dashboard</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/></svg>
+        <div class="name">Visibility</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+        <div class="name">Done</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        <div class="name">Signal</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+        <div class="name">Prompt</div>
+      </div>
+      <div class="icon-cell">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <div class="name">Alert</div>
+      </div>
+    </div>
+
+    <div class="icon-principles">
+      <div class="icon-principle">
+        <div class="k">01</div>
+        <div class="v">Stroke fino</div>
+        <div class="d">1.6 a 1.8 px. Nunca mais grosso. Nunca preenchido.</div>
+      </div>
+      <div class="icon-principle">
+        <div class="k">02</div>
+        <div class="v">Cantos suaves</div>
+        <div class="d">Line-cap e line-join round. Humaniza o traço técnico.</div>
+      </div>
+      <div class="icon-principle">
+        <div class="k">03</div>
+        <div class="v">Grid 24px</div>
+        <div class="d">Todos os ícones desenhados em grid de 24×24px.</div>
+      </div>
+      <div class="icon-principle">
+        <div class="k">04</div>
+        <div class="v">Cor herdada</div>
+        <div class="d">Usa currentColor. Nunca colorido por conta própria.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     08 — ELEMENTOS VISUAIS
+===================================================== -->
+<section id="visuais">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">08 / Elementos visuais</div>
+      <div class="section-title">
+        <h2>Grafismos do universo buscou.ai</h2>
+        <p class="kicker">A marca é feita de quatro gestos recorrentes — a barra de busca, o cursor, o fluxo e a resposta. Eles podem aparecer isolados ou combinados.</p>
+      </div>
+    </div>
+
+    <div class="vis-grid">
+      <!-- Searchbar -->
+      <div class="vis-card">
+        <div class="label">Elemento 01 · Barra de busca</div>
+        <h4>A pergunta do cliente</h4>
+        <p>O gesto de origem. Sempre em pill, sempre com cursor piscando.</p>
+        <div class="el-searchbar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="text-c">como aparecer no ChatGPT</span>
+          <span class="cursor"></span>
+        </div>
+      </div>
+
+      <!-- Cursor -->
+      <div class="vis-card">
+        <div class="label">Elemento 02 · Cursor digitando</div>
+        <h4>Tempo real</h4>
+        <p>O cursor mint é a assinatura de ação do sistema — nunca estático.</p>
+        <div class="el-cursor">
+          <span class="prompt">&gt;</span>buscou<span class="caret"></span>
+        </div>
+      </div>
+
+      <!-- Flow -->
+      <div class="vis-card">
+        <div class="label">Elemento 03 · Fluxo de conexão</div>
+        <h4>Busca → Sistema → Resposta</h4>
+        <p>Três nós conectados por uma linha que pulsa com mint.</p>
+        <div class="el-flow">
+          <div class="node">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <div class="node active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/><path d="m16.2 16.2 2.8 2.8"/><path d="M12 18v4"/><path d="m7.8 16.2-2.8 2.8"/><path d="M6 12H2"/><path d="m7.8 7.8-2.8-2.8"/></svg>
+          </div>
+          <div class="node">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Response -->
+      <div class="vis-card">
+        <div class="label">Elemento 04 · Resposta aparecendo</div>
+        <h4>Você aparece</h4>
+        <p>Card com borda lateral mint — representa a empresa entrando na resposta.</p>
+        <div class="el-response">
+          <div class="tag">Resposta · IA</div>
+          A melhor opção em São Paulo é <strong>Clínica Marca X</strong>, referência em atendimento odontológico com mais de 12 anos de operação na capital paulista.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     09 — APLICAÇÕES
+===================================================== -->
+<section id="aplicacoes">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">09 / Aplicações</div>
+      <div class="section-title">
+        <h2>A marca em movimento</h2>
+        <p class="kicker">Cada ponto de contato — produto, site, conteúdo, prospecção — obedece ao mesmo sistema. Consistência visual é fidelidade cognitiva.</p>
+      </div>
+    </div>
+
+    <div class="app-stack">
+
+      <!-- HOMEPAGE -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 01 · Homepage</div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              buscouai.com
+            </div>
+          </div>
+          <div class="browser-content">
+            <nav class="hp-nav">
+              <div class="logo">buscou<span class="dot-ai">.ai</span></div>
+              <ul>
+                <li>Produto</li>
+                <li>Casos</li>
+                <li>Preço</li>
+                <li>Blog</li>
+              </ul>
+              <a class="cta">Começar agora →</a>
+            </nav>
+            <div class="hp-hero">
+              <div class="pill">● Online · processando buscas agora</div>
+              <h1>Apareça onde o<br>cliente <span class="accent">procura.</span></h1>
+              <p>Posicione sua empresa no Google e nas respostas de IA de forma automática. Sem agência. Sem mídia. Sem achismo.</p>
+              <div class="buttons">
+                <a class="btn-primary">Testar grátis</a>
+                <a class="btn-ghost">Ver demonstração →</a>
+              </div>
+            </div>
+            <div class="hp-logos">
+              <span>+ 2.400 empresas</span>
+              <span>●</span>
+              <span>SaaS</span>
+              <span>B2B</span>
+              <span>Serviços</span>
+              <span>Clínicas</span>
+              <span>Advocacia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 02 · Dashboard SaaS</div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              app.buscouai.com / dashboard
+            </div>
+          </div>
+          <div class="browser-content dash">
+            <aside class="dash-side">
+              <div class="logo">buscou<span class="dot-ai">.ai</span></div>
+              <div class="group">Workspace</div>
+              <ul>
+                <li class="active">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                  Visão geral
+                </li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Buscas</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/></svg>Respostas IA</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Conversões</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Alertas</li>
+              </ul>
+              <div class="group">Configuração</div>
+              <ul>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/></svg>Empresa</li>
+                <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/></svg>Integrações</li>
+              </ul>
+            </aside>
+            <div class="dash-main">
+              <div class="dash-head">
+                <div>
+                  <div class="eyebrow" style="margin-bottom: 4px;">Visão geral · últimos 30 dias</div>
+                  <h3>Boa tarde, Clínica Marca X</h3>
+                </div>
+                <div class="search">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  buscar
+                </div>
+              </div>
+              <div class="kpi-row">
+                <div class="kpi highlight">
+                  <div class="l">Buscas capturadas</div>
+                  <div class="v">4.218</div>
+                  <div class="d">↑ 28% vs mês anterior</div>
+                </div>
+                <div class="kpi">
+                  <div class="l">Aparições em IA</div>
+                  <div class="v">1.962</div>
+                  <div class="d">↑ 41% vs mês anterior</div>
+                </div>
+                <div class="kpi">
+                  <div class="l">Posição média</div>
+                  <div class="v">2.4</div>
+                  <div class="d">↑ 0.8 vs mês anterior</div>
+                </div>
+              </div>
+              <div class="dash-chart">
+                <div class="ct">
+                  <h4>Presença no Google + IAs</h4>
+                  <div class="legend">— últimos 30 dias</div>
+                </div>
+                <svg viewBox="0 0 600 100" preserveAspectRatio="none" style="width: 100%; height: 100px;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00E5A0" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#00E5A0" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5 L600,100 L0,100 Z" fill="url(#chartGrad)"/>
+                  <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5" stroke="#00E5A0" stroke-width="1.5" fill="none"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTICLE -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 03 · Página de artigo</div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              buscouai.com / blog / aparecer-em-ia
+            </div>
+          </div>
+          <div class="browser-content art-page">
+            <div class="art-main">
+              <div class="art-meta">● Playbook · 6 min de leitura · 22 abr 2026</div>
+              <h1>Como aparecer nas respostas do <span class="accent">ChatGPT</span> em 2026</h1>
+              <p class="deck">O tráfego orgânico mudou de lugar. Enquanto empresas ainda otimizam para Google, os clientes já perguntam para a IA. Este é o novo terreno.</p>
+              <p>Até 2024, a estratégia era clara: Google era o campo de batalha. Otimizava-se palavra-chave, construía-se backlink, esperava-se posição. Em 2026, essa conta mudou de vez.</p>
+              <p>Quando um cliente quer saber qual é a melhor clínica odontológica de Campinas, ele não digita mais no Google primeiro. Ele pergunta. Para o ChatGPT, para o Gemini, para o Perplexity, para o Claude.</p>
+              <div class="pullquote">Se sua empresa não está na resposta da IA, ela não existe para quem pergunta.</div>
+              <p>A boa notícia é que essa nova camada pode ser otimizada — com os sinais certos, a estrutura correta de conteúdo e a presença distribuída em fontes que os modelos consomem.</p>
+            </div>
+            <aside class="art-side">
+              <div class="title">Leia também</div>
+              <div class="item">
+                <div class="h">O fim do SEO tradicional começou em 2024</div>
+                <div class="d">Análise · 5 min</div>
+              </div>
+              <div class="item">
+                <div class="h">Por que IAs citam certas marcas e ignoram outras</div>
+                <div class="d">Playbook · 8 min</div>
+              </div>
+              <div class="item">
+                <div class="h">Aparecer não é sorte. É engenharia.</div>
+                <div class="d">Manifesto · 3 min</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOCIAL POSTS -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 04 · Redes sociais</div>
+        <div class="social-grid">
+          <div class="social s1">
+            <div class="foot">
+              <span>01 / Manifesto</span>
+              <span class="handle">buscou<span class="ai">.ai</span></span>
+            </div>
+            <div class="headline">Se alguém <span class="accent">buscou,</span><br>você precisa<br>aparecer.</div>
+            <div class="foot">
+              <span>#buscouai</span>
+              <span>Abr 2026</span>
+            </div>
+          </div>
+          <div class="social s2">
+            <div>
+              <div class="sub">Lançamento</div>
+              <div class="logo-mini">buscou<span class="dot">.</span><span class="ai">ai</span></div>
+            </div>
+            <div class="headline">Sua empresa nas respostas do ChatGPT. Automático.</div>
+            <div class="foot">
+              <span>01/24</span>
+              <span>→</span>
+            </div>
+          </div>
+          <div class="social s3">
+            <div class="foot">
+              <span>Pílula #03</span>
+              <span>buscouai.com</span>
+            </div>
+            <div class="headline">Buscou?<br><span class="accent">Você aparece.</span></div>
+            <div class="foot">
+              <span>Performance SaaS</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHATSAPP -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 05 · WhatsApp / Prospecção</div>
+        <div class="whats">
+          <div class="whats-head">
+            <div class="av">b<span class="d">.</span></div>
+            <div class="n">buscou.ai<small>online agora</small></div>
+          </div>
+          <div class="whats-msg">
+            Oi! Vi que você buscou por <span class="hl">"clínica odontológica Vitória"</span> essa semana.<br><br>
+            Sua empresa apareceu? <span class="hl">Te mostro em 30s.</span>
+          </div>
+          <div class="whats-msg own">
+            Apareceu não. Como funciona isso?
+            <span class="time">14:32 ✓✓</span>
+          </div>
+          <div class="whats-msg">
+            buscou.ai posiciona sua empresa no Google e nas respostas de IA (ChatGPT, Gemini) de forma automática.<br><br>
+            Sem agência. Sem mídia paga. Sem achismo.<br><br>
+            <strong style="color: var(--ai);">Teste grátis por 14 dias →</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Aplicação 06 · E-mail de prospecção</div>
+        <div class="email">
+          <div class="email-head">
+            <span class="l">De</span><span class="v"><strong>buscou.ai</strong> &lt;ola@buscouai.com&gt;</span>
+            <span class="l">Para</span><span class="v">carlos@clinicamarcax.com.br</span>
+            <span class="l">Assunto</span><span class="v"><strong>Sua clínica não apareceu em 12 buscas esta semana</strong></span>
+          </div>
+          <div class="email-body">
+            <p>Carlos,</p>
+            <p>Rodei uma análise rápida de <strong>12 buscas</strong> que pacientes em potencial fizeram nesta semana em Vitória — tipo "<em>dentista perto de mim aberto agora</em>" ou "<em>melhor implante ES</em>".</p>
+            <p>A Clínica Marca X <strong>não apareceu em nenhuma</strong>. Nem no Google, nem no ChatGPT.</p>
+            <p>É isso que <strong>buscou.ai</strong> resolve — automaticamente, sem agência, sem mídia paga.</p>
+            <p>Posso te mostrar em uma chamada de 15 min quais buscas você está perdendo agora?</p>
+            <div class="sig">
+              <div class="logo">buscou<span class="dot-ai">.ai</span></div>
+              <p style="font-size: 12px; color: var(--text-3); margin-top: 4px;">Apareça onde o cliente procura.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     10 — REGRAS
+===================================================== -->
+<section id="regras">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">10 / Regras</div>
+      <div class="section-title">
+        <h2>Regras de uso</h2>
+        <p class="kicker">Sistema é consistência. Estas são as regras inegociáveis de aplicação da marca.</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+      <div style="padding: 40px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius);">
+        <div class="eyebrow" style="margin-bottom: 20px;">Logo</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Aplicar sempre com o ".ai" em mint (#00E5A0)</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Usar glow apenas em fundos escuros</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Respeitar clearspace de 1x altura do ".ai"</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Tamanho mínimo: 80px digital / 24mm impresso</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Em fundo claro, mint muda para #00B37A</li>
+        </ul>
+      </div>
+      <div style="padding: 40px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius);">
+        <div class="eyebrow" style="margin-bottom: 20px;">Cores</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Fundo padrão sempre #08090D</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Mint é acento, nunca base (máximo 10%)</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Violeta indica tecnologia, ação, CTA secundário</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Coral reservado a erro, alerta, ponto crítico</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Gradientes apenas como luz ambiente, nunca em tipografia</li>
+        </ul>
+      </div>
+      <div style="padding: 40px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius);">
+        <div class="eyebrow" style="margin-bottom: 20px;">Tipografia</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Geist para tudo — exceto ".ai", labels e metadados</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Geist Mono para labels em uppercase + tracking +0.12em</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Tracking negativo em displays (-0.03 a -0.05em)</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Instrument Serif restrito a citações e manifestos</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Peso principal: 400 body / 500 display</li>
+        </ul>
+      </div>
+      <div style="padding: 40px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius);">
+        <div class="eyebrow" style="margin-bottom: 20px;">Composição</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Grid 12 colunas · gutter 24px · margem 32px+</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Bordas 1px em superfícies (evitar 2px+)</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Raios 10/18/28px conforme escala</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Cursor piscando é assinatura — use em momentos-chave</li>
+          <li style="font-size: 14px; color: var(--text-2); padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: var(--ai);">+</span> Grid de background sutil em fundos amplos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     11 — ERROS
+===================================================== -->
+<section id="erros">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">11 / Erros</div>
+      <div class="section-title">
+        <h2>Erros comuns</h2>
+        <p class="kicker">Tudo o que a marca não é. Qualquer aplicação que caia em um destes casos precisa ser refeita.</p>
+      </div>
+    </div>
+
+    <div class="dont-grid">
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo">
+          <div style="font-size: 32px; font-weight: 500; letter-spacing: -0.04em;">Buscou.AI</div>
+        </div>
+        <h4>Capitalização errada</h4>
+        <p>Nunca escrever "Buscou.AI", "buscou.AI" ou "Buscou.ai". Sempre "buscou.ai" ou "BuscouAI".</p>
+      </div>
+
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo" style="background: #F5F6F8; border-color: #E4E6EC;">
+          <div style="font-size: 32px; font-weight: 500; letter-spacing: -0.04em; color: #111;">buscou<span style="color: #00E5A0;">.ai</span></div>
+        </div>
+        <h4>Mint padrão em fundo claro</h4>
+        <p>Em fundo claro, usar variação escura do mint (#00B37A). O #00E5A0 não tem contraste suficiente.</p>
+      </div>
+
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo">
+          <div style="font-size: 32px; font-weight: 500; letter-spacing: -0.04em;">buscou <span style="color: var(--ai);">.ai</span></div>
+        </div>
+        <h4>Espaço antes do ponto</h4>
+        <p>Nunca há espaço entre "buscou" e ".ai". O ponto é parte do logotipo, não uma pontuação separada.</p>
+      </div>
+
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo">
+          <div style="font-size: 32px; font-weight: 500; letter-spacing: -0.04em; background: linear-gradient(90deg, #7C5CFF, #00E5A0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">buscou.ai</div>
+        </div>
+        <h4>Gradiente no logotipo</h4>
+        <p>Nada de gradientes aplicados na tipografia. O contraste é entre "buscou" (claro) e ".ai" (mint sólido).</p>
+      </div>
+
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo">
+          <div style="font-size: 32px; font-weight: 500; letter-spacing: -0.04em; font-family: serif;">buscou.ai</div>
+        </div>
+        <h4>Fonte errada</h4>
+        <p>Nunca aplicar o logotipo em serifa, script ou fontes decorativas. Geist é obrigatório.</p>
+      </div>
+
+      <div class="dont-card">
+        <div class="cross">×</div>
+        <div class="demo">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ai)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <div style="font-size: 28px; font-weight: 500; letter-spacing: -0.04em;">buscou<span style="color: var(--ai);">.ai</span></div>
+          </div>
+        </div>
+        <h4>Ícone decorativo anexo</h4>
+        <p>Não adicionar ícones (lupa, robô, raio) ao lado do logotipo. A tipografia sozinha é o logo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     12 — MARKETING
+===================================================== -->
+<section id="marketing">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">12 / Marketing</div>
+      <div class="section-title">
+        <h2>Direção de marketing</h2>
+        <p class="kicker">Como a marca fala, vende e se comunica. Uma voz direta, técnica e confiante — nunca institucional, nunca entusiasmada demais.</p>
+      </div>
+    </div>
+
+    <div class="direction-grid">
+      <div class="direction-card">
+        <h3>Tom de voz</h3>
+        <div class="pair"><div class="k">Direto</div><div class="v">Frase curta. Verbo no comando. Sem rodeios.</div></div>
+        <div class="pair"><div class="k">Inteligente</div><div class="v">Usamos dados concretos. Números. Contexto técnico.</div></div>
+        <div class="pair"><div class="k">Moderno</div><div class="v">Linguagem de quem entende de IA, SaaS, performance.</div></div>
+        <div class="pair"><div class="k">Resultado</div><div class="v">Sempre terminamos com benefício mensurável.</div></div>
+      </div>
+      <div class="direction-card">
+        <h3>Evitar</h3>
+        <div class="pair"><div class="k">Não</div><div class="v">"Revolucionário", "único", "transformador" e outros superlativos vazios</div></div>
+        <div class="pair"><div class="k">Não</div><div class="v">Discurso de agência: "criativo", "estratégico", "inovador"</div></div>
+        <div class="pair"><div class="k">Não</div><div class="v">Emojis em comunicação oficial (só WhatsApp, com parcimônia)</div></div>
+        <div class="pair"><div class="k">Não</div><div class="v">Jargão corporativo: "sinergia", "ecossistema", "jornada"</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 20px;">Copy de campanha</h3>
+    <div class="copy-samples">
+      <div class="copy-sample">
+        <div class="ctx">Outdoor · Hero</div>
+        <div class="txt">Seu cliente <span class="accent">buscou.</span><br>Quem apareceu foi outro.</div>
+      </div>
+      <div class="copy-sample">
+        <div class="ctx">Linkedin · Lançamento</div>
+        <div class="txt">A IA já está recomendando empresas. <span class="accent">A sua?</span></div>
+      </div>
+      <div class="copy-sample">
+        <div class="ctx">Google Ads · Headline</div>
+        <div class="txt">Apareça no Google e no ChatGPT. <span class="accent">Sem agência.</span></div>
+      </div>
+      <div class="copy-sample">
+        <div class="ctx">E-mail · Assunto</div>
+        <div class="txt">Sua empresa não apareceu em <span class="accent">12 buscas</span> esta semana.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     13 — PRODUTO
+===================================================== -->
+<section id="produto">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">13 / Produto</div>
+      <div class="section-title">
+        <h2>Direção de produto</h2>
+        <p class="kicker">Princípios que guiam cada tela, fluxo e microcópia dentro do app. Consistência de experiência é extensão da marca.</p>
+      </div>
+    </div>
+
+    <div class="direction-grid">
+      <div class="direction-card">
+        <h3>Princípios de UX</h3>
+        <div class="pair"><div class="k">01</div><div class="v"><strong style="color: var(--text);">Evidência antes de botão.</strong> Mostrar o dado antes de pedir a ação.</div></div>
+        <div class="pair"><div class="k">02</div><div class="v"><strong style="color: var(--text);">Um número por tela.</strong> Cada view tem um KPI protagonista.</div></div>
+        <div class="pair"><div class="k">03</div><div class="v"><strong style="color: var(--text);">Realtime visível.</strong> Pulsar, contar, atualizar. Nunca estático.</div></div>
+        <div class="pair"><div class="k">04</div><div class="v"><strong style="color: var(--text);">Zero decoração.</strong> Nenhum elemento existe só por estética.</div></div>
+      </div>
+      <div class="direction-card">
+        <h3>Microcópia</h3>
+        <div class="pair"><div class="k">Loading</div><div class="v">"Buscando…" / "Processando 1.284 fontes…"</div></div>
+        <div class="pair"><div class="k">Empty state</div><div class="v">"Sem aparições ainda. Rodando primeira varredura."</div></div>
+        <div class="pair"><div class="k">Sucesso</div><div class="v">"Pronto. Você está na resposta."</div></div>
+        <div class="pair"><div class="k">Erro</div><div class="v">"Não foi possível capturar agora. Tentando de novo em 30s."</div></div>
+      </div>
+    </div>
+
+    <div style="padding: 48px; background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--radius-lg);">
+      <h3 style="margin-bottom: 24px;">Assinatura de interação</h3>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div>
+          <div class="eyebrow" style="margin-bottom: 12px;">Cursor piscante</div>
+          <p style="font-size: 13px;">Aparece em qualquer input, barra de busca ou output em tempo real. Mint, 2px, 1.1s de intervalo.</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom: 12px;">Pulso de atividade</div>
+          <p style="font-size: 13px;">Ponto mint com halo radial expandindo. Usar em indicadores de "live", "processando", "ativo".</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom: 12px;">Flow animado</div>
+          <p style="font-size: 13px;">Linha mint que percorre conexões. Transmite "dados fluindo". Duração 2.5s, ease-in-out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     14 — FRASES
+===================================================== -->
+<section id="frases">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">14 / Frases</div>
+      <div class="section-title">
+        <h2>Frases da marca</h2>
+        <p class="kicker">O vocabulário oficial. Reutilizar. Recombinar. Não reescrever.</p>
+      </div>
+    </div>
+
+    <div class="phrases">
+      <div class="phrase">
+        <div class="num">01</div>
+        <div class="quote">Se alguém <span class="accent">buscou,</span> você precisa aparecer.</div>
+        <div class="context">Tagline principal<br>Manifesto · Hero</div>
+      </div>
+      <div class="phrase">
+        <div class="num">02</div>
+        <div class="quote"><span class="accent">Buscou?</span> Você aparece.</div>
+        <div class="context">Versão curta<br>Social · Criativos</div>
+      </div>
+      <div class="phrase">
+        <div class="num">03</div>
+        <div class="quote">Apareça no Google e nas respostas de IA.</div>
+        <div class="context">Valor explícito<br>Ads · E-mail · Landing</div>
+      </div>
+      <div class="phrase">
+        <div class="num">04</div>
+        <div class="quote">Sua empresa onde o cliente <span class="accent">procura.</span></div>
+        <div class="context">Posicionamento<br>Institucional · Imprensa</div>
+      </div>
+      <div class="phrase">
+        <div class="num">05</div>
+        <div class="quote">Aparecer não é sorte. É <span class="accent">engenharia.</span></div>
+        <div class="context">Manifesto técnico<br>Conteúdo · Blog</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     15 — RESUMO
+===================================================== -->
+<section id="resumo" class="summary">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom: 32px;">15 / Resumo final · fim do manual</div>
+
+    <div class="logo-xl logo">buscou<span class="dot-ai">.ai</span></div>
+
+    <p class="tag">
+      Este manual existe para que a marca seja a mesma <br>
+      em qualquer tela, campanha, conversa ou resposta de IA.
+    </p>
+
+    <div class="summary-pillars">
+      <div class="p">
+        <div class="n">01 · Conceito</div>
+        <div class="t">Ponte entre busca e resposta.</div>
+      </div>
+      <div class="p">
+        <div class="n">02 · Aparência</div>
+        <div class="t">Dark-first, mint-accent, tensão sans+mono.</div>
+      </div>
+      <div class="p">
+        <div class="n">03 · Voz</div>
+        <div class="t">Direta, técnica, orientada a resultado.</div>
+      </div>
+      <div class="p">
+        <div class="n">04 · Promessa</div>
+        <div class="t">Se alguém buscou, você aparece.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft">
+      <span>buscou.ai · Brand Book v1.0</span>
+      <span>Uso interno · Abril 2026</span>
+      <span>buscouai.com</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+</body>
+</html>

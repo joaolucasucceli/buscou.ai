@@ -1,0 +1,61 @@
+/**
+ * SearchBar — a assinatura visual da marca.
+ * Pill + icone + cursor piscante mint.
+ */
+
+.searchbar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 22px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.searchbar:focus-within {
+  border-color: var(--color-ai);
+  box-shadow: 0 0 0 4px var(--color-ai-soft);
+}
+
+.searchbar__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+}
+
+.searchbar__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: var(--color-text);
+  letter-spacing: 0;
+}
+.searchbar__input::placeholder { color: var(--color-text-tertiary); }
+
+.searchbar__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  background: var(--color-ai);
+  box-shadow: 0 0 12px var(--color-ai-glow);
+  animation: searchbar-blink 1.1s steps(1) infinite;
+  flex-shrink: 0;
+}
+
+@keyframes searchbar-blink {
+  50% { opacity: 0; }
+}
+
+/* Estado: ambient (sem input real, so mostrando a assinatura) */
+.searchbar--ambient .searchbar__input { pointer-events: none; }

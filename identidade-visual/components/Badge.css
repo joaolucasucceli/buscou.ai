@@ -1,0 +1,70 @@
+/**
+ * Badge — rotulo compacto para status, tags e marcadores.
+ * Variants: neutral | ai | brand | coral | warn | success
+ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge--neutral {
+  background: var(--color-bg-elev-3);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.badge--ai {
+  background: var(--color-ai-soft);
+  color: var(--color-ai);
+  border-color: rgba(0, 229, 160, 0.2);
+}
+
+.badge--brand {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-300);
+  border-color: rgba(124, 92, 255, 0.25);
+}
+
+.badge--coral {
+  background: rgba(255, 107, 61, 0.1);
+  color: var(--color-coral);
+  border-color: rgba(255, 107, 61, 0.25);
+}
+
+.badge--warn {
+  background: rgba(255, 184, 77, 0.1);
+  color: var(--color-warn);
+}
+
+.badge--success {
+  background: var(--color-ai-soft);
+  color: var(--color-ai);
+}
+
+/* Dot pulsante (para live states) */
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0 currentColor;
+  animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 229, 160, 0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(0, 229, 160, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 229, 160, 0); }
+}

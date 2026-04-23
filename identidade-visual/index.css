@@ -1,0 +1,19 @@
+/**
+ * buscou.ai — Design System (entry point)
+ *
+ * Import uma linha:
+ *   @import '@buscou/design-system';
+ *
+ * Ou em JS:
+ *   import '@buscou/design-system/index.css';
+ */
+
+@import './typography/fonts.css';
+@import './colors/colors.css';
+@import './tokens/tokens.css';
+@import './typography/typography.css';
+
+@import './components/Button.css';
+@import './components/Card.css';
+@import './components/SearchBar.css';
+@import './components/Badge.css';

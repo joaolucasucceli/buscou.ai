@@ -1,0 +1,129 @@
+/**
+ * buscou.ai — Typography
+ * Escala hierarquica + classes utilitarias.
+ */
+
+html, body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
+}
+
+/* === Display (hero / logotipo em texto) === */
+.display,
+.t-display {
+  font-family: var(--font-sans);
+  font-size: clamp(56px, 9vw, 148px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+/* === Headings === */
+h1, .h1, .t-h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+h2, .h2, .t-h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+h3, .h3, .t-h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+h4, .h4, .t-h4 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+/* === Body === */
+.t-body,
+p {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.t-lead {
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.t-small {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* === Mono / Label === */
+.t-mono,
+.mono,
+code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.t-eyebrow,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* === Serif / Editorial === */
+.t-quote,
+blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+}
+
+/* === Brand lockup em texto (buscou.ai) ===
+ * Use sempre que renderizar o nome em HTML em vez de SVG.
+ */
+.brand-lockup {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.brand-lockup .ai {
+  color: var(--color-ai);
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 16px var(--color-ai-glow);
+}
+
+/* Em fundos claros, neutralize o glow */
+.brand-lockup.on-light .ai {
+  color: var(--color-ai-dark);
+  text-shadow: none;
+}
