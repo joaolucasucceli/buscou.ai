@@ -28,7 +28,7 @@ Primeira publicacao da marca no Instagram. Papel: **plantar bandeira**. Apresent
 ## Arquivos
 
 - [`source/carrossel.html`](source/carrossel.html) — HTML fonte (6 sections 1080x1350, CSS inline, fontes Google Fonts)
-- [`assets/`](assets/) — 6 PNGs exportados (1080x1350, prontos pra upload no IG) · _pendente o dono mover os arquivos da pasta Downloads_
+- [`assets/`](assets/) — 6 PNGs (1080x1350) prontos pra upload no IG. Cards 01, 02, 03, 04 e 06 exportados do navegador em 2026-04-23; card-05-virada gerado via headless chromium (Playwright) a partir do `source/carrossel.html` no mesmo dia.
 - [`legenda.md`](legenda.md) — legenda v3 publicada + hashtags
 
 ## Metricas
