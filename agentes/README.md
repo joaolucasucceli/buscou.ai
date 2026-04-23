@@ -1,7 +1,7 @@
 # /agentes — prompts e contexto dos agentes IA
 
 > Camada de **prompts + contexto compartilhado** dos agentes IA.
-> A **implementacao** mora em [`../produto/agents/`](../produto/agents/).
+> A **implementacao** vive no codigo do produto (pasta `/produto/` sera criada quando o codigo comecar — ver [ESTRUTURA.md](../ESTRUTURA.md)).
 > O **design** mora em [`../base-de-conhecimento/13 - Agentes/`](../base-de-conhecimento/13 - Agentes/).
 > Aqui moram os prompts operacionais + contexto condensado.
 
