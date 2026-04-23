@@ -10,9 +10,9 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
 
 ## Decisoes Canonicas (fixas)
 
-**Fonte unica da verdade:** [base-de-conhecimento/00 - Indice/VERDADE_UNICA_BUSCOU.md](base-de-conhecimento/00 - Indice/VERDADE_UNICA_BUSCOU.md).
-**Governanca:** [base-de-conhecimento/00 - Indice/Governanca - Decisoes Canonicas.md](base-de-conhecimento/00 - Indice/Governanca - Decisoes Canonicas.md).
-**Decision Log vigente:** [base-de-conhecimento/14 - Empresa/Decision Log - 2026-04-23.md](base-de-conhecimento/14 - Empresa/Decision Log - 2026-04-23.md).
+**Fonte unica da verdade:** [base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md](base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md).
+**Governanca:** [base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md](base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md).
+**Decision Log vigente:** [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md).
 
 ### Inegociavel (Nivel 1)
 
@@ -30,6 +30,39 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
 - **Permitido:** "tecnologia", "sistema", "motor", "estrutura", "automacao", "pagamento unico", "aparecer", "busca", "SEO", "AIO", "presenca organica".
 
 **Alteracao de Nivel 1:** exige novo Decision Log datado + aprovacao explicita do dono + cascata de atualizacao em ate 7 dias (ver governanca).
+
+### Camada canonica vs camada operacional
+
+A base de conhecimento tem **duas camadas** — confundir as duas gera duplicacao e contradicao:
+
+- **Canonica (so em `VERDADE_UNICA_BUSCOU.md`):** decisoes Nivel 1 — definicao da empresa, frase central, canais, produto (volume + timeline), oferta, ICP primario, linguagem proibida/permitida, nome da marca, promessa vs entrega.
+- **Operacional (nos arquivos derivados):** como aplicar a verdade canonica — pitch, objecoes, scorecards de ICP, SLAs, microcopy, FAQ, arquitetura de agentes.
+
+**Regra de escrita:** arquivos derivados NAO duplicam a verdade canonica. Apontam para ela via wiki-link (`[[VERDADE_UNICA_BUSCOU]]` ou secoes especificas) e mantem apenas o conteudo operacional unico. Se um arquivo derivado contradiz a verdade canonica, a verdade canonica esta certa — corrigir o derivado.
+
+### Agentes V1 (11 + Orquestrador)
+
+O motor buscou.ai opera com 11 agentes + orquestrador na V1:
+
+**6 core (bloqueadores do MVP):**
+- [[Agente Pesquisador]] — SERP, keywords, gaps.
+- [[Agente Estrategista]] — clusters, calendario 90/mes.
+- [[Agente Redator]] — artigos 800-1.200 palavras.
+- [[Agente Revisor]] — score SEO + AIO + answer-first (min 75).
+- [[Agente Publicador]] — CMS + sitemap + GSC.
+- [[Agente Monitor]] — ranking, trafego, AI Overviews.
+
+**5 complementares (V1 completa):**
+- [[Agente Visual]] — capa + alt text.
+- [[Agente Distribuidor]] — RSS/sitemap (V1), LinkedIn/Medium (V1.2+).
+- [[Agente Suporte]] — chatbot FAQ + escalacao.
+- [[Agente Prospeccao]] — outbound paralelo (renomeacao do antigo SDR).
+- [[Agente Pagamento]] — confirmacao + parcelas 12x (renomeacao do antigo Cobranca).
+
+**Coordenacao:**
+- [[Orquestrador]] — coordena todos via MCP.
+
+Os agentes "Agente SDR" (qualificacao BANT) e "Agente Cobranca" (recorrente) NAO existem mais — substituidos por Prospeccao e Pagamento conforme o modelo de venda unica.
 
 ## Metodologia SDD (Spec-Driven Development)
 
@@ -193,6 +226,84 @@ Alem dos criterios de aceite especificos de cada issue, **toda issue substantiva
 
 Esta DoD e rede de seguranca. Se um item nao se aplica a uma issue especifica (ex: nao alterou codigo, entao sem commit), anotar "N/A" no comentario de fechamento.
 
+### 11. Branch strategy
+
+Toda issue que toca **codigo ou docs versionados** nasce numa branch propria. Trabalho direto em `main` e reservado pra merges.
+
+- **Nome da branch:** usar o `gitBranchName` que o Linear ja gera automaticamente (formato `joaolucasuccelidev/bai-X-titulo-kebab`) ou um apelido curto `feature/BAI-X-descricao`. Ambos sao aceitos.
+- **Umbrella code-touching:** pode ter branch unica pra umbrella inteira. Sub-issues commitam nessa branch. Merge em `main` acontece quando a umbrella vai pra Revisao.
+- **Merge em `main`:** so depois da issue entrar em Revisao com tudo batendo (criterios `[x]`, comentario de fechamento).
+- **`main` sempre publicavel:** todo commit em `main` esta pronto pra push autorizado.
+- **Issues Linear-only** (ex: so aplicar parentId, so mover status, so comentar): **nao precisam de branch** — nao ha arquivos versionados mudando.
+
+### 12. Definition of Ready (DoR)
+
+Espelho do DoD, mas no comeco. Antes de uma issue sair de "Ideias" pra "A fazer" (ou antes de entrar direto em Em andamento), **tem que bater**:
+
+- [ ] Titulo claro (verbo + objeto + contexto quando necessario)
+- [ ] Secao **Contexto** preenchida (por que essa issue existe)
+- [ ] Secao **Objetivo** preenchida (o que queremos alcancar)
+- [ ] Secao **Requisitos** preenchida (o que precisa entregar)
+- [ ] Secao **Criterios de Aceite** com pelo menos 1 criterio mensuravel
+- [ ] **Priority** definida segundo a regra 7
+- [ ] **Dependencias** listadas (ou explicitamente "Nenhuma")
+- [ ] **`parentId`** apontado se for sub-issue
+
+Issue que nao bate DoR fica em **Ideias** ou volta pra re-criacao. Nunca comeca a executar spec meia-boca.
+
+**DoR pega no comeco, DoD pega no fim.** Juntos fecham o loop.
+
+### 13. Protocolo "spec grande descoberta mid-execution"
+
+Mirror da regra 2 (spec furada). Se durante a execucao eu percebo que a issue **e maior do que cabia** numa issue so:
+
+1. **Parar** a execucao imediatamente
+2. Mover issue pra **Revisao** com comentario `[Marco: spec grande]`
+3. **Propor quebra em umbrella** — listar pelo menos 2 sub-issues que fariam sentido, com escopo de cada
+4. **Aguardar decisao do dono:**
+   - **(a) Aprovar a quebra** → converto issue atual em umbrella, crio as sub-issues com `parentId` apontando pra ela, recomeco execucao pela primeira filha
+   - **(b) Manter e seguir** → dono assume o escopo grande como aceitavel, eu sigo
+   - **(c) Cancelar e recriar** → issue atual vai pra Cancelado, abre-se uma ou mais issues novas com escopo certo
+
+**Nao executo issue inflada.** Melhor pausar e pedir decisao do que entregar meio.
+
+### 14. Protocolo "sub-issue cancelada em umbrella"
+
+Quando uma sub-issue de umbrella vai pra **Cancelado**, a umbrella precisa de tratamento explicito — nao fica orfa.
+
+1. **Comentar na sub-issue** o motivo do cancelamento (duplicata, escopo invalido, decisao estrategica, etc)
+2. **Comentar na umbrella** (mae) explicitando: sub-issue X foi cancelada + impacto no agregado
+3. **Dono decide o destino da umbrella:**
+   - **(a) Umbrella segue sem a filha** → editar description removendo a filha da tabela, atualizar criterios agregados, umbrella continua o ciclo normal
+   - **(b) Umbrella precisa de filha substituta** → criar nova sub-issue com `parentId` apontando pra umbrella, ajustar description da umbrella
+   - **(c) Umbrella inteira fica sem sentido** → cancelar a umbrella tambem (cascata)
+
+**Criterios agregados da umbrella** ficam marcados como `- [-]` (riscado/skipped) pra sub-issue cancelada — nao `[x]` (nao foi entregue) nem `[ ]` (nao esta mais pendente).
+
+### 15. Fast-track pra trivialidades
+
+Nem todo trabalho precisa virar issue. **Trivialidade** e mudanca que satisfaz **TODOS** os criterios:
+
+- Menos de **10 linhas** alteradas
+- **1 arquivo** tocado
+- **Sem impacto** em producao ou em interface publica
+- **Sem mudanca** em regra canonica, posicionamento, oferta, identidade visual ou VERDADE_UNICA
+
+**Exemplos validos de fast-track:**
+- Corrigir typo em comentario
+- Renomear variavel local sem impacto em API
+- Ajustar caminho em `import`
+- Trocar tab por espaco
+- Correcao ortografica pontual em doc nao-canonico
+
+**Fluxo do fast-track:**
+- **Sem issue** no Linear
+- Commit direto em `main` (ou branch de trabalho) com prefixo `chore:` ou `fix:` (sem `BAI-X`)
+- Corpo do commit explica a mudanca
+- Push autorizado como qualquer outro commit
+
+**Se em duvida se e trivialidade:** abre issue. Fast-track e exceção pra reduzir fricção, nao atalho pra pular o processo. Melhor rastrear a mais que a menos.
+
 ## Tom e Postura
 
 Como a comunicacao deve soar e como eu devo me comportar nesse projeto.
@@ -267,7 +378,7 @@ Alem do vault, o projeto tem camadas paralelas na raiz:
 
 Fonte da verdade: pasta `identidade-visual/` (tokens, SVGs, componentes React)
 + documentacao navegavel em `base-de-conhecimento/21 - Identidade Visual/`.
-MOC: `base-de-conhecimento/00 - Indice/MOC - Identidade Visual.md`.
+MOC: `base-de-conhecimento/00 - Verdade Unica/MOC - Identidade Visual.md`.
 **Consultar sempre antes de qualquer trabalho de UI, logo ou copy da marca.**
 
 ### Regras inegociaveis
