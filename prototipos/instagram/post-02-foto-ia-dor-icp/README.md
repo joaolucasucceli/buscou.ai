@@ -14,18 +14,20 @@
 
 Segunda publicacao da marca no Instagram. Papel: **ativar a dor** do ICP primario (negocios locais — clinica, cafe, imobiliaria, advogado). Se o Post 1 plantou a bandeira com a frase central, o Post 2 faz o espectador **sentir** o problema na pele. Cria ponte pro Post 3 (mecanica/solucao).
 
-## Conceito visual (V3 — direcao atual)
+## Conceito visual (V5 — direcao atual, aprovada)
 
-Close medio (cabeca + ombros + maos com celular) de uma brasileira de negocio local (final dos 30 / inicio dos 40, tracos latinos, cabelo preso, maquiagem natural, cardigan casual-profissional, unha vermelha) olhando com **atencao reflexiva** pra tela do celular. Sobrancelha levemente franzida, olhos fixos, boca levemente entreaberta — momento de **"deixa eu entender isso"**, concentracao e leve incomodo, **jamais panico**. Pele natural preservada (nada verde-doentio). Acento mint-teal sutil vindo da tela ilumina a mao e o queixo de baixo pra cima. Fundo desfocado em bokeh quente: ambiente interno brasileiro (home-office ou sala de atendimento pequeno), lampada ambar distante.
+Plano medio de um homem brasileiro 30s-40s, tracos latinos, cabelo escuro curto, barba bem aparada, avental sobre camiseta preta, relogio no pulso, **atras do balcao preto brilhante de seu proprio negocio moderno brasileiro** (barbearia premium / cafe especial / coworking). Ele olha pra tela do celular que segura nas maos — expressao concentrada e levemente preocupada, sobrancelha suavemente franzida, sem drama. Ao fundo, **neon ondulado branco-teal no teto** cria forte presenca tech, bokeh de luzes quentes e frias desfoca o ambiente, prateleiras com decor BR moderno.
 
-**Aesthetic:** propaganda de tech brasileira elegante (ref: Nubank, iFood, Creditas) — **nao** editorial frio (V1), **nao** body horror (V2).
+**Aesthetic:** propaganda de tech brasileira contemporanea — dark-first com acento tech natural via decor real do ambiente, nao forcado. Ref: campanhas Nubank/iFood/Creditas de pequenos empreendedores BR.
 
-**Metafora visual:** o momento reflexivo em que voce finalmente testa o nome do seu negocio na busca e percebe que nao aparece. A descoberta consciente. Bate com a legenda ("Doeu?") sem recorrer a susto.
+**Metafora visual:** o dono de negocio moderno, no final do expediente, atras do proprio balcao, descobrindo que nao aparece nas buscas. A tecnologia esta no ambiente dele (o LED neon), mas nao esta a seu favor.
 
-**Historico de iteracoes:**
-- **V1** (rua noturna com vitrines) — descartada: generica, sem contexto BR, texto em ingles, pouco stop-scroll
-- **V2** (close extremo, horror visual, olhos arregalados, verde-doentio) — descartada: stop-scroll forte mas **dissonante com o branding** (a marca vende "tecnologia limpa, inteligente", V2 entregava "panico sensacionalista"). Risco alto de afastar o ICP em vez de qualificar
-- **V3** (close medio, reflexiva, elegante, pele natural, mint como acento sutil) — atual, aprovada
+**Historico de iteracoes (5 versoes):**
+- **V1** (rua noturna com 5 vitrines, uma escura) — descartada: generica, sem contexto BR, texto em ingles nas placas, pouco stop-scroll
+- **V2** (close extremo, horror visual, olhos arregalados, pele verde-doentia) — descartada: stop-scroll forte mas **dissonante com o branding** ("marca vende tecnologia limpa; V2 entregava panico sensacionalista")
+- **V3** (close medio, mulher em home-office, reflexiva, elegante, pele natural, mint sutil) — descartada: soberia mas **sem ar de tecnologia** (feedback do dono)
+- **V4** (close medio, mulher com colar e cardigan bege, expressao neutra) — descartada: regrediu, ignorou instrucoes de lighting tech, vibe "joalheria" em vez de "tech BR"
+- **V5** (homem em balcao de comercio moderno BR com LED neon branco-teal no teto) — **atual, aprovada**. Stop-scroll forte + branding consistent + contexto BR claro + ar tech via decor real + expressao composta. Todos os criterios em conjunto
 
 ## Arquivos
 
@@ -52,6 +54,6 @@ _Preencher apos a janela de 48h. Comparar CTR, salvamentos e comentarios com o P
 - **Producao ad-hoc** (E2 antes de F3 ser executada — ver comentario [Abertura] em [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39)). Aprendizados devem migrar pro vault quando [BAI-36](https://linear.app/joao-lucas-ucceli/issue/BAI-36) rodar.
 - **Ferramenta:** Ideogram API V_2 REALISTIC. Escolhida pelo dono em chat 2026-04-23. Chave da API usada apenas via variavel de ambiente; **nao foi escrita em nenhum arquivo versionado**. Chave sera rotacionada pelo dono pos-uso.
 - **Pipeline de geracao:** Ideogram gera 864x1152 (ASPECT_3_4, unico ratio mais proximo disponivel na V_2) → sharp cropa altura central pra 864x1080 → resize pra 1080x1350 (4:5). Script em `c:/tmp/buscou-ideogram/gen.js` (nao versionado).
-- **Seed (V3 atual):** `1227136915`. V2 (descartada): `1663625176`. V1 (descartada): `1089638296`. Todas em `source/prompt-imagem.md` pra rastreabilidade + prompts completos.
-- **Iteracao total: 3 versoes.** V1 descartada por falta de contexto BR e pouco stop-scroll. V2 descartada por horror visual e dissonancia com branding (marca = tecnologia limpa; V2 transmitia panico sensacionalista). V3 recalibrou pro ponto justo: close emocional mas composto, pele natural, acento mint sutil, vibe "propaganda tech BR elegante".
+- **Seed (V5 atual):** `2112010798`. V4 (descartada): `1929262769`. V3 (descartada): `1227136915`. V2 (descartada): `1663625176`. V1 (descartada): `1089638296`. Todas em `source/prompt-imagem.md` pra rastreabilidade + prompts completos.
+- **Iteracao total: 5 versoes.** O salto critico foi V4 → V5: sair de "close de rosto em home-office" pra "plano medio em balcao de comercio com LED como decor real do ambiente". Quando o ar tech vira parte do cenario (nao acessorio adicionado depois), Ideogram V_2 entrega sem regredir nas outras dimensoes.
 - **Aspect ratio nativo nao suportado:** V_2 nao tem `ASPECT_4_5`. Ao documentar [BAI-36](https://linear.app/joao-lucas-ucceli/issue/BAI-36), registrar esse workaround (gerar em 3:4 + crop) como parte do playbook.
