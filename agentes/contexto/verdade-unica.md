@@ -4,7 +4,9 @@ fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md
 decision_log:
   - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md
   - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md
-versao: 1.1.0
+  - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Contato Oficial.md
+  - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Venda Consultiva.md
+versao: 1.2.0
 tipo: snapshot-contexto-agente
 ---
 
@@ -72,6 +74,20 @@ Duas linhas explicitas — sempre comunicar as duas separadamente. Nunca unifica
 - Plano mensal de servico.
 - Assinatura SaaS em copy publico.
 - Mensalidade de gestao.
+- **Self-service / checkout direto na landing.** A landing nao expoe preco.
+
+### 5.3 Processo de venda (consultivo — v1.2.0)
+
+Compra e **consultiva** — passa obrigatoriamente por reuniao + proposta escrita. Nao ha caminho self-service.
+
+**Fluxo canonico:**
+1. Landing `www.buscouai.com` → CTA unico **"Agendar diagnostico"** (abre WhatsApp com mensagem pre-preenchida "quero agendar um diagnostico do meu negocio").
+2. Reuniao de diagnostico (30-60 min, obrigatoria, gravada/transcrita).
+3. Proposta personalizada (PDF/HTML) via WhatsApp em ate 24h, validade 7 dias.
+4. Aceite → link de pagamento via WhatsApp + cadastro cartao recorrente da infra.
+5. Onboarding → blog no ar em ate 7 dias.
+
+Ver [[Decision Log - 2026-04-23 - Venda Consultiva]].
 
 ## 6. ICP primario
 
@@ -104,4 +120,4 @@ Se algo no contexto do cliente ou na solicitacao contrariar este documento, **es
 
 ---
 
-*Snapshot gerado em 2026-04-23 (versao 1.1.0). Para a versao completa com todas as nuances, ver `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`. Historico de mudancas: versao 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23) ao incluir infra mensal conforme [[Decision Log - 2026-04-23 - Infra Mensal]].*
+*Snapshot gerado em 2026-04-23 (versao 1.2.0). Para a versao completa com todas as nuances, ver `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`. Historico: 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23, incluiu infra mensal) → 1.2.0 (2026-04-23, incluiu processo de venda consultivo conforme [[Decision Log - 2026-04-23 - Venda Consultiva]]).*

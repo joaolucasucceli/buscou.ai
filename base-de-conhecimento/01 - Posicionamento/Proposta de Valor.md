@@ -66,6 +66,8 @@ Ver [[VERDADE_UNICA_BUSCOU]] secao 5 — modelo **implementacao unica + infra me
 | Nao faz AIO | SEO + AIO integrados |
 | Cancelou = perde tudo | Cancelou infra = conteudo publicado continua no ar |
 | Cobra servico opaco (nao sabe o que e margem) | Separa servico (implementacao) de infra (passthrough transparente) |
+| Reuniao comercial generica ("quero te vender") | Reuniao de diagnostico real — cliente sai sabendo onde aparece, onde nao, quem aparece no lugar dele. Vale mesmo se nao fechar. |
+| Proposta padrao copiada | Proposta hiperpersonalizada em 24h com contexto, diagnostico e metodologia aplicada ao negocio especifico |
 
 ### vs "fazer sozinho" (equipe interna)
 
@@ -154,7 +156,8 @@ Regras completas em [[VERDADE_UNICA_BUSCOU]] secao 6 e [[Tom de Voz e Marketing]
 - [[Tom de Voz e Marketing]] — como falar
 - [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial
+- [[Decision Log - 2026-04-23 - Venda Consultiva]] — processo de venda consultivo
 
 ---
 
-*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 1, 4, 5, 7 — ultima verificacao 2026-04-23.*
+*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 1, 4, 5, 7, 8 — ultima verificacao 2026-04-23 (pos-pivot consultivo).*

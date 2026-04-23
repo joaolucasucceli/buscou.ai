@@ -53,11 +53,14 @@ Variacoes adaptaveis:
 
 | Contexto | Como aparece |
 |---|---|
-| Hero do site | Frase central (ver [[VERDADE_UNICA_BUSCOU]] secao 2) + subtitulo com promessa |
+| Hero do site | Frase central (ver [[VERDADE_UNICA_BUSCOU]] secao 2) + subtitulo com promessa + CTA unico "Agendar diagnostico" |
 | Subtitulo do hero | "Blog + motor que publicam 90 conteudos por mes pra voce aparecer no Google e na IA." |
-| Onboarding do produto | "Em 7 dias seu blog esta no ar. Em 30 dias voce comeca a aparecer." |
+| CTA canonico da landing | "Agendar diagnostico" (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]). Zero checkout direto na landing. |
+| Reuniao de diagnostico | Busca ao vivo + entendimento do negocio + metodologia + solucao contextualizada + oferta + fechamento com "proposta em 24h". |
+| Proposta personalizada | PDF/HTML enviado pelo WhatsApp pos-reuniao, validade 7 dias. |
+| Onboarding do produto | Comeca apos pagamento (pos-aceite de proposta). "Em 7 dias seu blog esta no ar. Em 30 dias voce comeca a aparecer." |
 | Blog (artigos) | Responde buscas reais ("Como aparecer no ChatGPT em 2026") |
-| Prospecao (WhatsApp) | Busca ao vivo no Google + "voce nao aparece, [concorrente] aparece" |
+| Prospecao (WhatsApp) | Busca ao vivo no Google + "voce nao aparece, [concorrente] aparece" → agendar reuniao de diagnostico |
 | Dashboard do cliente | KPI central: "Indice de Visibilidade Total" (IVT) com variacao % |
 | Rodape | "buscou.ai — tecnologia que faz voce aparecer" |
 | Assinatura de e-mail | "Blog + motor. Implementacao unica + infra mensal." |
@@ -137,7 +140,8 @@ Resumo minimo:
 - [[Case Proprio como Prova]] — conceito vira prova viva
 - [[Decision Log - 2026-04-23]] — origem (posicionamento, ICP, produto, oferta-base)
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao do modelo comercial
+- [[Decision Log - 2026-04-23 - Venda Consultiva]] — processo de venda consultivo (CTA agendar diagnostico)
 
 ---
 
-*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 1, 2, 6 — ultima verificacao 2026-04-23.*
+*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 1, 2, 6, 8 — ultima verificacao 2026-04-23 (pos-pivot consultivo).*

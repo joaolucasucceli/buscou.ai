@@ -1,13 +1,15 @@
 ---
 sincronizado_em: 2026-04-23
-fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 5) + 03 - Oferta/Oferta Comercial.md + Decision Log - 2026-04-23 - Infra Mensal.md
-versao: 1.1.0
+fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 5, 8) + 03 - Oferta/Oferta Comercial.md + Decision Log - 2026-04-23 - Infra Mensal.md + Decision Log - 2026-04-23 - Venda Consultiva.md
+versao: 1.2.0
 tipo: snapshot-contexto-agente
 ---
 
 # OFERTA — snapshot para agentes
 
 > Snapshot da oferta canonica. Agentes que escrevem copy ou lidam com venda devem usar este documento como referencia. **Sempre comunicar as duas linhas (implementacao + infra mensal) explicitamente.**
+>
+> **Importante (v1.2.0):** processo de venda e **consultivo** — reuniao de diagnostico obrigatoria + proposta personalizada escrita. A landing **nao expoe preco**; valores aparecem em reuniao + proposta (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]).
 
 ---
 
@@ -90,7 +92,7 @@ tipo: snapshot-contexto-agente
 - Primeiros sinais (indexacao + impressoes no Google) em **ate 30 dias**.
 - Volume de **90 conteudos/mes** consistente enquanto infra ativa.
 - Otimizacao para Google e IAs (ChatGPT, Perplexity, Gemini, AI Overviews).
-- Transparencia total dos custos (implementacao + infra visiveis no checkout e no dashboard).
+- Transparencia total dos custos (implementacao + infra explicitas na proposta personalizada e no dashboard pos-onboarding).
 - Reembolso da implementacao em 14 dias se menos de 10 artigos foram publicados.
 - Cancelamento da infra a qualquer momento (motor pausa, blog fica no ar).
 
@@ -109,21 +111,49 @@ tipo: snapshot-contexto-agente
 
 ---
 
+## Processo de venda (consultivo)
+
+1. Landing → CTA unico "Agendar diagnostico" (abre WhatsApp com mensagem pre-preenchida).
+2. Conversa WhatsApp pra agendar reuniao.
+3. **Reuniao de diagnostico (30-60min, obrigatoria, transcrita):** abertura com busca ao vivo → entendimento do negocio → metodologia → solucao aplicada ao caso → oferta (R$ 2.500 + R$ 300) → fechamento com "proposta em 24h".
+4. **Proposta personalizada (PDF/HTML)** enviada via WhatsApp em ate 24h, validade 7 dias.
+5. Cliente aceita → link de pagamento pelo WhatsApp → cadastro cartao recorrente da infra.
+6. Onboarding automatico → blog no ar em ate 7 dias.
+
+Ver [[Decision Log - 2026-04-23 - Venda Consultiva]] + `base-de-conhecimento/03 - Oferta/Oferta Comercial.md` para pitch completo + objecoes.
+
 ## Frases-chave para CTAs
 
-- "Comprar a vista — R$ 2.500 no Pix"
-- "Parcelar em 12x — R$ 250/mes"
-- "Ver demo do motor"
-- "Como funciona a infra mensal?" (link para FAQ)
-- "Falar com a buscou.ai" (para call opcional — nao obrigatoria)
+- **"Agendar diagnostico"** — CTA canonico da landing
+- **"Agendar meu diagnostico"** — variacao em bloco de CTA final
+- "Quero aparecer no Google e na IA" (subtitulo de CTA, nao botao)
+- "Como funciona a reuniao?" (link para FAQ)
+- "Vou receber algo por escrito?" (link para FAQ explicando a proposta)
 
-## Frases-chave para pitch
+## Frases-chave para pitch (em reuniao ou copy pos-call)
 
 - "Implementacao unica + infra mensal transparente."
 - "Paga a construcao do motor uma vez. Paga R$ 300/mes a conta de luz que mantem ele vivo."
 - "Se voce parar de pagar a infra, o motor pausa. O blog fica no ar com tudo que ja foi publicado."
 - "No primeiro ano, investimento total fica entre R$ 5.800 e R$ 6.300 — menos de R$ 500/mes de media pra 90 artigos otimizados por mes."
+- "A proposta chega no seu WhatsApp em ate 24h. Vale 7 dias pra voce analisar sem pressa."
+- "Mesmo se voce nao fechar, sai da reuniao sabendo onde aparece hoje e onde nao aparece. Isso vale."
+
+## Termos proibidos (pivot consultivo)
+
+- "self-service" / "compra self-service" / "checkout direto"
+- "call opcional" / "reuniao opcional"
+- "sem BANT" / "sem qualificacao" (em copy publico)
+- "sem reuniao obrigatoria"
+
+## Termos canonicos (pivot consultivo)
+
+- "reuniao de diagnostico"
+- "proposta personalizada" / "proposta escrita"
+- "agendar diagnostico"
+- "diagnostico hiperpersonalizado"
+- "compra consultiva" (uso interno; em copy publico, "conversa de diagnostico")
 
 ---
 
-*Snapshot gerado em 2026-04-23 (versao 1.1.0). Para pitch completo, objecoes e fluxo de venda, ver `base-de-conhecimento/03 - Oferta/Oferta Comercial.md`. Historico: versao 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23) ao incluir infra mensal conforme Decision Log - 2026-04-23 - Infra Mensal.*
+*Snapshot gerado em 2026-04-23 (versao 1.2.0). Para pitch completo, objecoes e fluxo de venda, ver `base-de-conhecimento/03 - Oferta/Oferta Comercial.md`. Historico: 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23, incluiu infra mensal) → 1.2.0 (2026-04-23, pivot para venda consultiva — reuniao obrigatoria + proposta personalizada).*

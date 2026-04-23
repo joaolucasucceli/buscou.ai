@@ -4,6 +4,63 @@ Historico de mudancas estruturais + canonicas da base de conhecimento. Seguindo 
 
 ---
 
+## [2.6.0] — 2026-04-23 — Pivot para venda consultiva (reuniao obrigatoria + proposta personalizada)
+
+Mudanca de Nivel 1 no processo de venda: de **self-service com preco exposto na landing** para **venda consultiva com reuniao de diagnostico obrigatoria + proposta personalizada escrita pos-call**. **Valores canonicos nao mudam** (R$ 2.500 / R$ 3.000 implementacao + R$ 300/mes infra). Executada no escopo da issue [BAI-57](https://linear.app/joao-lucas-ucceli/issue/BAI-57) como pre-requisito da landing ([BAI-30](https://linear.app/joao-lucas-ucceli/issue/BAI-30)).
+
+### Novo (core canonico)
+
+- `05 - Modelo de Negocio/Decision Log - 2026-04-23 - Venda Consultiva.md` — formaliza o pivot. Contem: contexto, decisao antes/depois, fluxo novo detalhado (agendamento → diagnostico → proposta → pagamento), conteudo canonico da proposta personalizada (cabecalho, contexto, diagnostico, metodologia, escopo, valores, timeline, proximos passos), alternativas descartadas (self-service mantido, consultivo leve, consultivo com preco variavel), trade-offs, impacto em linguagem (novos termos proibidos: self-service, call opcional, sem BANT, sem reuniao obrigatoria, checkout direto; novos permitidos: reuniao de diagnostico, proposta personalizada, agendar diagnostico), arquivos afetados em cascata, gatilhos de revisao.
+
+### Reescrito (nucleo canonico)
+
+- `00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`:
+  - **Topo:** entrada nova em "Ultimas alteracoes Nivel 1".
+  - **§5 (Modelo Comercial):** pagamento da implementacao agora e "link enviado via WhatsApp apos o cliente aceitar a proposta personalizada" (era "checkout direto").
+  - **§6 (Linguagem):** 5 termos novos proibidos (self-service, call opcional, sem reuniao obrigatoria, sem BANT em copy, checkout direto) e 5 novos permitidos (reuniao de diagnostico, proposta personalizada, agendar diagnostico, compra consultiva, diagnostico hiperpersonalizado).
+  - **§7 (Promessa vs Entrega):** linha "Implementacao unica" detalha pagamento pos-proposta; nova linha "Diagnostico e proposta personalizada".
+  - **§8 (Estrutura de venda):** reescrita completa. Remove "sem reuniao obrigatoria", "sem BANT", "call opcional". Substitui por fluxo consultivo de 13 passos (landing → WhatsApp → reuniao 30-60min → proposta em 24h → aceite → pagamento → onboarding → blog no ar 7d).
+  - **§11 (Contato Oficial):** mensagem pre-preenchida do WhatsApp muda de "quero entender melhor como funciona" para "quero agendar um diagnostico do meu negocio".
+- `03 - Oferta/Oferta Comercial.md`:
+  - Secao "O que voce NAO vende" ganha "nao vende self-service".
+  - Secao "O que voce vende" reescrita — menciona reuniao + proposta por escrito.
+  - Pitch reescrito de "call opcional 20-30 min" para **roteiro canonico de reuniao de diagnostico de 30-60 min em 6 blocos** (abertura com busca ao vivo / entendimento / metodologia / solucao aplicada / oferta / fechamento com proposta em 24h).
+  - Objecoes recalibradas: novas ("por que precisa de reuniao?", "vou receber proposta quando?", "nao sei se quero fazer a reuniao") + 3 existentes ajustadas pra referenciar reuniao/proposta.
+  - "Fluxo de venda" reescrito como 13 passos consultivos. Remove "sem BANT, sem reuniao obrigatoria, sem ciclo longo".
+  - **Nova secao "Proposta personalizada (PDF/HTML)"** com estrutura canonica do documento (cabecalho, contexto, diagnostico, metodologia, escopo, valores canonicos, timeline, proximos passos, dados BuscouAI) + regra critica (valores nao negociam — personalizacao e de contexto e escopo).
+  - "Funil esperado" atualizado com etapa de reuniao/proposta + novos percentuais calibrados pra consultivo.
+  - "Regras inegociaveis" ganha 4 novas (nao fechar sem reuniao, nao expor preco na landing, nao enviar proposta sem reuniao, nao negociar preco na proposta).
+
+### Atualizado (camada operacional)
+
+- `01 - Posicionamento/Proposta de Valor.md` — tabela "vs agencia" ganha 2 linhas (reuniao de diagnostico real + proposta hiperpersonalizada).
+- `01 - Posicionamento/Conceito e Posicionamento.md` — tabela "Aplicacoes do conceito" ajustada: CTA do hero agora e "Agendar diagnostico"; nova linha "CTA canonico da landing"; nova linha "Reuniao de diagnostico"; nova linha "Proposta personalizada".
+
+### Motivacao
+
+Durante o planejamento da landing (BAI-30), ao apresentar wireframe com preco exposto e CTA WhatsApp direto, o dono revisou a direcao:
+- Landing com teor de chamar pra **agendar diagnostico**, nao pra conversa solta.
+- **Compra e consultiva** — precisa de reuniao. Preco nao expoe em landing.
+- Funil: marketing → WhatsApp → reuniao → proposta → pagamento.
+- Comunicacao publica alveja fundo de funil.
+
+Ticket B2B de R$ 2.500+ em ICP de negocios locais exige construcao de confianca que self-service nao entrega. O diagnostico gratuito dentro da reuniao vira diferencial percebido — e a proposta escrita em 24h vira segundo touchpoint de conversao (cliente pode compartilhar com socio/conjuge/contador dentro da validade de 7 dias).
+
+### Impacto operacional
+
+- **Landing (BAI-30):** CTA unico "Agendar diagnostico"; zero exposicao de preco; mensagem pre-preenchida do WhatsApp muda; dobra de oferta vira dobra de "Como funciona o processo" (reuniao → proposta).
+- **Constante `WHATSAPP_URL`** em `site/src/lib/constants.ts` puxa a nova mensagem "quero agendar um diagnostico do meu negocio".
+- **Agente Prospeccao (outbound):** emails agora agendam reuniao, nao venda direta.
+- **Sistema de proposta personalizada:** feature futura em painel admin (cola transcricao → LLM gera HTML slide) — issue separada em Ideias.
+- **Template V1 manual:** HTML/slide on-brand preenchido manualmente pelo dono enquanto a automacao nao existe — issue separada em Ideias.
+
+### Governanca
+
+- Nivel 1 (altera VERDADE_UNICA §5, §6, §7, §8, §11) → Decision Log criado + aprovacao do dono (2026-04-23) + cascata no mesmo ciclo.
+- Gatilho de revisao explicito: volume >20 reunioes/semana; no-show >30%; fechamento pos-proposta <25%; pedidos recorrentes de "comprar sem reuniao" de leads qualificados.
+
+---
+
 ## [2.5.0] — 2026-04-23 — Contato oficial canonico (WhatsApp)
 
 Adicao de canal de atendimento oficial na VERDADE_UNICA. Nivel 1 (canonico) — requer Decision Log. Executado no escopo da issue [BAI-24](https://linear.app/joao-lucas-ucceli/issue/BAI-24) dentro da umbrella [BAI-23](https://linear.app/joao-lucas-ucceli/issue/BAI-23) (Pagina de vendas buscou.ai).

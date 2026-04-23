@@ -14,6 +14,7 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
 > **Ultimas alteracoes Nivel 1 (2026-04-23):**
+> - **Processo de venda consultivo** — reuniao de diagnostico obrigatoria + proposta personalizada pos-call (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]). Valores canonicos nao mudam.
 > - Secao 11 — contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
 > - Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
 
@@ -135,7 +136,7 @@ O cliente paga **duas coisas** — separadas e explicitas:
 - Onboarding guiado.
 - **Mes 1 de operacao do motor incluso** (primeiros ~90 conteudos).
 
-**Pago uma vez.** A vista via checkout direto. Parcelado via cartao de credito (12x).
+**Pago uma vez.** Link de pagamento enviado via WhatsApp apos o cliente aceitar a proposta personalizada (ver secao 8 — Estrutura de venda). A vista via Pix ou cartao. Parcelado via cartao de credito (12x).
 
 ### 5.2 — Infra mensal (recurring)
 
@@ -204,6 +205,11 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | "jornada" | Cliché. |
 | "sinergia" | Cliché. |
 | "solucoes" (soltinho) | Usar "tecnologia", "sistema" ou "motor". |
+| "self-service" | A venda e consultiva. Nao ha auto-servico na V1. |
+| "call opcional" | A reuniao de diagnostico e obrigatoria. |
+| "sem reuniao obrigatoria" | Contradiz o canonico atual. |
+| "sem BANT" (em copy publico) | Ha qualificacao leve na reuniao; evitar dar a entender que e compra automatica. |
+| "checkout direto" (na landing) | Landing nao expoe preco nem tem link de pagamento direto. |
 
 ### PERMITIDO e recomendado
 
@@ -223,6 +229,11 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | "busca" | Onde aparecemos. |
 | "SEO" / "AIO" | Canais onde otimizamos. |
 | "presenca organica" | Resultado para o cliente. |
+| "reuniao de diagnostico" | Termo canonico do primeiro contato estruturado. |
+| "proposta personalizada" | Documento escrito (PDF/HTML) enviado em ate 24h pos-reuniao. |
+| "agendar diagnostico" / "agendar meu diagnostico" | CTA canonico da landing e de materiais. |
+| "compra consultiva" | Uso interno/estrategico; em copy publico preferir "conversa de diagnostico". |
+| "diagnostico hiperpersonalizado" | Variacao em copy pra enfatizar que e sobre o negocio dele. |
 
 ### Como falar do modelo comercial
 
@@ -248,7 +259,8 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 |---|---|---|
 | Aparecer em Google e IA | Blog + 90 conteudos/mes otimizados SEO+AIO | Coerente |
 | Automacao | Motor publica 3x/dia sem intervencao do cliente | Coerente (enquanto infra ativa) |
-| Implementacao unica | Cliente paga a implementacao 1x (a vista ou 12x) | Coerente |
+| Implementacao unica | Cliente paga a implementacao 1x (a vista ou 12x), apos aceite da proposta personalizada enviada pos-reuniao de diagnostico | Coerente |
+| Diagnostico e proposta personalizada | Reuniao de 30-60 min + documento escrito (PDF/HTML) em 24h | Coerente |
 | Infra mensal transparente | R$ 300/mes via cartao recorrente, cobre tokens e APIs | Coerente |
 | Mes 1 incluso | Motor opera no mes 1 sem cobranca de infra | Coerente |
 | Motor pausa sem pagamento | Nao gera novo conteudo; blog e artigos antigos ficam no ar | Coerente |
@@ -266,23 +278,49 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 
 ---
 
-## 8. ESTRUTURA DE VENDA (fluxo unico)
+## 8. ESTRUTURA DE VENDA (fluxo consultivo)
+
+A compra e **consultiva** — passa obrigatoriamente por reuniao de diagnostico e proposta personalizada escrita. Nao ha caminho self-service na V1.
+
+### Fluxo canonico
 
 1. Cliente descobre o produto (organico, indicacao, prospecao ativa via [[Agente Prospeccao]]).
-2. Acessa materiais de venda (landing page + demo do que e gerado).
-3. Decide: a vista R$ 2.500 ou parcelado R$ 3.000 em ate 12x.
-4. No checkout, paga a implementacao **e cadastra cartao recorrente para a infra** (cartao pode ser o mesmo).
-5. Onboarding: configura dominio, descreve negocio, escolhe tom.
-6. Blog no ar em ate 7 dias.
-7. Motor comeca a publicar 3x/dia.
-8. **Mes 2**: primeira cobranca da infra (R$ 300) via cartao recorrente.
-9. Presenca organica cresce enquanto infra esta ativa.
+2. Acessa a landing em `www.buscouai.com`.
+3. Clica no CTA unico: **"Agendar diagnostico"** — abre WhatsApp com mensagem pre-preenchida (ver secao 11).
+4. Conversa WhatsApp curta pra agendar **reuniao de diagnostico** (30-60 min, obrigatoria).
+5. **Reuniao de diagnostico** (gravada/transcrita, roteiro canonico em [[Oferta Comercial]]):
+   a. Abertura: busca ao vivo no Google e em IAs mostrando ausencia do cliente.
+   b. Entendimento: perguntas sobre ICP, servico principal, concorrentes locais.
+   c. Metodologia: explicacao de blog + motor (estrutura + 90 conteudos/mes).
+   d. Solucao: aplicacao contextualizada pro negocio dele.
+   e. Oferta: valores canonicos (R$ 2.500 / R$ 3.000 + R$ 300/mes).
+   f. Fechamento: "envio proposta escrita em ate 24h via WhatsApp".
+6. **Pos-reuniao**: dono cola a transcricao no painel admin interno; ferramenta gera slide/PDF personalizado (proposta) com contexto da conversa + escopo + valores canonicos + validade de 7 dias. Dono baixa e envia manualmente via WhatsApp.
+7. Cliente analisa e aceita.
+8. **Pagamento** via link enviado no WhatsApp: implementacao (Pix a vista ou cartao parcelado) **e cadastro do cartao recorrente para a infra** (cartao pode ser o mesmo).
+9. Onboarding wizard (11 etapas, ver [[Onboarding Automatico]]): configura dominio, descreve negocio, escolhe tom.
+10. Blog no ar em ate 7 dias.
+11. Motor comeca a publicar 3x/dia.
+12. **Mes 2**: primeira cobranca da infra (R$ 300) via cartao recorrente.
+13. Presenca organica cresce enquanto infra esta ativa.
 
-Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda longo. A call e opcional (20-30 min) para clientes que quiserem tirar duvidas antes de pagar.
+### Regras
+
+- **Reuniao de diagnostico e obrigatoria.** Nao ha auto-servico; a landing nao expoe preco e nao tem checkout direto.
+- **Qualificacao leve na reuniao.** O dono avalia fit ICP durante a call. Se nao fit, entrega diagnostico (valor residual) mas nao envia proposta.
+- **Proposta personalizada escrita e canonica.** Todo cliente que passa pela reuniao e e fit recebe documento em ate 24h, mesmo os indecisos — o documento e o segundo touchpoint de conversao.
+- **Validade da proposta:** 7 dias padrao. Cria urgencia sem ser agressivo.
 
 ### Canal de contato (V1)
 
 O unico canal oficial de leads entrantes e **WhatsApp** (ver secao 11 — Contato oficial). Nao ha formulario, nao ha email de vendas publico, nao ha chat widget. CTA primario da landing, emails de prospeccao e materiais de vendas apontam todos pro mesmo numero.
+
+### O que NAO existe no fluxo
+
+- **Sem checkout direto na landing.** Compra passa por reuniao.
+- **Sem plano mensal de servico** (ver secao 5 — infra mensal e passthrough de custo, nao servico).
+- **Sem BANT formal** — qualificacao acontece na propria conversa da reuniao.
+- **Sem ciclo de venda longo** — meta e resolver em ate 7 dias entre primeiro contato e pagamento (reuniao + proposta + aceite).
 
 ---
 
@@ -346,7 +384,7 @@ Canal unico de atendimento e leads entrantes na V1 (ver [[Decision Log - 2026-04
 | **WhatsApp (formato humano)** | `+55 27 99696-0847` |
 | **Formato internacional (tecnico)** | `5527996960847` |
 | **Link wa.me padrao** | `https://wa.me/5527996960847` |
-| **Mensagem pre-preenchida padrao** | `"Oi, vi o site da buscou.ai e quero entender melhor como funciona."` |
+| **Mensagem pre-preenchida padrao** | `"Oi, vi o site da buscou.ai e quero agendar um diagnostico do meu negocio."` |
 
 ### Uso canonico
 

@@ -1,7 +1,7 @@
 ---
 sincronizado_em: 2026-04-23
-fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 6) + Decision Log - 2026-04-23 - Infra Mensal.md
-versao: 1.1.0
+fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 6) + Decision Log - 2026-04-23 - Infra Mensal.md + Decision Log - 2026-04-23 - Venda Consultiva.md
+versao: 1.2.0
 tipo: snapshot-contexto-agente
 ---
 
@@ -38,6 +38,11 @@ tipo: snapshot-contexto-agente
 | "qualidade" (como atributo solto) | Idem | mostrar com numero |
 | "pagamento unico" (sem contexto) | O modelo nao e so "pagamento unico" — tem infra mensal | "implementacao unica + infra mensal" |
 | "sem mensalidade" (afirmacao absoluta) | Ha mensalidade de infra (passthrough) | "sem mensalidade de servico" ou "sem fee de gestao mensal" |
+| "self-service" / "compra self-service" | Venda e consultiva na V1 | "venda consultiva" (interno) / "conversa de diagnostico" (publico) |
+| "checkout direto" / "comprar direto" | Landing nao expoe preco nem tem checkout | "agendar diagnostico" |
+| "call opcional" / "reuniao opcional" | Reuniao e obrigatoria no processo de venda | "reuniao de diagnostico" |
+| "sem reuniao obrigatoria" | Contradiz o canonico | (omitir) |
+| "sem BANT" (em copy publico) | Ha qualificacao leve na reuniao | (omitir em copy; interno ok) |
 
 ---
 
@@ -62,6 +67,12 @@ tipo: snapshot-contexto-agente
 | "90 conteudos por mes" | Volume concreto |
 | "blog + motor" | Produto em 3 palavras |
 | "Google", "ChatGPT", "Perplexity", "Gemini", "Claude", "AI Overviews" | Canais especificos (usar nome proprio) |
+| "reuniao de diagnostico" | Primeiro contato estruturado pos-landing |
+| "proposta personalizada" / "proposta escrita" | Documento PDF/HTML enviado via WhatsApp pos-reuniao |
+| "agendar diagnostico" / "agendar meu diagnostico" | CTA canonico da landing |
+| "diagnostico hiperpersonalizado" | Variacao em copy |
+| "compra consultiva" | Uso interno/estrategico |
+| "conversa de diagnostico" | Variacao em copy publico (mais leve que "compra consultiva") |
 
 ---
 
@@ -118,4 +129,4 @@ Qualquer texto gerado por agente que contiver termo proibido deve ser:
 
 ---
 
-*Snapshot gerado em 2026-04-23 (versao 1.1.0). Lista autoritativa em `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md` secao 6. Historico: versao 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23) ao incluir excecoes da infra mensal conforme Decision Log - 2026-04-23 - Infra Mensal.*
+*Snapshot gerado em 2026-04-23 (versao 1.2.0). Lista autoritativa em `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md` secao 6. Historico: 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23, infra mensal) → 1.2.0 (2026-04-23, venda consultiva — novos termos proibidos e permitidos conforme [[Decision Log - 2026-04-23 - Venda Consultiva]]).*

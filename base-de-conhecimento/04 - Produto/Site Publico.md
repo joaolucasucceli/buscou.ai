@@ -7,7 +7,9 @@ atualizado: 2026-04-23
 
 # Site Publico — Spec do site de marketing
 
-> Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. O site publico e a vitrine da buscou.ai e o principal canal de aquisicao organica. Hospedado em Next.js 15 + Vercel. Cada pagina otimizada para SEO e AIO. Modelo comercial exibido com as **duas linhas canonicas** (implementacao + infra mensal), sem tiers.
+> Fonte canonica: [[VERDADE_UNICA_BUSCOU]] (secao 8 + 11) + [[Decision Log - 2026-04-23 - Venda Consultiva]]. O site publico e a vitrine da buscou.ai e o principal canal de aquisicao organica. Hospedado em Next.js 16 + Vercel. Cada pagina otimizada para SEO e AIO.
+>
+> **Modelo de conversao (v2.0 — pos-pivot consultivo 2026-04-23):** landing **nao expoe preco** e **nao tem checkout direto**. CTA unico e **"Agendar diagnostico"** → abre WhatsApp → reuniao obrigatoria → proposta personalizada escrita pos-call.
 
 Relacionado: [[Proposta de Valor]] | [[Oferta Comercial]] | [[Case Proprio como Prova]] | [[Frontend]] | [[Onboarding Automatico]] | [[Funil Completo]]
 
@@ -16,10 +18,10 @@ Relacionado: [[Proposta de Valor]] | [[Oferta Comercial]] | [[Case Proprio como 
 ## Visao geral
 
 ```
-Home → Como Funciona → Oferta (checkout) → Contato/Onboarding
+Home → Como Funciona → (WhatsApp: agendar diagnostico) → Reuniao → Proposta em 24h → Pagamento → Onboarding
 ```
 
-**Principio:** clareza > criatividade. O visitante entende o que fazemos, como fazemos e quanto custa em menos de 60 segundos. **Nao ha pagina de "pricing" com tiers** — o modelo e unico (implementacao + infra mensal) e aparece direto na home.
+**Principio:** clareza > criatividade. O visitante entende o que fazemos, como fazemos e quais sao os proximos passos em menos de 60 segundos. **Nao ha pagina de "pricing"** — preco aparece em reuniao + proposta personalizada, nao em copy publico. O visitante sai da home com **uma acao clara**: agendar diagnostico.
 
 ---
 
@@ -31,7 +33,7 @@ A landing e composta por 8 blocos sequenciais.
 
 ```
 +----------------------------------------------------------+
-| NAV: Logo | Como Funciona | Blog | Oferta | [Comecar]    |
+| NAV: Logo | Como Funciona | Blog | [Agendar diagnostico] |
 +----------------------------------------------------------+
 |                                                            |
 | ESQUERDA (50%):              DIREITA (50%):               |
@@ -44,22 +46,19 @@ A landing e composta por 8 blocos sequenciais.
 | aparecendo no Google                                       |
 | e nas IAs.                                                |
 |                                                            |
-| Implementacao R$ 2.500 a vista                            |
-| (ou 12x de R$ 250) +                                      |
-| R$ 300/mes de infra a partir                              |
-| do mes 2. Mes 1 incluso.                                  |
-|                                                            |
-| [Comprar agora →]   [Ver como funciona]                   |
+| [Agendar diagnostico →]  [Ver como funciona]              |
 +----------------------------------------------------------+
 ```
 
 **Headline (canonica):** "Se alguem buscou, quem apareceu foi voce?"
 
-**Subheadline:** "Blog + Motor (buscou.ai) = 90 conteudos/mes no seu site, com voce aparecendo no Google e nas IAs. Implementacao R$ 2.500 a vista (ou 12x R$ 250) + infra mensal R$ 300 a partir do mes 2. Mes 1 incluso na implementacao."
+**Subheadline:** "Blog + Motor (buscou.ai) = 90 conteudos/mes no seu site, com voce aparecendo no Google e nas IAs."
 
 **CTAs:**
-- Primario: "Comprar agora" → checkout direto (Stripe/Asaas).
+- Primario: **"Agendar diagnostico"** → abre WhatsApp `wa.me/5527996960847` com mensagem pre-preenchida "Oi, vi o site da buscou.ai e quero agendar um diagnostico do meu negocio".
 - Secundario: "Ver como funciona" → scroll para bloco 3 ou `/como-funciona`.
+
+**Importante:** o hero **nao expoe preco**. O preco aparece na reuniao e na proposta personalizada pos-call (ver [[Oferta Comercial]] + [[Decision Log - 2026-04-23 - Venda Consultiva]]).
 
 **Visual direita:**
 - Mockup do dashboard com dados reais do proprio blog da buscou.ai.
@@ -117,53 +116,52 @@ Screenshot ou video de 15-30s mostrando dashboard em uso, com callouts.
 
 Demonstracao de autoridade + alimenta SEO do proprio site. 3 artigos mais recentes.
 
-### Bloco 7 — Oferta (canonica)
+### Bloco 7 — Como funciona o processo (nao e bloco de oferta com preco)
+
+A landing nao expoe preco. Este bloco descreve o **processo consultivo** que o cliente vai passar: o que e o diagnostico, o que ele recebe por escrito, e os proximos passos.
 
 ```
 +----------------------------------------------------------+
-| IMPLEMENTACAO (uma vez)                                   |
-|   R$ 2.500 a vista (Pix ou cartao)                        |
-|   OU                                                       |
-|   R$ 3.000 parcelado em 12x de R$ 250 (cliente            |
-|   assume juros do cartao)                                  |
+| O que acontece quando voce agenda seu diagnostico         |
 |                                                            |
-| + INFRA MENSAL (a partir do mes 2)                        |
-|   R$ 300/mes via cartao recorrente                        |
-|   Cobre tokens LLM + APIs + hospedagem do motor           |
+| [1] Reuniao de diagnostico (30-60 min)                    |
+|     A gente faz uma busca ao vivo pra mostrar onde voce  |
+|     aparece hoje. Entende seu negocio. Explica a          |
+|     metodologia aplicada ao seu caso.                     |
 |                                                            |
-| Mes 1 incluso na implementacao.                           |
+| [2] Proposta personalizada por escrito (em 24h)           |
+|     Voce recebe no WhatsApp um documento com o contexto   |
+|     da conversa + metodologia aplicada ao seu negocio +   |
+|     escopo + valores. Vale 7 dias.                        |
 |                                                            |
-| O que voce recebe:                                        |
-| - Blog estruturado no seu dominio (ou subdominio buscou.ai) |
-| - Motor buscou.ai gerando 90 conteudos/mes               |
-| - Onboarding automatico em 24-48h                        |
-| - Ativacao em ate 7 dias                                 |
-| - Dashboard de acompanhamento                            |
-| - Se a infra mensal nao for paga, motor pausa mas         |
-|   conteudo ja publicado fica no ar                        |
+| [3] Apos o aceite                                          |
+|     Link de pagamento via WhatsApp → onboarding guiado    |
+|     → blog no ar em ate 7 dias → motor publicando 3x/dia  |
 |                                                            |
-| [Comprar a vista (Pix)]  [Parcelar em 12x]               |
-|                                                            |
-| Ainda com duvida? [Agende 20 min com nosso time →]       |
+| [Agendar diagnostico →]                                   |
 +----------------------------------------------------------+
 ```
 
-**Proposito:** converter quem leu ate aqui. Oferta clara, sem pegadinha, sem tabelas comparativas. Call opcional aparece como link secundario logo abaixo do checkout.
+**Proposito:** converter quem leu ate aqui para **agendar a reuniao**, nao comprar direto. Deixa claro o que a pessoa ganha mesmo se nao fechar (diagnostico real) e o que recebe por escrito pos-call (proposta personalizada com validade).
+
+**Nao incluir preco neste bloco.** Preco aparece so na reuniao e na proposta escrita pos-call.
 
 ### Bloco 8 — FAQ
 
+Perguntas calibradas para o **processo consultivo** — quem chega na landing precisa entender o que vai acontecer na reuniao e na proposta, nao debater preco. Preco nao aparece em copy publico.
+
 | Pergunta | Resposta (resumida) |
 |---|---|
-| O que exatamente o sistema faz? | Publica 90 artigos/mes no seu blog automaticamente, otimizados para Google e IA. Voce configura em 10 min e acompanha pelo dashboard. |
-| Quanto tempo para ver resultados? | Blog no ar em ate 7 dias. Primeiros sinais em ate 30 dias. Rankings/citacoes em IA em 60-90 dias. |
-| Funciona para qualquer negocio? | Melhor para negocios locais (clinicas, imobiliarias, advogados, servicos). Se seu cliente busca no Google, funciona. |
-| Preciso saber de SEO? | Nao. O motor faz tudo. Voce so preenche o wizard no onboarding. |
-| Quanto eu pago? | Duas coisas: **implementacao** (R$ 2.500 a vista ou R$ 3.000 em 12x de R$ 250) paga uma vez + **infra mensal** R$ 300/mes a partir do mes 2. O mes 1 ja esta incluso na implementacao. |
-| E uma assinatura de servico? | Nao. A implementacao e paga uma vez. A infra mensal nao e "mensalidade de servico" — e passthrough do custo real de rodar o motor (tokens de LLM + APIs + hospedagem). Nao cobramos gestao nem consultoria mensal. |
-| E se eu parar de pagar a infra? | O motor pausa (para de publicar novos artigos). Mas o blog e todos os conteudos ja publicados continuam no ar. Quando regularizar, o motor volta. |
-| Qual a diferenca para agencia de SEO? | Agencia cobra R$ 3K-15K/mes de servico indefinidamente. Aqui voce paga a implementacao uma vez + R$ 300/mes de infra transparente. Em 12 meses, investimento total e ~R$ 5.800-6.300. Uma agencia tipica cobra 5-10x isso. |
-| Como e o suporte? | Chat IA 24/7 + humano em ate 24h enquanto infra estiver ativa (ver [[SLAs e Garantias]]). |
-| Posso pedir reembolso? | Sim, nos primeiros 14 dias da implementacao se menos de 10 artigos foram publicados. Apos isso, os artigos publicados ficam no seu site. |
+| Como funciona a reuniao? | Sao 30-60 min por video-call. A gente faz uma busca ao vivo pra mostrar onde voce aparece hoje (e onde nao aparece), entende seu negocio com perguntas diretas, e explica como o blog + motor se aplicam ao seu caso especifico. |
+| Quanto tempo leva da primeira conversa ate o blog estar no ar? | Ate 7 dias do primeiro contato ate pagamento (reuniao + proposta em 24h + aceite). Apos pagamento, blog no ar em ate 7 dias. |
+| Preciso preparar algo antes da reuniao? | Nao. Ideal ter o dominio atual em mente e lembrar 2-3 concorrentes locais. O resto a gente descobre na conversa. |
+| Vou receber algo por escrito? | Sim. Em ate 24h pos-reuniao voce recebe no WhatsApp uma proposta personalizada com contexto da nossa conversa, metodologia aplicada ao seu negocio, escopo e valores. Vale 7 dias. |
+| Funciona para qualquer negocio? | Melhor para negocios locais (clinicas, imobiliarias, advogados, servicos). Se seu cliente busca no Google, funciona. Se nao for fit, entregamos o diagnostico mesmo assim. |
+| Preciso saber de SEO? | Nao. O motor faz tudo. Voce so preenche o wizard no onboarding depois do pagamento. |
+| O que voces entregam exatamente? | Blog no seu dominio + motor buscou.ai publicando 90 conteudos por mes otimizados pra Google e IAs. Detalhes completos vao na proposta personalizada. |
+| E uma assinatura de servico? | Nao vendemos servico mensal. O modelo comercial e explicado na reuniao e detalhado na proposta por escrito. |
+| E se eu nao tiver certeza ainda? | Agenda mesmo. A reuniao nao tem compromisso de compra — voce sai sabendo onde aparece hoje no Google e na IA, e se decidir nao fechar, o diagnostico vale por si. |
+| Como e o suporte apos contratar? | Chat IA 24/7 + humano em ate 24h enquanto infra estiver ativa (ver [[SLAs e Garantias]]). |
 
 Componente Accordion com FAQ schema para aparecer em rich results.
 
@@ -171,15 +169,18 @@ Componente Accordion com FAQ schema para aparecer em rich results.
 
 ```
 +----------------------------------------------------------+
-| Pronto para aparecer?                                      |
+| Hoje alguem esta buscando o que voce vende.               |
+| Voce prefere continuar invisivel ou aparecer?             |
 |                                                            |
-| Implementacao R$ 2.500 a vista ou 12x R$ 250              |
-| + infra mensal R$ 300/mes a partir do mes 2               |
-| Blog no ar em 7 dias. Primeiros sinais em 30.             |
+| Agenda seu diagnostico. 30-60 min por video-call.         |
+| Voce sai da reuniao sabendo exatamente onde aparece       |
+| hoje — e recebe uma proposta personalizada em 24h.        |
 |                                                            |
-| [Comprar agora →]     [Falar no WhatsApp]                |
+| [Agendar meu diagnostico no WhatsApp: +55 27 99696-0847] |
 +----------------------------------------------------------+
 ```
+
+**Obrigatorio:** numero canonico `+55 27 99696-0847` exibido no botao OU visivel fora dele (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
 
 ---
 
@@ -233,27 +234,37 @@ Inicio: [[Case Proprio como Prova]] como primeiro case. Conforme clientes chegam
 
 ### Mapa de CTAs
 
+Todos os CTAs primarios apontam para **WhatsApp com mensagem pre-preenchida pra agendar diagnostico** — ver `src/lib/constants.ts` (`WHATSAPP_URL`).
+
 | Pagina | CTA primario | CTA secundario | Destino primario | Destino secundario |
 |---|---|---|---|---|
-| Home | Comprar agora | Ver como funciona | Checkout (Stripe/Asaas) | `/como-funciona` |
-| Como funciona | Comprar agora | Falar no WhatsApp | Checkout | WhatsApp |
-| Blog (lista) | Ler artigo | Newsletter | `/blog/[slug]` | Captura de e-mail |
-| Blog (artigo) | Comprar agora | Falar no WhatsApp | Checkout | WhatsApp |
-| Exemplos | Comprar agora | Falar no WhatsApp | Checkout | WhatsApp |
-| Contato | WhatsApp | Formulario | WhatsApp | E-mail |
+| Home | Agendar diagnostico | Ver como funciona | WhatsApp (agendamento) | `/como-funciona` |
+| Como funciona | Agendar diagnostico | Ver blog | WhatsApp | `/blog` |
+| Blog (lista) | Ler artigo | Agendar diagnostico (sidebar) | `/blog/[slug]` | WhatsApp |
+| Blog (artigo) | Agendar diagnostico | Ver como funciona | WhatsApp | `/como-funciona` |
+| Exemplos | Agendar diagnostico | Ver como funciona | WhatsApp | `/como-funciona` |
+| Contato | WhatsApp | — | WhatsApp | — |
 
-### Fluxo principal
+### Fluxo principal (consultivo)
 
 ```
 Visitante organico (Google/IA)
     ↓
 Home ou artigo do blog
     ↓
-Bloco oferta na home (ou sidebar no artigo)
+CTA unico "Agendar diagnostico"
     ↓
-Checkout direto (80%) OU call opcional (20%)
+WhatsApp abre com mensagem pre-preenchida
     ↓
-Pagamento confirmado → onboarding (24-48h) → ativacao (7 dias)
+Conversa rapida → agenda reuniao (30-60 min)
+    ↓
+Reuniao acontece (gravada/transcrita)
+    ↓
+Proposta personalizada via WhatsApp em ate 24h (validade 7 dias)
+    ↓
+Cliente aceita → link de pagamento via WhatsApp
+    ↓
+Pagamento confirmado → onboarding → ativacao (7 dias)
 ```
 
 ---
@@ -308,7 +319,7 @@ Pagamento confirmado → onboarding (24-48h) → ativacao (7 dias)
 ## Notas relacionadas
 
 - [[Proposta de Valor]] — o que vendemos e por que o cliente compra
-- [[Oferta Comercial]] — pitch + objecoes + call opcional
+- [[Oferta Comercial]] — pitch da reuniao de diagnostico + objecoes + proposta personalizada
 - [[Modelo de Negocio]] — receita, custos, projecoes
 - [[Case Proprio como Prova]] — dog-fooding como primeiro case
 - [[Frontend]] — arquitetura tecnica
