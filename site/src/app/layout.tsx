@@ -45,6 +45,24 @@ export const viewport: Viewport = {
   themeColor: "#08090D",
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "buscou.ai",
+  legalName: "BuscouAI",
+  url: "https://www.buscouai.com",
+  logo: "https://www.buscouai.com/buscou-ai-primary-dark.svg",
+  description:
+    "Tecnologia que coloca seu negocio nos resultados de busca do Google e nas respostas de IA.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+55-27-99696-0847",
+    contactType: "sales",
+    areaServed: "BR",
+    availableLanguage: "Portuguese",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,7 +73,16 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* source: Decision Log - 2026-04-23 - Contato Oficial.md */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

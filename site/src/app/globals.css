@@ -22,3 +22,88 @@ body {
   color: var(--color-text);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+/*
+ * SearchBar local — reproduz .searchbar do DS (turbopack nao resolve .tsx
+ * fonte do @buscou/design-system; componentes React foram copiados localmente).
+ */
+.searchbar-local {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 22px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+.searchbar-local:focus-within {
+  border-color: var(--color-ai);
+  box-shadow: 0 0 0 4px var(--color-ai-soft);
+}
+.searchbar-input-local {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: var(--color-text);
+  letter-spacing: 0;
+  pointer-events: none;
+}
+.searchbar-input-local::placeholder {
+  color: var(--color-text-tertiary);
+}
+.searchbar-cursor-local {
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  background: var(--color-ai);
+  box-shadow: 0 0 12px var(--color-ai-glow);
+  animation: searchbar-blink-local 1.1s steps(1) infinite;
+  flex-shrink: 0;
+}
+@keyframes searchbar-blink-local {
+  50% {
+    opacity: 0;
+  }
+}
+
+/*
+ * Card local — reproduz .card do DS.
+ */
+.card-local {
+  position: relative;
+  padding: var(--space-6);
+  background: var(--color-bg-elev-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: border-color var(--transition-base),
+    background var(--transition-base);
+}
+.card-local--elevated {
+  background: var(--color-bg-elev-2);
+  box-shadow: var(--shadow-md);
+}
+.card-local--outline {
+  background: transparent;
+  border-color: var(--color-border-strong);
+}
+.card-local--accent {
+  background: var(--color-bg-elev-1);
+  border-color: var(--color-border);
+  border-left: 2px solid var(--color-ai);
+}
+.card-local__body {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}

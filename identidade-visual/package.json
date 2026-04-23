@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Design System oficial da buscou.ai — tokens, logos, icones e componentes base.",
   "main": "index.ts",
-  "types": "index.ts",
+  "types": "index.d.ts",
   "style": "index.css",
   "sideEffects": ["*.css"],
   "files": [
@@ -15,6 +15,7 @@
     "components",
     "docs",
     "index.ts",
+    "index.d.ts",
     "index.css"
   ],
   "peerDependencies": {
