@@ -225,6 +225,7 @@ Nao usar Bloqueada pra pausa voluntaria ou troca de prioridade — pra isso exis
 Alem dos criterios de aceite especificos de cada issue, **toda issue substantiva** tem que bater esta checklist antes de fechar:
 
 - [ ] Todos os criterios de aceite especificos marcados `[x]` na description
+- [ ] Metadata Linear completa: **assignee**, **priority**, **labels** (pelo menos 1), **dueDate** — os 4 campos obrigatorios do DoR (regra 12) continuam preenchidos
 - [ ] Comentario de abertura registrado ao entrar em Em andamento
 - [ ] Comentario(s) de marco registrados quando houve decisao ou bloqueio
 - [ ] Comentario de fechamento com resumo do entregue
@@ -250,14 +251,22 @@ Toda issue que toca **codigo ou docs versionados** nasce numa branch propria. Tr
 
 Espelho do DoD, mas no comeco. Antes de uma issue sair de "Ideias" pra "A fazer" (ou antes de entrar direto em Em andamento), **tem que bater**:
 
+**Conteudo da issue:**
 - [ ] Titulo claro (verbo + objeto + contexto quando necessario)
 - [ ] Secao **Contexto** preenchida (por que essa issue existe)
 - [ ] Secao **Objetivo** preenchida (o que queremos alcancar)
 - [ ] Secao **Requisitos** preenchida (o que precisa entregar)
 - [ ] Secao **Criterios de Aceite** com pelo menos 1 criterio mensuravel
-- [ ] **Priority** definida segundo a regra 7
-- [ ] **Dependencias** listadas (ou explicitamente "Nenhuma")
+- [ ] Secao **Dependencias** listada (ou explicitamente "Nenhuma")
+
+**Metadata Linear (os 4 campos obrigatorios — issue nao nasce sem):**
+- [ ] **Assignee** — sempre Joao (`joaolucasucceli.dev@gmail.com`) ou Vitoria (`vitoriabelmiro.dev@gmail.com`). Ver regra 16 pra heuristica. Proibido deixar em branco.
+- [ ] **Priority** segundo regra 7 — nunca "No priority"
+- [ ] **Labels** — pelo menos 1 label da taxonomia da regra 17
+- [ ] **dueDate** — ISO `YYYY-MM-DD`. Default V1 ate novo comando: `2026-04-27`
 - [ ] **`parentId`** apontado se for sub-issue
+
+**Regra absoluta:** toda criacao (`save_issue` sem id) ou atualizacao que eu fizer, passo os 4 campos no mesmo call. Se issue ja existe com algum em branco, completo antes de qualquer outra acao. Sem default silencioso.
 
 Issue que nao bate DoR fica em **Ideias** ou volta pra re-criacao. Nunca comeca a executar spec meia-boca.
 
@@ -313,6 +322,59 @@ Nem todo trabalho precisa virar issue. **Trivialidade** e mudanca que satisfaz *
 - Push autorizado como qualquer outro commit
 
 **Se em duvida se e trivialidade:** abre issue. Fast-track e exceção pra reduzir fricção, nao atalho pra pular o processo. Melhor rastrear a mais que a menos.
+
+### 16. Heuristica de assignee (Joao vs Vitoria)
+
+Socios em paridade — heuristica e orientacao, nao hierarquia. Toda issue nasce com responsavel (DoR regra 12); esta tabela e o default pra nao precisar perguntar toda vez.
+
+| Tipo de trabalho | Default | Racional |
+|---|---|---|
+| Backend, schema SQL, migrations, RLS, integracao de API | **Joao** | Dono do codigo do motor |
+| Deploy, infra de codigo (Vercel, Next.js, CI/CD) | **Joao** | Dono da stack |
+| Copy de produto, landing, posicionamento | **Joao** | Dono estrategico da narrativa |
+| Arquitetura de agentes, prompts canonicos do motor, VERDADE_UNICA, decision logs | **Joao** | Dono da camada canonica |
+| Setup de SaaS externo (Stripe, Supabase dashboard, provedores) | **Vitoria** | Dona da operacao externa |
+| Contas de redes sociais, email corporativo, presenca digital | **Vitoria** | Dona da marca operacional |
+| Conteudo Instagram (carrosseis, legendas, prompts visuais de peca) | **Vitoria** | Dona da execucao de conteudo |
+| Documentacao operacional (onboarding, SLA, suporte) | **Vitoria** | Dona do dia-a-dia |
+
+**Desempate:**
+1. Atribuir a quem executa **mais** do trabalho, nao a quem da a ordem.
+2. 50/50 → umbrella com 1 filha por socio.
+3. Ainda nao obvio → perguntar ao dono antes de criar.
+
+**Antipattern:** usar Joao como default silencioso pra demanda claramente da Vitoria (setup de conta, conteudo social). Sobrecarrega e apaga a paridade.
+
+### 17. Taxonomia de labels
+
+Padrao: **lowercase, portugues, kebab-case em multiplas palavras**. Naipes claros; evita proliferacao.
+
+**Dominio (o que o trabalho entrega):**
+- `operacional` — infra, setup, contas externas, ops
+- `produto` — codigo do motor, shell, dashboard
+- `vendas` — landing, pitch, pagina comercial
+- `conteudo` — artigos, copy, producao editorial
+- `marketing` — distribuicao, funil, campanhas
+- `agentes` — agentes do motor, orquestrador, prompts canonicos
+- `instagram` — trabalho especifico do canal IG
+
+**Natureza (o que o trabalho e):**
+- `bug` — defeito em algo que ja existe
+- `melhoria` — evolucao de algo que ja existe
+- `feature` — capacidade nova
+
+**Estado / gestao:**
+- `umbrella` — issue-mae agrupando sub-issues
+- `congelada` — despriorizada ate revisao futura (ROI baixo / dependencia externa)
+- `funil:topo` — conteudo TOFU (descoberta)
+- `funil:meio` — conteudo MOFU (educacional/tatico)
+- `funil:fundo` — conteudo BOFU (alta intencao comercial)
+
+**Regras:**
+- Toda issue tem **pelo menos 1 de dominio**. Natureza e estado sao opcionais mas recomendados quando aplicaveis.
+- **Uma issue pode combinar naipes** — ex: landing da pagina de vendas = `vendas` + `feature`. Umbrella de conteudo IG = `instagram` + `marketing` + `umbrella`.
+- **Novas labels exigem justificativa:** se a issue nao cabe em nenhuma label existente, perguntar ao dono antes de criar label nova. Ruim ter 30 labels com overlap.
+- **Proibido** criar label em ingles, Capitalized, ou com espaco. Sempre PT lowercase kebab.
 
 ## Tom e Postura
 
