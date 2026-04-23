@@ -74,7 +74,7 @@ Wizard de 5 passos (mesmo da V1 completa — o fluxo ja e enxuto):
 | Agentes | Claude API direto | Claude Agent SDK + MCP |
 | Fila | Sincrono (sem fila complexa) | BullMQ + Redis |
 | CMS | WordPress REST API | WordPress / CMS proprio |
-| Pagamento | Stripe link manual (fundador envia) | Stripe/Asaas checkout automatico |
+| Pagamento | Stripe link manual (fundador envia implementacao + configura Subscription infra) | Stripe Checkout auto (implementacao) + Subscription auto (infra R$300/mes) |
 | Deploy | Vercel free tier | Vercel Pro |
 
 **Custo MVP**: ~R$ 200-400/mes (Supabase + Vercel + Claude API + Ahrefs/DataForSEO basico).
@@ -88,7 +88,7 @@ Wizard de 5 passos (mesmo da V1 completa — o fluxo ja e enxuto):
 | Pipeline gera conteudo que rankeia | Publicar 45+ artigos, medir posicoes em 60 dias | 3+ artigos no Top 10 em 60 dias |
 | Conteudo gera citacao em IA | Testar prompts semanalmente | 1+ citacao confirmada em 90 dias |
 | Cliente ve valor em ate 30 dias | NPS no dia 30 | NPS > 7 |
-| Unit economics fecha | Medir custos reais vs R$ 2.500/R$ 3.000 | Margem bruta > 70% |
+| Unit economics fecha | Medir custos reais vs receita (implementacao R$ 2.500/3.000 + infra R$ 300/mes) | Margem bruta ano 1 > 70% |
 | Pipeline roda sem quebrar | Ciclo completo x3 | Zero bloqueio critico |
 | Ativacao em 7 dias funciona | Time-to-first-value | TTFV < 48h (medio), teto 7d |
 
@@ -101,7 +101,7 @@ Nao avance para V1 completa ate atingir TODOS:
 - [ ] 45+ conteudos publicados (3 clientes x 15 artigos) OU 1 cliente completo com 90 artigos.
 - [ ] 3+ artigos no Top 10 do Google.
 - [ ] 1+ citacao confirmada em IA.
-- [ ] 5+ clientes beta ativos (pagando R$ 2.500 ou R$ 3.000).
+- [ ] 5+ clientes beta ativos (implementacao paga + infra mensal R$ 300 ativa).
 - [ ] 3+ com NPS > 7.
 - [ ] Margem bruta > 70% confirmada.
 - [ ] Pipeline rodou 8+ semanas sem quebrar.

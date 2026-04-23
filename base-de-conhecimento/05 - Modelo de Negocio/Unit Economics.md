@@ -1,26 +1,47 @@
 ---
 tipo: empresa
 area: Financeiro
-tags: [empresa, unit-economics, financeiro, venda-unica, canonico]
+tags: [empresa, unit-economics, financeiro, precisa-refresh, cascata-pendente]
 atualizado: 2026-04-23
 ---
 
 # Unit Economics
 
-> **Canonico.** Reflete [[VERDADE_UNICA_BUSCOU]] — modelo de **venda unica**, sem mensalidade, sem MRR. Qualquer calculo com tier/assinatura/MRR esta errado por definicao.
+> ⚠️ **ARQUIVO PRECISA REFRESH POS-DECISION LOG INFRA MENSAL**
+>
+> Este arquivo foi escrito no modelo antigo de **pagamento unico puro** (pre [[Decision Log - 2026-04-23 - Infra Mensal]]). Agora o modelo e **implementacao unica + infra mensal obrigatoria (R$ 300/mes, cobre tokens LLM do motor)**.
+>
+> As projecoes de 12 meses, LTV, break-even e sensibilidade abaixo precisam ser refeitas com o novo modelo. Ate a reescrita completa, as secoes "Modelo" e "Receita por cliente" foram atualizadas com o novo fraseado, mas os numeros das projecoes **nao foram recalculados**.
+>
+> Preliminarmente, o novo modelo e **mais favoravel** que o antigo:
+> - Receita total ano 1 por cliente: ~R$ 5.800-6.300 (era R$ 2.750)
+> - MRR (ano 1 fim): R$ 300 × base ativa
+> - Margem bruta ano 1: 70-80% (era 35-60%)
+>
+> Issue: sub-issue de cascata BAI-44 ou issue separada "Refresh Unit Economics pos-Infra Mensal".
 
 ---
 
 ## Modelo
 
-**Receita por cliente:** pagamento unico.
+**Receita por cliente:** duas camadas.
 
-| Forma | Valor nominal | Caixa liquido |
-|---|---|---|
-| A vista (Pix) | **R$ 2.500** | R$ 2.500 imediato |
-| Parcelado ate 12x no cartao (cliente assume os juros) | **R$ 3.000** | ~R$ 2.700-2.850 via antecipacao da adquirente |
+### Camada 1 — Implementacao (upfront, unica)
 
-**Ticket medio estimado:** **R$ 2.750** (mix 50/50).
+| Forma | Valor nominal | Caixa liquido | Metodo |
+|---|---|---|---|
+| A vista | **R$ 2.500** | R$ 2.500 imediato | Pix |
+| Parcelado ate 12x (cliente assume os juros) | **R$ 3.000** | ~R$ 2.700-2.850 via antecipacao da adquirente | Cartao |
+
+**Ticket medio estimado (implementacao):** **R$ 2.750** (mix 50/50).
+
+### Camada 2 — Infra mensal (recurring, obrigatoria)
+
+| Valor | Caixa liquido/mes | Metodo | Inicio |
+|---|---|---|---|
+| **R$ 300,00** | ~R$ 285 apos taxa | Cartao recorrente | 30 dias apos pagamento da implementacao |
+
+Cliente cancela quando quiser (motor pausa, blog/dashboard continuam).
 
 ---
 
@@ -213,21 +234,25 @@ Premissas: ticket medio R$ 2.750, lucro bruto/cliente R$ 1.010 ano 1, custo fixo
 
 ---
 
-## Por que venda unica vs SaaS com MRR
+## Por que implementacao + infra mensal (2 camadas) vs modelos alternativos
 
-### SaaS com mensalidade (descartado)
+### SaaS puro com mensalidade (descartado)
 - MRR previsivel, mas CAC se paga em 3-6 meses (aperto de caixa).
-- Churn e metrica-dor (cada cliente que sai = perda permanente).
-- Cliente percebe mensalidade como fardo.
+- Churn pesa pesado (cliente que sai = perda permanente, nao ha upfront pra absorver).
 - Posicionamento confuso no mercado BR de negocios locais.
 
-### Venda unica (escolhido)
-- Caixa imediato upfront.
-- Sem churn de assinatura (cliente nao "cancela", nunca).
-- Modelo mais claro para negocio local.
-- Diferenciacao pura: "compra tecnologia, nao assina servico".
+### Venda unica pura (descartado em 2026-04-23)
+- Caixa imediato ótimo, mas nao cobre custo operacional recorrente (tokens LLM).
+- Margem do ticket unico evapora em 3-6 meses de operacao.
+- Inviavel no longo prazo.
 
-**Trade-off aceito:** menor previsibilidade de recorrencia em troca de simplicidade, margem upfront e posicionamento distinto.
+### Duas camadas — implementacao unica + infra mensal (escolhido)
+- Caixa imediato na implementacao + MRR previsivel da infra.
+- Cliente entende que implementacao compra infraestrutura fixa (vitalicia) e infra cobre execucao do motor (tokens LLM).
+- Se cliente cancela infra: motor pausa, blog continua — nao destroi o SEO investido.
+- Posicionamento distinto: "compra tecnologia + paga infra pra mante-la publicando, sem assinatura de servico humano".
+
+**Trade-off aceito:** introduz churn da infra como risco, em troca de sustentabilidade economica e MRR real.
 
 ---
 
@@ -258,6 +283,7 @@ Premissas: ticket medio R$ 2.750, lucro bruto/cliente R$ 1.010 ano 1, custo fixo
 ## Notas relacionadas
 
 - [[VERDADE_UNICA_BUSCOU]] — canonico
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — modelo atual, projecoes abaixo precisam refresh
 - [[Modelo de Negocio]]
 - [[Oferta Comercial]]
 - [[Proposta de Valor]]

@@ -29,9 +29,9 @@ As seguintes decisoes estao TRAVADAS em [[VERDADE_UNICA_BUSCOU]]:
 ### Nivel 1 — Inegociavel (exige Decision Log + justificativa forte)
 
 1. **Posicionamento central** — "Se alguem buscou, quem apareceu foi voce?"
-2. **Modelo comercial** — Pagamento unico, sem mensalidade, R$ 2.500 a vista / R$ 3.000 parcelado 12x.
+2. **Modelo comercial** — Implementacao unica (R$ 2.500 a vista via Pix ou R$ 3.000 em 12x no cartao) + infra mensal obrigatoria R$ 300/mes (cartao recorrente). Pacote inseparavel. Ver [[Decision Log - 2026-04-23 - Infra Mensal]].
 3. **Definicao de produto** — Blog (estrutura) + Motor (buscou.ai, 90 conteudos/mes).
-4. **Nao-SaaS, nao-agencia, nao-consultoria** — vendemos tecnologia.
+4. **Nao-SaaS de servico, nao-agencia, nao-consultoria** — vendemos tecnologia. Infra mensal cobre infraestrutura+tokens, nao servico humano.
 5. **Nome da marca** — `buscou.ai` (visual) e `BuscouAI` (juridico).
 
 ### Nivel 2 — Estavel (pode mudar com calibragem, sem Decision Log formal)

@@ -7,7 +7,7 @@ atualizado: 2026-04-23
 
 # Go To Market Inicial
 
-> **Canonico.** Reflete [[VERDADE_UNICA_BUSCOU]]. Modelo de venda unica. Sem beta gratis. Sem BANT. Sem reuniao obrigatoria.
+> **Canonico.** Reflete [[VERDADE_UNICA_BUSCOU]] + [[Decision Log - 2026-04-23 - Infra Mensal]]. Modelo **implementacao unica + infra mensal obrigatoria**. Sem beta gratis. Sem BANT. Sem reuniao obrigatoria.
 
 ---
 
@@ -15,19 +15,25 @@ atualizado: 2026-04-23
 
 ### A oferta e a mesma oferta canonica
 
-Nao existe "beta com desconto vitalicio" nem "preco especial". A oferta e **unica desde o primeiro cliente**:
+Nao existe "beta com desconto vitalicio" nem "preco especial". A oferta e **unica desde o primeiro cliente**, em duas camadas inseparaveis:
 
+**Implementacao (upfront):**
 - **R$ 2.500 a vista (Pix)** OU
-- **R$ 3.000 parcelado em ate 12x (cliente assume juros)**.
+- **R$ 3.000 parcelado em ate 12x no cartao (cliente assume juros)**.
 
-Sem mensalidade. Sem setup separado. Sem tier.
+**Infra mensal (recurring):**
+- **R$ 300/mes no cartao**, obrigatoria, comeca D+30 apos pagamento da implementacao.
+
+Sem assinatura de servico. Sem setup separado. Sem tier. Sem boleto. Infra nao e opcional.
 
 ### Unica flexibilidade
 
-Os primeiros 5 clientes podem ter **desconto simbolico de R$ 300 no a vista** (fica R$ 2.200) em troca de:
+Os primeiros 5 clientes podem ter **desconto simbolico de R$ 300 na implementacao a vista** (fica R$ 2.200 via Pix) em troca de:
 - Autorizacao de case study publico (nome, resultados).
 - Depoimento em video (2-3 min) apos 90 dias.
 - Feedback detalhado mensal durante os primeiros 90 dias.
+
+Infra mensal **nao tem desconto** — e fixa R$ 300 pra todo mundo. Desconto so na implementacao.
 
 Nao e preco vitalicio. Nao e desconto recorrente. E apenas incentivo para os primeiros.
 
@@ -79,7 +85,7 @@ DESCOBERTA → LANDING → (CALL OPCIONAL) → PAGAMENTO → ONBOARDING
 2. **Landing page.** Explica:
    - Quem e (uma frase).
    - O que entrega (blog + motor + 90 conteudos/mes).
-   - Preco (R$ 2.500 a vista / R$ 3.000 em 12x).
+   - Preco (implementacao R$ 2.500 Pix / R$ 3.000 12x cartao + infra mensal R$ 300).
    - Timeline (7 dias ativacao → 30 dias primeiros sinais).
    - Prova (dog-fooding do proprio blog).
    - CTA: Pix a vista OU cartao parcelado.
@@ -109,8 +115,8 @@ Isso e cliente pronto pra comprar indo pro concorrente.
 A buscou.ai monta um blog + motor que publica 3 conteudos por dia
 (90/mes) otimizados pra voce aparecer no Google e nas IAs.
 
-Pagamento unico R$ 2.500 a vista ou R$ 3.000 em 12x.
-Sem mensalidade.
+Implementacao: R$ 2.500 via Pix (a vista) ou R$ 3.000 em 12x no cartao.
+Infra mensal R$ 300 (cartao, cobre tokens de IA do motor).
 
 Posso te mandar uma demo de 2 minutos?
 ```
@@ -121,7 +127,7 @@ Posso te mandar uma demo de 2 minutos?
 Fechou. Vou te mandar:
 
 1. Link da demo (video de 2 min) — mostra o blog + motor funcionando.
-2. Pagina com a oferta (R$ 2.500 a vista ou R$ 3.000 em 12x).
+2. Pagina com a oferta (implementacao R$ 2.500 Pix ou R$ 3.000 12x + infra R$ 300/mes).
 
 Se fizer sentido, pagamento e via Pix (a vista) ou link do cartao.
 Em 7 dias o blog esta no ar. Em 30 dias voce ve os primeiros sinais.
@@ -144,7 +150,7 @@ Qual prefere?
 ### Objecoes comuns
 
 **"E caro."**
-> "R$ 2.500 e pagamento unico. Quanto custa 1 cliente novo pra voce hoje? Se voce gasta R$ 200 por lead no Google Ads, o motor se paga em 12-15 clientes. E depois continua funcionando — nao para quando para de pagar."
+> "Implementacao de R$ 2.500 e unica — uma vez e acabou. Quanto custa 1 cliente novo pra voce hoje? Se voce gasta R$ 200 por lead no Google Ads, se paga em 12-15 clientes. A infra de R$ 300/mes cobre os tokens de IA — uma agencia que entrega 4 posts cobra R$ 3.000/mes; aqui sao 90 posts por R$ 300."
 
 **"Tenho site."**
 > "Ter site e diferente de aparecer. Faz a busca: '[servico] em [cidade]'. Achou seu site? Se nao, o site nao esta funcionando. A buscou.ai nao refaz seu site — entrega um blog otimizado que traz trafego."
@@ -153,7 +159,7 @@ Qual prefere?
 > "7 dias pra o blog estar no ar. 30 dias pra primeiros sinais (indexacao + impressoes). 90 dias pra trafego consolidado. E diferente de anuncio: quando para, para. Aqui o blog continua trabalhando."
 
 **"Tem mensalidade depois?"**
-> "Nao. Voce paga uma vez e o motor fica rodando. Em 12 meses, se quiser continuar com evolucoes (ajustes de algoritmo, novos formatos), rola uma renovacao anual opcional. Mas nao e obrigatoria — o blog e seu."
+> "Tem a infra mensal de R$ 300 que ja e parte do pacote desde o comeco — ela cobre os tokens de IA que o motor consome pra publicar seus 90 posts. Nao e assinatura de servico humano. Se cancelar, o blog continua no ar (foi pago na implementacao), so o motor para de publicar. Comeca 30 dias apos voce pagar a implementacao."
 
 **"Preciso pensar."**
 > "Claro. Enquanto voce pensa, seus concorrentes continuam aparecendo. Posso segurar a condicao ate [data]."
@@ -194,7 +200,7 @@ Isso libera o founder para aquisicao ativa em vez de entrega manual.
 
 O GTM inicial esta consolidado quando:
 
-1. **10+ clientes fechados** com pagamento unico.
+1. **10+ clientes fechados** com implementacao paga + infra mensal ativa.
 2. **Churn tecnico zero** nos primeiros 90 dias de cada cliente.
 3. **Pelo menos 1 caso publico** com resultado mensuravel (IVT subindo).
 4. **NPS medio > 50.**

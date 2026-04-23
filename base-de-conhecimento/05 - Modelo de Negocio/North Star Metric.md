@@ -1,13 +1,13 @@
 ---
 tipo: empresa
 area: Metricas
-tags: [empresa, north-star, kpi, metrica, venda-unica, canonico]
+tags: [empresa, north-star, kpi, metrica, canonico]
 atualizado: 2026-04-23
 ---
 
 # North Star Metric
 
-> **Canonico.** Reflete [[VERDADE_UNICA_BUSCOU]] — modelo de venda unica. NAO usar MRR/ARR/churn de assinatura como metrica principal.
+> **Canonico.** Reflete [[VERDADE_UNICA_BUSCOU]] + [[Decision Log - 2026-04-23 - Infra Mensal]] — modelo **implementacao unica + infra mensal obrigatoria**. A North Star da empresa agora inclui **MRR da infra** como metrica secundaria (nao principal).
 
 ---
 
@@ -61,13 +61,20 @@ Com 90 conteudos/mes publicando desde o dia 7, o volume acumula rapido.
 
 ### Definicao
 
-Numero de clientes novos que pagaram (a vista R$ 2.500 ou parcelado R$ 3.000) no mes.
+Numero de clientes novos que pagaram a **implementacao** (a vista R$ 2.500 via Pix ou parcelado R$ 3.000 em 12x no cartao) no mes.
 
-### Por que essa metrica (e nao MRR)
+### Por que essa metrica (principal) e MRR infra (secundaria)
 
-Modelo e venda unica. Nao ha MRR. Receita depende de novas vendas. Logo:
+Modelo e **implementacao unica + infra mensal**. Ambas contam, mas novos clientes sao o motor de crescimento:
 
-**Receita do mes = (Novos clientes do mes × ticket medio R$ 2.750) + eventuais renovacoes anuais**.
+**Receita do mes = (Novos clientes × ticket medio implementacao R$ 2.750) + (MRR infra R$ 300 × base ativa)**.
+
+Novos clientes e a metrica-alvo porque:
+- Gera upfront grande (R$ 2.500-3.000 imediato).
+- Aumenta base que eventualmente paga infra.
+- Exposicao ao mercado (dog-fooding, indicacao).
+
+MRR infra e a metrica de **saude da base** — se cai, ha churn; se sobe consistente, a empresa e sustentavel mesmo sem aquisicao nova.
 
 ### Targets por periodo
 
@@ -88,11 +95,13 @@ Modelo e venda unica. Nao ha MRR. Receita depende de novas vendas. Logo:
 | Leads qualificados/mes | 100+ | Marketing |
 | Taxa de fechamento | 25-35% | Vendas |
 | CAC | < R$ 400 | Marketing |
-| Ticket medio | R$ 2.700+ | Vendas |
+| Ticket medio implementacao | R$ 2.700+ | Vendas |
 | Tempo de ativacao (onboarding → blog no ar) | 7 dias | Operacao |
 | Primeiros sinais (indexacao + impressoes) | 30 dias | Operacao |
 | Custo operacional/cliente/mes | < R$ 200 | Produto/Infra |
-| Taxa de renovacao anual (validar M12+) | 30-40% | Produto |
+| **MRR infra (R$ 300 × base ativa)** | cresce mes a mes | Produto/Finance |
+| **Churn mensal de infra** | < 5% (M12+) | Produto |
+| **Tempo medio ate 1a cobranca de infra** | D+30 exato | Finance |
 | NPS | > 50 | Produto |
 
 ---
@@ -163,21 +172,21 @@ Para vender, "IVT" e conceitual demais. Usar no pitch:
 
 ---
 
-## Metricas que NAO usamos mais
+## Metricas que NAO usamos
 
-Em modelo de venda unica, nao fazem sentido:
+Mesmo com infra mensal, continuam sem sentido:
 
-- **MRR / ARR** — nao ha receita recorrente principal.
-- **Churn mensal de assinatura** — nao ha assinatura.
-- **LTV baseado em retencao continua** — LTV e quase 100% ticket unico.
-- **Payback do CAC** — e sempre imediato.
-- **Expansao via upgrade de tier** — nao ha tiers.
+- **ARR (Annual Recurring Revenue)** — numero anualizado da infra e util mas nao e principal (implementacao continua sendo upfront).
+- **LTV baseado em anos infinitos de assinatura** — LTV e implementacao + N meses de infra antes de churn. Calculo pragmatico: ticket implementacao + (R$ 300 × tempo medio ate cancelamento infra).
+- **Expansao via upgrade de tier** — nao ha tiers em nenhuma camada.
+- **MRR como North Star principal da empresa** — **e secundaria**. Principal continua "novos clientes fechados/mes" porque e o input, MRR e a consequencia.
 
 ---
 
 ## Notas relacionadas
 
 - [[VERDADE_UNICA_BUSCOU]] — canonico
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — modelo atual
 - [[Modelo de Negocio]]
 - [[Unit Economics]]
 - [[Proposta de Valor]]
