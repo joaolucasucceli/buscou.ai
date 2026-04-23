@@ -57,8 +57,9 @@ post-{NN}-{tipo}-{slug}/
 | # | Tipo | Data | URL | Issue |
 |---|---|---|---|---|
 | 01 | carrossel manifesto | 2026-04-23 | https://www.instagram.com/p/DXfUQawjv8A | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) |
+| 02 | foto IA — dor ICP local | _aguardando publicacao_ | _TBD_ | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) |
 
-Atualizar esta tabela a cada novo post arquivado.
+Atualizar esta tabela a cada novo post arquivado (atualizar URL e data apos publicar).
 
 ## Fontes relacionadas
 
