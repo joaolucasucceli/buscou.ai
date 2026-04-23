@@ -4,11 +4,19 @@
 
 | | |
 |---|---|
-| **Publicado em** | _aguardando publicacao_ |
+| **Publicado em** | 2026-04-23 |
 | **Formato** | Foto unica · 1080x1350 (retrato 4:5) |
-| **URL** | _sera preenchido apos publicar_ |
-| **Issue Linear** | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) |
+| **Issue Linear (produzir)** | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) |
 | **Papel na sequencia** | 2/3 — ativar a dor concreta do ICP local |
+
+## Publicacoes (cross-network)
+
+| Rede | URL | Data | Issue |
+|---|---|---|---|
+| Instagram | https://www.instagram.com/p/DXff54DFAAX/ | 2026-04-23 | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) |
+| TikTok | https://www.tiktok.com/@buscou.ai/photo/7632102698623438096 | 2026-04-23 | [BAI-63](https://linear.app/joao-lucas-ucceli/issue/BAI-63) |
+
+Mesma imagem e mesma legenda em ambas as redes. Aspect ratio 4:5 (nativo IG) nao e otimo pro TikTok (prefere 9:16) — aceitavel pra MVP de paridade; TikTok exibe com padding. Iterar formato nativo em conteudo futuro produzido diretamente pro TikTok.
 
 ## Objetivo editorial
 
