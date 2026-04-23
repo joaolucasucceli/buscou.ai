@@ -11,7 +11,7 @@ atualizado: 2026-04-23
 
 **Versao:** 1.0 — 2026-04-23
 **Fonte da verdade:** `identidade-visual/` (tokens, SVGs, componentes React)
-**Documentacao navegavel:** esta secao `21 - Identidade Visual/`
+**Documentacao navegavel:** esta secao `16 - Identidade Visual/`
 
 ---
 

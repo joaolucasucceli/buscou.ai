@@ -362,7 +362,7 @@ Todo conteudo de conhecimento fica em `base-de-conhecimento/`:
 13 - Agentes/             → Orquestrador + agentes + Prompts (subpasta) + Frameworks Multi-Agente
 14 - Marketing/           → Funil, Dog-fooding, Distribuicao, Tom de Voz, Casos, Concorrentes
 15 - Glossario/           → Termos tecnicos com definicoes
-21 - Identidade Visual/   → Design System (camada visual/UI — separada das 15 canonicas)
+16 - Identidade Visual/   → Design System — docs narrativos (codigo mora em /identidade-visual/)
 Templates/                → Templates padrao para notas
 CHANGELOG.md              → Historico de mudancas estruturais do vault
 ```
@@ -371,21 +371,26 @@ Principio: cada pasta tem uma funcao clara. Se a nota nao couber em nenhuma, **d
 
 ## Camadas do projeto (raiz)
 
-Alem do vault, o projeto tem camadas paralelas na raiz:
+Alem do vault, o projeto tem camadas paralelas na raiz. Mapa fisico completo + politica de nomenclatura em [ESTRUTURA.md](ESTRUTURA.md).
 
 ```
 /base-de-conhecimento/   → Vault Obsidian (conhecimento canonico)
 /identidade-visual/      → Design System de codigo (tokens, SVGs, componentes React)
-/produto/                → Codigo do produto (frontend, backend, pipeline, agents, cms, integracoes)
-/conteudo/               → Producao de conteudo (artigos, clusters, templates, imagens)
 /agentes/                → Prompts e contexto dos agentes IA
+/prototipos/             → HTMLs de prototipo (site publico V1, brand book)
+/supabase/               → Config + migrations SQL
 /CLAUDE.md               → Este arquivo
+/ESTRUTURA.md            → Mapa fisico + politica de nomenclatura
 ```
+
+**Pastas a serem criadas no futuro** (nao existem hoje):
+
+- `/produto/` — codigo da aplicacao (frontend + backend + agents + pipeline + cms + integracoes). Removida em 2026-04-23 porque estava vazia (so READMEs). Quando o codigo comecar, **decidir estrutura primeiro** (Next.js puro vs monorepo com workers) antes de recriar subpastas.
 
 ## Identidade Visual (obrigatoria)
 
-Fonte da verdade: pasta `identidade-visual/` (tokens, SVGs, componentes React)
-+ documentacao navegavel em `base-de-conhecimento/21 - Identidade Visual/`.
+Fonte da verdade de codigo/assets: pasta `identidade-visual/` (tokens, SVGs, componentes React).
+Fonte unica de docs narrativos: `base-de-conhecimento/16 - Identidade Visual/`.
 MOC: `base-de-conhecimento/00 - Verdade Unica/MOC - Identidade Visual.md`.
 **Consultar sempre antes de qualquer trabalho de UI, logo ou copy da marca.**
 
@@ -403,10 +408,10 @@ MOC: `base-de-conhecimento/00 - Verdade Unica/MOC - Identidade Visual.md`.
 
 ### Quando mexer em UI
 
-1. Ler `base-de-conhecimento/21 - Identidade Visual/Regras de Uso.md` (checklist completo).
+1. Ler `base-de-conhecimento/16 - Identidade Visual/Regras de Uso.md` (checklist completo).
 2. Importar `identidade-visual/index.css` no entry point do app.
 3. Consumir tokens e componentes existentes.
-4. Se algo nao existe no DS, criar seguindo `Templates/Template - Componente UI.md` e documentar em `21 - Identidade Visual/` antes de usar.
+4. Se algo nao existe no DS, criar seguindo `Templates/Template - Componente UI.md` e documentar em `16 - Identidade Visual/` antes de usar.
 
 ## Principio Guia
 
