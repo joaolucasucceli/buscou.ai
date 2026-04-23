@@ -59,7 +59,9 @@
       "mcp__linear-mcp__save_issue",
       "mcp__linear-mcp__save_comment",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit -m 'chore\\(BAI-9\\): sync .claude/settings.json pos-sessao *)"
     ],
     "additionalDirectories": [
       "\\tmp\\buscou-wipe",
