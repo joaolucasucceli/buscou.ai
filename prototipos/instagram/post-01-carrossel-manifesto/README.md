@@ -6,9 +6,17 @@
 |---|---|
 | **Publicado em** | 2026-04-23 |
 | **Formato** | Carrossel · 6 cards · 1080x1350 (retrato 4:5) |
-| **URL** | https://www.instagram.com/p/DXfUQawjv8A |
-| **Issue Linear** | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) |
+| **Issue Linear (produzir)** | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) |
 | **Papel na sequencia** | 1/3 — plantar bandeira (lancamento da marca) |
+
+## Publicacoes (cross-network)
+
+| Rede | URL | Data | Issue |
+|---|---|---|---|
+| Instagram | https://www.instagram.com/p/DXfUQawjv8A | 2026-04-23 | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) |
+| TikTok | https://www.tiktok.com/@buscou.ai/photo/7632102014847159553 | 2026-04-23 | [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) |
+
+Carrossel de 6 fotos publicado nas duas redes com **mesma legenda v3** (3 emojis 📱 😬 💬 + 9 hashtags). TikTok aceita Photo Mode multi-foto via Post for Me API sem ajuste — payload idêntico ao do IG, nenhum campo extra em `platform_configurations`. Aspect ratio 4:5 não é nativo do TikTok (prefere 9:16), exibe com padding — aceitável pra MVP de paridade.
 
 ## Objetivo editorial
 

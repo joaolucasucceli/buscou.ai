@@ -58,7 +58,7 @@ Mesmo conteudo pode viver em mais de uma rede — cada linha representa uma peca
 
 | # | Tipo | Data | Instagram | TikTok | Issues |
 |---|---|---|---|---|---|
-| 01 | carrossel manifesto | 2026-04-23 | https://www.instagram.com/p/DXfUQawjv8A | _TBD (BAI-64)_ | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) · [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) |
+| 01 | carrossel manifesto | 2026-04-23 | https://www.instagram.com/p/DXfUQawjv8A | https://www.tiktok.com/@buscou.ai/photo/7632102014847159553 | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) · [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) |
 | 02 | foto IA — dor ICP local | 2026-04-23 | https://www.instagram.com/p/DXff54DFAAX | https://www.tiktok.com/@buscou.ai/photo/7632102698623438096 | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) · [BAI-63](https://linear.app/joao-lucas-ucceli/issue/BAI-63) |
 
 Atualizar esta tabela a cada novo post arquivado (URL e data apos publicar em cada rede).
