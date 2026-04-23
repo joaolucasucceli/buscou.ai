@@ -115,7 +115,18 @@
       "Bash(mkdir -p \"c:/Users/joaol/Desktop/Buscou.ai/prototipos/site-publico-v1\")",
       "Bash(git mv *)",
       "Bash(git rm *)",
-      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline -3)"
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline -3)",
+      "Read(//c/Users/joaol/Desktop/**)",
+      "Bash(xargs head *)",
+      "Bash(git stash *)",
+      "Bash(npx --version)",
+      "Bash(npx create-next-app@latest site --ts --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --turbopack --no-git --yes)",
+      "mcp__linear-mcp__list_issue_labels",
+      "mcp__linear-mcp__create_issue_label",
+      "Bash(npm run *)",
+      "Bash(curl -sI http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Read(//c/Users/joaol/Desktop/Buscou.ai/site/**)"
     ],
     "additionalDirectories": [
       "\\tmp\\buscou-wipe",
