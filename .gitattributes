@@ -1,0 +1,41 @@
+# Normaliza line endings cross-OS
+# Repositorio sempre em LF; checkout local converte se precisar
+* text=auto eol=lf
+
+# Binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Texto explicito (nao ambiguo)
+*.svg text
+*.md text
+*.json text
+*.jsonc text
+*.yaml text
+*.yml text
+*.toml text
+*.css text
+*.scss text
+*.html text
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.mjs text
+*.cjs text
+*.sh text eol=lf
+*.gitignore text
+*.gitattributes text
+*.editorconfig text
