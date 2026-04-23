@@ -17,7 +17,7 @@ Buscou.ai/
 ├── agentes/                Prompts + contexto compartilhado dos agentes IA
 ├── base-de-conhecimento/   Vault Obsidian (16 secoes canonicas 00-16 + Templates)
 ├── identidade-visual/      Design System — CODIGO + ASSETS (tokens, SVGs, React)
-├── prototipos/             HTMLs de prototipo (site publico V1, brand book)
+├── prototipos/             HTMLs de prototipo (site publico V1, brand book) + publicacoes Instagram (instagram/)
 └── supabase/               Config + migrations SQL do banco
 ```
 
@@ -73,3 +73,15 @@ Justifique a nova pasta em 1 frase no commit que a cria. Atualize este `ESTRUTUR
 | Produto (stack tecnico) | `base-de-conhecimento/12 - Sistema/` |
 | Processo operacional | `CLAUDE.md` |
 | Verdade canonica da empresa | `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md` |
+| Publicacoes Instagram (artefatos finais: HTML, PNG, MP4, legenda) | `prototipos/instagram/` |
+| Publicacoes Instagram (conhecimento narrativo: playbook, tom, calendario) | `base-de-conhecimento/14 - Marketing/Social/` (criado em [BAI-34](https://linear.app/joao-lucas-ucceli/issue/BAI-34)) |
+
+## Subpastas de `prototipos/instagram/`
+
+Cada publicacao IG e arquivada em subpasta nomeada `post-{NN}-{tipo}-{slug-curto}/`:
+
+- **NN** — numero sequencial zero-padded (01, 02, ...)
+- **tipo** — `carrossel`, `foto-ia`, `motion`, `reel`, `story`
+- **slug-curto** — 2-5 palavras kebab-case
+
+Estrutura canonica de cada subpasta: `README.md` (ficha) + `source/` (fonte) + `assets/` (binarios finais) + `legenda.md` (copy publicada). Politica completa em [prototipos/instagram/README.md](prototipos/instagram/README.md).
