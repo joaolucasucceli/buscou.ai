@@ -103,7 +103,19 @@
       "Bash(python /tmp/validate_all_links.py)",
       "Bash(python /tmp/final_validation.py)",
       "Bash(python /tmp/truly_broken.py)",
-      "Bash(grep -E '\\\\.\\(json|js|yaml|toml|ts\\)$')"
+      "Bash(grep -E '\\\\.\\(json|js|yaml|toml|ts\\)$')",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" status --short)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" branch --show-current)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline -5 main)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline -5 HEAD)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline main..HEAD)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" diff .claude/settings.json)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" checkout main)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" checkout -b chore/BAI-31-reorganizacao-pastas)",
+      "Bash(mkdir -p \"c:/Users/joaol/Desktop/Buscou.ai/prototipos/site-publico-v1\")",
+      "Bash(git mv *)",
+      "Bash(git rm *)",
+      "Bash(git -C \"c:/Users/joaol/Desktop/Buscou.ai\" log --oneline -3)"
     ],
     "additionalDirectories": [
       "\\tmp\\buscou-wipe",

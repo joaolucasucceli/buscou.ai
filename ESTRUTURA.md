@@ -28,7 +28,7 @@ Buscou.ai/
 Cada pasta da raiz tem responsabilidade unica e disjunta das outras. Se um arquivo nao cabe em nenhuma, repense o que ele e — provavelmente falta contexto ou a pasta que deveria existir e outra.
 
 - `identidade-visual/` tem **codigo** do DS; a **documentacao** do DS mora em `base-de-conhecimento/16 - Identidade Visual/`. Nao duplicar.
-- `agentes/` tem **prompts operacionais** (o "o que falar com o modelo"); o **design** dos agentes mora em `base-de-conhecimento/13 - Agentes/`; a **implementacao** viverá em `produto/` quando existir.
+- `agentes/` tem **prompts operacionais** (o "o que falar com o modelo"); o **design** dos agentes mora em `base-de-conhecimento/13 - Agentes/`; a **implementacao** vivera em `produto/` quando existir.
 
 ## Politica de nomenclatura
 
@@ -58,7 +58,7 @@ Justifique a nova pasta em 1 frase no commit que a cria. Atualize este `ESTRUTUR
 
 - `misc/`, `utils/`, `helpers/`, `shared/` soltos na raiz — ambiguos, viram gaveta.
 - `temp/`, `tmp/`, `backup/`, `old/`, `_archive/` — nao existe arquivo morto neste repo; conteudo obsoleto e deletado na hora (decisao de 2026-04-23, ver CHANGELOG do vault).
-- Pastas vazias com so README placeholder "a implementar" — ver lição aprendida com `/produto/` e `/conteudo/`. Planejamento e spec mora em issue/decision log, nao em arvore de pastas.
+- Pastas vazias com so README placeholder "a implementar" — ver licao aprendida com `/produto/` e `/conteudo/`. Planejamento e spec mora em issue/decision log, nao em arvore de pastas.
 - Duplicidades de conteudo entre camadas — escolha uma fonte unica (ex: docs do DS so no vault; codigo do DS so em `identidade-visual/`).
 
 ## Fontes canonicas (quando duas pastas parecem falar do mesmo)
