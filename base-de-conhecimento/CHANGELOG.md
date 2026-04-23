@@ -4,6 +4,38 @@ Historico de mudancas estruturais + canonicas da base de conhecimento. Seguindo 
 
 ---
 
+## [2.5.0] — 2026-04-23 — Contato oficial canonico (WhatsApp)
+
+Adicao de canal de atendimento oficial na VERDADE_UNICA. Nivel 1 (canonico) — requer Decision Log. Executado no escopo da issue [BAI-24](https://linear.app/joao-lucas-ucceli/issue/BAI-24) dentro da umbrella [BAI-23](https://linear.app/joao-lucas-ucceli/issue/BAI-23) (Pagina de vendas buscou.ai).
+
+### Novo (core canonico)
+
+- `05 - Modelo de Negocio/Decision Log - 2026-04-23 - Contato Oficial.md` — formaliza WhatsApp como canal unico de leads entrantes na V1. Inclui formato canonico do numero (`+55 27 99696-0847` / `5527996960847` / `https://wa.me/5527996960847`), mensagem pre-preenchida padrao, alternativas descartadas (formulario, email, chat widget, telefone de voz), trade-offs e gatilho de revisao (volume 30-50 leads/semana, ou quando ICP secundario superar 30%).
+
+### Reescrito (VERDADE_UNICA)
+
+- `00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`:
+  - **Nova secao 11 — Contato Oficial.** Tabela canonica com 4 campos (numero humano, formato internacional, link wa.me, mensagem padrao) + regras de uso canonico + uso NAO-canonico (suporte pos-venda nao e esse canal) + regra de consistencia tecnica (constante centralizada no codigo) + gatilho de revisao.
+  - **Secao 8 ganhou subsecao "Canal de contato (V1)"** apontando pro canonical na secao 11.
+  - **Links cruzados** ampliados com o novo Decision Log.
+
+### Motivacao
+
+Antes desta release o numero de WhatsApp ja tinha sido definido pelo dono mas nao estava em lugar canonico — ia acabar sendo hardcoded em multiplos artefatos (landing, prompts de agente, emails de prospeccao) sem fonte unica. A landing publica (futura [BAI-30](https://linear.app/joao-lucas-ucceli/issue/BAI-30)) precisava referenciar o numero como decisao registrada, nao como escolha ad-hoc de 1 componente.
+
+### Impacto operacional
+
+- **Landing page (BAI-30):** constante `WHATSAPP_NUMBER` / `WHATSAPP_URL` em `produto/site/src/lib/constants.ts` puxa exatamente os valores desta release. Todos os CTAs consomem dessa constante.
+- **Agente Prospeccao:** templates de email outbound devem referenciar `+55 27 99696-0847` como CTA. Prompts em `13 - Agentes/Agente Prospeccao.md` validados/atualizados em onda futura.
+- **Oferta Comercial:** quando reescrita pra copy de vendas V1, puxa numero dessa secao 11.
+
+### Governanca
+
+- Nivel 1 (altera VERDADE_UNICA) → Decision Log criado (feito) + aprovacao do dono (feita 2026-04-23) + cascata no mesmo ciclo (esta entrada + VERDADE_UNICA atualizada).
+- Gatilho de revisao explicito no Decision Log — reabrir novo Decision Log quando volume/ICP secundario/CRM passarem os limites definidos.
+
+---
+
 ## [2.4.0] — 2026-04-23 — Limpeza profunda de wiki-links + alinhamento Estados/Eventos
 
 Terceira varredura apos a Fase 8 revelou tres eixos de residuo nao relacionado aos arquivos deletados: ~70 wiki-links quebrados historicos, divergencia de nomenclatura entre `Estados e Maquina de Estado.md` e os schemas, e residuo pontual de framing de consultoria. Nivel 2 (operacional) — nao altera a VERDADE_UNICA, nao requer Decision Log.
