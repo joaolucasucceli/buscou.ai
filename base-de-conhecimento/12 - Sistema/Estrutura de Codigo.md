@@ -364,7 +364,7 @@ features/{feature}/
 | Subpasta | O que contem | Exemplo |
 |---|---|---|
 | `components/` | Componentes React usados exclusivamente dentro dessa feature. Se um componente for necessario em 2+ features, ele vai para `components/shared/`. | `business-step-form.tsx` na feature onboarding |
-| `schemas/` | Schemas [[Zod]] para validacao de formularios e payloads. Cada step/entidade tem seu schema. | `business.schema.ts` valida o passo de negocio no onboarding |
+| `schemas/` | Schemas Zod para validacao de formularios e payloads. Cada step/entidade tem seu schema. | `business.schema.ts` valida o passo de negocio no onboarding |
 | `hooks/` | React hooks que encapsulam estado e logica da feature. Prefixo `use-`. | `use-onboarding.ts` gerencia estado do wizard |
 | `services/` | Funcoes que fazem chamadas a API ou Supabase. Camada de comunicacao. | `onboarding.service.ts` envia dados para o backend |
 | `utils/` | Funcoes puras auxiliares. Transformacoes, formatacoes, calculos. | `onboarding-mapper.ts` transforma resposta para formato do banco |
@@ -378,7 +378,7 @@ O backend segue uma arquitetura em camadas bem definida. Cada camada tem respons
 
 ### 1. Repositories — Acesso ao Banco
 
-- **Responsabilidade**: Acesso direto ao banco de dados via [[Supabase]] client. Queries puras, sem logica de negocio.
+- **Responsabilidade**: Acesso direto ao banco de dados via Supabase client. Queries puras, sem logica de negocio.
 - **Naming**: `{entity}.repository.ts`
 - **Metodos padrao**: `findById()`, `findAll()`, `findByOrganizationId()`, `create()`, `update()`, `delete()`
 - **Regra**: NUNCA contem logica de negocio. So traduz operacoes para queries Supabase.
@@ -596,7 +596,7 @@ O middleware em `lib/supabase/middleware.ts` intercepta todas as rotas `(auth)` 
 | `blog` | Completo — listagem + artigo + SEO | + newsletter integrada + lead magnets |
 | `support` | Nao implementado | Chat IA com escalonamento para humano |
 | `analytics` | Nao implementado | Dashboard automatico com GSC + GA4 |
-| `agents` | 3 ativos (Estrategista, Pesquisador, Redator) | 11 ativos (todos os agentes do [[Arquitetura Multi-Agente]]) |
+| `agents` | 3 ativos (Estrategista, Pesquisador, Redator) | 11 ativos (todos os agentes do [[Arquitetura de Agentes]]) |
 
 ---
 
@@ -607,5 +607,5 @@ O middleware em `lib/supabase/middleware.ts` intercepta todas as rotas `(auth)` 
 - [[Frontend]] — Especificacoes da interface do usuario
 - [[Orquestracao]] — Fluxo de execucao dos agentes
 - [[Jobs]] — Sistema de tarefas assincronas
-- [[Entidades e Schema]] — Modelo de dados do banco
+- [[Entidades e Schema - Fase 1 (Onboarding)]] — Modelo de dados do banco (Fase 1 e porta de entrada; linka para Fase 2 e Fase 3)
 - [[Arquitetura do Sistema]] — Visao geral da arquitetura

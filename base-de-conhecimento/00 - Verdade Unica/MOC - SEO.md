@@ -2,7 +2,7 @@
 tipo: indice
 area: SEO
 tags: [moc, indice, seo]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # MOC - Search Engine Optimization (SEO)
@@ -73,35 +73,24 @@ Frameworks especificos para cada tipo de negocio:
 - [[Tendencias Globais]] - Para onde o SEO esta indo
 - [[Dados e Estatisticas]] - Numeros e metricas do mercado
 
-## Negocio
+## Aplicacao comercial
 
-- [[Como Oferecer SEO como Servico]] - Guia passo a passo
-- [[Precificacao de Servicos SEO]] - Modelos e tabelas de preco
-- [[Proposta Comercial - Modelo]] - Template de proposta
-- [[Relatorio para Cliente - Modelo]] - Template de relatorio mensal
+Para como a buscou.ai aplica SEO dentro do modelo comercial proprio, ver:
 
-## Aprendizado
-
-- [[Cursos Online]] - Melhores cursos (gratuitos e pagos)
-- [[Canais YouTube - BR]] - Canais brasileiros
-- [[Canais YouTube - Gringo]] - Canais internacionais
-- [[Blogs e Sites de Referencia]] - Blogs para acompanhar
-- [[Podcasts]] - Podcasts de SEO
-- [[Livros]] - Leitura recomendada
-- [[Comunidades e Foruns]] - Onde trocar ideias
+- [[VERDADE_UNICA_BUSCOU]] — fonte canonica do produto, oferta e posicionamento
+- [[Oferta Comercial]] — pitch e objecoes
+- [[Modelo de Negocio]] — visao operacional
 
 ## Execucao e Resultados
 
 - [[MOC - Execucao]] - Mapa completo de execucao e negocio
-- [[Playbook - Cliente Novo em 30 Dias]] - Primeiros 30 dias com cliente
-- [[Playbook - Auditoria Relampago]] - Auditoria rapida como isca de vendas
-- [[Dashboard de Resultados]] - Rastreamento consolidado de resultados
-- [[Nichos Testados]] - Portfolio de nichos trabalhados
-- [[Palavras-Chave Dominadas]] - Keywords rankeadas
+- [[Fluxo V1]] - Fluxo automatizado completo do produto (pipeline da V1)
+- [[Agente Monitor]] - Agente responsavel por rastrear rankings, trafego e mencoes em IA
+- [[Dashboard do Cliente]] - Interface onde o cliente acompanha metricas consolidadas
 
 ## Referencia Rapida
 
 - [[Glossario SEO e AIO]] - Todos os termos explicados
 - [[MOC - AIO]] - Mapa de conteudo sobre AI Optimization
 - [[MOC - Execucao]] - Mapa de execucao e negocio
-- [[MOC - Roadmap de Aprendizado]] - Trilha de estudos do zero ao avancado
+- [[MOC - Empresa]] - Modelo comercial, produto e go-to-market

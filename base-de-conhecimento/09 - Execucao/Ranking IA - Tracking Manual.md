@@ -89,7 +89,7 @@ Citado em 15 = Score de 15%
 | Resultado | Acao |
 |---|---|
 | Nao citado em nenhuma plataforma | Verificar se AI crawlers estao liberados, adicionar schema, publicar em plataformas externas |
-| Citado em 1-2 plataformas | Expandir distribuicao ([[11 - Distribuicao/]]), atualizar conteudo |
+| Citado em 1-2 plataformas | Expandir distribuicao ([[Estrategia de Distribuicao]]), atualizar conteudo |
 | Citado em 3+ plataformas | Manter e expandir, documentar como caso de sucesso |
 | Perdeu citacao | Verificar se conteudo ficou desatualizado, checar se concorrente atualizou |
 
@@ -124,5 +124,4 @@ Considere investir em [[Otterly.ai]] ou [[LLMrefs]] quando:
 - [[Template - Experimento AIO]] - Template para experimentos
 - [[Testes IA]] - Prompts prontos para teste
 - [[Como IA Escolhe Respostas]] - Por que IA cita ou nao cita
-- [[Dashboard de Resultados]] - Visao consolidada
-- [[Checklist Operacional]] - Rotina semanal de testes
+- [[Agente Monitor]] - Versao automatizada deste tracking (pos-V1)

@@ -1,7 +1,7 @@
 ---
 sincronizado_em: 2026-04-23
-fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 6)
-versao: 1.0.0
+fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md (secao 6) + Decision Log - 2026-04-23 - Infra Mensal.md
+versao: 1.1.0
 tipo: snapshot-contexto-agente
 ---
 
@@ -18,13 +18,14 @@ tipo: snapshot-contexto-agente
 | "agencia" | Nao somos | "tecnologia", "sistema" |
 | "gestao de X" | Nao gerimos | "automacao de X" |
 | "consultoria" | Nao consultamos | "tecnologia" |
-| "servico mensal" | Nao e servico, nao e mensal | "tecnologia com pagamento unico" |
-| "assinatura" | Nao ha | "pagamento unico" |
-| "mensalidade" | Nao ha | "pagamento unico" |
+| "servico mensal" | Nao e servico | "tecnologia com implementacao unica + infra mensal" |
+| "mensalidade de servico" | A infra mensal e passthrough, nao servico | "infra mensal" ou "custo de operacao do motor" |
+| "mensalidade de gestao" | Idem | "infra mensal" |
+| "plano mensal" | Nao ha planos | "a oferta" ou "o modelo comercial" |
+| "assinatura SaaS" (em copy publico) | Comercialmente nao somos assinatura | "implementacao + infra" |
 | "plano" (Starter/Growth/Scale) | Nao ha planos | "a oferta" |
 | "SaaS" (em copy de vendas) | Tecnicamente sim, comercialmente nao | "tecnologia", "sistema" |
-| "subscription" | Idem | "pagamento unico" |
-| "contrato mensal" | Nao ha | "pagamento unico" |
+| "contrato mensal" | Nao ha contrato de servico mensal | "implementacao + infra" |
 | "horas de trabalho" | Nao vendemos horas | "motor", "tecnologia" |
 | "piloto automatico" | Gasto, abstrato | "automacao de presenca" |
 | "sistema operacional" | Abstrato | cortar ou "tecnologia" |
@@ -34,7 +35,9 @@ tipo: snapshot-contexto-agente
 | "disruptivo" | Inflated | cortar |
 | "solucao" (soltinho) | Esvaziado | "tecnologia", "sistema", "motor" |
 | "excelencia" | Outdoor | mostrar com numero |
-| "qualidade" | Idem | mostrar com numero |
+| "qualidade" (como atributo solto) | Idem | mostrar com numero |
+| "pagamento unico" (sem contexto) | O modelo nao e so "pagamento unico" — tem infra mensal | "implementacao unica + infra mensal" |
+| "sem mensalidade" (afirmacao absoluta) | Ha mensalidade de infra (passthrough) | "sem mensalidade de servico" ou "sem fee de gestao mensal" |
 
 ---
 
@@ -47,7 +50,11 @@ tipo: snapshot-contexto-agente
 | "motor" | O componente de geracao automatica |
 | "estrutura" | O componente blog |
 | "automacao" | O que o motor faz |
-| "pagamento unico" | Como e vendido |
+| "implementacao unica" | Componente 1 do modelo comercial |
+| "infra mensal" | Componente 2 — **nome preferido em copy publico** |
+| "custo de operacao do motor" | Forma explicativa da infra mensal |
+| "taxa de infraestrutura" | Forma tecnica |
+| "mensalidade de infra" | Aceitavel internamente; em copy publico preferir "infra mensal" |
 | "aparecer" | O que entregamos |
 | "busca" | Onde aparecemos |
 | "SEO" / "AIO" | Canais (em contexto tecnico/operacional) |
@@ -58,11 +65,25 @@ tipo: snapshot-contexto-agente
 
 ---
 
+## Regra de comunicacao — duas linhas sempre explicitas
+
+- **Certo:** "Implementacao R$ 2.500 (ou 12x R$ 250) + infra mensal R$ 300 a partir do mes 2."
+- **Certo:** "Paga a implementacao uma vez. Paga a infra que mantem o motor rodando."
+- **Certo:** "Mes 1 incluso na implementacao. Infra comeca no mes 2."
+- **Errado:** "Plano de R$ 300/mes."
+- **Errado:** "Assinatura de R$ 300."
+- **Errado:** "Mensalidade do servico."
+- **Errado:** "Pacote completo por R$ X total." (nao unificar)
+
+**Nunca** unificar implementacao + infra em um numero totalizado como se fosse um pacote unico. Sempre apresentar as duas linhas separadamente.
+
+---
+
 ## Como traduzir jargao tecnico em copy de vendas
 
 Lista complementar para agentes que geram copy de venda:
 
-| Jargao tecnico | Tradução para cliente |
+| Jargao tecnico | Traducao para cliente |
 |---|---|
 | "SEO" | "aparecer no Google" |
 | "AIO" / "GEO" | "ser a resposta no ChatGPT / Gemini / Perplexity" |
@@ -72,6 +93,8 @@ Lista complementar para agentes que geram copy de venda:
 | "Schema markup" | "dados que ajudam o Google a entender seu negocio" |
 | "Topic cluster" | "sistema de conteudo interligado" |
 | "On-page SEO" | "melhorar seu site pra atrair mais gente" |
+| "Tokens LLM" | "custo da inteligencia que escreve — parte da infra mensal" |
+| "Subscription" (interno) | "infra mensal" (publico) |
 
 Regra de ouro: se o cliente precisaria pesquisar a palavra no Google para entender, nao e copy de vendas. Traduzir.
 
@@ -95,4 +118,4 @@ Qualquer texto gerado por agente que contiver termo proibido deve ser:
 
 ---
 
-*Snapshot gerado em 2026-04-23. Lista autoritativa em `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md` secao 6.*
+*Snapshot gerado em 2026-04-23 (versao 1.1.0). Lista autoritativa em `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md` secao 6. Historico: versao 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23) ao incluir excecoes da infra mensal conforme Decision Log - 2026-04-23 - Infra Mensal.*

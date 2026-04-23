@@ -163,7 +163,7 @@ Use estes prompts no **ChatGPT, Claude ou Gemini** como seu assistente de conteu
 
 **Quando usar:** Para toda pagina com objetivo de conversao.
 **Saida esperada:** 5 CTAs prontos para implementar.
-**Dica:** Veja [[ICP - Cliente Ideal]] para alinhar o CTA com o perfil do publico.
+**Dica:** Veja [[ICP por Nicho]] para alinhar o CTA com o perfil do publico.
 
 ---
 

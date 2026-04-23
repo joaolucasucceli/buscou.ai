@@ -83,7 +83,7 @@ O plano gratuito oferece acesso basico para comecar. O plano All-in-One inclui r
 
 - Profissionais de SEO que querem entender sua visibilidade em IA
 - Equipes de marketing que precisam de provas concretas de presenca em LLMs
-- Empresas que desejam comecar com [[AIO]] sem investimento inicial (plano gratis)
+- Empresas que desejam comecar com [[O que e AIO|AIO]] sem investimento inicial (plano gratis)
 - Quem precisa mapear keywords tradicionais para visibilidade em IA
 - Benchmarking competitivo em busca generativa
 

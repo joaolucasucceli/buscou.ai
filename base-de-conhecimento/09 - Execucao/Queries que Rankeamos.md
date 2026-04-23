@@ -2,14 +2,14 @@
 tipo: rastreamento
 area: AIO
 tags: [dominio, queries, ia, citacoes, tracking]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Queries que Rankeamos em IA
 
 ## Objetivo
 
-Documentar em quais queries de inteligencia artificial seu conteudo (ou do cliente) e citado, mencionado ou recomendado. Enquanto [[Palavras-Chave Dominadas]] rastreia rankings em busca tradicional (Google), esta nota rastreia a **visibilidade em motores de IA** — o novo campo de batalha de 2026. Os dados aqui alimentam o [[Dashboard de Resultados]] e informam a estrategia de [[Framework AIO Completo|AIO]].
+Documentar em quais queries de inteligencia artificial o conteudo publicado pelo motor buscou.ai e citado, mencionado ou recomendado. Esta nota rastreia a **visibilidade em motores de IA** — o novo campo de batalha de 2026. Os dados aqui sao consolidados pelo [[Agente Monitor]], expostos no [[Dashboard do Cliente]] e informam a estrategia de [[Framework AIO Completo|AIO]].
 
 ---
 
@@ -155,9 +155,8 @@ Consulte [[Como IA Escolhe Respostas]] e aplique:
 
 ## Notas Relacionadas
 
-- [[Dashboard de Resultados]] — Visao consolidada de todas as metricas
-- [[Palavras-Chave Dominadas]] — Rankings em busca tradicional (SEO)
-- [[Nichos Testados]] — Contexto por nicho e cliente
+- [[Agente Monitor]] — Agente que rastreia citacoes em IA em tempo real
+- [[Dashboard do Cliente]] — Interface consolidada de metricas
 - [[Como IA Escolhe Respostas]] — Fatores que determinam citacao
 - [[Como IAs Buscam e Citam Conteudo]] — Mecanismo tecnico (RAG, crawlers)
 - [[Sub-Query Optimization]] — Otimizacao para fan-out queries

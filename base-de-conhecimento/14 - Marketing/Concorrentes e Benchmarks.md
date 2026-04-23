@@ -2,12 +2,12 @@
 tipo: referencia
 area: Negocio
 tags: [referencias, concorrentes, benchmarks, competicao]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Concorrentes e Benchmarks
 
-Mapeamento detalhado dos concorrentes diretos e adjacentes para posicionar nosso sistema de [[Automacao SEO e AIO]] no mercado. Esta analise alimenta decisoes de [[Pricing]], [[Posicionamento]] e [[Roadmap de Produto]].
+Mapeamento detalhado dos concorrentes diretos e adjacentes para posicionar a buscou.ai no mercado. Esta analise alimenta decisoes de pricing ([[Oferta Comercial]]), posicionamento ([[Conceito e Posicionamento]]) e [[Roadmap do Produto]].
 
 ---
 
@@ -38,7 +38,7 @@ Mapeamento detalhado dos concorrentes diretos e adjacentes para posicionar nosso
 
 **Pontos fracos:** Focado exclusivamente em conteudo - nao faz distribuicao automatica, nao tem SDR, nao tem CRM integrado, nao faz link building automatizado.
 
-**O que aprendemos/roubamos:** O modelo de "agente com habilidades" e excelente UX. O pipeline de 6 estagios e uma referencia para nosso [[Sistema Multi-Agente]]. O preco de $39-239/mes define o range de mercado.
+**O que aprendemos/roubamos:** O modelo de "agente com habilidades" e excelente UX. O pipeline de 6 estagios e uma referencia para nossa [[Arquitetura de Agentes]]. O preco de $39-239/mes define o range de mercado.
 
 **Fontes:** [Frase Pricing](https://www.frase.io/pricing) | [Frase Features](https://www.frase.io/features) | [Frase Blog - AI Agents for SEO](https://www.frase.io/blog/ai-agents-for-seo)
 
@@ -90,7 +90,7 @@ Mapeamento detalhado dos concorrentes diretos e adjacentes para posicionar nosso
 
 **Pontos fracos:** Nao e um sistema autonomo - requer operacao humana constante; geracao de conteudo IA limitada (5 artigos no Essential); sem distribuicao; sem technical SEO profundo.
 
-**O que aprendemos:** A analise de SERP em tempo real e o scoring de conteudo sao funcionalidades essenciais. Nosso [[Agente Editor]] precisa implementar algo similar ao Content Score do Surfer. O Topical Map e referencia para nosso [[Agente Estrategista]].
+**O que aprendemos:** A analise de SERP em tempo real e o scoring de conteudo sao funcionalidades essenciais. Nosso [[Agente Revisor]] precisa implementar algo similar ao Content Score do Surfer. O Topical Map e referencia para nosso [[Agente Estrategista]].
 
 **Fontes:** [Surfer Pricing](https://surferseo.com/pricing/) | [Surfer SEO Pricing Guide](https://www.eesel.ai/blog/surfer-seo-pricing) | [Surfer SEO Review](https://firebearstudio.com/blog/surfer-seo-review.html)
 
@@ -211,13 +211,16 @@ Contratos anuais ou multi-anuais, pricing negociado caso a caso. Sem precos publ
 4. **Auto-distribuicao**: Publicacao + redes sociais + email automatico
 5. **Pipeline completo**: Da pesquisa de keyword ate a venda do servico, tudo automatizado
 
-### Pricing sugerido (baseado na competicao):
+### Pricing canonico vs mercado
 
-| Plano | Preco Sugerido | Justificativa |
-|-------|---------------|---------------|
-| Starter | R$197/mes | Abaixo de Frase ($39 = ~R$210), acima de Koala |
-| Professional | R$497/mes | Compete com Frase Pro + Surfer Essential |
-| Agency | R$997/mes | Abaixo de qualquer agencia humana |
-| Enterprise | R$2.497+/mes | Fracao do custo do Conductor |
+| Componente | Preco | Justificativa |
+|---|---|---|
+| **Implementacao buscou.ai** (one-time) | **R$ 2.500 a vista** ou **R$ 3.000 em 12x de R$ 250** (cliente assume juros) | Cobre blog publicado, motor configurado, onboarding, mes 1 incluso. Paga uma vez. |
+| **Infra mensal buscou.ai** (recurring) | **R$ 300/mes a partir do mes 2** | Passthrough de custo operacional (tokens LLM + APIs + hospedagem). Transparente, sem margem opaca. |
+| **Investimento total ano 1** | ~R$ 5.800-6.300 (implementacao + 11 meses de infra) | ~R$ 500/mes medio — abaixo de qualquer plano mensal de Frase Pro, Surfer Essential ou agencia humana equivalente (R$ 3K-15K/mes). |
 
-> **Nota:** Ver [[Modelo de Pricing]] para analise detalhada e [[Estrategia Go-to-Market]] para plano de lancamento.
+**Notas historicas:**
+- Em 2026-04-23 (1a decisao): documento originalmente propunha tabela de tiers (Starter R$ 197 / Professional R$ 497 / Agency R$ 997 / Enterprise R$ 2.497). Modelo descartado conforme [[Decision Log - 2026-04-23]].
+- Em 2026-04-23 (2a decisao): o modelo "pagamento unico puro sem mensalidade" foi evoluido para "implementacao unica + infra mensal passthrough" conforme [[Decision Log - 2026-04-23 - Infra Mensal]], porque os custos operacionais do motor (LLM + APIs) nao cabiam dentro de um ticket unico de R$ 2.500-3.000 a longo prazo sem inviabilizar a escala.
+
+> **Ver tambem:** [[Oferta Comercial]] para pitch e objecoes.

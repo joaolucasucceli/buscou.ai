@@ -15,7 +15,7 @@ atualizado: 2026-04-22
 
 ## O que e
 
-O Google Search Console (GSC) e uma ferramenta gratuita do Google que permite monitorar, manter e solucionar problemas relacionados a presenca do seu site nos resultados de pesquisa do Google. E considerada indispensavel para qualquer profissional de [[SEO]] que queira entender como o Google enxerga o seu site.
+O Google Search Console (GSC) e uma ferramenta gratuita do Google que permite monitorar, manter e solucionar problemas relacionados a presenca do seu site nos resultados de pesquisa do Google. E considerada indispensavel para qualquer profissional de [[O que e SEO|SEO]] que queira entender como o Google enxerga o seu site.
 
 ## Principais Funcionalidades
 

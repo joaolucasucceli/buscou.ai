@@ -11,7 +11,9 @@ atualizado: 2026-04-23
 
 **Fonte unica da verdade:** [[VERDADE_UNICA_BUSCOU]].
 **Governanca de decisoes:** [[Governanca - Decisoes Canonicas]].
-**Decision Log vigente:** [[Decision Log - 2026-04-23]].
+**Decision Logs vigentes:**
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto, oferta-base, linguagem.
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao para modelo implementacao + infra mensal.
 
 ---
 
@@ -69,7 +71,7 @@ Os agentes antigos SDR (com BANT obrigatorio) e Cobranca (recorrente) nao existe
 
 - [[Arquitetura do Sistema]] — multi-tenant
 - [[Modulos]] — API interna
-- [[Entidades e Schema]] — Postgres
+- [[Entidades e Schema - Fase 1 (Onboarding)]] — Postgres (porta de entrada; linka para Fase 2 e Fase 3)
 - [[Estados e Maquina de Estado]]
 - [[Eventos e Gatilhos]]
 - [[Permissoes e Roles]]
@@ -105,6 +107,7 @@ Os agentes antigos SDR (com BANT obrigatorio) e Cobranca (recorrente) nao existe
 ## Referencias
 
 - [[Concorrentes e Benchmarks]]
+- [[Casos de Estudo do Mercado]] — benchmarks de pricing e estrategia dos concorrentes
 - [[Ferramentas de Automacao SEO]]
 - [[Frameworks Multi-Agente]]
 
@@ -114,25 +117,27 @@ Os agentes antigos SDR (com BANT obrigatorio) e Cobranca (recorrente) nao existe
 
 | Metrica | Valor |
 |---|---|
-| Ticket medio | R$ 2.750 (mix 50/50 a vista / parcelado) |
-| Oferta unica | R$ 2.500 a vista ou R$ 3.000 em 12x |
+| Ticket implementacao (medio) | R$ 2.750 (mix 50/50 a vista / parcelado) |
+| Implementacao | R$ 2.500 a vista ou R$ 3.000 em 12x |
+| Infra mensal | R$ 300/mes por cliente ativo a partir do mes 2 |
 | Volume de producao | 90 conteudos/mes = ~720K caracteres |
 | Tamanho por artigo | 800-1.200 palavras |
 | Timeline de ativacao | 7 dias ate blog no ar |
 | Primeiros sinais | 30 dias |
-| Custo variavel por cliente/mes | R$ 80-160 |
-| Custo operacional 12m/cliente | R$ 960-1.920 |
-| Margem bruta ano 1 por cliente | 35-60% |
-| Margem ano 2+ (com renovacao) | 90%+ |
+| Mes 1 | Incluso na implementacao |
+| Custo operacional real por cliente/mes | R$ 120-225 |
+| Margem da infra mensal | 25-60% (R$ 75-180 por cliente/mes) |
+| Margem bruta implementacao | 75-80% (R$ 2.500 − ~R$ 500 onboarding) |
+| Margem bruta primeiro ano por cliente | 60-75% (implementacao + 11 meses de infra − custo operacional) |
 | CAC-alvo | < R$ 400 |
-| Break-even | 4-5 clientes novos/mes |
-| LTV (sem renovacao) | R$ 2.750 |
-| LTV (com renovacao hipotetica 30-40%) | ~R$ 3.350 |
-| LTV/CAC (cenario base) | 9x |
-| Payback | Imediato (pagamento upfront) |
-| Meta 12 meses | 150-180 clientes · R$ 400-500K receita acumulada |
+| Break-even operacional da empresa | ~40-60 clientes ativos (infra cobre custos fixos) |
+| LTV cenario base (implementacao + 24 meses de infra ativa) | ~R$ 9.950 |
+| LTV/CAC (cenario base) | 25x |
+| Payback implementacao | Imediato (pagamento upfront) |
+| Churn de infra alvo | < 10%/ano no ano 1, < 5%/ano em regime |
+| Meta 12 meses | 100-180 clientes ativos · R$ 600-900K receita acumulada total (implementacao + infra) |
 
-Nao usamos mais: MRR, ARR, churn de assinatura, LTV baseado em retencao continua.
+**MRR real:** base de infra ativa (N clientes × R$ 300). Nao e assinatura SaaS de servico — e infra passthrough com margem pequena. Detalhes em [[Unit Economics]] e [[Decision Log - 2026-04-23 - Infra Mensal]].
 
 ---
 
@@ -150,7 +155,8 @@ Nao usamos mais: MRR, ARR, churn de assinatura, LTV baseado em retencao continua
 
 - [[VERDADE_UNICA_BUSCOU]] — fonte unica da verdade (inegociavel)
 - [[Governanca - Decisoes Canonicas]] — como decisoes mudam
-- [[Decision Log - 2026-04-23]] — decisoes canonicas em vigor
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto, oferta-base, linguagem
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial para implementacao + infra
 - [[MOC - Identidade Visual]] — marca, tom de voz, design system
 - [[MOC - SEO]] — base de conhecimento SEO
 - [[MOC - AIO]] — base de conhecimento AIO

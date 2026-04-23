@@ -9,7 +9,7 @@ atualizado: 2026-04-23
 
 > Fonte canonica: [[VERDADE_UNICA_BUSCOU]] secao 7 (fluxo de venda). Este documento detalha o funil de aquisicao da buscou.ai — blog gera trafego, landing converte, pagamento fecha. Sem BANT, sem qualificacao obrigatoria, sem reuniao obrigatoria.
 
-Relacionado: [[Estrategia de Conteudo Autonomo]] | [[Oferta Comercial]] | [[Site Publico]] | [[ICP - Cliente Ideal]] | [[Modelo de Negocio]]
+Relacionado: [[Estrategia de Conteudo Autonomo]] | [[Oferta Comercial]] | [[Site Publico]] | [[ICP por Nicho]] | [[Modelo de Negocio]]
 
 ---
 
@@ -95,14 +95,16 @@ Apos captura, sequencia automatica via Resend:
 ```
 Lead clica CTA do e-mail ou no blog
   → Chega na landing buscou.ai
-    → Ve oferta unica (R$ 2.500 a vista / R$ 3.000 em 12x)
+    → Ve oferta: implementacao R$ 2.500 a vista (ou 12x R$ 250) + infra mensal R$ 300 a partir do mes 2
       → Opcao A: compra direto (80% dos casos — self-service)
       → Opcao B: clica em "ficou com duvida? agende 20 min"
           → Call opcional com humano
           → Humano usa diagnostico pre-gerado pelo [[Agente Estrategista]] no dominio do prospect
           → Se fecha, prospect compra na mesma call
-    → Pagamento via gateway (Stripe/Asaas)
-      → [[Agente Pagamento]] confirma webhook
+    → Checkout via gateway (Stripe/Asaas):
+      - Cobra a implementacao (a vista ou 12 parcelas)
+      - Cadastra cartao recorrente para a infra mensal (subscription agendada para D+30)
+      → [[Agente Pagamento]] confirma webhook (dois fluxos)
         → Ativacao (ver [[Onboarding Automatico]])
 ```
 

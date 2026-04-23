@@ -37,25 +37,25 @@ Pagamento → Conta → Onboarding → Business Context → Estrategia → Conte
 
 ---
 
-## Etapa 1 — Pagamento
+## Etapa 1 — Pagamento (duas linhas)
 
-Cliente escolhe a oferta na landing e finaliza o checkout (Stripe ou Asaas).
+Cliente escolhe a oferta na landing e finaliza o checkout (Stripe ou Asaas). O checkout cobra a **implementacao** e cria a **subscription da infra mensal** agendada para o mes 2.
 
 | Campo | Detalhe |
 |---|---|
 | Quem executa | Cliente (acao) + Sistema (processamento) |
 | Tempo estimado | 1-3 min |
-| Input | Selecao de modalidade (a vista R$ 2.500 / parcelado 12x R$ 3.000) + dados de pagamento |
-| Output | Pagamento confirmado, webhook `payment_intent.succeeded` disparado |
-| Tabela afetada | `pagamentos` (linha com `gateway_customer_id`, `modalidade`, `status: pago`, `valor`, `data`) |
+| Input | Selecao da modalidade de implementacao (a vista R$ 2.500 / parcelado 12x de R$ 250) + dados de pagamento + cartao recorrente para infra (R$ 300/mes a partir do mes 2) |
+| Output | Implementacao confirmada (webhook `checkout.session.completed`) + subscription da infra criada com `trial_end` em D+30 (mes 1 "incluso" — comeca a cobrar no mes 2) |
+| Tabela afetada | `compras` (implementacao), `parcelas_implementacao` (1-12 se parcelado), `assinaturas_infra` (status `pending_start`) |
 | Proximo passo | Criacao automatica da conta |
 
 **Detalhes tecnicos:**
-- Stripe Checkout Session em modo `payment` (nao `subscription` — e compra unica).
-- Parcelado 12x: modalidade `payment_with_installments` (Stripe) ou equivalente no Asaas.
-- Webhook escuta `payment_intent.succeeded` e `payment_intent.payment_failed`.
-- Metadata inclui `email`, `nome`, `modalidade` (a vista / 12x).
-- Em caso de falha, fluxo nao prossegue (cliente ve erro do gateway).
+- Stripe Checkout em modo `payment` para a implementacao (a vista) OU `payment_with_installments` (12x).
+- Stripe Subscription criada em paralelo com `trial_end` de 30 dias para a infra mensal — primeira cobranca automatica no mes 2.
+- Asaas equivalente: checkout unico + assinatura recorrente (suporte nativo a 12x no cartao).
+- Metadata distingue `tipo: implementacao` vs `tipo: infra` nos webhooks de pagamento (para o [[Agente Pagamento]] rotear corretamente).
+- Em caso de falha na implementacao: fluxo nao prossegue (cliente ve erro do gateway). Se falha so na subscription da infra mas implementacao ok: continua, cliente e notificado para ajustar cartao antes do mes 2.
 
 ---
 

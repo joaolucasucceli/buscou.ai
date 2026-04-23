@@ -9,7 +9,7 @@ atualizado: 2026-04-23
 
 > Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. "Nos usamos nosso proprio sistema para gerar nossos proprios leads." E o argumento de venda numero 1 da buscou.ai. Este documento define como rastrear, documentar e apresentar os resultados do nosso proprio motor.
 
-Relacionado: [[Estrategia de Conteudo Autonomo]] | [[Prova Social]] | [[Oferta Comercial]] | [[ROI para Cliente]] | [[Funil Completo]]
+Relacionado: [[Estrategia de Conteudo Autonomo]] | [[Oferta Comercial]] | [[Modelo de Negocio]] | [[Funil Completo]]
 
 ---
 
@@ -169,9 +169,8 @@ Essa resposta funciona porque:
 
 - [[Estrategia de Conteudo Autonomo]]
 - [[Funil Completo]]
-- [[Prova Social]]
 - [[Oferta Comercial]]
-- [[ROI para Cliente]]
+- [[Modelo de Negocio]]
 - [[Agente Monitor]]
 - [[Panorama SEO Brasil 2026]]
 - [[LinkedIn e Medium]]

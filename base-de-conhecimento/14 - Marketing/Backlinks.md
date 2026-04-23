@@ -127,7 +127,7 @@ A versao moderna nao e publicar artigos aleatorios em massa. Em vez disso:
 - [[Citacoes e Mencoes]] — Mencoes de marca (linked e unlinked)
 - [[Parasite SEO]] — Publicacao em dominios de alta autoridade
 - [[E-E-A-T]] — Autoridade e confianca
-- [[Dashboard de Resultados]] — Metricas consolidadas
+- [[Agente Monitor]] — Agente que rastreia aquisicao e perda de backlinks
 
 ---
 

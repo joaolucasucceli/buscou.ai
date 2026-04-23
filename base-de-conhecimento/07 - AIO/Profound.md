@@ -18,7 +18,7 @@ atualizado: 2026-04-22
 
 O Profound e uma plataforma premium de marketing full-stack que ajuda marcas a entender, analisar, construir e medir sua visibilidade em buscas por IA. A empresa recentemente garantiu uma rodada Series B de $35 milhoes liderada pela Sequoia Capital e atende 10% das empresas Fortune 500, ajudando-as a conquistar mais negocios a partir de ChatGPT, Gemini e outros LLMs.
 
-E considerada uma das ferramentas mais avancadas do segmento de [[AIO]], com foco em dados de volume de busca em IA que anteriormente eram invisiveis para profissionais de marketing.
+E considerada uma das ferramentas mais avancadas do segmento de [[O que e AIO|AIO]], com foco em dados de volume de busca em IA que anteriormente eram invisiveis para profissionais de marketing.
 
 ## Principais Funcionalidades
 
@@ -70,7 +70,7 @@ Posicionado como solucao premium para marcas de medio e grande porte.
 - Mostra o que esta acontecendo, mas a execucao exige outras ferramentas
 - Nao inclui pesquisa de keywords SEO, auditoria tecnica ou link building
 - Sem opcao self-service para planos menores
-- Foco exclusivo em visibilidade — nao substitui ferramentas de [[SEO]] tradicionais
+- Foco exclusivo em visibilidade — nao substitui ferramentas de [[O que e SEO|SEO]] tradicionais
 
 ## Profound vs Alternativas
 

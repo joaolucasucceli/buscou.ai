@@ -36,7 +36,7 @@ Entram na V1 completa. No MVP inicial (primeiros 10-20 clientes) alguns podem ro
 8. **[[Agente Distribuidor]]** — RSS + sitemap + ping GSC (V1); cross-posting em LinkedIn/Medium (V1.2); Reddit/parasite (V2).
 9. **[[Agente Suporte]]** — chatbot FAQ operacional 24/7. Escalacao automatica para humano em duvidas fora do escopo.
 10. **[[Agente Prospeccao]]** — outbound paralelo (e-mails + LinkedIn) para gerar funil novo. Nao qualifica BANT — apenas gera trafego para a landing.
-11. **[[Agente Pagamento]]** — monitor de status do gateway (Stripe/Asaas). Nao e cobranca recorrente — e confirmacao de pagamento unico e acompanhamento das 12 parcelas do parcelado.
+11. **[[Agente Pagamento]]** — monitor de dois fluxos no gateway (Stripe/Asaas): (a) implementacao (compra unica a vista ou 12 parcelas) e (b) infra mensal (subscription recorrente R$ 300 a partir do mes 2). Smart retry em falhas; 3 falhas consecutivas na infra pausam o motor.
 
 ### Orquestrador
 

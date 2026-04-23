@@ -177,7 +177,12 @@ Versao em ingles (EUA/Europa) e espanhol (LATAM). Pricing em USD/EUR.
 Com 1000+ clientes, a buscou.ai acumula dataset unico (o que rankeia por nicho, o que IA cita, benchmarks). Vender como feature premium ou relatorio de mercado.
 
 ### Pricing evolui?
-Decisao a tomar com dados. Pode-se adicionar modulos pagos, renovacao premium, tiers de motor (basico/avancado) — mas sempre mantendo **a oferta de entrada como pagamento unico**.
+Decisao a tomar com dados. Evolucoes possiveis:
+- **Pacotes de infra expandida** (V1.2+): cliente que quer canais adicionais (LinkedIn, Medium, Reddit) paga infra mensal maior (ex: R$ 500/mes em vez de R$ 300).
+- **Modulos one-time pagos** (V2): relatorios personalizados, integracoes especificas, auditorias pontuais.
+- **White-label para agencias** (V2+): licenciamento diferente — parceiro revende.
+
+**Nao** evoluir para tiers (Starter/Growth/Scale) nem para "plano mensal de servico". A estrutura canonica e **implementacao unica + infra mensal** (ver [[VERDADE_UNICA_BUSCOU]] secao 5).
 
 ---
 
@@ -224,7 +229,7 @@ Versao anterior prometia 11 agentes. O modelo de venda unica reduz:
 | Distribuidor | — | — | ✓ | ✓ |
 | Suporte (chatbot) | — | — | — | ✓ |
 | SDR (descartado no modelo venda unica) | — | — | — | — |
-| Cobranca (nao precisa — pagamento unico upfront) | — | — | — | — |
+| Pagamento (renomeacao + novo escopo — 2 fluxos: implementacao 12x + infra mensal R$ 300) | — | ✓ | ✓ | ✓ |
 
 3 agentes MVP, 6 em V2, 7 em V3. Mais enxuto, mais focado.
 

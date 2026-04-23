@@ -2,7 +2,7 @@
 tipo: indice
 area: AIO
 tags: [moc, indice, aio, geo, aeo, llmo]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # MOC - AI Optimization (AIO)
@@ -77,10 +77,11 @@ O AIO nao substitui o SEO — ele complementa. Veja as conexoes:
 
 ## Execucao e Resultados
 
-- [[Playbook - Aparecer na IA em 30 Dias]] - O playbook mais importante: semana a semana
+- [[Framework AIO Completo]] - As 6 fases da execucao de AIO
 - [[Template - Experimento AIO]] - Template para documentar testes de citacao
 - [[Queries que Rankeamos]] - Rastrear em quais queries de IA somos citados
-- [[Dashboard de Resultados]] - Visao consolidada de resultados SEO + AIO
+- [[Agente Monitor]] - Agente que rastreia AI Overviews, Perplexity, ChatGPT
+- [[Dashboard do Cliente]] - Interface com metricas consolidadas SEO + AIO
 
 ## Mercado e Tendencias
 
@@ -95,4 +96,4 @@ O AIO nao substitui o SEO — ele complementa. Veja as conexoes:
 - [[Glossario SEO e AIO]] - Todos os termos explicados
 - [[MOC - SEO]] - Mapa de conteudo de SEO
 - [[MOC - Execucao]] - Mapa de execucao e negocio
-- [[MOC - Roadmap de Aprendizado]] - Trilha de estudos
+- [[MOC - Empresa]] - Modelo comercial, produto e go-to-market

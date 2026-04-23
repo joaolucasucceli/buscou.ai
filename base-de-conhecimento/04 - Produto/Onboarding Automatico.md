@@ -2,7 +2,7 @@
 tipo: produto
 area: UX
 tags: [produto, onboarding, wizard, automatico, ux]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Onboarding Automatico — Wizard de 11 Etapas
@@ -253,7 +253,7 @@ atualizado: 2026-04-22
 **Ao concluir**:
 1. Sistema gera [[Objeto Business Context]] (versao 1)
 2. [[Agente Estrategista]] roda: analisa nicho, gera clusters, define keywords
-3. Projeto criado no banco ([[Entidades e Schema]])
+3. Projeto criado no banco ([[Entidades e Schema - Fase 1 (Onboarding)]])
 4. Dashboard ativado para o cliente
 5. Pipeline inicia — primeiro conteudo em 48-72h
 

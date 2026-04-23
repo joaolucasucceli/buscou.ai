@@ -18,7 +18,7 @@ Relacionado: [[Arquitetura de Agentes]] | [[Inputs dos Agentes]] | [[Objeto Busi
 Ponto unico de entrada de jobs. Coordena os 11 agentes da V1:
 
 - **6 core (pipeline de producao):** Pesquisador → Estrategista → Redator → Revisor → Visual → Publicador (depois Distribuidor + Monitor).
-- **5 complementares:** Distribuidor (publicacao pos-publish), Monitor (continuo), Suporte (transversal), Prospeccao (outbound paralelo), Pagamento (webhooks do gateway).
+- **5 complementares:** Distribuidor (publicacao pos-publish), Monitor (continuo), Suporte (transversal), Prospeccao (outbound paralelo), Pagamento (webhooks do gateway — dois fluxos: implementacao + infra mensal, incluindo pausar/retomar motor conforme status da infra).
 
 Agentes nao se comunicam diretamente — toda coordenacao passa aqui via MCP.
 
@@ -135,6 +135,22 @@ Agentes nao se comunicam diretamente — toda coordenacao passa aqui via MCP.
 13. [08:44] Orquestrador registra [[Agente Monitor]] para tracking continuo.
 
 14. Estado: COMPLETED.
+```
+
+**Cenario alternativo — motor pausado por inadimplencia da infra:**
+
+```
+1. [D+8 00:00] Cron diario detecta cliente com 3 falhas consecutivas de cobranca da infra.
+2. [D+8 00:01] [[Agente Pagamento]] emite evento `motor.pausar_por_inadimplencia` para o Orquestrador.
+3. [D+8 00:02] Orquestrador:
+   - Atualiza `organizacoes.status` para `motor_paused`.
+   - Cancela jobs em QUEUED para esse cliente (content_pipeline).
+   - Notifica [[Agente Suporte]] para acionar campanhas de reativacao.
+4. Cron de calendario editorial para esse cliente passa a ignorar jobs enquanto status e `motor_paused`.
+5. [Regularizacao] Cliente atualiza cartao → Agente Pagamento emite `motor.retomar_apos_regularizacao`.
+6. Orquestrador:
+   - Atualiza `organizacoes.status` de volta para `live_active`.
+   - Proximo ciclo do cron retoma producao normal.
 ```
 
 **Tempo total**: ~45 minutos. **Custo estimado**: ~$0,85 em API tokens.

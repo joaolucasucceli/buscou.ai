@@ -30,21 +30,22 @@ Relacionado: [[VERDADE_UNICA_BUSCOU]] | [[Modelo de Negocio]] | [[Unit Economics
 |               |               |                               |               |
 | RECURSOS      | CANAIS        |                               | RECEITAS      |
 | CHAVE         |               |                               |               |
-|               | Blog proprio  |                               | Venda unica   |
+|               | Blog proprio  |                               | Implementacao |
 | Motor IA      |   (dog-food)  |                               | R$ 2.500 Pix  |
 | Infra cloud   | Prospecao     |                               | R$ 3.000 12x  |
-| Base conhec.  | Indicacao     |                               | (sem mensal)  |
-| Dados perform | Parcerias     |                               | + renovacao   |
-|               | Anuncios      |                               |   opcional    |
+| Base conhec.  | Indicacao     |                               | +             |
+| Dados perform | Parcerias     |                               | Infra mensal  |
+|               | Anuncios      |                               | R$ 300/mes    |
 +---------------+---------------+-------------------------------+---------------+
 |                               |                                               |
 | ESTRUTURA DE CUSTOS           | FONTES DE RECEITA                             |
 |                               |                                               |
-| Variaveis: R$ 80-160          | Venda unica da tecnologia:                    |
-|   por cliente/mes             |  - R$ 2.500 a vista                           |
-| + ferramentas fixas + dev     |  - R$ 3.000 parcelado ate 12x                 |
-| + marketing                   | + renovacao anual opcional                    |
-|                               | + blog adicional                              |
+| Variaveis: R$ 120-225         | 1) Implementacao (one-time):                  |
+|   por cliente ativo/mes       |    - R$ 2.500 a vista                         |
+|   (LLM + APIs + infra +       |    - R$ 3.000 parcelado ate 12x               |
+|    taxa de gateway)           | 2) Infra mensal (a partir do mes 2):          |
+| + ferramentas fixas + dev     |    - R$ 300/mes por cliente ativo             |
+| + marketing                   | + Blog adicional + modulos especiais          |
 +-------------------------------+-----------------------------------------------+
 ```
 
@@ -75,7 +76,7 @@ Ver [[VERDADE_UNICA_BUSCOU]] secao 3. Resumo executivo:
 
 Ver [[VERDADE_UNICA_BUSCOU]] secoes 1, 2, 4. Resumo em uma frase:
 
-> Tecnologia que coloca empresas nos resultados de busca e nas respostas de IA automaticamente. Blog + Motor, 90 conteudos/mes, pagamento unico.
+> Tecnologia que coloca empresas nos resultados de busca e nas respostas de IA automaticamente. Blog + Motor, 90 conteudos/mes, implementacao unica + infra mensal.
 
 Detalhamento em [[Proposta de Valor]].
 
@@ -100,25 +101,29 @@ Detalhamento em [[Proposta de Valor]].
 
 | Fase | Tipo | Como |
 |---|---|---|
-| Pre-venda | Self-service + IA | Landing clara, chatbot responde duvidas |
+| Pre-venda | Self-service + IA | Landing clara com os dois precos explicitos, chatbot responde duvidas |
 | Call opcional | Humano (fundador no inicio) | 20-30 min. So quando cliente pede. Nao obrigatoria. |
-| Onboarding | Semi-auto → full-auto | Wizard 5 passos. Dominio + tom definidos. Blog no ar em ate 7 dias. |
-| Uso | Self-service | Motor roda sozinho. Dashboard com publicacoes + metricas. |
-| Suporte | IA + humano | Chatbot resolve 80%. Humano em escalacao. SLA 24-48h. |
-| Renovacao (opcional) | Outbound gentil | 10-11 meses apos compra. |
+| Onboarding | Semi-auto → full-auto | Wizard 5 passos. Dominio + tom + cartao recorrente cadastrado. Blog no ar em ate 7 dias. |
+| Uso (mes 1) | Self-service | Motor roda sozinho. Infra incluida. Dashboard com publicacoes + metricas. |
+| Uso (mes 2+) | Self-service | Infra mensal comeca a ser cobrada automaticamente. Cliente ve as duas linhas no dashboard billing. |
+| Suporte | IA + humano | Chatbot resolve 80%. Humano em escalacao. SLA 24-48h (infra ativa). |
+| Retencao de infra | Automatica + campanhas | Smart retry em falha. Notificacoes pre-cobranca. Campanhas de reativacao em `motor_paused`. |
 
 ---
 
 ## 5. Fontes de receita
 
-| Fonte | Tipo | Valor | % projetada |
+| Fonte | Tipo | Valor | Peso estrategico |
 |---|---|---|---|
-| **Venda unica da tecnologia** | Upfront | R$ 2.500 / R$ 3.000 | 85% |
-| **Renovacao anual opcional** | Anual | R$ 500-1.000 | 8% |
-| **Blog adicional (filial)** | Upfront | R$ 2.500-3.000 | 5% |
-| **Modulos adicionais** | Sob demanda | Variavel | 2% |
+| **Implementacao** | Upfront (one-time) | R$ 2.500 a vista / R$ 3.000 em 12x | 60-70% da receita nos primeiros 12 meses (caixa upfront) |
+| **Infra mensal** | Recurring (a partir do mes 2) | R$ 300/mes por cliente ativo | 30-40% no ano 1; cresce ano a ano conforme base se acumula |
+| **Blog adicional (filial)** | Upfront + infra | R$ 2.500-3.000 + R$ 300/mes | 3-5% |
+| **Pacotes de infra expandida (V1.2+)** | Recurring | R$ 500+/mes | Upside |
+| **Modulos adicionais** | Sob demanda | Variavel | Upside |
 
-**Pagamento:** Pix (a vista) ou cartao em ate 12x (juros do cliente). Sem boleto recorrente. Sem assinatura.
+**Pagamento:**
+- Implementacao: Pix (a vista) ou cartao em ate 12x (juros do cliente).
+- Infra mensal: cartao recorrente cadastrado no onboarding (pode ser o mesmo da implementacao).
 
 ---
 
@@ -174,11 +179,14 @@ Detalhamento em [[Proposta de Valor]].
 
 | Item | Valor |
 |---|---|
-| Tokens LLM | R$ 40-80 |
-| Infra rateada | R$ 20-40 |
-| Ferramentas SEO/AIO rateadas | R$ 15-30 |
+| Tokens LLM (90 conteudos) | R$ 60-120 |
+| Infra rateada (Supabase + Vercel + CDN) | R$ 20-40 |
+| Ferramentas SEO/AIO rateadas (Ahrefs, Otterly) | R$ 25-40 |
 | Storage e backup | R$ 5-10 |
-| **Total** | **R$ 80-160/cliente/mes** |
+| Taxa de gateway (subscription recorrente) | R$ 10-15 |
+| **Total** | **R$ 120-225/cliente/mes** |
+
+Esse custo e **coberto pela infra mensal** (R$ 300) com margem de R$ 75-180 por cliente.
 
 ### Custos fixos (empresa)
 
@@ -191,7 +199,10 @@ Detalhamento em [[Proposta de Valor]].
 
 Detalhes em [[Unit Economics]].
 
-**Meta de estrutura:** margem bruta 75%+ no primeiro ano por cliente (12 meses de operacao pos-venda unica). 90%+ em anos subsequentes se renovacao.
+**Meta de estrutura:**
+- Implementacao: margem bruta 75%+ por venda (R$ 2.500 − ~R$ 500 de onboarding).
+- Infra mensal: margem bruta 40-60% por cliente/mes (R$ 300 − R$ 120-180 custo real). Escala melhora a margem com eficiencia de prompt caching e volumes de APIs.
+- **Break-even operacional da empresa:** ~40-60 clientes ativos (a infra mensal cobre custos fixos).
 
 ---
 
@@ -206,7 +217,9 @@ Detalhes em [[Unit Economics]].
 - [[ICP por Nicho]] / [[Nicho Inicial]]
 - [[Go To Market Inicial]]
 - [[Roadmap do Produto]]
-- [[Decision Log - 2026-04-23]]
+- [[Agente Pagamento]] — operador das duas cobrancas
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial
 
 ---
 

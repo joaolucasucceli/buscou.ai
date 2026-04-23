@@ -31,7 +31,7 @@ O loop roda em 3 velocidades diferentes, cada uma com escopo e impacto distintos
 | Fonte | Dados | Frequencia de Coleta | Metodo |
 |---|---|---|---|
 | Google Search Console | Rankings, impressoes, cliques, CTR, posicao media | Diario (API) | [[Agente Monitor]] via GSC API |
-| Teste de Citacao IA | SPI score, citacoes por plataforma e prompt | Semanal | [[Playbook - Teste de Citacao em IA]] |
+| Teste de Citacao IA | SPI score, citacoes por plataforma e prompt | Semanal | [[Testes IA]] via [[Agente Monitor]] |
 | Google Analytics 4 | Trafego, sessoes, bounce rate, tempo na pagina | Diario (API) | GA4 API |
 | Supabase Events | Conversoes, sign-ups, interacoes do cliente | Real-time | Supabase webhooks |
 | Agente Revisor | SEO score do conteudo, legibilidade, originalidade | Por artigo | Pipeline interno |
@@ -142,7 +142,7 @@ Resultado registrado → Humano revisa relatorio diario
 - Agente que detecta sinais: [[Agente Monitor]]
 - Agente que orquestra acoes: [[Orquestrador]]
 - Framework de priorizacao usado nas decisoes: [[Framework de Priorizacao SEO + AIO]]
-- Teste ativo de citacoes: [[Playbook - Teste de Citacao em IA]]
+- Teste ativo de citacoes: [[Testes IA]]
 - Tratamento tecnico de falhas: [[Tratamento de Falhas]]
 - Failure modes que o loop deve prevenir: [[Failure Modes]]
 - North star alimentada pelo loop: [[North Star Metric]]

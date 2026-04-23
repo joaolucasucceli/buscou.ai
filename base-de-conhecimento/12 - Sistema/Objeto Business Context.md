@@ -255,7 +255,7 @@ Se faltar campo critico → onboarding incompleto → bloquear execucao → noti
 
 - [[Onboarding Automatico]] — Wizard que gera o contexto (11 etapas)
 - [[Inputs dos Agentes]] — Quais campos cada agente consome
-- [[Entidades e Schema]] — Tabela `contextos_negocio` no banco
+- [[Entidades e Schema - Fase 1 (Onboarding)]] — Tabela `contextos_negocio` no banco (Bloco B)
 - [[Feedback Loop]] — Como o contexto evolui automaticamente
 - [[Orquestrador]] — Quem injeta o contexto nos agentes
 - [[Agente Estrategista]] — Primeiro agente a usar apos onboarding

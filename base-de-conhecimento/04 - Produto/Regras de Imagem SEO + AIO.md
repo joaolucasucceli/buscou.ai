@@ -114,7 +114,7 @@ Nem toda imagem precisa de legenda, mas quando aplicavel ela reforça o contexto
 | **PNG** | Screenshots, imagens com texto legivel | Fotos (arquivo muito pesado) |
 | **NUNCA** | BMP, TIFF, GIF (exceto animacoes curtas) | — |
 
-**Por que WebP**: compressao 25-35% melhor que JPEG com qualidade visual equivalente. Suporte universal em browsers modernos (Chrome, Firefox, Safari, Edge). Melhor para [[Core Web Vitals]].
+**Por que WebP**: compressao 25-35% melhor que JPEG com qualidade visual equivalente. Suporte universal em browsers modernos (Chrome, Firefox, Safari, Edge). Melhor para [[SEO Tecnico|Core Web Vitals]].
 
 ### 5. Tamanho e Compressao
 
@@ -181,7 +181,7 @@ Otimizacao de imagens pensando em como IAs consomem e referenciam paginas:
 2. **Evitar imagens genericas bonitas sem funcao**: IA nao se beneficia de stock photos decorativos
 3. **IA usa paginas como fonte de resposta**: paginas com estrutura visual boa (imagens relevantes + alt text descritivo + posicionamento logico) sao fontes mais completas e preferidas
 4. **Alt text como contexto semantico**: para IA, o alt text funciona como uma descricao adicional do conteudo da pagina — alt texts descritivos enriquecem o entendimento semantico
-5. **Imagens com dados estruturados**: [[Schema Markup]] do tipo `ImageObject` ajuda buscadores e crawlers de IA a entender o papel da imagem no conteudo
+5. **Imagens com dados estruturados**: [[Schema Markup para IA|Schema Markup]] do tipo `ImageObject` ajuda buscadores e crawlers de IA a entender o papel da imagem no conteudo
 6. **Nao depender da imagem para informacao critica**: IA nao "ve" imagens — toda informacao importante deve estar no texto tambem. Imagem complementa, nunca substitui
 
 ---
@@ -299,7 +299,7 @@ Usar `ImageObject` dentro do schema `BlogPosting` para cada imagem relevante do 
 |---|---|---|
 | Imagem sem relacao com texto | Confunde leitor, nao agrega SEO, IA ignora | [[Agente Visual]] valida coerencia via plano visual |
 | Alt text generico ("imagem") | Perde oportunidade de SEO, inacessivel para leitores de tela | Template de alt com keyword + contexto (automatico) |
-| Arquivo pesado (>500KB) | Piora LCP e CLS ([[Core Web Vitals]]), aumenta bounce rate | Compressao automatica obrigatoria (Sharp) |
+| Arquivo pesado (>500KB) | Piora LCP e CLS ([[SEO Tecnico|Core Web Vitals]]), aumenta bounce rate | Compressao automatica obrigatoria (Sharp) |
 | Excesso de imagens (10+) | Poluicao visual, peso excessivo da pagina, diluicao de relevancia | Limite: 2-3 (V1), 4-6 (V2) |
 | Imagem com texto embutido | Texto nao indexavel por buscadores, ilegivel em mobile, inacessivel | Regra: NUNCA texto renderizado na imagem |
 | Sem lazy loading | Piora LCP significativamente, carrega imagens fora do viewport | Atributo `loading="lazy"` em todas (exceto hero) |
@@ -359,4 +359,4 @@ Antes de publicar qualquer artigo, o [[Agente Revisor]] e o [[Agente Publicador]
 - [[On-Page SEO]]
 - [[Schema Markup para IA]]
 - [[E-E-A-T]]
-- [[Core Web Vitals]]
+- [[SEO Tecnico|Core Web Vitals]]

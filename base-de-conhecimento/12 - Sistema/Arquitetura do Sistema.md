@@ -74,7 +74,7 @@ Responsavel pela interface do usuario. Server-Side Rendering para SEO do proprio
 PostgREST expoe automaticamente as tabelas do PostgreSQL como API REST com filtragem, paginacao e RLS integrado. Edge Functions (Deno runtime) tratam logica customizada: webhooks do Stripe, orquestracao de agentes, validacoes complexas.
 
 ### 3. Business Logic Layer (Agent Orchestrator)
-Workers Node.js consomem jobs do BullMQ. O [[Agente Orquestrador]] decide qual agente executar, com qual modelo, e em qual prioridade. Cada agente usa o Claude Agent SDK com tools MCP para acessar APIs externas.
+Workers Node.js consomem jobs do BullMQ. O [[Orquestrador]] decide qual agente executar, com qual modelo, e em qual prioridade. Cada agente usa o Claude Agent SDK com tools MCP para acessar APIs externas.
 
 ### 4. Data Layer (PostgreSQL com RLS)
 Fonte unica de verdade. Row Level Security garante isolamento multi-tenant — um cliente nunca ve dados de outro. Views materializadas para dashboards de metricas. Indices em colunas de busca frequente (org_id, project_id, status).
@@ -130,7 +130,7 @@ Filas separadas por prioridade e tipo:
 
 Ver [[Stack Tecnologica]] para decisoes arquiteturais detalhadas e ADRs.
 Ver [[Modulos]] para a decomposicao funcional do sistema.
-Ver [[Entidades e Schema]] para o modelo de dados completo.
+Ver [[Entidades e Schema - Fase 1 (Onboarding)]] para o modelo de dados (Fase 1 e porta de entrada; linka para Fase 2 e Fase 3).
 Ver [[Frontend]] para a arquitetura completa do frontend (rotas, layouts, design system).
 Ver [[Estrutura de Codigo]] para a organizacao de pastas e convencoes do projeto.
 Ver [[Orquestracao]] para o fluxo de execucao dos agentes.

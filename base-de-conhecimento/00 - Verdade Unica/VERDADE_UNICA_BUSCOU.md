@@ -13,6 +13,8 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 > aqui **esta errado** e deve ser corrigido para refletir este documento.
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
+> **Ultima alteracao Nivel 1:** 2026-04-23 — novo modelo comercial com infra mensal
+> (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
 
 ---
 
@@ -23,11 +25,10 @@ nas respostas de IA automaticamente.**
 
 Nao e agencia.
 Nao e consultoria.
-Nao e SaaS tradicional com mensalidade.
-Nao e servico.
+Nao e servico de gestao.
 
 E **tecnologia vendida como produto fechado**: estrutura (blog) + motor
-(sistema de geracao de conteudo).
+(sistema de geracao de conteudo), com implementacao unica e infra mensal.
 
 ---
 
@@ -79,13 +80,16 @@ sirva outros, o ICP do marketing e local.
 
 ## 4. PRODUTO
 
-O produto tem **dois componentes**:
+O produto tem **dois componentes tecnicos**: a estrutura que o cliente recebe (blog) e o motor que publica nela (buscou.ai).
+
+Comercialmente, esses componentes se traduzem em **duas linhas de pagamento** (ver secao 5): a **implementacao** (one-time) entrega o blog e configura o motor; a **infra mensal** (recurring) mantem o motor rodando.
 
 ### Componente 1 — Estrutura (Blog)
 
 - Site/blog completo, configurado e hospedado.
 - Otimizado tecnicamente para SEO + AIO (schema, llms.txt, Core Web Vitals, interlinking).
 - Integracao com dominio do cliente.
+- **Entregue uma vez** na implementacao. Depois disso, pertence ao cliente (permanece no ar mesmo se a infra for cancelada).
 
 ### Componente 2 — Motor (buscou.ai)
 
@@ -95,44 +99,84 @@ O produto tem **dois componentes**:
 - **Volume mensal: ate 720.000 caracteres otimizados** (90 × ~8.000 chars).
 - Cada conteudo otimizado para SEO + AIO (answer-first, schema, dados, interlinking).
 - Publicacao automatica no blog do cliente.
+- **Requer infra mensal ativa** para operar. Sem infra paga, motor pausa (mas o blog e o conteudo ja publicado permanecem no ar).
 
 ### Timeline de ativacao (canonica)
 
 - **Em ate 7 dias:** blog no ar, identidade aplicada, estrutura SEO+AIO, motor ativo.
 - **Em ate 30 dias:** indexacao no Google, primeiras impressoes, primeiras aparicoes em IA.
-- **A partir dai:** presenca organica escala continuamente.
+- **Mes 1 (0-30 dias):** incluso na implementacao — cliente nao paga infra ainda.
+- **Mes 2 em diante:** infra mensal de R$ 300 comeca a ser cobrada.
+- **A partir dai:** presenca organica escala continuamente enquanto a infra estiver ativa.
 
 ### O que o cliente recebe
 
-1. Blog publicado e funcionando em dominio proprio (ate 7 dias).
-2. 90 conteudos/mes gerados automaticamente (~720K caracteres).
+1. Blog publicado e funcionando em dominio proprio (ate 7 dias) — permanente.
+2. 90 conteudos/mes gerados automaticamente (~720K caracteres) — enquanto infra ativa.
 3. Presenca organica crescente em Google + IAs (primeiros sinais em 30 dias).
 
 ---
 
 ## 5. MODELO COMERCIAL
 
-### Oferta unica — sem variacoes
+O cliente paga **duas coisas** — separadas e explicitas:
+
+### 5.1 — Implementacao (one-time)
 
 | Forma de pagamento | Valor |
 |---|---|
 | **A vista** | **R$ 2.500** |
-| **Parcelado ate 12x (cliente assume juros)** | **R$ 3.000** |
+| **Parcelado ate 12x (cliente assume juros)** | **R$ 3.000** (12x de R$ 250) |
 
-### Regras inegociaveis
+**Cobre:**
+- Blog publicado e configurado no dominio do cliente.
+- Motor configurado, primeira estrategia gerada.
+- Onboarding guiado.
+- **Mes 1 de operacao do motor incluso** (primeiros ~90 conteudos).
 
-- **Sem mensalidade.**
-- **Sem tiers (nao ha Starter / Growth / Scale).**
-- **Sem setup separado.**
-- **Sem SaaS com assinatura.**
-- **Pagamento unico.** O cliente paga uma vez e tem a tecnologia funcionando.
+**Pago uma vez.** A vista via checkout direto. Parcelado via cartao de credito (12x).
+
+### 5.2 — Infra mensal (recurring)
+
+| Item | Valor |
+|---|---|
+| **Infra mensal (a partir do mes 2)** | **R$ 300/mes** |
+
+**Cobre:**
+- Tokens LLM do motor (Claude, OpenAI) para gerar os 90 conteudos/mes.
+- APIs externas (Ahrefs, DataForSEO, Google Search Console, Stripe).
+- Hospedagem e infra do pipeline de producao.
+
+**Natureza:** passthrough de custo operacional com margem pequena. Nao e mensalidade de servico — e taxa de infraestrutura que permite o motor rodar.
+
+**Cobrado via:** cartao recorrente cadastrado no onboarding (pode ser o mesmo cartao do parcelamento da implementacao).
+
+**Primeira cobranca:** mes 2 (30 dias apos o blog ir ao ar).
+
+### Politica de inadimplencia (infra)
+
+Se o cliente deixar de pagar a infra mensal:
+
+1. Gateway tenta cobranca 3 vezes com smart retry (D+0, D+3, D+7).
+2. Se todas falharem: **motor pausa** — para de gerar e publicar novos conteudos.
+3. **Blog + conteudo ja publicado permanecem no ar** no dominio do cliente.
+4. Cliente recebe notificacoes em cada tentativa + aviso de pausa.
+5. Ao regularizar: motor retoma no proximo ciclo.
+
+### O que **NAO** existe
+
+- **Sem tiers** (Starter / Growth / Scale).
+- **Sem planos** mensais de servico.
+- **Sem mensalidade de gestao**, de consultoria, de agencia.
+- **Sem setup separado da implementacao.**
+- **Sem assinatura de SaaS** (no sentido comercial classico).
 
 ### Enquadramento
 
-- **Tecnicamente:** backend e um SaaS centralizado (um motor serve N clientes).
-- **Comercialmente:** vendemos **"a tecnologia do blog + motor buscou.ai"** como produto fechado.
+- **Tecnicamente:** backend e um SaaS centralizado (um motor serve N clientes) com infra recorrente.
+- **Comercialmente:** vendemos **"a tecnologia do blog + motor buscou.ai"** com **implementacao unica + infra mensal**.
 
-O cliente nao compra assinatura. Compra a tecnologia.
+O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e paga a infraestrutura que a mantem rodando.
 
 ---
 
@@ -145,13 +189,13 @@ O cliente nao compra assinatura. Compra a tecnologia.
 | "agencia" | Nao somos agencia. |
 | "gestao de X" | Nao gerimos — entregamos tecnologia. |
 | "consultoria" | Nao consultamos. |
-| "servico mensal" | Nao e servico. Nao e mensal. |
-| "assinatura" | Nao ha assinatura. |
-| "mensalidade" | Nao ha mensalidade. |
+| "servico mensal" | Nao e servico. |
+| "mensalidade de servico" | Mensalidade so existe para infra (componente tecnico), nao para servico. |
+| "mensalidade de gestao" | Idem. |
+| "plano mensal" | Nao ha planos. |
+| "assinatura SaaS" (em copy publico) | Comercialmente nao somos assinatura SaaS. |
 | "plano" (Starter/Growth/Scale) | Nao ha planos. Oferta e unica. |
-| "SaaS" (em copy de vendas) | Tecnicamente sim, comercialmente nao. |
-| "subscription" | Idem. |
-| "contrato mensal" | Nao ha. |
+| "contrato mensal" | Nao ha contrato de servico mensal. |
 | "horas de trabalho" | Nao vendemos horas. |
 | "piloto automatico" | Abstrato — usar "automacao de presenca" ou termo concreto. |
 | "sistema operacional" | Abstrato — cortar. |
@@ -169,11 +213,24 @@ O cliente nao compra assinatura. Compra a tecnologia.
 | "motor" | O componente de geracao automatica. |
 | "estrutura" | O componente blog. |
 | "automacao" | O que o motor faz. |
-| "pagamento unico" | Como e vendido. |
+| "implementacao unica" | Componente 1 do pagamento. |
+| "infra mensal" | Componente 2 do pagamento — **nome preferido em copy publico**. |
+| "custo de operacao do motor" | Forma explicativa do R$ 300. |
+| "taxa de infraestrutura" | Forma tecnica. |
+| "mensalidade de infra" | Aceitavel internamente. |
 | "aparecer" | O que o produto entrega. |
 | "busca" | Onde aparecemos. |
 | "SEO" / "AIO" | Canais onde otimizamos. |
 | "presenca organica" | Resultado para o cliente. |
+
+### Como falar do modelo comercial
+
+- **Certo:** "R$ 2.500 a vista (ou 12x R$ 250) de implementacao + R$ 300/mes de infra a partir do mes 2."
+- **Certo:** "Paga a implementacao uma vez e a infra que mantem o motor rodando."
+- **Certo:** "Mes 1 incluso na implementacao. A infra mensal comeca no mes 2."
+- **Errado:** "Plano mensal de R$ 300."
+- **Errado:** "Assinatura de R$ 300."
+- **Errado:** "Mensalidade do servico."
 
 ### Nome da marca (obrigatorio)
 
@@ -189,9 +246,11 @@ O cliente nao compra assinatura. Compra a tecnologia.
 | Prometemos | Entregamos | Verdade |
 |---|---|---|
 | Aparecer em Google e IA | Blog + 90 conteudos/mes otimizados SEO+AIO | Coerente |
-| Automacao | Motor publica 3x/dia sem intervencao do cliente | Coerente |
-| Pagamento unico | Cliente paga 1x, tecnologia fica funcionando | Coerente |
-| Sem mensalidade | Oferta unica R$2.500-3.000 | Coerente |
+| Automacao | Motor publica 3x/dia sem intervencao do cliente | Coerente (enquanto infra ativa) |
+| Implementacao unica | Cliente paga a implementacao 1x (a vista ou 12x) | Coerente |
+| Infra mensal transparente | R$ 300/mes via cartao recorrente, cobre tokens e APIs | Coerente |
+| Mes 1 incluso | Motor opera no mes 1 sem cobranca de infra | Coerente |
+| Motor pausa sem pagamento | Nao gera novo conteudo; blog e artigos antigos ficam no ar | Coerente |
 | Resultado organico | Volume de 90 conteudos/mes gera presenca crescente em 3-6 meses | Honesto |
 
 ### O que NAO prometemos
@@ -201,38 +260,41 @@ O cliente nao compra assinatura. Compra a tecnologia.
 - Aparicao em 100% das buscas do nicho.
 - Retorno financeiro X% em Y meses.
 - Exclusividade de nicho.
-- Suporte tecnico 24/7 (precisa definir SLA realista).
+- Motor rodando de graca para sempre (infra e real e recorrente).
+- Suporte tecnico 24/7 (ver [[SLAs e Garantias]] para SLA real).
 
 ---
 
 ## 8. ESTRUTURA DE VENDA (fluxo unico)
 
-1. Cliente descobre o produto (organico, indicacao, prospecao ativa).
+1. Cliente descobre o produto (organico, indicacao, prospecao ativa via [[Agente Prospeccao]]).
 2. Acessa materiais de venda (landing page + demo do que e gerado).
-3. Decide: a vista R$2.500 ou parcelado R$3.000 em ate 12x.
-4. Paga.
+3. Decide: a vista R$ 2.500 ou parcelado R$ 3.000 em ate 12x.
+4. No checkout, paga a implementacao **e cadastra cartao recorrente para a infra** (cartao pode ser o mesmo).
 5. Onboarding: configura dominio, descreve negocio, escolhe tom.
-6. Blog no ar em <72h (SLA a validar).
+6. Blog no ar em ate 7 dias.
 7. Motor comeca a publicar 3x/dia.
-8. Presenca organica cresce ao longo dos meses.
+8. **Mes 2**: primeira cobranca da infra (R$ 300) via cartao recorrente.
+9. Presenca organica cresce enquanto infra esta ativa.
 
-Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda longo.
+Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda longo. A call e opcional (20-30 min) para clientes que quiserem tirar duvidas antes de pagar.
 
 ---
 
 ## 9. METRICAS QUE IMPORTAM
 
-### Metricas de negocio (nao sao MRR — e venda unica)
+### Metricas de negocio
 
 | Metrica | O que medir |
 |---|---|
-| **Novos clientes fechados/mes** | Receita = clientes × R$2.500-3.000. |
+| **Novos clientes fechados/mes** | Receita de implementacao = N clientes × R$ 2.500-3.000. |
+| **Base de infra ativa** | N clientes com infra paga = MRR real (R$ 300 × ativos). |
 | **CAC** | Quanto custou adquirir cada cliente. |
-| **Payback por cliente** | Imediato — paga na primeira venda. |
-| **Receita mensal** | Novos clientes × ticket medio. |
-| **Upsell/renovacao anual** | Se cliente renovar anualmente, e receita extra. |
-| **Margem por venda** | Receita − custo operacional do blog+motor/ano. |
-| **Custo operacional por cliente ativo/mes** | Tokens LLM + infra + CMS. |
+| **Payback da implementacao** | Imediato — paga na primeira venda. |
+| **Margem por venda (implementacao)** | Receita unica − custo de onboarding. |
+| **Margem por cliente/mes (infra)** | R$ 300 − custo operacional real (tokens + APIs + hospedagem) por cliente. |
+| **Churn de infra** | Clientes que param de pagar infra (motor pausado). |
+| **Taxa de reativacao** | Clientes pausados que voltam a pagar. |
 
 ### Metricas do produto (sucesso do cliente)
 
@@ -242,7 +304,7 @@ Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda long
 | **Conteudos publicados/mes (agregado)** | Soma de publicacoes de todos os clientes. |
 | **Presenca em IA por cliente** | Queries em que o cliente aparece em ChatGPT/Perplexity/etc. |
 | **Trafego organico por cliente** | Crescimento mes a mes. |
-| **Churn tecnico** | Clientes que pararam de usar (nao e churn de assinatura — e abandono). |
+| **Clientes em motor_paused** | Inadimplencia da infra — alvo de campanhas de reativacao. |
 
 ---
 
@@ -253,9 +315,10 @@ Nao ha reuniao obrigatoria. Nao ha qualificacao BANT. Nao ha ciclo de venda long
 Checklist obrigatorio:
 
 - [ ] Posicionamento: alinhado com "aparece quando o cliente busca"?
-- [ ] Produto: descreve blog + motor corretamente?
-- [ ] Oferta: apenas R$2.500 a vista ou R$3.000 parcelado?
+- [ ] Produto: descreve blog (estrutura) + motor corretamente?
+- [ ] Oferta: tem as **duas linhas** (implementacao + infra mensal)?
 - [ ] Linguagem: nao usa termos proibidos (lista secao 6)?
+- [ ] Linguagem: separa "implementacao unica" e "infra mensal" explicitamente?
 - [ ] ICP: negocio local como default na comunicacao?
 - [ ] Nome da marca: capitalizacao correta?
 - [ ] Promessa: coerente com a entrega (secao 7)?
@@ -272,10 +335,12 @@ Se qualquer arquivo do vault contradizer esta verdade:
 ## Links cruzados
 
 - [[Governanca - Decisoes Canonicas]] — como propor mudancas
-- [[Decision Log - 2026-04-23]] — origem destas decisoes
+- [[Decision Log - 2026-04-23]] — origem das decisoes de posicionamento e oferta
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao para modelo implementacao + infra
 - [[MOC - Empresa]] — navegacao
 - [[MOC - Identidade Visual]] — marca, tom de voz
-- [[Proposta de Valor]] — reescrita em 2026-04-23 conforme este documento
-- [[Oferta Comercial]] — idem
-- [[Modelo de Negocio]] — idem
-- [[Conceito e Posicionamento]] — idem (pasta 21)
+- [[Proposta de Valor]] — aplicacao operacional desta verdade
+- [[Oferta Comercial]] — pitch, objecoes, scripts
+- [[Modelo de Negocio]] — unit economics
+- [[Conceito e Posicionamento]] — narrativa de marca
+- [[Agente Pagamento]] — operador dos dois fluxos de cobranca

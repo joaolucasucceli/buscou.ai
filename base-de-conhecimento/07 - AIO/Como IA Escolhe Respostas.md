@@ -120,7 +120,7 @@ Use este checklist para diagnosticar e corrigir sua visibilidade em IA. Consulte
 
 ### O que o Concorrente Citado Tem que Voce Nao Tem
 Compare sistematicamente:
-- Volume de busca da marca (Google Trends, [[Google Keyword Planner|Keyword Planner]])
+- Volume de busca da marca ([[Google Trends e Keyword Planner|Google Trends e Keyword Planner]])
 - Numero de plataformas onde aparece (site, YouTube, Reddit, G2, publicacoes)
 - Estrutura do conteudo (answer-first? headers como perguntas? dados?)
 - Referring domains e mencoes externas ([[Ahrefs]], [[SEMrush]])
@@ -173,7 +173,7 @@ Mudancas que podem mostrar impacto no prazo de **30-90 dias** (janela tipica de 
 - [[Otimizacao para ChatGPT e Perplexity]] — Estrategias por plataforma
 - [[E-E-A-T]] — Sinais de autoridade e confianca
 - [[Queries que Rankeamos]] — Tracking de queries onde somos citados
-- [[Dashboard de Resultados]] — Visao consolidada de resultados
+- [[Agente Monitor]] — Agente que rastreia citacoes em IA em tempo real
 
 ---
 

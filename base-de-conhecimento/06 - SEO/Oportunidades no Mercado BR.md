@@ -6,9 +6,8 @@ tags:
   - mercado-seo
   - aio
   - geo
-  - consultoria
   - precos
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Oportunidades no Mercado BR
@@ -77,25 +76,6 @@ A escassez de profissionais qualificados gera demanda por cursos, mentorias e tr
 - Experiencia e reputacao do profissional
 - Regiao geografica (SP e RJ tendem a ser mais caros)
 
-## Como se Posicionar como Consultor SEO/AIO
-
-### Estrategia de Diferenciacao
-
-1. **Especializacao em AIO**: ser um dos primeiros a oferecer esse servico no Brasil
-2. **Dominio bilinguie**: consumir conteudo dos [[Especialistas e Referencias Gringo|especialistas internacionais]] e adaptar ao mercado brasileiro
-3. **Producao de conteudo**: criar autoridade atraves de blog, YouTube, LinkedIn
-4. **Cases e resultados**: documentar e publicar resultados reais
-5. **Networking**: participar de eventos e comunidades de SEO
-
-### Competencias Essenciais para 2026
-
-- SEO tecnico programatico
-- Engenharia de prompts para interacao com IAs
-- Uso avancado de ferramentas de automacao
-- Analise de dados e metricas de IA
-- Conhecimento de schema markup e dados estruturados
-- Compreensao de E-E-A-T e como IA avalia autoridade
-
 ## Cenario Competitivo
 
 O mercado brasileiro de SEO ainda e relativamente fragmentado comparado aos EUA e Europa. Existem poucas [[Agencias de SEO Referencia|agencias de grande porte]] e muitos profissionais independentes. Isso cria oportunidades para:
@@ -111,6 +91,7 @@ O mercado brasileiro de SEO ainda e relativamente fragmentado comparado aos EUA 
 - [[Especialistas e Referencias BR]]
 - [[Tendencias Globais]]
 - [[Dados e Estatisticas]]
+- [[VERDADE_UNICA_BUSCOU]] — como a buscou.ai se posiciona nesse mercado (SaaS de aparicao organica, nao consultoria)
 
 ## Fontes
 

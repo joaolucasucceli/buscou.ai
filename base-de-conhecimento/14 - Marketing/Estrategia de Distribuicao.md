@@ -154,9 +154,10 @@ Acompanhe estas metricas para avaliar o ROI da distribuicao:
 - [[Off-Page SEO e Link Building]] — Fundamentos de off-page
 
 ### Tracking e Resultados
-- [[Dashboard de Resultados]] — Metricas consolidadas
+- [[Agente Monitor]] — Agente que consolida metricas de distribuicao
+- [[Dashboard do Cliente]] — Interface onde o cliente ve as metricas
 - [[Conteudos que Ranqueiam]] — Tracking de conteudo em busca tradicional
-- [[Ranking IA - Tracking Manual]] — Tracking manual de citacoes IA
+- [[Ranking IA - Tracking Manual]] — Framework de tracking manual de citacoes IA
 
 ---
 

@@ -189,7 +189,7 @@ Listar os prompts exatos usados para testar. Usar os mesmos prompts antes e depo
 
 ## Notas Relacionadas
 
-- [[Playbook - Aparecer na IA em 30 Dias]]
+- [[Framework AIO Completo]]
 - [[Como IAs Buscam e Citam Conteudo]]
 - [[Otimizacao para ChatGPT e Perplexity]]
 - [[Google AI Overviews]]

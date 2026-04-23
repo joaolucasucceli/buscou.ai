@@ -19,10 +19,10 @@ Primeiro ponto de contato para clientes ativos. Responde duvidas sobre:
 - Status de publicacao, calendario editorial, cadencia do pipeline.
 - Funcionamento do dashboard e relatorios.
 - Ajustes de tom, keyword, configuracao de onboarding.
-- Parcelas do parcelado 12x (escala para [[Agente Pagamento]] em duvidas financeiras).
+- Parcelas da implementacao 12x e cobrancas da infra mensal (escala para [[Agente Pagamento]] em duvidas financeiras; explica politica de pausa/retomada do motor).
 - Primeiros sinais, timeline, interpretacao de metricas.
 
-Sem upsell, sem cobranca, sem cancelamento (a compra foi unica e o motor segue ativo por escopo canonico).
+Sem upsell nem venda ativa. Cancelamento da infra mensal e self-service no dashboard — cliente pode pausar quando quiser; motor para de publicar e blog continua no ar.
 
 ---
 

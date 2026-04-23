@@ -52,7 +52,7 @@ O Rank Math Pro oferece significativamente mais valor por um preco menor — $59
 
 ### Funcionalidades Exclusivas em 2026
 
-- **Suporte a llms.txt**: Ajuda crawlers de IA a entender a estrutura do seu site, posicionando-o para melhor visibilidade em [[AIO]] (AI Optimization)
+- **Suporte a llms.txt**: Ajuda crawlers de IA a entender a estrutura do seu site, posicionando-o para melhor visibilidade em [[O que e AIO|AIO]] (AI Optimization)
 - **AI Search Traffic Tracker**: Monitora como mecanismos de busca baseados em IA referenciam seu conteudo
 - **Schema Generator avancado**: 18+ tipos de schema com configuracao visual
 - **Redirect Manager**: Gerenciamento completo de redirecionamentos sem plugins extras

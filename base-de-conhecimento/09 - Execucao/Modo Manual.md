@@ -23,7 +23,7 @@ atualizado: 2026-04-22
 
 ## Pipeline Manual: Etapa por Etapa
 
-| Etapa do [[00 - Pipeline]] | Como fazer manualmente | Ferramenta | Tempo estimado |
+| Etapa do pipeline | Como fazer manualmente | Ferramenta | Tempo estimado |
 |---|---|---|---|
 | 1. Nicho | Definir com base no [[Nicho Inicial]] | Planilha | 2h (unica vez) |
 | 2. Keywords | Pesquisar no Ahrefs/SEMrush free trial + Google Trends | [[Ahrefs]], [[Google Trends e Keyword Planner]] | 4-6h |
@@ -33,7 +33,7 @@ atualizado: 2026-04-22
 | 6. Publicacao | Publicar manualmente no WordPress + schema via Rank Math | CMS + [[Rank Math e Yoast]] | 30min/artigo |
 | 7. Indexacao | Submeter URL no GSC manualmente | [[Google Search Console]] | 5min/artigo |
 | 8. Distribuicao | Postar manualmente no LinkedIn, Reddit, Medium | Plataformas | 1h/artigo |
-| 9. Teste IA | Testar prompts manualmente via [[Playbook - Teste de Citacao em IA]] | ChatGPT, Perplexity, etc. | 2h/semana |
+| 9. Teste IA | Testar prompts manualmente via [[Testes IA]] | ChatGPT, Perplexity, etc. | 2h/semana |
 | 10. Monitoramento | Checar GSC + rankings manualmente | GSC + [[Ranking IA - Tracking Manual]] | 1h/semana |
 
 ---
@@ -95,8 +95,7 @@ O que automatizar PRIMEIRO = o que leva mais tempo + e mais repetitivo:
 
 ## Notas Relacionadas
 
-- [[00 - Pipeline]] - Pipeline completo (versao sistema)
+- [[Fluxo V1]] - Pipeline automatizado (versao sistema)
 - [[Go To Market Inicial]] - Como fechar os betas
 - [[Nicho Inicial]] - Qual nicho atacar primeiro
-- [[Checklist Operacional]] - Rotina operacional
 - [[Roadmap do Produto]] - Quando migrar para sistema

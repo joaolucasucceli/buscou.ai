@@ -17,8 +17,8 @@ Relacionado: [[ICP por Nicho]] | [[Go To Market Inicial]] | [[Oferta Comercial]]
 
 ### Por que clinicas (e nao imobiliarias ou advogados como primeiro nicho)
 
-1. **Ciclo de venda curto.** Clinicas decidem em dias, nao meses. Cabe no modelo de venda unica (R$ 2.500-3.000).
-2. **Ticket do paciente justifica o investimento.** Um paciente de estetica gasta R$ 2K-20K/ano. Ortodontia: R$ 3K-8K. 1-2 pacientes novos ja pagam a compra.
+1. **Ciclo de venda curto.** Clinicas decidem em dias, nao meses. Cabe no modelo de implementacao unica + infra mensal (R$ 2.500-3.000 upfront + R$ 300/mes).
+2. **Ticket do paciente justifica o investimento.** Um paciente de estetica gasta R$ 2K-20K/ano. Ortodontia: R$ 3K-8K. 1-2 pacientes novos ja pagam a implementacao e uma clinica que fatura R$ 30K+/mes absorve R$ 300 de infra sem sentir.
 3. **Local SEO controlavel.** Geografia definida (bairro/cidade), Google Business Profile + conteudo local + motor geram presenca rapida.
 4. **AIO praticamente virgem.** Quase ninguem otimiza clinica pra aparecer no ChatGPT/Perplexity — barra de entrada baixa.
 5. **Dono acessivel.** Na clinica pequena, o dono e o profissional. Sem comite, sem diretor de marketing, sem "vou consultar meu socio".
@@ -39,7 +39,7 @@ Relacionado: [[ICP por Nicho]] | [[Go To Market Inicial]] | [[Oferta Comercial]]
 |---|---|
 | **Imobiliarias** | Ticket altissimo mas ciclo mais longo. Deixar para nicho #2. |
 | **Advogados** | Regulamentacao OAB adiciona complexidade. Validar primeiro com clinicas. |
-| **Servicos urgentes** | Ticket do servico baixo. Pode achar R$ 2.500-3.000 caro. Validar com ticket maior primeiro. |
+| **Servicos urgentes** | Ticket do servico baixo. Pode achar implementacao + infra mensal caro demais. Validar com ticket maior primeiro. |
 | **SaaS / E-commerce** | Ciclo longo, mercado saturado, ICP nao-local (fora do foco canonico). |
 
 Ordem proposta apos validar clinicas:
@@ -146,7 +146,8 @@ Comecar em cidade onde ha:
 - [[Oferta Comercial]] — pitch + objecoes
 - [[Proposta de Valor]] — argumento comercial
 - [[Case Proprio como Prova]] — dog-fooding
-- [[Decision Log - 2026-04-23]]
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial
 
 ---
 

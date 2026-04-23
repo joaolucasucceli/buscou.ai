@@ -51,7 +51,7 @@ Usuario faz pergunta complexa
 
 ### O que isso significa para voce
 - **Citacao > ranking**: Nao basta ser primeiro — precisa ser CITADO ([[Como IA Escolhe Respostas]])
-- **Multi-plataforma**: IA busca em VARIOS sites, nao so no seu ([[11 - Distribuicao/]])
+- **Multi-plataforma**: IA busca em VARIOS sites, nao so no seu ([[Estrategia de Distribuicao]])
 - **Estrutura importa**: IA extrai trechos especificos — conteudo precisa ter pull quotes e respostas diretas ([[Schema Markup para IA]])
 - **Brand matters**: Brand search volume e o fator #1 de citacao (correlacao 0.334)
 - **Fresco vence**: IA prioriza conteudo atualizado (ciclos de 7-14 dias)
@@ -78,7 +78,7 @@ O usuario nao pensa em keywords — ele pensa em **problemas**.
 - **Cubra a jornada inteira**: Tenha conteudo para cada etapa ([[Content Strategy e Topic Clusters]])
 - **Responda primeiro, explique depois**: Formato answer-first funciona em Google E IA
 - **Linguagem do usuario, nao tecnica**: Escreva como ele busca, nao como voce fala
-- **Cada query e uma oportunidade**: Veja pasta [[13 - Queries/]]
+- **Cada query e uma oportunidade**: veja [[Queries que Rankeamos]] e frameworks por tipo de query ([[Melhor X]], [[Vale a Pena X]], [[Como Fazer X]], [[X vs Y]])
 
 ### Modelo mental resumido
 > "O usuario e uma pessoa com um problema que precisa de solucao. Ele nao quer saber de SEO — quer resultado. Fale a lingua dele."
@@ -127,4 +127,4 @@ Se voce marcar os 5, seu conteudo domina **todos** os canais.
 - [[Como Funcionam os Motores de Busca]] - Detalhamento do modelo do Google
 - [[Palavras-Chave e Intencao de Busca]] - Detalhamento do modelo do usuario
 - [[E-E-A-T]] - Confianca do Google
-- [[00 - Pipeline]] - Pipeline que aplica os 3 modelos
+- [[Fluxo V1]] - Pipeline automatizado que aplica os 3 modelos

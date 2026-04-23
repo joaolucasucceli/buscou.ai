@@ -2,7 +2,7 @@
 tipo: produto
 area: Suporte
 tags: [produto, suporte, chat, ia, escalonamento]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Suporte Automatizado
@@ -13,9 +13,11 @@ Referencia: [[Agente Suporte]] | [[Requisitos Produto Autonomo]] | [[Dashboard d
 
 ---
 
-## Arquitetura de 3 Tiers
+## Arquitetura em 3 Niveis
 
-### Tier 1: Agente Suporte (IA) — 85% dos tickets
+> **Observacao:** "niveis" aqui refere-se a camadas de atendimento (IA / humano CS / tecnico). **Nao confundir com tiers comerciais** — nao ha tiers na oferta (ver [[VERDADE_UNICA_BUSCOU]] secao 5).
+
+### Nivel 1: Agente Suporte (IA) — 85% dos tickets
 
 | Aspecto | Detalhe |
 |---|---|
@@ -26,17 +28,17 @@ Referencia: [[Agente Suporte]] | [[Requisitos Produto Autonomo]] | [[Dashboard d
 | **Horario** | 24/7/365 — sem fila, sem espera |
 | **Tempo de resposta** | < 10 segundos |
 
-### Tier 2: Suporte Humano — 12% dos tickets
+### Nivel 2: Suporte Humano — 12% dos tickets
 
 | Aspecto | Detalhe |
 |---|---|
 | **Canal** | Mesmo chat (cliente nao troca de plataforma), escalado internamente |
-| **SLA por tier** | Starter: 48h / Growth: 24h / Scale: 4h |
+| **SLA unico** | 24h (questoes nao criticas) / 4h (blog fora do ar ou motor parado). Ver [[SLAs e Garantias]]. |
 | **Acesso** | Contexto completo da conversa com IA + dados do cliente + historico |
 | **Perfil** | CS generalista com conhecimento de SEO/AIO e acesso ao sistema |
 | **Quando** | Issues que a IA nao resolve, solicitacoes de cancelamento, reclamacoes |
 
-### Tier 3: Suporte Tecnico — 3% dos tickets
+### Nivel 3: Suporte Tecnico — 3% dos tickets
 
 | Aspecto | Detalhe |
 |---|---|
@@ -82,26 +84,26 @@ O sistema detecta problemas e notifica o cliente ANTES que ele pergunte:
 
 | # | Pergunta | Resposta Resumida |
 |---|---|---|
-| 1 | Como vejo meus rankings? | Dashboard → Rankings. Atualizado [frequencia por tier] |
+| 1 | Como vejo meus rankings? | Dashboard → Rankings. Atualizado diariamente |
 | 2 | Quando meu artigo sera publicado? | Dashboard → Content → ver ETA na coluna de status |
 | 3 | Por que meu artigo foi rejeitado? | O [[Agente Revisor]] encontrou [motivo]. Reescrita automatica em andamento |
 | 4 | Como mudo meu nicho/keywords? | Settings → Project Config → editar e salvar |
-| 5 | Posso mudar de plano? | Settings → Billing → Upgrade/Downgrade |
+| 5 | Como funciona a infra mensal? | Settings → Billing → Infra Mensal. R$ 300/mes cobra a partir do mes 2. Mes 1 incluso na implementacao. Cobre tokens LLM, APIs e hospedagem do motor. |
 | 6 | O que e o Health Score? | Indice 0-100 baseado em conteudo + rankings + trafego + citacoes IA |
 | 7 | Como a IA escreve meu conteudo? | Pipeline de agentes: pesquisa → estrategia → escrita → revisao → publicacao |
 | 8 | Meu conteudo e original? | Sim. Verificamos originalidade >= 95% em cada artigo |
 | 9 | Posso editar um artigo publicado? | Sim, diretamente no CMS. Avisamos que reotimizacao pode ser necessaria |
-| 10 | Quanto tempo ate ver resultados? | SEO: 30-90 dias para primeiros rankings. AIO: 14-30 dias para citacoes |
+| 10 | Quanto tempo ate ver resultados? | **Indexacao** (Google encontra o artigo e comeca a mostra-lo em impressoes): ate 30 dias. **Rankings** (posicoes no top 10 do Google): 30-90 dias. **AIO** (citacoes em ChatGPT, Perplexity, AI Overviews): 14-30 dias. Indexacao ≠ ranking — o primeiro e tecnico (inclusao no indice), o segundo e competicao por posicao. |
 | 11 | O Google penaliza conteudo de IA? | Nao, se for de alta qualidade. Seguimos diretrizes [[E-E-A-T]] rigorosamente |
-| 12 | Como cancelo minha assinatura? | Settings → Billing → Cancelar. Seus dados ficam 90 dias |
-| 13 | Posso adicionar mais sites? | Sim, conforme seu tier. Growth: 3 sites. Scale: ilimitado |
+| 12 | Posso pedir reembolso? | Sim, nos primeiros 14 dias da implementacao se menos de 10 artigos foram publicados. Apos isso, os artigos ficam no seu site e infra mensal segue ativa. Ver [[SLAs e Garantias]]. |
+| 13 | Posso adicionar mais sites? | Cada blog e uma compra separada (R$ 2.500 a vista ou R$ 3.000 em 12x de implementacao + R$ 300/mes adicional de infra). Se voce tem filial ou segundo dominio, contrate um blog adicional. |
 | 14 | O que sao citacoes em IA? | Quando ChatGPT, Perplexity ou AI Overviews mencionam seu conteudo |
 | 15 | Como acompanho citacoes IA? | Dashboard → AI Visibility |
 | 16 | Meu relatorio mensal nao chegou | Relatorios sao gerados ate dia 5. Verificar spam ou baixar no Dashboard → Reports |
 | 17 | Posso escolher os topicos? | Sim, edite no onboarding ou em Settings → Project Config |
 | 18 | Quem escreve meu conteudo? | Agentes de IA especializados, usando dados reais e frameworks validados |
 | 19 | Meu site saiu do ar, o que acontece? | Pausamos publicacoes automaticamente e acumulamos conteudo para publicar quando voltar |
-| 20 | Posso exportar meus dados? | Sim. Scale tem API. Outros tiers: Dashboard → Reports → Exportar CSV |
+| 20 | Posso exportar meus dados? | Sim. Dashboard → Reports → Exportar CSV. API sob demanda em V1.2+. |
 
 ---
 

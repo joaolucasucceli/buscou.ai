@@ -1,128 +1,85 @@
 ---
 tipo: indice
 area: Ambos
-tags: [moc, indice, execucao, negocio, playbook]
-atualizado: 2026-04-22
+tags: [moc, indice, execucao, operacao]
+atualizado: 2026-04-23
 ---
 
-# MOC - Execucao e Negocio
+# MOC - Execucao
 
-> Mapa de Conteudo para tudo que envolve FAZER: fechar clientes, entregar resultados e construir prova. Este e o lado do dinheiro da base de conhecimento.
-
----
-
-## Centro de Operacoes
-
-O Pipeline e o coracao — tudo gira em torno dele:
-
-- [[00 - Pipeline]] - **O METODO**: 10 etapas do nicho ao resultado (COMECE AQUI)
-- [[Checklist Operacional]] - Rotina diaria, semanal, mensal e trimestral
-- [[Mental Models]] - Como Google, IA e usuario pensam (modelos mentais)
+> Mapa de conteudo para execucao operacional da buscou.ai: como o motor funciona, como o pipeline gera conteudo, como a operacao escala.
+>
+> Para o lado comercial (vendas, funil, landing), ver [[MOC - Empresa]].
 
 ---
 
-## Vendas e Aquisicao de Clientes
+## Pipeline de conteudo (core)
 
-O funil completo, da prospecao ao contrato assinado:
+O motor buscou.ai opera como pipeline multi-agente. Ver [[Arquitetura de Agentes]].
 
-1. [[ICP - Cliente Ideal]] - Quem e seu cliente ideal (6 perfis detalhados)
-2. [[Playbook - Auditoria Relampago]] - Auditoria gratis de 2-4h como isca de vendas
-3. [[Questionario Discovery]] - 35+ perguntas para call de discovery
-4. [[Script de Vendas]] - Roteiro completo de call (45-60 min) + objecoes
-5. [[ROI para Cliente]] - Calculadora de ROI para justificar investimento
-6. [[Proposta Comercial - Modelo]] - Template multi-tier com FAQ pre-emptivo
-7. [[Contrato e Termos - Modelo]] - Contrato adaptavel com 12 clausulas
-8. [[Prova Social]] - 7 formas de construir credibilidade do zero
+- [[Fluxo V1]] — fluxo end-to-end da venda ao primeiro conteudo publicado
+- [[Fluxo Operacional Completo]] — visao completa do sistema em operacao
+- [[Jornada Interna]] — state machine de cada peca de conteudo
+- [[Jornada do Cliente]] — touchpoints externos do cliente
 
-## Onboarding e Entrega
+---
 
-Fluxo do contrato assinado ao primeiro resultado:
+## Agentes V1 (11 + Orquestrador)
 
-1. [[Checklist Onboarding Cliente]] - Tudo que precisa do cliente no inicio
-2. [[Playbook - Cliente Novo em 30 Dias]] - Dia a dia dos primeiros 30 dias
-3. [[One-Pager SEO-AIO para Cliente]] - Material educativo para cliente leigo
-4. [[Relatorio para Cliente - Modelo]] - Template de relatorio mensal com ROI
+6 core + 5 complementares + orquestrador. Ver [[Arquitetura de Agentes]] e [[MOC - Empresa]] (secao Agentes) para a lista completa.
 
-## Playbooks de Execucao
+---
 
-Guias semana-a-semana para entregar resultado:
+## Monitoramento e operacao
 
-- [[Playbook - Aparecer na IA em 30 Dias]] - O mais importante: fazer cliente ser citado por IA
-- [[Playbook - Cliente Novo em 30 Dias]] - Onboarding completo ate primeiro relatorio
-- [[Playbook - Auditoria Relampago]] - Auditoria rapida como ferramenta de vendas
+- [[SLAs e Garantias]] — compromissos com o cliente
+- [[Pontos Criticos UX]] — momentos de retencao e friccao
+- [[Failure Modes]] — modos de falha e mitigacoes
+- [[Tratamento de Falhas]] — o que fazer quando algo quebra
 
-## Experimentacao e Testes
+---
 
-Documentar testes reais para construir conhecimento e prova:
+## Distribuicao (multi-plataforma)
 
-- [[Template - Experimento AIO]] - Template para documentar experimentos de citacao
-- [[Como IA Escolhe Respostas]] - Estrategia: como a IA decide quem citar
+A IA nao usa so seu site — usa o ecossistema inteiro:
 
-## Rastreamento de Resultados
-
-Seu portfolio e prova de resultado:
-
-- [[Dashboard de Resultados]] - Visao consolidada de todos os resultados
-- [[Nichos Testados]] - Portfolio de nichos em que voce atuou
-- [[Palavras-Chave Dominadas]] - Keywords que voce rankeou para clientes
-- [[Queries que Rankeamos]] - Queries de IA onde seu conteudo e citado
-
-## Frameworks de Referencia
-
-- [[Framework SEO Completo]] - 7 fases de execucao SEO
-- [[Framework AIO Completo]] - 6 fases de execucao AIO (com camada de execucao)
-- [[Auditoria SEO - Checklist]] - 100+ itens de auditoria
-- [[Precificacao de Servicos SEO]] - Modelos e tabelas de preco
-
-## Fluxo Completo: Prospect → Cliente → Resultado
-
-```
-1. Identificar prospect → [[ICP - Cliente Ideal]]
-2. Oferecer auditoria gratis → [[Playbook - Auditoria Relampago]]
-3. Call de discovery → [[Script de Vendas]] + [[Questionario Discovery]]
-4. Enviar proposta → [[Proposta Comercial - Modelo]] + [[ROI para Cliente]]
-5. Fechar contrato → [[Contrato e Termos - Modelo]]
-6. Onboarding → [[Checklist Onboarding Cliente]]
-7. Executar → [[Playbook - Cliente Novo em 30 Dias]]
-8. Otimizar para IA → [[Playbook - Aparecer na IA em 30 Dias]]
-9. Documentar → [[Template - Experimento AIO]]
-10. Reportar → [[Relatorio para Cliente - Modelo]]
-11. Construir prova → [[Prova Social]] + [[Dashboard de Resultados]]
-12. Repetir com proximo cliente
-```
-
-## Distribuicao (Multi-Plataforma)
-
-IA nao usa so seu site — usa o ecossistema inteiro. Distribuir aumenta citacoes em 2.8x:
-
-- [[Estrategia de Distribuicao]] - Visao geral e rotina de distribuicao
-- [[Backlinks]] - Estrategias de aquisicao de backlinks
+- [[Estrategia de Distribuicao]] - Visao geral e rotina
+- [[Distribuicao Automatica]] — como o [[Agente Distribuidor]] atua por fase (V1 → V1.2 → V2)
+- [[Backlinks]] - Estrategias de aquisicao
 - [[Parasite SEO]] - Publicar em dominios de alta autoridade
-- [[Reddit]] - Reddit como canal de SEO e AIO
+- [[Reddit]] - Reddit como canal
 - [[LinkedIn e Medium]] - Plataformas B2B e de conteudo
 - [[Citacoes e Mencoes]] - Construir mencoes de marca para IA
 
-## Sistema Operacional (Prompts)
+---
 
-Prompts prontos para usar no dia a dia com ChatGPT/Claude:
+## Prompts e frameworks
 
-- [[Geracao de Conteudo]] - Prompts para criar conteudo otimizado
-- [[Analise SEO]] - Prompts para auditoria e analise
-- [[Otimizacao AIO]] - Prompts para otimizar para IA
-- [[Testes IA]] - Prompts para testar visibilidade em IA
+- [[Geracao de Conteudo]] — prompts usados pelo [[Agente Redator]]
+- [[Analise SEO]] — prompts para auditoria
+- [[Otimizacao AIO]] — prompts para IA
+- [[Testes IA]] — prompts para testar visibilidade
+- [[Framework SEO Completo]] — 7 fases de execucao SEO
+- [[Framework AIO Completo]] — 6 fases de execucao AIO
+- [[Auditoria SEO - Checklist]] — 100+ itens de auditoria
 
-## Dominacao de Queries
+---
+
+## Dominacao de queries por tipo
 
 Frameworks por tipo de query que a IA responde:
 
-- [[Melhor X]] - Dominar queries "melhor X em Y" (listicles)
-- [[Vale a Pena X]] - Dominar queries de decisao
-- [[Como Fazer X]] - Dominar queries how-to
-- [[X vs Y]] - Dominar queries de comparacao
+- [[Melhor X]] - queries listicles
+- [[Vale a Pena X]] - queries de decisao
+- [[Como Fazer X]] - queries how-to
+- [[X vs Y]] - queries de comparacao
+
+---
 
 ## Navegacao
 
-- [[MOC - SEO]] - Mapa completo de SEO
-- [[MOC - AIO]] - Mapa completo de AIO
-- [[MOC - Roadmap de Aprendizado]] - Trilha de estudos
+- [[MOC - Empresa]] — produto, oferta, modelo comercial, vendas
+- [[MOC - SEO]] — base de conhecimento SEO
+- [[MOC - AIO]] — base de conhecimento AIO
+- [[MOC - Identidade Visual]] — marca, tom de voz, design system
 - [[Mental Models]] - Como Google, IA e usuario pensam

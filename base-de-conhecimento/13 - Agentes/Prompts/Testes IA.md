@@ -173,7 +173,7 @@ Para cada prompt testado em cada plataforma, registre o score (0-5). Calcule:
 
 | Score Semanal | Status | Acao |
 |---|---|---|
-| 0-20% | Critico | Foco total em [[Playbook - Aparecer na IA em 30 Dias]] |
+| 0-20% | Critico | Foco total em [[Framework AIO Completo]] — revisao de answer-first, schema e llms.txt |
 | 21-40% | Fraco | Priorizar answer-first rewrite e schema |
 | 41-60% | Progredindo | Expandir conteudo e distribuicao multi-plataforma |
 | 61-80% | Bom | Refinar e manter. Focar em queries onde nao aparece |
@@ -216,7 +216,7 @@ Os testes manuais acima sao essenciais, mas combine com ferramentas automatizada
 - **[[HubSpot AEO]]** — Metricas de Answer Engine Optimization
 - **[[SE Ranking AI Visibility]]** — Visibilidade em IA integrada ao SE Ranking
 
-Registre resultados consolidados em [[Dashboard de Resultados]] e [[Queries que Rankeamos]].
+Registre resultados consolidados em [[Queries que Rankeamos]]; metricas agregadas sao expostas no [[Dashboard do Cliente]] via [[Agente Monitor]].
 
 ---
 
@@ -239,9 +239,9 @@ Registre resultados consolidados em [[Dashboard de Resultados]] e [[Queries que 
 - [[Otimizacao AIO]] — Prompts para otimizacao em IA
 - [[Como IA Escolhe Respostas]] — Entenda por que a IA cita ou ignora voce
 - [[Otimizacao para ChatGPT e Perplexity]] — Estrategias por plataforma
-- [[Dashboard de Resultados]] — Onde consolidar resultados
+- [[Agente Monitor]] — Agente que executa estes testes em producao
 - [[Queries que Rankeamos]] — Tracking de queries dominadas
-- [[Playbook - Aparecer na IA em 30 Dias]] — Playbook completo de implementacao
+- [[Framework AIO Completo]] — As 6 fases de execucao de AIO
 - [[Melhor X]] — Estrategia para queries "melhor"
 - [[Vale a Pena X]] — Estrategia para queries "vale a pena"
 - [[X vs Y]] — Estrategia para queries comparativas

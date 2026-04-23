@@ -106,15 +106,18 @@ Relacionado: [[Funil Completo]] | [[Estrategia de Conteudo Autonomo]] | [[Framew
 
 ### 8. Landing / oferta
 
-A landing buscou.ai tem pagina unica. Nao existe "pagina de pricing com tabela de tiers" — a oferta e unica (R$ 2.500 a vista / R$ 3.000 em 12x). Ver [[Site Publico]] e [[Oferta Comercial]].
+A landing buscou.ai tem pagina unica. Nao existe "pagina de pricing com tabela de tiers" — o modelo e unico: **implementacao + infra mensal**. Ver [[Site Publico]] e [[Oferta Comercial]].
 
 Estrutura da landing:
 1. Hero com frase central: "Se alguem buscou, quem apareceu foi voce?"
 2. Resumo do produto: Blog + Motor = 90 conteudos/mes.
 3. Como funciona (3-4 passos do onboarding ao primeiro sinal).
 4. Prova (dog-fooding: nosso proprio blog).
-5. Oferta: R$ 2.500 a vista / R$ 3.000 em 12x. Checkout.
-6. FAQ.
+5. Oferta em duas linhas:
+   - Implementacao: R$ 2.500 a vista ou R$ 3.000 em 12x de R$ 250.
+   - Infra mensal: R$ 300/mes a partir do mes 2 (mes 1 incluso na implementacao).
+   - Checkout.
+6. FAQ com perguntas-chave sobre a infra ("E uma assinatura? Nao — e passthrough de tokens/APIs. E se eu parar de pagar? Motor pausa, blog fica no ar").
 7. CTA secundario: "Ainda com duvida? Agende 20 min com nosso time."
 
 ---

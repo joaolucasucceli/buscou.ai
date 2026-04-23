@@ -40,10 +40,11 @@ Aparecer nao e sorte. E sistema. Blog (estrutura) + Motor (90 conteudos/mes) ger
 
 ## Frase-definicao (um-liner para bio/pitch rapido)
 
-> A buscou.ai entrega **blog + motor** por **pagamento unico**. Voce aparece quando seu cliente busca.
+> A buscou.ai entrega **blog + motor** com **implementacao unica + infra mensal**. Voce aparece quando seu cliente busca.
 
 Variacoes adaptaveis:
-- "Blog + motor. Pagamento unico. Voce aparece." (4-5 palavras por bloco).
+- "Blog + motor. Implementacao unica, infra mensal. Voce aparece." (pitch completo).
+- "Paga a implementacao 1x. Infra R$ 300/mes mantem o motor rodando." (explicativo).
 - "buscou.ai — tecnologia que faz voce aparecer." (rodape).
 
 ---
@@ -59,7 +60,7 @@ Variacoes adaptaveis:
 | Prospecao (WhatsApp) | Busca ao vivo no Google + "voce nao aparece, [concorrente] aparece" |
 | Dashboard do cliente | KPI central: "Indice de Visibilidade Total" (IVT) com variacao % |
 | Rodape | "buscou.ai — tecnologia que faz voce aparecer" |
-| Assinatura de e-mail | "Blog + motor. Pagamento unico." |
+| Assinatura de e-mail | "Blog + motor. Implementacao unica + infra mensal." |
 
 ---
 
@@ -83,7 +84,8 @@ Historico do que foi removido na reestruturacao de 2026-04-23:
 | "Seu marketing organico no piloto automatico" | Generico, nao diferencia |
 | "Sistema operacional da presenca digital na era da IA" | Abstrata, nao vende |
 | "Faca sua empresa ser RECOMENDADA pela IA" | Conceito ok, frase nao vira copy |
-| "Plataforma SaaS" | Em contexto comercial somos tecnologia de venda unica (ver [[VERDADE_UNICA_BUSCOU]] secao 5) |
+| "Plataforma SaaS" | Em contexto comercial nao somos assinatura SaaS — somos implementacao unica + infra mensal (ver [[VERDADE_UNICA_BUSCOU]] secao 5). |
+| "Pagamento unico sem mensalidade" | Insustentavel — custos de LLM+APIs sao reais e recorrentes. Substituida pelo modelo transparente implementacao + infra. |
 
 Todas substituidas pela frase central + "tecnologia que faz voce aparecer no Google e na IA".
 
@@ -92,23 +94,24 @@ Todas substituidas pela frase central + "tecnologia que faz voce aparecer no Goo
 ## Posicionamento em 2×2
 
 ```
-                    TECNOLOGIA
-                      |
-                      |
-         buscou.ai    |        Agencias
-                      |        premium
-                      |
-  PAGAMENTO UNICO ----+---- MENSALIDADE
-                      |
-                      |
-         Ferramentas  |        Freelancers
-         (Surfer,     |
-          Frase)      |
-                      |
-                    SERVICO
+                      TECNOLOGIA
+                        |
+                        |
+         buscou.ai      |        Agencias
+    (implementacao +    |        premium
+     infra passthrough) |
+                        |
+  COBRA O QUE OPERA ----+---- COBRA SERVICO
+                        |
+                        |
+         Ferramentas    |        Freelancers
+         (Surfer,       |
+          Frase)        |
+                        |
+                      SERVICO
 ```
 
-**Quadrante ocupado:** Tecnologia + Pagamento unico. Sem concorrencia direta nesse ponto.
+**Quadrante ocupado:** Tecnologia + "cobra exatamente o que opera" (implementacao de servico + infra passthrough). Agencias cobram servico recorrente sem transparencia de infra. Ferramentas cobram assinatura por acesso. Nos cobramos o trabalho uma vez e a conta de luz do motor todo mes — honesto, escalavel, sem diluir o preco em "pacote fechado".
 
 ---
 
@@ -117,8 +120,9 @@ Todas substituidas pela frase central + "tecnologia que faz voce aparecer no Goo
 Regras completas em [[VERDADE_UNICA_BUSCOU]] secao 6 (proibido vs permitido) e [[Tom de Voz e Marketing]] (aplicacao em headlines, CTAs, microcopy).
 
 Resumo minimo:
-- **Sempre:** tecnologia, sistema, motor, estrutura, automacao, pagamento unico, aparecer, busca, SEO, AIO, presenca organica.
-- **Nunca:** agencia, mensalidade, plano (Starter/Growth/Scale), piloto automatico, sistema operacional, jornada, transformacao digital.
+- **Sempre:** tecnologia, sistema, motor, estrutura, automacao, implementacao unica, infra mensal, aparecer, busca, SEO, AIO, presenca organica.
+- **Nunca:** agencia, mensalidade de servico, plano mensal, plano (Starter/Growth/Scale), piloto automatico, sistema operacional, jornada, transformacao digital.
+- **Regra critica:** sempre separar "implementacao" (one-time) e "infra mensal" (recurring). Nunca unificar como "pacote" ou "plano".
 
 ---
 
@@ -131,7 +135,8 @@ Resumo minimo:
 - [[Proposta de Valor]] — conceito vira argumento comercial
 - [[Oferta Comercial]] — conceito vira preco
 - [[Case Proprio como Prova]] — conceito vira prova viva
-- [[Decision Log - 2026-04-23]] — origem
+- [[Decision Log - 2026-04-23]] — origem (posicionamento, ICP, produto, oferta-base)
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao do modelo comercial
 
 ---
 

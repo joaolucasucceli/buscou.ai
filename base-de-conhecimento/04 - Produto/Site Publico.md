@@ -7,7 +7,7 @@ atualizado: 2026-04-23
 
 # Site Publico — Spec do site de marketing
 
-> Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. O site publico e a vitrine da buscou.ai e o principal canal de aquisicao organica. Hospedado em Next.js 15 + Vercel. Cada pagina otimizada para SEO e AIO. Oferta unica, sem tabela de tiers.
+> Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. O site publico e a vitrine da buscou.ai e o principal canal de aquisicao organica. Hospedado em Next.js 15 + Vercel. Cada pagina otimizada para SEO e AIO. Modelo comercial exibido com as **duas linhas canonicas** (implementacao + infra mensal), sem tiers.
 
 Relacionado: [[Proposta de Valor]] | [[Oferta Comercial]] | [[Case Proprio como Prova]] | [[Frontend]] | [[Onboarding Automatico]] | [[Funil Completo]]
 
@@ -19,7 +19,7 @@ Relacionado: [[Proposta de Valor]] | [[Oferta Comercial]] | [[Case Proprio como 
 Home → Como Funciona → Oferta (checkout) → Contato/Onboarding
 ```
 
-**Principio:** clareza > criatividade. O visitante entende o que fazemos, como fazemos e quanto custa em menos de 60 segundos. **Nao ha pagina de "pricing" com tiers** — a oferta e unica e aparece direto na home.
+**Principio:** clareza > criatividade. O visitante entende o que fazemos, como fazemos e quanto custa em menos de 60 segundos. **Nao ha pagina de "pricing" com tiers** — o modelo e unico (implementacao + infra mensal) e aparece direto na home.
 
 ---
 
@@ -44,9 +44,10 @@ A landing e composta por 8 blocos sequenciais.
 | aparecendo no Google                                       |
 | e nas IAs.                                                |
 |                                                            |
-| Pagamento unico.                                          |
-| R$ 2.500 a vista                                          |
-| ou R$ 3.000 em 12x.                                       |
+| Implementacao R$ 2.500 a vista                            |
+| (ou 12x de R$ 250) +                                      |
+| R$ 300/mes de infra a partir                              |
+| do mes 2. Mes 1 incluso.                                  |
 |                                                            |
 | [Comprar agora →]   [Ver como funciona]                   |
 +----------------------------------------------------------+
@@ -54,7 +55,7 @@ A landing e composta por 8 blocos sequenciais.
 
 **Headline (canonica):** "Se alguem buscou, quem apareceu foi voce?"
 
-**Subheadline:** "Blog + Motor (buscou.ai) = 90 conteudos/mes no seu site, com voce aparecendo no Google e nas IAs. Pagamento unico: R$ 2.500 a vista ou R$ 3.000 em 12x."
+**Subheadline:** "Blog + Motor (buscou.ai) = 90 conteudos/mes no seu site, com voce aparecendo no Google e nas IAs. Implementacao R$ 2.500 a vista (ou 12x R$ 250) + infra mensal R$ 300 a partir do mes 2. Mes 1 incluso na implementacao."
 
 **CTAs:**
 - Primario: "Comprar agora" → checkout direto (Stripe/Asaas).
@@ -101,11 +102,11 @@ A landing e composta por 8 blocos sequenciais.
 ### Bloco 4 — Beneficios
 
 Grid 2x3:
-- **Tecnologia, nao agencia** — pague uma vez, sem mensalidade.
+- **Tecnologia, nao agencia** — pague a implementacao uma vez. A infra mensal e passthrough transparente.
 - **90 conteudos/mes** — 720K caracteres otimizados para SEO + AIO.
 - **Local SEO integrado** — conteudo geo-targetado para sua cidade/bairros.
 - **Presenca em IA** — ChatGPT, Perplexity, AI Overviews.
-- **Dashboard em tempo real** — rankings, trafego, citacoes.
+- **Dashboard em tempo real** — rankings, trafego, citacoes, status da infra.
 - **Ativacao em 7 dias** — blog no ar rapido, primeiros sinais em 30 dias.
 
 ### Bloco 5 — Demonstracao do dashboard
@@ -120,11 +121,17 @@ Demonstracao de autoridade + alimenta SEO do proprio site. 3 artigos mais recent
 
 ```
 +----------------------------------------------------------+
-| PAGAMENTO UNICO                                           |
+| IMPLEMENTACAO (uma vez)                                   |
+|   R$ 2.500 a vista (Pix ou cartao)                        |
+|   OU                                                       |
+|   R$ 3.000 parcelado em 12x de R$ 250 (cliente            |
+|   assume juros do cartao)                                  |
 |                                                            |
-| R$ 2.500 a vista (Pix ou cartao)                         |
-| OU                                                         |
-| R$ 3.000 parcelado em 12x (cliente assume juros)         |
+| + INFRA MENSAL (a partir do mes 2)                        |
+|   R$ 300/mes via cartao recorrente                        |
+|   Cobre tokens LLM + APIs + hospedagem do motor           |
+|                                                            |
+| Mes 1 incluso na implementacao.                           |
 |                                                            |
 | O que voce recebe:                                        |
 | - Blog estruturado no seu dominio (ou subdominio buscou.ai) |
@@ -132,7 +139,8 @@ Demonstracao de autoridade + alimenta SEO do proprio site. 3 artigos mais recent
 | - Onboarding automatico em 24-48h                        |
 | - Ativacao em ate 7 dias                                 |
 | - Dashboard de acompanhamento                            |
-| - Sem mensalidade, sem assinatura, sem fidelidade       |
+| - Se a infra mensal nao for paga, motor pausa mas         |
+|   conteudo ja publicado fica no ar                        |
 |                                                            |
 | [Comprar a vista (Pix)]  [Parcelar em 12x]               |
 |                                                            |
@@ -150,10 +158,12 @@ Demonstracao de autoridade + alimenta SEO do proprio site. 3 artigos mais recent
 | Quanto tempo para ver resultados? | Blog no ar em ate 7 dias. Primeiros sinais em ate 30 dias. Rankings/citacoes em IA em 60-90 dias. |
 | Funciona para qualquer negocio? | Melhor para negocios locais (clinicas, imobiliarias, advogados, servicos). Se seu cliente busca no Google, funciona. |
 | Preciso saber de SEO? | Nao. O motor faz tudo. Voce so preenche o wizard no onboarding. |
-| E uma assinatura? | Nao. E **pagamento unico**. Paga R$ 2.500 a vista (ou R$ 3.000 em 12x) e o motor publica 90 conteudos/mes sem cobranca adicional. |
-| Qual a diferenca para agencia de SEO? | Agencia depende de pessoas, tem prazos longos e custa 5-10x mais. Tecnologia e automatizada, consistente e cobra uma vez. |
-| Como e o suporte? | Chat IA 24/7 + humano em ate 24h (ver [[SLAs e Garantias]]). |
-| Posso pedir reembolso? | Sim, nos primeiros 14 dias se menos de 10 artigos foram publicados. Apos isso, os artigos publicados ficam no seu site. |
+| Quanto eu pago? | Duas coisas: **implementacao** (R$ 2.500 a vista ou R$ 3.000 em 12x de R$ 250) paga uma vez + **infra mensal** R$ 300/mes a partir do mes 2. O mes 1 ja esta incluso na implementacao. |
+| E uma assinatura de servico? | Nao. A implementacao e paga uma vez. A infra mensal nao e "mensalidade de servico" — e passthrough do custo real de rodar o motor (tokens de LLM + APIs + hospedagem). Nao cobramos gestao nem consultoria mensal. |
+| E se eu parar de pagar a infra? | O motor pausa (para de publicar novos artigos). Mas o blog e todos os conteudos ja publicados continuam no ar. Quando regularizar, o motor volta. |
+| Qual a diferenca para agencia de SEO? | Agencia cobra R$ 3K-15K/mes de servico indefinidamente. Aqui voce paga a implementacao uma vez + R$ 300/mes de infra transparente. Em 12 meses, investimento total e ~R$ 5.800-6.300. Uma agencia tipica cobra 5-10x isso. |
+| Como e o suporte? | Chat IA 24/7 + humano em ate 24h enquanto infra estiver ativa (ver [[SLAs e Garantias]]). |
+| Posso pedir reembolso? | Sim, nos primeiros 14 dias da implementacao se menos de 10 artigos foram publicados. Apos isso, os artigos publicados ficam no seu site. |
 
 Componente Accordion com FAQ schema para aparecer em rich results.
 
@@ -163,8 +173,9 @@ Componente Accordion com FAQ schema para aparecer em rich results.
 +----------------------------------------------------------+
 | Pronto para aparecer?                                      |
 |                                                            |
-| R$ 2.500 a vista | R$ 3.000 em 12x                       |
-| Blog no ar em 7 dias. Primeiros sinais em 30.            |
+| Implementacao R$ 2.500 a vista ou 12x R$ 250              |
+| + infra mensal R$ 300/mes a partir do mes 2               |
+| Blog no ar em 7 dias. Primeiros sinais em 30.             |
 |                                                            |
 | [Comprar agora →]     [Falar no WhatsApp]                |
 +----------------------------------------------------------+
@@ -253,7 +264,7 @@ Pagamento confirmado → onboarding (24-48h) → ativacao (7 dias)
 
 | Pagina | Meta title | Meta description |
 |---|---|---|
-| Home | buscou.ai — Se alguem buscou, quem apareceu foi voce? | Blog + Motor publicando 90 conteudos/mes no seu site. Pagamento unico: R$ 2.500 a vista ou R$ 3.000 em 12x. |
+| Home | buscou.ai — Se alguem buscou, quem apareceu foi voce? | Blog + Motor publicando 90 conteudos/mes no seu site. Implementacao R$ 2.500 a vista (ou 12x R$ 250) + infra mensal R$ 300 a partir do mes 2. |
 | Como funciona | Como Funciona — buscou.ai | Configure, o motor publica, voce aparece. 3 passos em ate 7 dias. |
 | Blog | Blog — buscou.ai | SEO, AIO e como aparecer nas buscas. Conteudo gerado pelo proprio motor. |
 | Exemplos | Cases — buscou.ai | Resultados reais de negocios locais aparecendo no Google e nas IAs. |

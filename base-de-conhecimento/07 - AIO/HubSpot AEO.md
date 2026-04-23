@@ -84,7 +84,7 @@ Sugestoes acionaveis e priorizadas para melhorar a visibilidade da sua marca em 
 ## Melhor Para
 
 - Empresas que ja usam HubSpot (CRM, Marketing Hub)
-- PMEs que querem comecar com [[AIO]] sem grande investimento
+- PMEs que querem comecar com [[O que e AIO|AIO]] sem grande investimento
 - Equipes de marketing que precisam de uma avaliacao rapida da visibilidade em IA
 - Quem busca uma ferramenta simples e integrada a um ecossistema maior
 - Profissionais que querem entender o impacto da queda de trafego organico vs crescimento de IA

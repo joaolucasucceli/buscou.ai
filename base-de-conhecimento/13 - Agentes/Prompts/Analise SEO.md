@@ -186,7 +186,7 @@ Para auditorias de clientes novos, execute estes prompts em sequencia:
 5. Canibalizacao (#14) → verificar sobreposicoes
 ```
 
-Resultado: auditoria inicial completa em ~2 horas. Veja [[Playbook - Auditoria Relampago]] para o processo completo.
+Resultado: auditoria inicial completa em ~2 horas. Sequencia aplicada pelo [[Agente Pesquisador]] na V1 como parte do onboarding automatico.
 
 ---
 

@@ -122,7 +122,7 @@ Quadrante superior-direito = prioridade absoluta. Iniciar pipeline imediatamente
 2. Para cada keyword, calcula as 5 variaveis automaticamente:
    - Volume e KD: da API de keywords
    - Intent: classificacao por NLP (Claude analisa a query)
-   - AIO_Opp: resultado do [[Playbook - Teste de Citacao em IA]] (se ja executado) ou heuristica
+   - AIO_Opp: resultado de [[Testes IA]] (se ja executado) ou heuristica
    - Gap: analise SERP automatica (idade do conteudo, word count, schema presente)
 3. Aplica formula, ordena por score descendente
 4. Gera calendario editorial: top 8-40 keywords (conforme tier) distribuidas no mes
@@ -141,7 +141,7 @@ Quadrante superior-direito = prioridade absoluta. Iniciar pipeline imediatamente
 - Intencao de busca: [[Palavras-Chave e Intencao de Busca]]
 - Clusters de conteudo: [[Content Clustering e Pillar Pages]]
 - Agente que aplica a formula: [[Agente Estrategista]]
-- Teste de oportunidade AIO: [[Playbook - Teste de Citacao em IA]]
+- Teste de oportunidade AIO: [[Testes IA]]
 - Metrica que esse framework alimenta: [[North Star Metric]]
 - Framework SEO geral: [[Framework SEO Completo]]
 - Framework AIO geral: [[Framework AIO Completo]]

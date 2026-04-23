@@ -236,7 +236,7 @@ atualizado: 2026-04-23
 | Input | Campo |
 |---|---|
 | Lista de leads | Google Maps API, CNPJ por segmento |
-| Perfil do ICP | criterios de [[ICP - Cliente Ideal]] |
+| Perfil do ICP | criterios de [[ICP por Nicho]] |
 | Templates de sequencia | biblioteca interna |
 | Calendario de envio | config do Orquestrador |
 
@@ -253,19 +253,21 @@ atualizado: 2026-04-23
 
 | Input | Campo |
 |---|---|
-| Webhooks do gateway | Stripe / Asaas |
-| Dados do cliente | modalidade (a vista / 12x), metodo de pagamento, parcela atual |
-| Configuracao de retry | cadencia (D+1, D+3, D+5 — smart retry do gateway) |
-| Templates de notificacao | por estagio (confirmacao → aviso falha → follow-up) |
+| Webhooks do gateway | Stripe / Asaas (dois fluxos: implementacao e infra mensal — discriminados via metadata) |
+| Dados do cliente | modalidade da implementacao (a vista / 12x), status de cada parcela, status da subscription da infra (pending_start / active / overdue / paused / cancelled), mes do ciclo |
+| Configuracao de retry | implementacao: smart retry do gateway (D+0/D+3/D+5); infra mensal: D+0/D+3/D+7 com pausa do motor apos 3 falhas |
+| Templates de notificacao | por estagio (confirmacao, aviso de falha, lembrete, aviso critico, pausa do motor, regularizacao) |
 
 | Output | Destino |
 |---|---|
-| Confirmacao de pagamento | evento `pagamento_confirmado` → dispara onboarding |
-| Notificacoes de parcela falha | e-mail + WhatsApp |
-| Retry via gateway | API gateway |
-| Relatorios | dashboard admin |
+| `compra.confirmada` | dispara onboarding |
+| `parcela.paga` / `compra.quitada` | atualiza billing no dashboard |
+| `infra.assinatura_iniciada` / `infra.cobranca_paga` | atualiza billing no dashboard |
+| `infra.cobranca_falhou` (tentativa 1-3) | notificacoes escaladas (e-mail + WhatsApp) |
+| `motor.pausar_por_inadimplencia` / `motor.retomar_apos_regularizacao` | Orquestrador atualiza estado da organizacao |
+| Relatorios | dashboard admin (caixa, MRR real, churn de infra) |
 
-**Importante:** nao e cobranca recorrente. Gerencia compra unica (a vista ou parcelada em 12x, cliente assume juros).
+**Importante:** gerencia **dois fluxos** — (1) implementacao (compra unica a vista OU parcelada em 12x) e (2) infra mensal (subscription recorrente R$ 300 a partir do mes 2, passthrough de custo operacional). Detalhes em [[Agente Pagamento]].
 
 ---
 
@@ -333,7 +335,7 @@ Detalhes: [[Objeto Business Context]].
 - [[Arquitetura de Agentes]] — como os agentes se comunicam
 - [[Orquestrador]] — distribui os inputs
 - [[Feedback Loop]] — como o contexto evolui
-- [[Entidades e Schema]] — tabelas do banco
+- [[Entidades e Schema - Fase 1 (Onboarding)]] — tabelas do banco (Fase 1 linka para Fase 2 e Fase 3)
 
 ---
 

@@ -2,12 +2,12 @@
 tipo: referencia
 area: Mercado
 tags: [referencias, casos, resultados, mercado, dados]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Casos de Estudo do Mercado
 
-Dados reais de performance de SEO com IA, casos de sucesso, riscos e padroes que funcionam. Estes dados alimentam nosso [[Sales Pitch]], [[ROI Calculator]] e [[Estrategia de Conteudo]] propria.
+Dados reais de performance de SEO com IA, casos de sucesso, riscos e padroes que funcionam. Estes dados alimentam nosso [[Oferta Comercial]], calculo de ROI no [[Modelo de Negocio]] e a [[Estrategia de Conteudo Autonomo]] propria.
 
 ---
 
@@ -78,7 +78,7 @@ Dados reais de performance de SEO com IA, casos de sucesso, riscos e padroes que
 - Conteudo otimizado para ser "citavel" por IAs
 - Estrategia integrada SEO + AIO
 
-**O que aprendemos:** O crescimento em AI Overviews (34x) e MUITO maior que em busca tradicional (7x). Isso confirma que AIO e o futuro e que nosso foco em SEO + AIO integrados esta correto. O numero de 198x em alcance IA e poderoso para nosso [[Sales Pitch]].
+**O que aprendemos:** O crescimento em AI Overviews (34x) e MUITO maior que em busca tradicional (7x). Isso confirma que AIO e o futuro e que nosso foco em SEO + AIO integrados esta correto. O numero de 198x em alcance IA e poderoso para nossa [[Oferta Comercial]].
 
 **Fonte:** [Momentum.io Case Study](https://www.resultfirst.com/case-studies/seo/momentum/)
 
@@ -115,7 +115,7 @@ O Google **nao penaliza** conteudo por ser gerado por IA. A avaliacao e baseada 
 ### O que isso significa para nos:
 
 1. **Conteudo IA puro e generico NAO funciona** - confirma a necessidade do nosso Deep Research e otimizacao
-2. **A qualidade e que determina o ranking**, nao a origem - nosso pipeline de [[Agente Editor]] com scoring de qualidade e essencial
+2. **A qualidade e que determina o ranking**, nao a origem - nosso pipeline de [[Agente Revisor]] com scoring de qualidade e essencial
 3. **E-E-A-T e critico** - precisamos injetar experiencia, expertise e autoridade nos conteudos (dados reais, citacoes, case studies)
 4. **AI Overviews favorecem conteudo "citavel"** - estrutura, dados concretos, respostas diretas
 
@@ -167,19 +167,21 @@ O Google **nao penaliza** conteudo por ser gerado por IA. A avaliacao e baseada 
 
 | Metrica | Agencia Tradicional | Freelancer | DIY | **Nosso Sistema** |
 |---------|-------------------|-----------|-----|-------------------|
-| Artigos/mes | 4-8 | 8-15 | 2-4 | **30-50** |
-| Custo mensal | R$3.000-10.000 | R$1.500-4.000 | R$0 (+ tempo) | **R$497-997** |
-| Tempo para resultados | 6-12 meses | 3-6 meses | 12+ meses | **2-4 meses** |
+| Artigos/mes | 4-8 | 8-15 | 2-4 | **90** |
+| Custo ano 1 | R$ 36K-120K (servico recorrente) | R$ 18K-48K (servico recorrente) | R$ 0 (+ tempo) | **R$ 5.800-6.300** (R$ 2.500-3.000 de implementacao + 11 × R$ 300 de infra) |
+| Custo medio/mes ano 1 | R$ 3K-10K | R$ 1,5K-4K | R$ 0 | **~R$ 500** |
+| Tempo para resultados | 6-12 meses | 3-6 meses | 12+ meses | **30-90 dias (ver timeline canonica)** |
 | Auditoria tecnica | Extra | Nao faz | Nao sabe | **Incluso** |
 | AIO/GEO | Nao oferece | Nao oferece | Nao sabe | **Incluso** |
 | Monitoramento 24/7 | Manual/semanal | Nao faz | Nao faz | **Automatico** |
 
-### ROI projetado para o cliente:
+### ROI projetado para o cliente (ano 1):
 
-- Investimento: R$497/mes (plano Professional)
-- Conteudo gerado: 30 artigos otimizados/mes
-- Custo por artigo: R$16,57 (vs R$200-500 de freelancer)
-- Trafego projetado (6 meses): +45% organico
-- ROI esperado: **7,65x** baseado na media de mercado
+- Investimento: R$ 2.500-3.000 de implementacao (paga uma vez) + R$ 300/mes de infra a partir do mes 2.
+- Total ano 1 (11 meses de infra): R$ 5.800-6.300.
+- Conteudo gerado: 90 artigos otimizados/mes (~720K caracteres).
+- Custo por artigo (11 meses × 90 = 990 artigos): ~R$ 5,85-6,36 (vs R$ 200-500 de freelancer).
+- Trafego projetado (6 meses): +45% organico.
+- Payback: 1-2 clientes novos do cliente capturados via SEO/AIO cobrem o investimento do ano.
 
-> **Ver tambem:** [[Modelo de Pricing]] para definicao final de precos, [[Estrategia Go-to-Market]] para uso destes dados, e [[Concorrentes e Benchmarks]] para posicionamento competitivo.
+> **Ver tambem:** [[Modelo de Negocio]] para definicao final de precos, [[Go To Market Inicial]] para uso destes dados, e [[Concorrentes e Benchmarks]] para posicionamento competitivo.

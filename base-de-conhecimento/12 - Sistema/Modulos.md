@@ -2,7 +2,7 @@
 tipo: sistema
 area: Arquitetura
 tags: [sistema, modulos, componentes]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Modulos do Sistema
@@ -18,7 +18,7 @@ O sistema e dividido em 10 modulos independentes, cada um com responsabilidades 
 **Tabelas principais**: `users`, `user_sessions` (gerenciada pelo Supabase Auth internamente)
 
 **API Endpoints**:
-- `POST /auth/signup` — Registro com email + password. Cria user e org (trial).
+- `POST /auth/signup` — Registro com email + password. Cria user e org em status `pending_payment`.
 - `POST /auth/login` — Login. Retorna JWT com claims.
 - `POST /auth/magic-link` — Envia magic link por email.
 - `GET /auth/me` — Retorna perfil do usuario autenticado.
@@ -30,7 +30,7 @@ O sistema e dividido em 10 modulos independentes, cada um com responsabilidades 
 
 ## 2. Organizations
 
-**Descricao**: Gerencia multi-tenancy. Cada organizacao tem seu plano, configuracoes de billing e limites de uso. Um usuario pertence a uma organizacao. O org_id e a chave principal de isolamento no RLS.
+**Descricao**: Gerencia multi-tenancy. Cada organizacao tem status de ciclo (pending_payment / implementing / live_free_period / live_active / motor_paused / refunded / archived) e configuracoes de pagamento (implementacao + infra mensal). Um usuario pertence a uma organizacao. O `org_id` e a chave principal de isolamento no RLS. **Nao ha conceito de "plano"** — oferta e unica (ver [[VERDADE_UNICA_BUSCOU]] secao 5).
 
 **Tabelas principais**: `organizations`, `org_settings`, `org_usage`
 
@@ -130,20 +130,28 @@ O sistema e dividido em 10 modulos independentes, cada um com responsabilidades 
 
 ---
 
-## 8. Billing
+## 8. Pagamentos
 
-**Descricao**: Gerencia assinaturas Stripe, invoices, controle de uso e limites de plano. Recebe webhooks do Stripe para sincronizar status de pagamento. Controla trial, upgrades, downgrades e cancelamentos.
+**Descricao**: Gerencia os **dois fluxos de cobranca** da buscou.ai — implementacao (one-time ou 12 parcelas) e infra mensal (subscription recorrente R$ 300). Recebe webhooks do gateway (Stripe/Asaas) discriminados via metadata. Operado pelo [[Agente Pagamento]].
 
-**Tabelas principais**: `invoices`, `subscription_history`, `usage_records`
+### 8.1 Submodulo Implementacao
+- **Tabelas**: `compras`, `parcelas_implementacao`.
+- **Responsabilidades**: checkout a vista ou parcelamento 12x, confirmacao de compra, acompanhamento de cada parcela, smart retry em falha (sem pausar motor), reembolso nos primeiros 14 dias.
+
+### 8.2 Submodulo Infra Mensal
+- **Tabelas**: `assinaturas_infra`, `tentativas_cobranca`.
+- **Responsabilidades**: ativacao no mes 2, cobranca mensal R$ 300, smart retry em falha (3 tentativas D+0/D+3/D+7), pausar motor apos 3 falhas, retomar apos regularizacao, cancelamento voluntario.
 
 **API Endpoints**:
-- `GET /billing/subscription` — Dados da assinatura atual da org.
-- `POST /billing/checkout` — Cria sessao Stripe Checkout para novo plano.
-- `POST /billing/portal` — Gera link para Stripe Customer Portal.
-- `POST /billing/webhooks/stripe` — Recebe webhooks do Stripe (Edge Function).
-- `GET /billing/invoices` — Lista faturas da org.
+- `POST /pagamentos/checkout` — Cria checkout da implementacao + subscription agendada da infra.
+- `GET /pagamentos/compra` — Dados da compra atual (status + parcelas).
+- `GET /pagamentos/infra` — Dados da assinatura de infra (status + historico).
+- `POST /pagamentos/portal` — Gera link para Customer Portal do gateway (atualizar cartao).
+- `POST /pagamentos/infra/cancelar` — Cancelamento voluntario da subscription da infra.
+- `POST /pagamentos/webhooks/gateway` — Recebe webhooks do gateway (Edge Function com discriminacao por metadata).
+- `GET /pagamentos/historico` — Lista compras + parcelas + tentativas de cobranca da org.
 
-**Dependencias**: [[#2. Organizations]], Stripe (externo)
+**Dependencias**: [[#2. Organizations]], Stripe/Asaas (externo), [[Agente Pagamento]], [[Orquestrador]] (para eventos motor.pausar/motor.retomar).
 
 ---
 
@@ -196,5 +204,5 @@ Auth (1)
 ```
 
 Ver [[Arquitetura do Sistema]] para a visao de alto nivel.
-Ver [[Entidades e Schema]] para o detalhamento das tabelas.
+Ver [[Entidades e Schema - Fase 1 (Onboarding)]], [[Entidades e Schema - Fase 2 (Conteudo e Publicacao)]] e [[Entidades e Schema - Fase 3 (Dados e Auditoria)]] para o detalhamento das tabelas.
 Ver [[Permissoes e Roles]] para as politicas de acesso por modulo.

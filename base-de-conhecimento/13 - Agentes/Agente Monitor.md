@@ -2,14 +2,14 @@
 tipo: agente
 area: Sistema
 tags: [agente, monitor, rankings, citacoes-ia, trafego, alertas]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Agente Monitor
 
 ## Funcao
 
-O Agente Monitor rastreia continuamente o desempenho de todo conteudo publicado em duas frentes: SEO tradicional (posicoes no Google, trafego organico, CTR, conversoes) e AIO (citacoes em ChatGPT, Perplexity, Google AI Overviews, e outros LLMs). Ele detecta quedas de ranking, identifica oportunidades de melhoria, emite alertas automaticos e alimenta o [[Dashboard de Resultados]] com dados atualizados. E o agente que fecha o loop — seus insights disparam acoes nos outros agentes (refresh de conteudo, re-otimizacao, redistribuicao).
+O Agente Monitor rastreia continuamente o desempenho de todo conteudo publicado em duas frentes: SEO tradicional (posicoes no Google, trafego organico, CTR, conversoes) e AIO (citacoes em ChatGPT, Perplexity, Google AI Overviews, e outros LLMs). Ele detecta quedas de ranking, identifica oportunidades de melhoria, emite alertas automaticos e alimenta o [[Dashboard do Cliente]] com dados atualizados. E o agente que fecha o loop — seus insights disparam acoes nos outros agentes (refresh de conteudo, re-otimizacao, redistribuicao).
 
 ---
 
@@ -17,13 +17,13 @@ O Agente Monitor rastreia continuamente o desempenho de todo conteudo publicado 
 
 - **Lista de URLs monitoradas**: todos os conteudos publicados pelo [[Agente Publicador]]
 - **Keywords rastreadas**: keywords principais e secundarias de cada conteudo (do [[Agente Estrategista]])
-- **Queries de monitoramento IA**: prompts especificos para verificar citacoes em LLMs (de [[Ranking IA - Tracking Manual]])
+- **Queries de monitoramento IA**: prompts especificos para verificar citacoes em LLMs (framework em [[Ranking IA - Tracking Manual]])
 - **Baseline de metricas**: posicoes, trafego e citacoes anteriores para comparacao (delta)
 - **Configuracao de alertas**: thresholds para cada metrica (ex: queda > 5 posicoes, trafego -20%)
 
 ## Output
 
-- **Dashboard atualizado**: dados em tempo real para [[Dashboard de Resultados]]
+- **Dashboard atualizado**: dados em tempo real para [[Dashboard do Cliente]]
 - **Alertas**: notificacoes Slack/email quando metricas ultrapassam thresholds
 - **Reports semanais/mensais**: relatorio automatico com tendencias, winners, losers, oportunidades
 - **Triggers de acao**: despacho automatico para Orquestrador quando acao e necessaria (refresh, re-otimizacao)
@@ -90,8 +90,8 @@ O Agente Monitor rastreia continuamente o desempenho de todo conteudo publicado 
 ## Dependencias
 
 - **Depende de**: [[Orquestrador]] (cron triggers), GSC API, Ahrefs API, Otterly API, LLMrefs API, GA4 API
-- **Quem depende dele**: [[Dashboard de Resultados]] (dados), [[Agente Estrategista]] (oportunidades), [[Agente Redator]] (triggers de refresh), [[Agente Pesquisador]] (re-pesquisa)
-- **Referencia**: [[Ranking IA - Tracking Manual]], [[Dashboard de Resultados]], [[Google Search Console]], [[Ahrefs]], [[Otterly.ai]], [[LLMrefs]]
+- **Quem depende dele**: [[Dashboard do Cliente]] (dados), [[Agente Estrategista]] (oportunidades), [[Agente Redator]] (triggers de refresh), [[Agente Pesquisador]] (re-pesquisa)
+- **Referencia**: [[Ranking IA - Tracking Manual]], [[Dashboard do Cliente]], [[Google Search Console]], [[Ahrefs]], [[Otterly.ai]], [[LLMrefs]]
 
 ---
 
@@ -161,7 +161,7 @@ O Agente Monitor rastreia continuamente o desempenho de todo conteudo publicado 
 
 - [[Arquitetura de Agentes]]
 - [[Orquestrador]]
-- [[Dashboard de Resultados]]
+- [[Dashboard do Cliente]]
 - [[Ranking IA - Tracking Manual]]
 - [[Google Search Console]]
 - [[Ahrefs]]

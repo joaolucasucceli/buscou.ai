@@ -18,7 +18,7 @@ O Agente Estrategista analisa o nicho do cliente, pesquisa o cenario competitivo
 - **Dados do cliente**: nicho, URL do site, concorrentes conhecidos, objetivos de negocio
 - **Job do Orquestrador**: `{ tipo: "create_strategy", cliente_id, periodo: "mensal" }`
 - **Dados de ferramentas**: export Ahrefs (keywords do dominio, backlinks, gaps), Google Trends (sazonalidade)
-- **Historico**: conteudos ja produzidos, keywords ja rankeadas (de [[Palavras-Chave Dominadas]])
+- **Historico**: conteudos ja produzidos, keywords ja rankeadas (output do [[Agente Monitor]])
 
 ## Output
 
@@ -44,7 +44,7 @@ O Agente Estrategista analisa o nicho do cliente, pesquisa o cenario competitivo
 
 ## Gatilho
 
-- **Onboarding de cliente novo**: [[Orquestrador]] dispara apos [[Checklist Onboarding Cliente]] ser concluido
+- **Onboarding de cliente novo**: [[Orquestrador]] dispara apos [[Onboarding Automatico]] ser concluido (evento `onboarding_concluido`)
 - **Ciclo mensal**: cron no 1o dia util do mes para replanejar calendario
 - **Demanda ad-hoc**: equipe solicita estrategia para keyword/topico especifico
 - **Alerta do Monitor**: [[Agente Monitor]] detecta oportunidade (keyword com queda de concorrente) e aciona replanejamento
@@ -81,7 +81,7 @@ O Agente Estrategista analisa o nicho do cliente, pesquisa o cenario competitivo
 
 ## Dependencias
 
-- **Depende de**: [[Orquestrador]] (despacho), Ahrefs API, Google Trends, [[ICP - Cliente Ideal]] (nicho), [[Palavras-Chave Dominadas]] (historico)
+- **Depende de**: [[Orquestrador]] (despacho), Ahrefs API, Google Trends, [[ICP por Nicho]] (nicho)
 - **Quem depende dele**: [[Agente Pesquisador]] (recebe briefs), [[Agente Monitor]] (verifica keywords planejadas)
 - **Referencia**: [[Content Clustering e Pillar Pages]], [[Framework SEO Completo]], [[Palavras-Chave e Intencao de Busca]]
 

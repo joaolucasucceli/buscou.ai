@@ -65,7 +65,7 @@ Nao ha opcao self-serve. O preco e voltado exclusivamente para grandes empresas.
 - Sem opcao self-serve ou planos menores
 - Nao conecta dados de mencoes a comportamento de visitantes ou conversoes
 - Foco exclusivo em visibilidade — nao inclui ferramentas de otimizacao de conteudo
-- Como solucao pontual, nao substitui stack completo de [[SEO]]/[[AIO]]
+- Como solucao pontual, nao substitui stack completo de [[O que e SEO|SEO]]/[[O que e AIO|AIO]]
 - Menos adequado para marcas menores ou segmentos de baixo volume de busca em IA
 
 ## Evertune vs Alternativas

@@ -99,5 +99,4 @@ Cada um deve virar issue no Linear quando priorizado.
 - [[MOC - SEO]] — base de conhecimento SEO
 - [[MOC - AIO]] — base de conhecimento AIO
 - [[MOC - Execucao]] — execucao e servico
-- [[MOC - Roadmap de Aprendizado]] — trilha de estudos
 - [[Mental Models]] — como Google, IA e usuario pensam

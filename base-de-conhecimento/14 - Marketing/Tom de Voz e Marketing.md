@@ -34,8 +34,9 @@ Relacionado: [[Conceito e Posicionamento]] | [[Proposta de Valor]] | [[Oferta Co
 
 Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 
-- **Sempre:** tecnologia, sistema, motor, estrutura, automacao, pagamento unico, aparecer, busca, SEO, AIO, presenca organica.
-- **Nunca:** agencia, gestao, consultoria, mensalidade, assinatura, plano (Starter/Growth/Scale), piloto automatico, sistema operacional, jornada, transformacao digital, sinergia, disruptivo.
+- **Sempre:** tecnologia, sistema, motor, estrutura, automacao, implementacao unica, infra mensal, aparecer, busca, SEO, AIO, presenca organica.
+- **Nunca:** agencia, gestao, consultoria, mensalidade de servico, mensalidade de gestao, assinatura SaaS (em copy publico), plano (Starter/Growth/Scale), plano mensal, piloto automatico, sistema operacional, jornada, transformacao digital, sinergia, disruptivo.
+- **Regra de ouro:** sempre separar "implementacao" (one-time) e "infra mensal" (recurring). Nunca unificar como "pacote" ou "plano completo".
 
 ---
 
@@ -50,8 +51,9 @@ Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 | "90 conteudos por mes no seu blog. Publicados automaticamente." | Subtitulo com volume |
 | "720 mil caracteres por mes otimizados pra Google e IA." | Prova de escala |
 | "Em 7 dias seu blog esta no ar. Em 30 dias voce comeca a aparecer." | Timeline |
-| "Pagamento unico. Sem mensalidade. A tecnologia fica sua." | Oferta |
-| "Blog + motor. Voce paga uma vez. O sistema fica rodando." | Pitch em 10 palavras |
+| "Implementacao unica + infra mensal. Transparente." | Oferta |
+| "Paga a implementacao. Paga a infra. O motor trabalha." | Pitch em 10 palavras |
+| "R$ 2.500 de implementacao + R$ 300/mes de infra. Sem servico mensal, sem plano." | Oferta com numeros |
 
 ### Nao fala
 
@@ -72,11 +74,12 @@ Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 
 | CTA | Contexto |
 |---|---|
-| "Comprar a vista — R$ 2.500 no Pix" | Landing hero |
-| "Parcelar em 12x — R$ 3.000" | Landing alternativa |
+| "Comprar a vista — R$ 2.500 no Pix" | Landing hero (implementacao) |
+| "Parcelar em 12x — R$ 250/mes" | Landing alternativa (implementacao) |
 | "Ver demo do motor" | Curiosidade |
 | "Simular meu blog" | Calculadora de setup |
 | "Falar com a buscou.ai" | Contato (call opcional) |
+| "Como funciona a infra mensal?" | Link pro FAQ da infra |
 
 ### Nao fala
 
@@ -87,7 +90,7 @@ Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 - "Clique aqui para saber"
 - "Comece gratuitamente" (nao ha gratis)
 - "Teste 14 dias gratis" (nao ha teste)
-- "Assine agora" (nao ha assinatura)
+- "Assine agora" (nao ha assinatura de servico — a infra mensal e passthrough, nunca chamar de "assinar")
 
 ---
 
@@ -117,11 +120,12 @@ Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 ## Frases-chave canonicas (usar literalmente)
 
 1. **"Se alguem buscou, quem apareceu foi voce?"** — tagline principal.
-2. **"Apareca no Google e na IA. Pagamento unico."** — pitch reduzido.
+2. **"Apareca no Google e na IA."** — pitch reduzido.
 3. **"Blog + motor. 90 conteudos por mes. Publicados sozinhos."** — o que entregamos.
 4. **"Em 7 dias no ar. Em 30 dias aparecendo. Em 90 dias escalando."** — timeline canonica.
-5. **"Voce paga uma vez. A tecnologia fica sua."** — anti-assinatura.
+5. **"Implementacao unica. Infra mensal transparente. Sem servico mensal."** — modelo comercial em 3 partes.
 6. **"Aparecer nao e sorte. E sistema."** — principio.
+7. **"O blog fica seu. A infra mantem o motor vivo."** — divisao de ativo permanente vs operacao recorrente.
 
 ---
 
@@ -136,7 +140,7 @@ Lista completa em [[VERDADE_UNICA_BUSCOU]] secao 6. Resumo obrigatorio:
 **Exemplo:**
 > Clinicas de estetica que aparecem no Google recebem ate 47% mais agendamentos diretos.
 > A buscou.ai publica 90 conteudos por mes no seu blog pra voce aparecer.
-> Pagamento unico R$ 2.500.
+> Implementacao R$ 2.500 + R$ 300/mes de infra.
 
 ### Comprimento padrao
 
@@ -154,9 +158,11 @@ Sempre preferir numero concreto:
 | "muito mais" | "+47%" |
 | "rapidamente" | "em 7 dias" |
 | "IA avancada" | "Claude Sonnet 4.6 + 90 artigos/mes" |
-| "preco acessivel" | "R$ 2.500 a vista" |
+| "preco acessivel" | "R$ 2.500 de implementacao + R$ 300/mes de infra" |
 | "muitos conteudos" | "90 artigos por mes" |
 | "muita escrita" | "720 mil caracteres por mes" |
+| "sem mensalidade" | "implementacao unica; a infra mensal cobre tokens e APIs" |
+| "plano completo" | "implementacao + infra" (separar sempre) |
 
 ---
 
@@ -164,14 +170,15 @@ Sempre preferir numero concreto:
 
 | Canal | Adaptacao |
 |---|---|
-| **Landing page** | Hero com frase central + timeline + oferta + CTA Pix/cartao. Abaixo: prova (dog-fooding) + FAQ. |
+| **Landing page** | Hero com frase central + timeline + **duas linhas da oferta** (implementacao + infra) + CTA Pix/cartao. Abaixo: prova (dog-fooding) + FAQ com "e a infra mensal?". |
 | **Blog (dog-fooding)** | Titulo otimizado + answer-first (resposta em <100 palavras nos primeiros paragrafos). |
 | **LinkedIn** | Abre com numero ou frase provocativa. Sem emoji em excesso. |
-| **WhatsApp (prospecao)** | Busca ao vivo + "voce nao aparece" + proposta direta com preco. |
+| **WhatsApp (prospecao)** | Busca ao vivo + "voce nao aparece" + proposta direta com os dois precos (implementacao + infra). |
 | **DM Instagram** | Similar ao WhatsApp, mais curto. |
 | **Email frio** | Assunto: "[empresa] nao aparece no Google pra [query]" — direto, especifico. |
-| **Dashboard do cliente** | Microcopy tecnica. IVT, artigos publicados, status do motor. |
+| **Dashboard do cliente** | Microcopy tecnica. IVT, artigos publicados, status do motor, status da infra mensal. |
 | **Suporte (chat)** | Tom calmo e tecnico. Admite erro sem teatralidade. |
+| **E-mail de cobranca (infra)** | Tom neutro e operacional. "Sua infra venceu hoje. Tentamos cobrar o cartao e nao passou. Tentaremos novamente em 3 dias." |
 
 ---
 
@@ -182,8 +189,9 @@ Sempre preferir numero concreto:
 - [ ] Nao usa termo proibido (ver [[VERDADE_UNICA_BUSCOU]] secao 6)?
 - [ ] Nome da marca em `buscou.ai` (minusculo, com ponto)?
 - [ ] Frase central considerada (adaptada se necessario)?
-- [ ] Preco correto (ver [[VERDADE_UNICA_BUSCOU]] secao 5)?
+- [ ] Preco correto: implementacao + infra mensal separados (ver [[VERDADE_UNICA_BUSCOU]] secao 5)?
 - [ ] Produto descrito como "blog + motor"?
+- [ ] Modelo comercial comunicado como duas linhas explicitas?
 - [ ] ICP local (se for copy de aquisicao)?
 
 ---
@@ -209,9 +217,9 @@ Mais provocativa. Abre com numero ou frase forte. Mostra dor e solucao.
 >
 > A buscou.ai monta seu blog e publica 90 conteudos por mes automaticamente — pra voce aparecer no Google e na IA.
 >
-> [ Comprar a vista — R$ 2.500 no Pix ]   [ Parcelar em 12x — R$ 3.000 ]
+> [ Comprar a vista — R$ 2.500 no Pix ]   [ Parcelar em 12x — R$ 250/mes ]
 >
-> Sem mensalidade. Pagamento unico. A tecnologia fica sua.
+> + infra mensal R$ 300/mes a partir do mes 2 (tokens + APIs + hospedagem do motor). Mes 1 incluso na implementacao.
 
 **Subtitulo de prova:**
 
@@ -226,7 +234,8 @@ Mais provocativa. Abre com numero ou frase forte. Mostra dor e solucao.
 - [[Uso do Nome]] — como escrever a marca
 - [[Oferta Comercial]] — oferta que a voz vende
 - [[Proposta de Valor]] — argumento completo
-- [[Decision Log - 2026-04-23]]
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial
 
 ---
 

@@ -79,9 +79,9 @@ Seus melhores artigos por receita/leads gerados:
 
 ## Notas Relacionadas
 
-- [[Palavras-Chave Dominadas]] - Keywords rankeadas
-- [[Dashboard de Resultados]] - Visao consolidada
+- [[Agente Monitor]] - Agente que rastreia rankings e trafego
+- [[Dashboard do Cliente]] - Interface consolidada de metricas
 - [[Content Strategy e Topic Clusters]] - Estrategia de conteudo
 - [[SEO para Conteudo e Blogs]] - Best practices de blog SEO
 - [[Queries que Rankeamos]] - Performance em IA
-- [[00 - Pipeline]] - Etapas 4-6 (criacao, publicacao, interlinking)
+- [[Fluxo V1]] - Pipeline automatizado (criacao, publicacao, interlinking)

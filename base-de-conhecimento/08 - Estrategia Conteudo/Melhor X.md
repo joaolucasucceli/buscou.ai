@@ -122,5 +122,5 @@ Crie um template no Obsidian e replique para cada keyword. A estrutura e sempre 
 - [[Como Fazer X]] - Queries informacionais
 - [[Content Strategy e Topic Clusters]] - Pillar pages
 - [[AEO - Answer Engine Optimization]] - Otimizar para respostas
-- [[00 - Pipeline]] - Etapa 4 (criacao de conteudo)
+- [[Fluxo V1]] - Fluxo automatizado de producao de conteudo
 - [[Geracao de Conteudo]] - Prompts para criar listicles

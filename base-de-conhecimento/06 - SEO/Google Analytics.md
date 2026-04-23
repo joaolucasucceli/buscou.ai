@@ -15,7 +15,7 @@ atualizado: 2026-04-22
 
 ## O que e
 
-O Google Analytics 4 (GA4) e a plataforma de analise de dados web do Google, baseada em um modelo de eventos (em vez de sessoes e pageviews, como o antigo Universal Analytics). Para profissionais de [[SEO]], o GA4 e essencial para medir o impacto real do trafego organico no comportamento dos usuarios e nas conversoes.
+O Google Analytics 4 (GA4) e a plataforma de analise de dados web do Google, baseada em um modelo de eventos (em vez de sessoes e pageviews, como o antigo Universal Analytics). Para profissionais de [[O que e SEO|SEO]], o GA4 e essencial para medir o impacto real do trafego organico no comportamento dos usuarios e nas conversoes.
 
 ## Principais Funcionalidades para SEO
 

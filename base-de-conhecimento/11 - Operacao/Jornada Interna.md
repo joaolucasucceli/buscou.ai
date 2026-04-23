@@ -9,7 +9,7 @@ atualizado: 2026-04-23
 
 > Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. Este arquivo documenta o que o sistema executa por tras para cada cliente ativo.
 
-Relacionado: [[Arquitetura de Agentes]] | [[Pipeline]] | [[Orquestrador]] | [[Fluxo Operacional Completo]]
+Relacionado: [[Arquitetura de Agentes]] | [[Fluxo V1]] | [[Orquestrador]] | [[Fluxo Operacional Completo]]
 
 ---
 
@@ -59,13 +59,13 @@ Cadencia por cliente ativo: **3 artigos/dia × 30 dias = 90 artigos/mes, ~720K c
 ### Dia 29-30 — Relatorio
 - [[Agente Monitor]] compila dados do mes.
 - Sistema gera relatorio automatico no dashboard.
-- [[Agente Pagamento]] verifica status de parcelas (para clientes no parcelado 12x). Nao ha cobranca recorrente — nao existe renovacao automatica na venda unica.
+- [[Agente Pagamento]] verifica status de dois fluxos: parcelas da implementacao (12x, para clientes no parcelado) + cobranca mensal da infra (R$ 300 a partir do mes 2). Smart retry automatico em caso de falha; 3 falhas consecutivas na infra pausam o motor.
 
 ---
 
 ## Fluxo unico (sem distincao por tier)
 
-A oferta e unica. Nao ha Starter/Growth/Scale. Todo cliente ativo recebe:
+A oferta e unica. Nao ha Starter/Growth/Scale. Todo cliente com infra ativa recebe:
 
 | Recurso | Entrega |
 |---|---|
@@ -78,8 +78,9 @@ A oferta e unica. Nao ha Starter/Growth/Scale. Todo cliente ativo recebe:
 | Relatorio | Dashboard em tempo real + resumo mensal |
 | Suporte | IA 24/7 + humano em duvidas escaladas (SLA 24h) |
 | Slots de producao | 3 artigos/dia garantidos |
+| Dependencia de cobranca | Infra mensal paga. Se motor em `motor_paused`, produzindo: 0 artigos. Conteudo antigo fica no ar. |
 
-Nao ha upgrade nem downgrade. Se o cliente precisar de mais volume, isso e tratado como oferta futura (V1.2+) e nao bloqueia V1.
+Se o cliente precisar de mais volume ou canais adicionais, isso e tratado em pacote de infra expandido (V1.2+) com infra mensal maior (nao e tier, e mudanca de escopo de infra).
 
 ---
 

@@ -2,12 +2,12 @@
 tipo: referencia
 area: Sistema
 tags: [referencias, multi-agente, framework, crewai, langgraph, claude]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Frameworks Multi-Agente
 
-Comparacao detalhada dos principais frameworks para construir nosso [[Sistema Multi-Agente]] de SEO + AIO. A escolha do framework impacta diretamente velocidade de desenvolvimento, custo operacional e escalabilidade.
+Comparacao detalhada dos principais frameworks para construir nosso [[Arquitetura de Agentes|sistema multi-agente]] de SEO + AIO. A escolha do framework impacta diretamente velocidade de desenvolvimento, custo operacional e escalabilidade.
 
 ---
 
@@ -222,4 +222,4 @@ Comparacao detalhada dos principais frameworks para construir nosso [[Sistema Mu
 | Publisher | Claude Haiku | Tarefas simples de formatacao e publicacao |
 | SDR | Claude Sonnet | Conversacao natural, persuasao |
 
-> **Nota:** Ver [[Arquitetura do Sistema]] para diagrama de como os frameworks se integram e [[Estimativa de Custos LLM]] para projecao de gastos com tokens.
+> **Nota:** Ver [[Arquitetura do Sistema]] para diagrama de como os frameworks se integram e [[Modelo de Negocio]] (secao de custos operacionais) para projecao de gastos com tokens.

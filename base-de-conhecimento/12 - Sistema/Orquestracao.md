@@ -70,7 +70,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | `business_context_ready` — disparado apos INSERT em `contextos_negocio` |
 | **Job criado** | `gerar_estrategia` na `fila_alta` |
 | **Input** | `contextos_negocio.dados_json` completo (segmento, localizacao, publico, diferenciais, concorrentes, keywords semente) |
-| **Prompt do agente** | [[Estrategista]]: "Voce e um especialista em SEO e AIO. Dado o contexto do negocio abaixo, gere: (1) lista de 30 keywords priorizadas por volume x dificuldade, (2) agrupamento em topic clusters, (3) calendario editorial para 3 meses com 3 artigos/semana" |
+| **Prompt do agente** | [[Agente Estrategista]]: "Voce e um especialista em SEO e AIO. Dado o contexto do negocio abaixo, gere: (1) lista de 30 keywords priorizadas por volume x dificuldade, (2) agrupamento em topic clusters, (3) calendario editorial para 3 meses com 3 artigos/semana" |
 | **Output esperado** | JSON com: `keywords[]` (keyword, volume, dificuldade, intencao, cluster), `clusters[]` (nome, pillar_keyword, supporting_keywords), `calendario[]` (semana, keyword, tipo_conteudo, prioridade) |
 | **Tabela atualizada** | `palavras_chave` (INSERT multiplo) + `projetos.estrategia_json` (UPDATE) |
 | **Proximo passo** | Dispara 3x evento `estrategia_pronta` — um para cada keyword do primeiro lote do calendario |
@@ -86,7 +86,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | `estrategia_pronta` — disparado para cada keyword do lote atual (3 por rodada) |
 | **Job criado** | `gerar_briefing` na `fila_normal` (3 jobs em sequencia, nao paralelo no V1) |
 | **Input** | `keyword` (termo, volume, dificuldade, intencao, cluster) + `contextos_negocio.dados_json` (para manter tom e relevancia) |
-| **Prompt do agente** | [[Pesquisador]]: "Para a keyword '{keyword}', pesquise: (1) top 10 resultados da SERP atual, (2) perguntas frequentes (People Also Ask), (3) subtopicos obrigatorios, (4) gaps de conteudo dos concorrentes. Monte um briefing com: titulo sugerido, H2s obrigatorios, contagem de palavras alvo, fontes a citar, angulo unico baseado nos diferenciais do negocio" |
+| **Prompt do agente** | [[Agente Pesquisador]]: "Para a keyword '{keyword}', pesquise: (1) top 10 resultados da SERP atual, (2) perguntas frequentes (People Also Ask), (3) subtopicos obrigatorios, (4) gaps de conteudo dos concorrentes. Monte um briefing com: titulo sugerido, H2s obrigatorios, contagem de palavras alvo, fontes a citar, angulo unico baseado nos diferenciais do negocio" |
 | **Output esperado** | JSON do briefing: `titulo`, `meta_description`, `h2s[]`, `subtopicos[]`, `fontes[]`, `word_count_alvo`, `angulo`, `perguntas_frequentes[]`, `dados_serp` |
 | **Tabela atualizada** | `conteudos` (INSERT com status `briefing_pronto`) — campos: `keyword_id`, `briefing_json`, `status: 'briefing_pronto'` |
 | **Proximo passo** | Dispara evento `briefing_pronto` com `{ conteudo_id, briefing_id }` |
@@ -102,7 +102,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | `briefing_pronto` — disparado apos INSERT/UPDATE do briefing no conteudo |
 | **Job criado** | `gerar_conteudo` na `fila_alta` |
 | **Input** | `conteudos.briefing_json` (titulo, H2s, subtopicos, fontes, angulo) + `contextos_negocio.dados_json` (tom de voz, marca, diferenciais) |
-| **Prompt do agente** | [[Redator]]: "Escreva um artigo completo seguindo o briefing abaixo. Regras: (1) tom de voz do negocio, (2) mencionar diferenciais naturalmente, (3) incluir dados e estatisticas, (4) otimizar para SEO on-page (keyword no H1, H2s, meta), (5) otimizar para AIO (respostas diretas, listas, tabelas, FAQ schema), (6) manter naturalidade — nao parecer escrito por IA" |
+| **Prompt do agente** | [[Agente Redator]]: "Escreva um artigo completo seguindo o briefing abaixo. Regras: (1) tom de voz do negocio, (2) mencionar diferenciais naturalmente, (3) incluir dados e estatisticas, (4) otimizar para SEO on-page (keyword no H1, H2s, meta), (5) otimizar para AIO (respostas diretas, listas, tabelas, FAQ schema), (6) manter naturalidade — nao parecer escrito por IA" |
 | **Output esperado** | Artigo completo em Markdown: titulo, meta_description, corpo com H2s/H3s, FAQ section, internal links sugeridos. Campos: `titulo_final`, `meta_description`, `corpo_markdown`, `word_count`, `faq_json`, `schema_markup` |
 | **Tabela atualizada** | `conteudos` (UPDATE) — campos: `corpo_markdown`, `titulo_final`, `meta_description`, `word_count`, `status: 'escrito'` |
 | **Proximo passo** | Dispara evento `conteudo_escrito` com `{ conteudo_id }` |
@@ -150,7 +150,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | `imagens_prontas` — disparado apos todas as imagens geradas e otimizadas (V1: `conteudo_escrito` se imagens desabilitadas) |
 | **Job criado** | No V1: nenhum job automatico. Notificacao para o founder revisar manualmente. No V2+: `revisar_conteudo` na `fila_normal` |
 | **Input** | `conteudos` completo (titulo, meta, corpo, briefing original) + `contextos_negocio.dados_json` |
-| **Prompt do agente (V2+)** | [[Revisor]]: "Avalie o artigo abaixo em 5 criterios: (1) aderencia ao briefing (0-20), (2) qualidade SEO on-page (0-20), (3) otimizacao AIO (0-20), (4) naturalidade do texto (0-20), (5) valor para o leitor (0-20). Score total 0-100. Se >= 80: aprovar. Se < 80: listar revisoes necessarias." |
+| **Prompt do agente (V2+)** | [[Agente Revisor]]: "Avalie o artigo abaixo em 5 criterios: (1) aderencia ao briefing (0-20), (2) qualidade SEO on-page (0-20), (3) otimizacao AIO (0-20), (4) naturalidade do texto (0-20), (5) valor para o leitor (0-20). Score total 0-100. Se >= 80: aprovar. Se < 80: listar revisoes necessarias." |
 | **Output esperado** | JSON de revisao: `score_total`, `scores_por_criterio`, `aprovado: boolean`, `revisoes_necessarias[]`, `comentarios` |
 | **Tabela atualizada** | `conteudos` (UPDATE) — campos: `score_qualidade`, `revisao_json`, `status: 'aprovado'` ou `status: 'revisao_necessaria'` |
 | **Proximo passo** | Se aprovado: dispara `conteudo_aprovado`. Se revisao necessaria: volta para `gerar_conteudo` com feedback (max 2 reescritas) |
@@ -166,7 +166,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | `conteudo_aprovado` — disparado quando `conteudos.status = 'aprovado'` |
 | **Job criado** | `publicar_conteudo` na `fila_alta` |
 | **Input** | `conteudos` completo (titulo, meta, corpo markdown, schema markup, FAQ) + `integracoes` do projeto (WordPress credentials, site URL) |
-| **Prompt do agente** | [[Publicador]]: NAO e prompt de IA. E funcao deterministica que: (1) converte Markdown para HTML, (2) aplica schema markup, (3) faz upload via WordPress REST API, (4) configura SEO plugin (Yoast/RankMath), (5) agenda ou publica imediatamente conforme calendario |
+| **Prompt do agente** | [[Agente Publicador]]: NAO e prompt de IA. E funcao deterministica que: (1) converte Markdown para HTML, (2) aplica schema markup, (3) faz upload via WordPress REST API, (4) configura SEO plugin (Yoast/RankMath), (5) agenda ou publica imediatamente conforme calendario |
 | **Output esperado** | `{ post_id, url_publicada, publicado_em, status_wordpress }` |
 | **Tabela atualizada** | `conteudos` (UPDATE) — campos: `url_publicada`, `publicado_em`, `post_id_externo`, `status: 'publicado'` |
 | **Proximo passo** | Dispara evento `conteudo_publicado`. No V1: pipeline termina aqui para este conteudo. |
@@ -182,7 +182,7 @@ Cada seta (`→`) e uma transicao com evento trigger, job criado e dados passado
 | **Evento trigger** | V1: manual pelo founder a cada 7-14 dias. V2+: `conteudo_publicado` + cron job semanal |
 | **Job criado** | V1: nenhum. V2+: `atualizar_metricas` na `fila_normal` |
 | **Input** | `conteudos.url_publicada` + credenciais Google Search Console + Google Analytics |
-| **Prompt do agente (V2+)** | [[Monitor]]: NAO e prompt de IA. E funcao que: (1) consulta GSC API para impressoes, cliques, CTR, posicao media, (2) consulta GA4 para pageviews, bounce rate, tempo na pagina, (3) testa citacao em IAs (ChatGPT, Perplexity, Gemini) |
+| **Prompt do agente (V2+)** | [[Agente Monitor]]: NAO e prompt de IA. E funcao que: (1) consulta GSC API para impressoes, cliques, CTR, posicao media, (2) consulta GA4 para pageviews, bounce rate, tempo na pagina, (3) testa citacao em IAs (ChatGPT, Perplexity, Gemini) |
 | **Output esperado** | `{ impressoes, cliques, ctr, posicao_media, pageviews, bounce_rate, tempo_pagina, citacoes_ia[] }` |
 | **Tabela atualizada** | `metricas_snapshots` (INSERT) — snapshot semanal por conteudo |
 | **Proximo passo** | V1: nenhum (dados para consulta manual). V2+: se queda detectada, dispara `monitor_detecta_queda` → feedback loop |
@@ -255,7 +255,7 @@ gerar_posts (Distribuidor)
     └──→ postar_pinterest (pin com imagem + descricao)
 ```
 
-Ver [[Estrategias de Distribuicao]] para detalhes de cada plataforma.
+Ver [[Estrategia de Distribuicao]] para detalhes de cada plataforma.
 
 ---
 
@@ -293,7 +293,7 @@ classificar_intent (Suporte)
 | Versao do contexto | Todos os jobs numa "rodada" usam mesma versao do `business_context` | Consistencia — evita briefing com contexto v1 e conteudo com v2 |
 | Ordem do calendario | Conteudos sao gerados na ordem do calendario editorial | Primeiro os pillar pages, depois os supporting |
 | Cooldown entre jobs | Minimo 5s entre jobs do mesmo tipo para mesma organizacao | Evita rate limit das APIs de IA |
-| Prioridade por plano | Clientes pagos tem prioridade sobre trial na fila | Garantia de SLA para pagantes |
+| Prioridade por estado da organizacao | `live_active` tem prioridade sobre `implementing` na fila de producao | Garantia de SLA para clientes com infra ativa |
 
 ---
 
@@ -471,5 +471,5 @@ Tabela completa dos eventos que circulam no sistema:
 - [[Fluxo V1]] — Versao simplificada do pipeline
 - [[Inputs dos Agentes]] — Dados que cada agente recebe
 - [[Estrutura de Codigo]] — Organizacao do projeto
-- [[Entidades e Schema]] — Modelo de dados do banco
+- [[Entidades e Schema - Fase 3 (Dados e Auditoria)]] — `eventos_sistema`, relacionamentos e indices
 - [[Estados e Maquina de Estado]] — State machines do sistema

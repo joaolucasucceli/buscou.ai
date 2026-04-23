@@ -62,7 +62,7 @@ Sistema gera reports sem ninguem pedir.
 | Health check dos agentes | A cada 60s | Sistema interno | Grafana |
 | Metricas de negocio | Diario | Admin | Slack |
 | Alerta de anomalia | Real-time | Admin + cliente (se aplicavel) | Slack + e-mail + in-app |
-| Relatorio trimestral de ROI | Trimestral | Cliente | Dashboard (baseado em [[ROI para Cliente]]) |
+| Relatorio trimestral de ROI | Trimestral | Cliente | Dashboard (baseado em [[Modelo de Negocio]]) |
 
 ### 5. Self-scaling (auto-escalavel)
 

@@ -174,7 +174,7 @@ Colecao de prompts operacionais para otimizar seu conteudo para citacoes em **Ch
 
 **Quando usar:** No primeiro dia util de cada mes para planejar as acoes AIO.
 **Saida esperada:** Calendario mensal com entregas especificas.
-**Como agir:** Execute semana a semana e documente resultados em [[Dashboard de Resultados]].
+**Como agir:** Execute semana a semana; resultados sao consolidados pelo [[Agente Monitor]] e expostos no [[Dashboard do Cliente]].
 
 ---
 
@@ -201,7 +201,7 @@ Mes 3 — Escala e Distribuicao:
   11. Plano Mensal (#15) → processo continuo
 ```
 
-Veja [[Playbook - Aparecer na IA em 30 Dias]] para a versao detalhada deste processo.
+Este workflow e a base da otimizacao AIO executada pelo [[Agente Revisor]] e monitorada pelo [[Agente Monitor]] na V1.
 
 ---
 

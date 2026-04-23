@@ -11,7 +11,7 @@ atualizado: 2026-04-23
 
 > De visita ao blog publico ate cliente ativo publicando 90 conteudos/mes. Cada etapa com executor, SLA, entrada, saida e tratamento de falha.
 
-Relacionado: [[Pipeline]] | [[Arquitetura de Agentes]] | [[Jornada do Cliente]] | [[Orquestrador]]
+Relacionado: [[Fluxo V1]] | [[Arquitetura de Agentes]] | [[Jornada do Cliente]] | [[Orquestrador]]
 
 ---
 
@@ -59,18 +59,18 @@ Orquestrador coordena os 11 agentes (6 core + 5 complementares).
 ### 3. Decisao — checkout direto
 - **Executor:** sistema (gateway Stripe ou Asaas). Ver [[Oferta Comercial]].
 - **Input:** lead preenche dados de compra.
-- **Output:** cobranca gerada.
-  - A vista: Pix ou cartao debitado imediatamente.
-  - Parcelado 12x: primeira parcela cobrada, cronograma automatico.
-- **SLA:** checkout em < 60s, confirmacao em < 5 min.
+- **Output:**
+  - Implementacao: a vista (Pix ou cartao debitado imediatamente) OU parcelada em 12x (primeira parcela cobrada, cronograma automatico das 11 seguintes).
+  - Infra mensal: cartao recorrente cadastrado no mesmo checkout. Subscription agendada para D+30 (mes 2) com valor R$ 300.
+- **SLA:** checkout em < 60s, confirmacao da implementacao em < 5 min.
 - **Sem BANT, sem qualificacao, sem reuniao obrigatoria.** Call opcional (20-30 min) aparece como link secundario "ficou com duvida? agende 20 min" — usada apenas quando o cliente pede.
 
 ### 4. Confirmacao — [Agente Pagamento]
-- **Executor:** [[Agente Pagamento]] (nao e agente de cobranca recorrente; e monitor de status do gateway).
-- **Input:** webhook de pagamento do gateway.
-- **Output:** cliente criado no Supabase, credenciais geradas, dispara onboarding.
-- **SLA:** criacao de projeto em < 5 min apos confirmacao.
-- **Falha:** webhook falha → retry 3x em 15 min, depois escala para humano.
+- **Executor:** [[Agente Pagamento]] (monitora **dois fluxos** de cobranca: implementacao e infra mensal — ver doc do agente).
+- **Input:** webhooks do gateway (`checkout.session.completed` da implementacao, `customer.subscription.created` da infra, e eventos subsequentes).
+- **Output:** cliente criado no Supabase com `compra` vinculada e `assinatura_infra` em `pending_start`; credenciais geradas; dispara onboarding.
+- **SLA:** criacao de projeto em < 5 min apos confirmacao da implementacao.
+- **Falha:** webhook falha → retry 3x em 15 min + reconciliacao por cron; depois escala para humano.
 
 ### 5. Onboarding — wizard automatico
 - **Executor:** sistema + [Agente Estrategista].
@@ -146,7 +146,8 @@ Orquestrador coordena os 11 agentes (6 core + 5 complementares).
 2. **CMS do cliente indisponivel:** 3 retries com backoff. Persiste → [Agente Suporte] avisa cliente.
 3. **API de keywords fora:** fallback para GSC + scraping. Prazo estendido +24h.
 4. **Orquestrador trava:** health check a cada 60s, restart automatico em < 5 min.
-5. **Pagamento de parcela falha (parcelado 12x):** [Agente Pagamento] notifica o cliente, gateway dispara retry automatico conforme regras do Stripe/Asaas. Nao e cobranca recorrente — e parcelamento de compra unica.
+5. **Pagamento de parcela da implementacao falha (parcelado 12x):** [Agente Pagamento] notifica o cliente, gateway dispara retry automatico. Motor nao pausa — implementacao ja foi entregue.
+6. **Cobranca da infra mensal falha:** [Agente Pagamento] dispara retry em D+0/D+3/D+7. Se todas falharem, motor pausa e cliente recebe aviso; blog e conteudo antigo ficam no ar. Cliente regulariza → motor retoma.
 
 ---
 

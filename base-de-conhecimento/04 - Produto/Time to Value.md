@@ -2,7 +2,7 @@
 tipo: produto
 area: UX
 tags: [produto, ttv, time-to-value, marcos, onboarding]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Time to Value
@@ -24,7 +24,7 @@ O que o cliente EXPERIMENTA em cada marco:
 | Primeiro relatorio | 30 | Relatorio automatico gerado pelo [[Agente Monitor]] | PDF + dashboard completo com metricas do mes 1 | Email + call opcional de alinhamento |
 | Primeiros rankings | 60-90 | Posicoes melhoram para keywords de cauda longa | Keywords no top 10 aparecem no dashboard | Email: "Voce esta no Top 10 para '[keyword]'!" |
 | Citacoes em IA | 60-120 | [[Agente Monitor]] detecta citacao em plataforma de IA | "ChatGPT citou seu site para '[query]'!" | Push notification + destaque no dashboard |
-| ROI positivo | 90-180 | Trafego organico supera custo da mensalidade | Dashboard mostra: "Valor do trafego organico: R$X.XXX" | Email mensal com ROI |
+| ROI positivo | 90-180 | Trafego organico supera o investimento acumulado (implementacao + infra dos primeiros N meses) | Dashboard mostra: "Valor do trafego organico: R$ X.XXX" | Dashboard mensal com ROI acumulado |
 
 ---
 

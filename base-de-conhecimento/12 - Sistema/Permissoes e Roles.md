@@ -253,4 +253,4 @@ Legenda: C = Create, R = Read, U = Update, D = Delete
 - **Audit Trail**: Todas as operacoes de escrita em tabelas sensiveis (`organizations`, `invoices`) sao logadas em uma tabela `audit_log`.
 
 Ver [[Arquitetura do Sistema]] para o fluxo de autenticacao.
-Ver [[Entidades e Schema]] para as tabelas referenciadas.
+Ver [[Entidades e Schema - Fase 1 (Onboarding)]] para as tabelas referenciadas (Fase 1 e porta de entrada; linka para Fase 2 e Fase 3).

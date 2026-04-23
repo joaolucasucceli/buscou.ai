@@ -15,21 +15,23 @@ Relacionado: [[Oferta Comercial]] | [[Jornada do Cliente]] | [[Time to Value]] |
 
 ## SLA unico (nao ha tiers)
 
-A oferta e unica (R$ 2.500 a vista ou R$ 3.000 em 12x). Todo cliente ativo recebe os mesmos compromissos:
+A oferta e unica — implementacao (R$ 2.500 a vista ou R$ 3.000 em 12x) + infra mensal (R$ 300/mes a partir do mes 2). Todo cliente com infra ativa recebe os mesmos compromissos:
 
 | SLA | Compromisso |
 |---|---|
-| Blog no ar (ativacao) | Ate 7 dias apos pagamento confirmado |
+| Blog no ar (ativacao) | Ate 7 dias apos pagamento da implementacao confirmado |
 | Primeiros sinais (indexacao + impressoes) | Ate 30 dias |
-| Conteudos publicados | 90 artigos/mes (media 3/dia, ~720K caracteres) |
+| Conteudos publicados | 90 artigos/mes (media 3/dia, ~720K caracteres) — **enquanto infra mensal estiver ativa** |
 | Tamanho de cada artigo | 800-1.200 palavras |
 | Pesquisa de keyword | Continua (por cluster) |
 | Revisao de estrategia | Mensal automatica |
 | Relatorio mensal | Automatico no dashboard |
 | Monitoramento | Diario (ranking, trafego, AI Overviews) |
-| Suporte IA | 24/7, resposta imediata (< 30s) |
+| Suporte IA | 24/7, resposta imediata (< 30s) enquanto infra ativa |
 | Suporte humano | SLA 24h (questoes nao criticas); 4h (blog fora do ar) |
 | Uptime dashboard + motor | >= 99% (meta 99.9%) |
+| Cobranca da infra | Smart retry em falha (D+0/D+3/D+7); 3 falhas consecutivas pausam o motor |
+| Politica de pausa | Blog e conteudo ja publicado permanecem no ar indefinidamente em `motor_paused`; motor retoma ao regularizar |
 
 ---
 
@@ -94,16 +96,23 @@ Nivel 3: Especialista/fundador — SLA 4h
 ## Politica de reembolso
 
 ### Primeiros 14 dias
-- Reembolso integral se menos de 10 artigos foram publicados, independente de justificativa.
+- Reembolso integral da implementacao se menos de 10 artigos foram publicados, independente de justificativa.
+- Subscription da infra mensal e cancelada automaticamente (mes 1 estava incluso, nao ha cobranca de infra nesse periodo).
 - Processado em 5-7 dias uteis via o mesmo metodo de pagamento.
 
 ### Apos 14 dias
-- Sem reembolso padrao (servico ja foi prestado — os artigos publicados permanecem no blog do cliente, sao propriedade dele).
-- Excecao: se SLA de ativacao (7 dias) ou de primeiros sinais (30 dias) nao for cumprido, reembolso automatico de 50% ou extensao do motor sem custo por 3 meses adicionais (a escolha do cliente).
+- Sem reembolso padrao da implementacao (servico ja foi prestado — os artigos publicados permanecem no blog do cliente, sao propriedade dele).
+- Cliente pode cancelar a **infra mensal a qualquer momento** — motor pausa, blog fica no ar. Nao ha reembolso de infra ja paga (e custo operacional ja consumido).
+- Excecao: se SLA de ativacao (7 dias) ou de primeiros sinais (30 dias) nao for cumprido, reembolso automatico de 50% da implementacao + isencao de 3 meses de infra (a escolha do cliente).
 
-### Parcelamento 12x
+### Parcelamento 12x da implementacao
 - Clientes no parcelado que pedirem reembolso nos primeiros 14 dias: cancelamento das parcelas restantes + reembolso do valor ja pago proporcional aos artigos nao publicados.
-- Clientes que pararem de pagar meio do ciclo (inadimplencia): apos 30 dias em aberto e falha de retry, caso vira dunning humano. Servico nao interrompe por padrao — compra foi unica, o ja pago cobre custo operacional.
+- Clientes que pararem de pagar parcelas da implementacao no meio do ciclo (inadimplencia em parcela): apos 30 dias em aberto e falha de retry, caso vira dunning humano. **Motor nao pausa** por parcela de implementacao em aberto — a implementacao ja foi entregue, parcelas sao compromisso do cliente com o gateway/banco. Motor pausa apenas por falha de infra mensal.
+
+### Inadimplencia da infra mensal
+- Smart retry em D+0/D+3/D+7.
+- Apos 3 falhas, motor pausa automaticamente. Conteudo ja publicado fica no ar.
+- Cliente regulariza → motor retoma. Sem penalidade, sem fidelidade.
 
 ---
 

@@ -126,21 +126,41 @@ Relacionado: [[Jornada do Cliente]] | [[Fluxo Operacional Completo]] | [[Time to
 
 ---
 
-## 7. Parcela do parcelamento 12x falha
+## 7. Parcela da implementacao (12x) OU cobranca da infra mensal falha
 
-**Problema:** cartao do cliente recusado em uma das 12 parcelas. Nao e mensalidade (compra foi unica), mas o fluxo financeiro existe por 12 meses.
+Dois fluxos, duas regras operacionais distintas. Ver [[Agente Pagamento]] para detalhes completos.
 
-**Impacto:** se nao tratado, cobranca fica em aberto. Cliente que quer continuar nao consegue resolver o pagamento.
+### 7a. Parcela da implementacao (parcelado 12x)
 
-**Deteccao:** webhook do gateway (`invoice.payment_failed`, `subscription.payment_failed` — dependendo do provider).
+**Problema:** cartao do cliente recusado em uma das 12 parcelas da implementacao.
+
+**Impacto:** cobranca fica em aberto; cliente pode deixar de quitar a implementacao sem querer.
+
+**Deteccao:** webhook do gateway (`invoice.payment_failed` com metadata indicando implementacao).
 
 **Solucao:**
-- Gateway (Stripe ou Asaas) dispara smart retry automatico (D+1, D+3, D+5).
-- [[Agente Pagamento]] envia WhatsApp amigavel em D+1: "Problema com sua parcela deste mes. Atualize aqui: [link]."
-- Oferta de troca de metodo (cartao → Pix).
-- Nao interrompe servico por padrao — compra foi unica, motor segue publicando. Apos 30 dias de parcela em aberto, o caso vira dunning humano.
+- Gateway (Stripe ou Asaas) dispara smart retry automatico (D+0, D+3, D+5).
+- [[Agente Pagamento]] envia WhatsApp amigavel: "Problema com sua parcela X de 12 da implementacao. Atualize aqui: [link]."
+- **Motor NAO pausa** — implementacao ja foi entregue; parcelas sao compromisso do cliente com o gateway/banco.
+- Apos 30 dias em aberto, caso vira dunning humano.
 
-**Metrica:** recuperacao de parcelas falhas > 60%, resolucao media < 3 dias.
+**Metrica:** recuperacao de parcelas falhas > 80%, resolucao media < 3 dias.
+
+### 7b. Cobranca da infra mensal
+
+**Problema:** cobranca recorrente mensal (R$ 300) falha.
+
+**Impacto:** depois de 3 tentativas, motor pausa.
+
+**Deteccao:** webhook (`invoice.payment_failed` com metadata de infra).
+
+**Solucao:**
+- Gateway smart retry D+0, D+3, D+7.
+- A cada falha, [[Agente Pagamento]] notifica cliente (mensagens com escala crescente: amigavel → lembrete → aviso critico).
+- **Motor pausa apos 3 falhas consecutivas.** Blog e conteudo ja publicado permanecem no ar.
+- Cliente pode regularizar a qualquer momento atualizando cartao — motor retoma no proximo ciclo.
+
+**Metrica:** recuperacao de cobranca de infra > 70%, taxa de clientes em `motor_paused` < 5% da base ativa.
 
 ---
 
@@ -171,7 +191,7 @@ Relacionado: [[Jornada do Cliente]] | [[Fluxo Operacional Completo]] | [[Time to
 
 **Solucao:**
 - Battlecards no [[Agente Suporte]]: comparativos honestos (pontos fortes e fracos de cada concorrente).
-- Diferencial claro: a buscou.ai e **done-for-you** (nao ferramenta), gera **90 conteudos/mes** (nao 1-5), cobra **uma vez** (nao mensalidade), e foca em **Blog + Motor** com SEO + AIO integrados.
+- Diferencial claro: a buscou.ai e **done-for-you** (nao ferramenta), gera **90 conteudos/mes** (nao 1-5), cobra **implementacao unica + infra mensal transparente** (nao mensalidade de servico opaca), e foca em **Blog + Motor** com SEO + AIO integrados.
 - Roadmap publico de features por prioridade.
 - Lock-in positivo: quanto mais tempo, mais historico, mais dificil sair (dog-fooding cresce ativo do cliente).
 

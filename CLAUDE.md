@@ -5,29 +5,39 @@
 Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca (Google) e nas respostas de IA (ChatGPT, Gemini, Perplexity, Claude, AI Overviews) automaticamente.
 
 **Produto:** Blog (estrutura) + Motor (buscou.ai) gerando 90 conteudos/mes automaticamente no blog do cliente.
-**Modelo:** venda de tecnologia com pagamento unico (R$ 2.500 a vista ou R$ 3.000 em 12x). Sem mensalidade. Sem assinatura. Sem tiers.
+**Modelo comercial:** **implementacao unica + infra mensal**.
+- Implementacao (one-time): R$ 2.500 a vista ou R$ 3.000 em 12x — cobre blog no ar, motor configurado, onboarding e **mes 1 incluso**.
+- Infra mensal (recurring): R$ 300/mes a partir do **mes 2** — cobre tokens LLM, APIs externas e hospedagem do pipeline.
+- Se cliente nao pagar a infra: motor pausa; blog e conteudo ja publicado ficam no ar.
+- **Sem tiers, sem plano mensal de servico, sem assinatura SaaS em copy publico.**
 **ICP primario:** negocios locais (clinicas, imobiliarias, advogados, servicos locais).
 
 ## Decisoes Canonicas (fixas)
 
 **Fonte unica da verdade:** [base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md](base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md).
 **Governanca:** [base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md](base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md).
-**Decision Log vigente:** [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md).
+**Decision Logs vigentes:**
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md) — posicionamento, ICP, produto, oferta-base, linguagem.
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md) — **evolucao para modelo implementacao + infra mensal**.
 
 ### Inegociavel (Nivel 1)
 
 - **Posicionamento:** "Se alguem buscou, quem apareceu foi voce?".
 - **Produto:** Blog (estrutura) + Motor (buscou.ai) publicando 90 conteudos/mes (~720K caracteres, 800-1.200 palavras cada).
-- **Oferta unica:** R$ 2.500 a vista ou R$ 3.000 parcelado em 12x (cliente assume juros). **Sem mensalidade. Sem tiers. Sem setup separado.**
-- **Timeline:** ate 7 dias para blog no ar, ate 30 dias para primeiros sinais, escala continua dali em diante.
-- **Nao e SaaS (comercialmente), nao e agencia, nao e consultoria.** E venda de tecnologia.
+- **Modelo comercial — duas linhas:**
+  - Implementacao: R$ 2.500 a vista **ou** R$ 3.000 em 12x (cliente assume juros). Cobre blog + motor + onboarding + mes 1.
+  - Infra mensal: R$ 300/mes a partir do mes 2. Cobre tokens/APIs/hospedagem.
+  - Inadimplencia da infra pausa o motor; blog e conteudo ja publicado permanecem no ar.
+- **Timeline:** ate 7 dias para blog no ar, ate 30 dias para primeiros sinais, escala continua dali em diante enquanto infra ativa.
+- **Nao e agencia, nao e consultoria, nao e servico mensal.** Tecnicamente e SaaS multi-tenant; comercialmente e **venda de tecnologia com infra passthrough**.
 - **ICP primario:** negocios locais. ICP secundario atende mas nao e foco de comunicacao.
 - **Nome da marca:** `buscou.ai` (visual) / `BuscouAI` (juridico). Nunca "Buscou.ai", "Buscou.AI" ou "BUSCOU.AI".
 
 ### Linguagem
 
-- **Proibido:** "agencia", "gestao", "consultoria", "servico mensal", "assinatura", "mensalidade", "plano" (Starter/Growth/Scale), "SaaS" (em vendas), "subscription", "contrato mensal", "piloto automatico", "sistema operacional", "transformacao digital", "jornada", "sinergia", "solucoes" (soltinho).
-- **Permitido:** "tecnologia", "sistema", "motor", "estrutura", "automacao", "pagamento unico", "aparecer", "busca", "SEO", "AIO", "presenca organica".
+- **Proibido:** "agencia", "gestao", "consultoria", "servico mensal", "mensalidade de servico", "mensalidade de gestao", "plano mensal", "plano" (Starter/Growth/Scale), "assinatura SaaS" (em copy publico), "contrato mensal", "piloto automatico", "sistema operacional", "transformacao digital", "jornada", "sinergia", "solucoes" (soltinho).
+- **Permitido:** "tecnologia", "sistema", "motor", "estrutura", "automacao", "implementacao unica", "infra mensal", "custo de operacao do motor", "taxa de infraestrutura", "aparecer", "busca", "SEO", "AIO", "presenca organica".
+- **Regra de comunicacao:** sempre separar explicitamente as duas linhas — "implementacao unica + infra mensal". Nunca usar "pacote total" ou "plano completo". "Mensalidade" e "assinatura" so aparecem quando qualificados como "mensalidade de infra" ou "assinatura de infraestrutura" (uso tecnico/interno; evitar em copy publico).
 
 **Alteracao de Nivel 1:** exige novo Decision Log datado + aprovacao explicita do dono + cascata de atualizacao em ate 7 dias (ver governanca).
 
@@ -353,13 +363,11 @@ Todo conteudo de conhecimento fica em `base-de-conhecimento/`:
 14 - Marketing/           → Funil, Dog-fooding, Distribuicao, Tom de Voz, Casos, Concorrentes
 15 - Glossario/           → Termos tecnicos com definicoes
 21 - Identidade Visual/   → Design System (camada visual/UI — separada das 15 canonicas)
-99 - Arquivo Morto/       → Conteudo obsoleto ou nao-canonico (modelos de servico, recursos de aprendizado)
 Templates/                → Templates padrao para notas
-Midia/                    → Imagens, diagramas, screenshots
 CHANGELOG.md              → Historico de mudancas estruturais do vault
 ```
 
-Principio: cada pasta tem uma funcao clara. Se a nota nao couber em nenhuma, ela vai pra `99 - Arquivo Morto`, nao entra no vault canonico.
+Principio: cada pasta tem uma funcao clara. Se a nota nao couber em nenhuma, **deleta**. Nao ha mais pasta de "arquivo morto" — conteudo obsoleto e removido na hora para manter o vault enxuto (decisao de 2026-04-23).
 
 ## Camadas do projeto (raiz)
 

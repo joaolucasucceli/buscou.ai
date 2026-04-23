@@ -33,11 +33,12 @@ Manual de campo. Cada nicho tem:
 - Instagram ativo (sinal de que ja produz/quer produzir).
 - Nao aparece no Google para buscas obvias do nicho.
 
-**ICP de fechamento** (vai pagar R$ 2.500-3.000 upfront?):
+**ICP de fechamento** (vai pagar R$ 2.500-3.000 upfront de implementacao + R$ 300/mes de infra a partir do mes 2?):
 - Ja tentou anuncio e gastou sem retorno claro.
 - Quer previsibilidade (cansou de depender de indicacao).
 - Dono decide sozinho (sem comite).
 - Responde rapido.
+- Tem fluxo de caixa pra cobrir R$ 300/mes recorrente (infra). Isso filtra microempreendedor no limite do limite.
 
 ### Pergunta-chave na call
 
@@ -306,8 +307,9 @@ A buscou.ai monta um blog otimizado + um motor que publica
 3 conteudos por dia (90/mes) pra fazer voce aparecer no
 Google e nas IAs.
 
-Pagamento unico: R$ 2.500 a vista ou R$ 3.000 em 12x.
-Sem mensalidade.
+Implementacao: R$ 2.500 a vista ou R$ 3.000 em 12x.
+Infra mensal (tokens + APIs): R$ 300/mes a partir do mes 2.
+Mes 1 ja entra incluso na implementacao.
 
 Posso te mostrar em 10 minutos como funciona?
 ```
@@ -326,7 +328,8 @@ A buscou.ai entrega um blog otimizado + motor que publica
 3 conteudos por dia (90/mes) pra sua clinica aparecer no Google
 e nas respostas do ChatGPT.
 
-R$ 2.500 a vista. Sem mensalidade.
+Implementacao R$ 2.500 a vista (ou 12x R$ 250) + R$ 300/mes
+de infra a partir do mes 2. Mes 1 incluso.
 
 Posso explicar em 10 minutos?
 ```
@@ -347,7 +350,8 @@ Estao encontrando outras imobiliarias.
 A buscou.ai coloca a sua imobiliaria pra aparecer — blog + motor
 de conteudo (90 por mes, otimizados pra Google e IA).
 
-Pagamento unico: R$ 2.500 a vista ou R$ 3.000 em 12x.
+Implementacao: R$ 2.500 a vista ou R$ 3.000 em 12x.
+Infra mensal (tokens + APIs): R$ 300/mes a partir do mes 2.
 
 Posso mostrar como em 10 min?
 ```
@@ -367,7 +371,8 @@ A buscou.ai cria conteudo juridico informativo (dentro das regras
 da OAB) no blog do seu escritorio — 90 artigos por mes, otimizados
 pra aparecer no Google e nas IAs.
 
-R$ 2.500 a vista. Pagamento unico.
+Implementacao R$ 2.500 a vista (ou 12x R$ 250) + R$ 300/mes
+de infra a partir do mes 2. Mes 1 incluso.
 
 Posso explicar em 10 minutos?
 ```
@@ -410,6 +415,8 @@ Posso explicar em 10 minutos?
 - [[Agente Prospeccao]] — automatiza outbound
 - [[Go To Market Inicial]]
 - [[Tom de Voz e Marketing]]
+- [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto
+- [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao comercial
 
 ---
 

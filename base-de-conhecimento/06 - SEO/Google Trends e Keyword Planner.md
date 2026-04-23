@@ -15,7 +15,7 @@ atualizado: 2026-04-22
 
 ## Visao Geral
 
-O **Google Trends** e o **Google Keyword Planner** sao duas ferramentas gratuitas do Google essenciais para pesquisa de palavras-chave em [[SEO]]. Embora tenham propositos diferentes, se complementam perfeitamente: o Google Trends identifica tendencias e sazonalidade, enquanto o Keyword Planner fornece dados de volume de busca e concorrencia.
+O **Google Trends** e o **Google Keyword Planner** sao duas ferramentas gratuitas do Google essenciais para pesquisa de palavras-chave em [[O que e SEO|SEO]]. Embora tenham propositos diferentes, se complementam perfeitamente: o Google Trends identifica tendencias e sazonalidade, enquanto o Keyword Planner fornece dados de volume de busca e concorrencia.
 
 ---
 
@@ -51,7 +51,7 @@ Com o comportamento de busca migrando para prompts conversacionais ("me fale sob
 
 ### O que e
 
-O Google Keyword Planner e uma ferramenta dentro do Google Ads que permite pesquisar, analisar e baixar dados de palavras-chave. Embora seja primariamente voltado para publicidade paga, e extremamente util para [[SEO]] como fonte de dados diretamente do Google.
+O Google Keyword Planner e uma ferramenta dentro do Google Ads que permite pesquisar, analisar e baixar dados de palavras-chave. Embora seja primariamente voltado para publicidade paga, e extremamente util para [[O que e SEO|SEO]] como fonte de dados diretamente do Google.
 
 ### Funcionalidades Principais
 

@@ -9,7 +9,7 @@ atualizado: 2026-04-23
 
 > Fonte canonica: [[VERDADE_UNICA_BUSCOU]] secoes 7 e 8. Este arquivo descreve o que o cliente ve, sente e faz em cada momento — e o que a tecnologia executa nos bastidores.
 
-Relacionado: [[ICP - Cliente Ideal]] | [[Fluxo Operacional Completo]] | [[Site Publico]]
+Relacionado: [[ICP por Nicho]] | [[Fluxo Operacional Completo]] | [[Site Publico]]
 
 ---
 
@@ -22,17 +22,17 @@ Relacionado: [[ICP - Cliente Ideal]] | [[Fluxo Operacional Completo]] | [[Site P
 - **Metrica:** impressoes GSC, citacoes em AI Overviews, leads no formulario.
 
 ### 2. Landing buscou.ai
-- **Ve:** hero com "Se alguem buscou, quem apareceu foi voce?", resumo do produto (Blog + Motor, 90 conteudos/mes), oferta clara (R$ 2.500 / R$ 3.000), prova social, FAQ, checkout.
+- **Ve:** hero com "Se alguem buscou, quem apareceu foi voce?", resumo do produto (Blog + Motor, 90 conteudos/mes), oferta clara com as **duas linhas** (implementacao R$ 2.500/R$ 3.000 + infra mensal R$ 300 a partir do mes 2), prova social, FAQ, checkout.
 - **Sente:** clareza sobre preco, escopo e timeline. Sem formulario longo, sem "fale com um consultor".
 - **Bastidores:** Next.js + Vercel Edge, analytics rastreando decisao em 5s.
 - **Friccao:** se a pagina demora > 3s, perdemos o lead. Se a oferta nao esta no primeiro scroll, idem.
 - **Metrica:** bounce < 40%, tempo na pagina > 2 min, conversao landing → checkout > 2%.
 
 ### 3. Decisao de compra
-- **Ve:** checkout em uma tela, Pix ou cartao. Opcao de parcelar em 12x (cliente assume juros).
-- **Sente:** compromisso — "agora e pra valer". Compra unica, sem pegadinha de mensalidade.
-- **Bastidores:** gateway (Stripe ou Asaas) gera cobranca. [[Agente Pagamento]] escuta webhook.
-- **Friccao:** cartao recusado → fallback imediato para Pix. Medo de assinatura → microcopy deixa claro "pagamento unico, sem renovacao".
+- **Ve:** checkout em uma tela — implementacao (Pix ou cartao, a vista ou 12x) + cadastro do cartao recorrente para a infra mensal (comeca no mes 2). Pode ser o mesmo cartao.
+- **Sente:** compromisso transparente — "paguei a implementacao, sei que vou pagar R$ 300/mes de infra a partir do mes 2 pra manter o motor rodando". Sem surpresa.
+- **Bastidores:** gateway (Stripe ou Asaas) cria o checkout da implementacao + cria subscription agendada para D+30 (mes 2). [[Agente Pagamento]] escuta webhooks dos dois fluxos.
+- **Friccao:** cartao recusado → fallback imediato para Pix na implementacao. Medo de "assinatura surpresa" → microcopy deixa claro "infra mensal comeca no mes 2, cobra tokens + APIs, pode cancelar quando quiser (motor pausa, blog fica no ar)".
 - **Metrica:** conversao checkout → pagamento confirmado > 80%.
 
 ### 4. Call opcional (so se o cliente pedir)

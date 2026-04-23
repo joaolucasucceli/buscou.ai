@@ -2,12 +2,12 @@
 tipo: referencia
 area: Ferramentas
 tags: [referencias, automacao, ferramentas, api]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Ferramentas de Automacao SEO
 
-Mapeamento das ferramentas e APIs que nosso [[Sistema Multi-Agente]] vai integrar. Cada ferramenta foi avaliada por: funcionalidade, preco, limites, e como se encaixa na nossa arquitetura.
+Mapeamento das ferramentas e APIs que nosso [[Arquitetura de Agentes|sistema multi-agente]] vai integrar. Cada ferramenta foi avaliada por: funcionalidade, preco, limites, e como se encaixa na nossa arquitetura.
 
 ---
 
@@ -64,7 +64,7 @@ Mapeamento das ferramentas e APIs que nosso [[Sistema Multi-Agente]] vai integra
 
 **Para que usamos:**
 - [[Agente Monitor]]: tracking de performance organica real
-- [[Agente Auditor]]: identificacao de erros de indexacao
+- [[Agente Pesquisador]]: identificacao de erros de indexacao
 - [[Agente Estrategista]]: identificacao de keywords com potencial (posicao 5-15)
 
 **Fontes:** [Google Search Console API](https://developers.google.com/webmaster-tools/search-console-api-original)
@@ -121,7 +121,7 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 **Performance:** Crawl de 50.000 paginas em ~35 minutos vs 6+ horas para crawlers cloud (Semrush).
 
 **Para que usamos:**
-- [[Agente Auditor]]: crawl tecnico completo automatizado
+- [[Agente Pesquisador]]: crawl tecnico completo automatizado
 - Pipeline de auditoria: executar via CLI, processar resultados, gerar recomendacoes
 
 **Limitacoes:** Precisa rodar localmente (nao e cloud-native); consome recursos da maquina; licenca por maquina.
@@ -137,8 +137,8 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 **Pricing:** API access disponivel apenas no plano Enterprise (preco custom).
 
 **Para que usamos:**
-- [[Agente Editor]]: scoring de conteudo antes da publicacao
-- [[Agente Writer]]: guidelines de otimizacao durante a escrita
+- [[Agente Revisor]]: scoring de conteudo antes da publicacao
+- [[Agente Redator]]: guidelines de otimizacao durante a escrita
 
 **Alternativa:** Implementar nosso proprio scoring baseado em SERP analysis usando DataForSEO + NLP proprio. Mais barato a longo prazo e sem dependencia.
 
@@ -158,9 +158,9 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 - Autenticacao via Application Passwords ou OAuth
 
 **Para que usamos:**
-- [[Agente Publisher]]: publicacao automatica de conteudo
-- [[Agente Auditor]]: leitura de conteudo existente para auditoria
-- [[Sistema de Distribuicao]]: agendamento de publicacoes
+- [[Agente Publicador]]: publicacao automatica de conteudo
+- [[Agente Pesquisador]]: leitura de conteudo existente para auditoria
+- [[Agente Distribuidor]]: agendamento de publicacoes
 
 **Limitacoes:** Performance pode degradar em sites com muitos plugins; necessita autenticacao segura; rate limiting depende do hosting.
 
@@ -183,9 +183,9 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 - Metered billing (cobranca por uso)
 
 **Para que usamos:**
-- [[Sistema de Billing]]: cobranca recorrente dos clientes
+- [[Agente Pagamento]]: cobranca recorrente dos clientes
 - [[Onboarding]]: trial gratuito + upgrade automatico
-- [[Dashboard Admin]]: monitoramento de MRR, churn, LTV
+- dashboard interno de admin: monitoramento de MRR, churn, LTV
 
 **Alternativa Brasil:** Stripe funciona no Brasil, mas alternativas locais incluem Pagar.me (iugu), Asaas, e Vindi para boleto/PIX nativos.
 
@@ -217,8 +217,8 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 - Brasil tera billing local em H2 2026
 
 **Para que usamos:**
-- [[Agente SDR]]: prospecção, qualificacao e nurturing de leads via WhatsApp
-- [[Sistema de Notificacoes]]: alertas para clientes sobre resultados
+- [[Agente Prospeccao]]: outbound e nurturing de leads via WhatsApp/e-mail
+- sistema de notificacoes: alertas para clientes sobre resultados
 - [[Onboarding]]: comunicacao durante trial
 
 **Recomendacao:** Comecar com Z-API ou Waha (custo fixo, sem taxa por mensagem) para MVP. Migrar para WhatsApp Cloud API oficial quando escalar para compliance.
@@ -240,8 +240,8 @@ ScreamingFrogSEOSpiderCli.exe --crawl https://exemplo.com --export-tabs "Interna
 - Webhooks para notificacoes de mudancas
 
 **Para que usamos:**
-- [[Agente SDR]]: agendar reunioes de discovery com leads qualificados
-- [[Sistema de Onboarding]]: agendar kickoff calls
+- [[Agente Prospeccao]]: agendar call opcional (20-30 min) com leads que pedirem
+- [[Onboarding Automatico]]: agendar kickoff calls
 
 **Alternativa:** Calendly API para agendamento self-service (freemium, $8+/mes para features avancadas).
 

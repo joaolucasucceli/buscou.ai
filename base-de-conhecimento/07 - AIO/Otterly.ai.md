@@ -18,7 +18,7 @@ atualizado: 2026-04-22
 
 O Otterly.ai (OtterlyAI) e uma plataforma de monitoramento e analise de busca por IA que ajuda marcas a entenderem como aparecem dentro de respostas geradas por inteligencia artificial. A ferramenta rastreia prompts — as perguntas reais que pessoas fazem no ChatGPT, Perplexity, Gemini e Google AI Overviews — e analisa como sua marca e citada nessas respostas.
 
-E considerado um pioneiro no segmento de [[AIO]] (AI Optimization), sendo descrito como uma solucao "industry-first" para monitoramento de busca por IA.
+E considerado um pioneiro no segmento de [[O que e AIO|AIO]] (AI Optimization), sendo descrito como uma solucao "industry-first" para monitoramento de busca por IA.
 
 ## Principais Funcionalidades
 

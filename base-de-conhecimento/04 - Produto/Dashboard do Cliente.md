@@ -2,14 +2,14 @@
 tipo: produto
 area: UX
 tags: [produto, dashboard, metricas, ux, cliente]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Dashboard do Cliente
 
-> O dashboard e a janela do cliente para todo o trabalho que os agentes fazem em background. Ele precisa responder 3 perguntas em < 5 segundos: "Meu projeto esta saudavel?", "O que foi publicado?", "Estou melhorando?". Tudo o mais e secundario.
+> O dashboard e a janela do cliente para todo o trabalho que os agentes fazem em background. Ele precisa responder 3 perguntas em < 5 segundos: "Meu projeto esta saudavel?", "O que foi publicado?", "Estou melhorando?". Tambem expoe status claro das duas linhas de cobranca (implementacao + infra mensal). Tudo o mais e secundario.
 
-Referencia: [[Dashboard de Resultados]] | [[Agente Monitor]] | [[Modelo de Negocio]] | [[Relatorio para Cliente - Modelo]]
+Referencia: [[Agente Monitor]] | [[Agente Pagamento]] | [[Modelo de Negocio]] | [[Suporte Automatizado]]
 
 ---
 
@@ -67,13 +67,13 @@ Referencia: [[Dashboard de Resultados]] | [[Agente Monitor]] | [[Modelo de Negoc
 |---|---|---|---|
 | Health Score | Calculo composto (conteudos + rankings + trafego + AIO) | `project_health` (view materializada) | Diario |
 | Conteudos/mes | Contagem de `content_pieces` com `status = published` no mes | `content_pieces` | Real-time (Realtime subscription) |
-| Keywords top 10 | [[Google Search Console]] API + [[Ahrefs]] API processados pelo [[Agente Monitor]] | `keyword_rankings` | Diario (Growth/Scale), semanal (Starter) |
+| Keywords top 10 | [[Google Search Console]] API + [[Ahrefs]] API processados pelo [[Agente Monitor]] | `keyword_rankings` | Diario |
 | Trafego organico | GSC API (cliques organicos) | `traffic_metrics` | Diario |
-| Citacoes IA | [[Otterly.ai]] API + [[LLMrefs]] API via [[Agente Monitor]] | `ai_citations` | Semanal (Starter), diario (Growth/Scale) |
+| Citacoes IA | [[Otterly.ai]] API + [[LLMrefs]] API via [[Agente Monitor]] | `ai_citations` | Diario |
 | Atividade recente | Eventos do sistema (publicacao, ranking change, distribuicao) | `activity_log` | Real-time |
 
 **Calculo do Health Score** (0-100):
-- Conteudos publicados vs meta do tier: 25 pontos
+- Conteudos publicados vs meta mensal (90): 25 pontos
 - Keywords melhorando vs caindo: 25 pontos
 - Trafego organico trend (30 dias): 25 pontos
 - Citacoes em IA (presenca): 25 pontos
@@ -99,7 +99,7 @@ O cliente precisa sentir que o sistema esta TRABALHANDO. SaaS vive de percepcao 
 **Regras de UX para progresso**:
 1. **Sempre mostrar delta** (variacao): "+5 posicoes", "+7pp presenca", "+22% trafego"
 2. **Setas e cores**: verde = subindo, vermelho = caindo, cinza = estavel
-3. **Barras de progresso**: para metas mensais (conteudos publicados vs meta do tier)
+3. **Barras de progresso**: para metas mensais (conteudos publicados vs meta de 90/mes)
 4. **Atividade em real-time**: cada publicacao, cada ranking change aparece instantaneamente
 5. **Notificacoes de conquista**: "Voce foi citado pelo ChatGPT!" (celebrar wins)
 
@@ -216,7 +216,7 @@ Arquivo de relatorios mensais gerados automaticamente pelo [[Agente Monitor]].
 | Relatorio mensal AIO | `reports` bucket | PDF |
 | Historico de reports | Lista ordenada por data | In-app viewer |
 
-Template conforme [[Relatorio para Cliente - Modelo]]. Gerado automaticamente ate dia 5 de cada mes.
+Template proprio de relatorio mensal gerado automaticamente pelo [[Agente Monitor]] ate dia 5 de cada mes — estrutura: resumo de 90 artigos publicados + keywords ranqueando + citacoes em IA + trafego organico + comparativo mensal.
 
 ---
 
@@ -224,7 +224,11 @@ Template conforme [[Relatorio para Cliente - Modelo]]. Gerado automaticamente at
 
 - **Project Config**: Nicho, tom de voz, keywords seed, concorrentes (editavel, [[Agente Estrategista]] reprocessa ao salvar)
 - **Team Members**: Convidar colegas com roles (viewer, editor, admin). Auth via Supabase Auth com claims de `org_id` e `role`
-- **Billing**: Status da assinatura Stripe, historico de faturas, upgrade/downgrade de tier, metodos de pagamento. Portal do Stripe embedado via Customer Portal
+- **Billing** (duas secoes explicitas):
+  - **Implementacao**: status (a vista quitada / parcela N de 12 em aberto), historico de parcelas, data da proxima cobranca (se 12x).
+  - **Infra mensal**: status (`pending_start` mes 1 / `active` / `overdue` / `motor_paused` / `cancelled`), historico de cobrancas, proxima cobranca, botao para atualizar cartao, botao para pausar infra (cliente escolhe pausar voluntariamente).
+  - **Sem upgrade/downgrade** — modelo e unico.
+  - Portal do gateway embedado via Customer Portal (Stripe) ou equivalente (Asaas).
 
 ---
 
@@ -234,7 +238,7 @@ Widget de chat no canto inferior direito, powered by [[Agente Suporte]].
 
 - Acesso a knowledge base, dados do projeto, FAQ
 - Historico de conversas persistente
-- Escalonamento para humano com SLA por tier: Starter 48h, Growth 24h, Scale 4h
+- Escalacao para humano com SLA unico: 24h (questoes nao criticas) / 4h (critico: blog fora do ar, motor parado). Ver [[SLAs e Garantias]].
 - CSAT survey automatico apos resolucao
 - Ver detalhamento completo em [[Suporte Automatizado]]
 
@@ -260,8 +264,7 @@ Widget de chat no canto inferior direito, powered by [[Agente Suporte]].
 - [[Onboarding Automatico]]
 - [[Suporte Automatizado]]
 - [[Agente Monitor]]
-- [[Dashboard de Resultados]]
-- [[Relatorio para Cliente - Modelo]]
+- [[Agente Pagamento]]
 - [[Modelo de Negocio]]
 - [[Arquitetura do Sistema]]
 - [[Frontend]] — Rotas, layouts e design system do frontend

@@ -29,7 +29,7 @@ Analisa os resultados de busca para uma palavra-chave especifica, mostrando padr
 Escaneia conteudo existente e sinaliza paginas que precisam de atualizacoes, reescritas ou consolidacao. Em 2026, inclui um recurso "competitor gap" que mostra palavras-chave que seus concorrentes ranqueiam e voce nao.
 
 ### Topical Map
-Analisa seu dominio e mapeia clusters de conteudo que voce deveria construir para estabelecer autoridade tematica. Ferramenta essencial para estrategias de [[SEO]] baseadas em topicos.
+Analisa seu dominio e mapeia clusters de conteudo que voce deveria construir para estabelecer autoridade tematica. Ferramenta essencial para estrategias de [[O que e SEO|SEO]] baseadas em topicos.
 
 ### Keyword Research
 Pesquisa de palavras-chave com metricas de volume, dificuldade e agrupamento por cluster tematico, integrada ao fluxo de criacao de conteudo.

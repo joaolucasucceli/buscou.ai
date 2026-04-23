@@ -9,7 +9,7 @@ atualizado: 2026-04-23
 
 > Fonte canonica: [[VERDADE_UNICA_BUSCOU]]. O Agente Prospeccao gera **outbound** para levar leads qualificados ate a landing buscou.ai. **Nao qualifica BANT, nao agenda reuniao, nao fecha venda.** O modelo e self-service — quem fecha e a landing.
 
-Relacionado: [[Arquitetura de Agentes]] | [[Orquestrador]] | [[ICP - Cliente Ideal]] | [[Site Publico]] | [[Funil Completo]]
+Relacionado: [[Arquitetura de Agentes]] | [[Orquestrador]] | [[ICP por Nicho]] | [[Site Publico]] | [[Funil Completo]]
 
 ---
 
@@ -26,7 +26,7 @@ Alimenta o topo do funil com prospecao ativa paralela ao marketing organico. Ger
 | Lista de leads por nicho + cidade | Base publica (Google Maps API, CNPJ por segmento, diretorios setoriais) |
 | Template de e-mail | Biblioteca de sequencias outbound |
 | Perfil do lead | Dados coletados: nome da empresa, site, presenca atual em Google/IA, tamanho |
-| Criterios ICP | [[ICP - Cliente Ideal]] (clinicas, imobiliarias, advogados, servicos locais) |
+| Criterios ICP | [[ICP por Nicho]] (clinicas, imobiliarias, advogados, servicos locais) |
 | Calendario de envio | Configuracao do Orquestrador (cadencia por lead) |
 
 ---
@@ -112,8 +112,8 @@ Leads que responderem em qualquer ponto saem da sequencia automatica e entram no
 
 ## Dependencias
 
-- **Depende de**: [[Orquestrador]], [[ICP - Cliente Ideal]], SendGrid, Google Maps API.
-- **Quem depende**: funil organico e a [[Landing buscou.ai]] (recebe trafego pago do outbound).
+- **Depende de**: [[Orquestrador]], [[ICP por Nicho]], SendGrid, Google Maps API.
+- **Quem depende**: funil organico e a [[Site Publico]] (recebe trafego pago do outbound).
 - **Nao depende mais de**: "Agente SDR" (descartado), reuniao BANT (descartada).
 
 ---

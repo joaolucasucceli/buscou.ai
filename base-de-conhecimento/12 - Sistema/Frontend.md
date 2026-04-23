@@ -463,7 +463,7 @@ Cada card usa o componente `MetricCard` com: valor principal (texto grande), del
 - Grid de cards, um por agente (11 agentes + orquestrador)
 - Cada card: nome, icone, status (ativo/inativo/processando), ultima acao, tarefas na fila
 - Click abre detalhes: historico de acoes, metricas de performance, configuracoes
-- Ver tambem: [[Arquitetura Multi-Agente]]
+- Ver tambem: [[Arquitetura de Agentes]]
 
 ### Pagina Integracoes (`/app/integracoes`)
 
@@ -799,4 +799,4 @@ src/
 - [[Onboarding Automatico]] — Fluxo completo de onboarding
 - [[Estrutura de Codigo]] — Organizacao do repositorio
 - [[Stack Tecnologica]] — Decisoes de tecnologia
-- [[Arquitetura Multi-Agente]] — Sistema de agentes que alimenta a UI
+- [[Arquitetura de Agentes]] — Sistema de agentes que alimenta a UI

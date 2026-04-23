@@ -49,4 +49,4 @@ Opcional. Fontes externas, referencias, links.
 3. Uma nota = uma ideia clara. Se virar varias ideias, quebrar em notas separadas.
 4. Wiki-links para outras notas sempre que possivel.
 5. Linguagem alinhada com [[Tom de Voz e Marketing]] e [[VERDADE_UNICA_BUSCOU]] secao 6.
-6. Se a nota nao se encaixar em nenhuma das 15 pastas canonicas, provavelmente ela e arquivo morto — mover para `99 - Arquivo Morto` em vez de inventar pasta.
+6. Se a nota nao se encaixar em nenhuma das 15 pastas canonicas, **deletar**. Nao ha mais pasta de arquivo morto — conteudo que nao se encaixa e removido imediatamente (decisao de 2026-04-23).

@@ -2,7 +2,7 @@
 tipo: sistema
 area: Integracoes
 tags: [sistema, integracoes, api, externas]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Integracoes Externas
@@ -11,15 +11,25 @@ Todas as integracoes sao acessadas via MCP tools dentro do Claude Agent SDK. Cad
 
 ---
 
-## Stripe
+## Stripe (ou Asaas — ADR em [[Stack Tecnologica]])
 
 - **API Docs**: https://docs.stripe.com/api
 - **Autenticacao**: Secret Key (server-side) + Publishable Key (client-side para Checkout)
 - **Rate Limits**: 100 requests/segundo no modo live (suficiente)
-- **Custo**: 2.99% + R$0.39 por transacao (cartao BR) + 0.5% para recurring
-- **Uso no sistema**: Checkout sessions, subscriptions, invoices, webhooks, Customer Portal
-- **Webhooks recebidos**: `checkout.session.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.updated`, `customer.subscription.deleted`, `charge.refunded`
-- **Fallback**: Sem fallback — Stripe e critico. Se fora do ar, enfileira operacoes para retry. Historico de uptime 99.99%.
+- **Custo BR**: ~4,99% + R$ 0,39 por transacao cartao em parcelamento 12x; ~3,99% em subscription recorrente. Pix ~0,99%.
+- **Uso no sistema — dois fluxos (ver [[Agente Pagamento]] e [[Decision Log - 2026-04-23 - Infra Mensal]]):**
+  - **Implementacao (one-time)**: Checkout Session em modo `payment`. Parcelado 12x via `payment_with_installments` (Stripe BR) ou equivalente Asaas.
+  - **Infra mensal (recurring)**: Subscription criada no mesmo checkout, com `trial_end` = D+30 (mes 1 incluso). Primeira cobranca no mes 2. Valor R$ 300.
+- **Webhooks recebidos (discriminados via metadata):**
+  - `checkout.session.completed` — confirma implementacao paga OU primeira parcela 12x.
+  - `invoice.payment_succeeded` — cobranca de parcela 2-12 da implementacao OU cobranca mensal da infra (metadata `tipo: parcela_implementacao | infra_mensal`).
+  - `invoice.payment_failed` — falha em qualquer um dos dois fluxos (discriminar via metadata).
+  - `customer.subscription.created` — subscription da infra criada.
+  - `customer.subscription.deleted` — cliente cancelou subscription da infra.
+  - `charge.refunded` — reembolso.
+  - `charge.dispute.created` — chargeback.
+- **Metadata padrao em cada evento:** `organizacao_id`, `tipo` (implementacao | infra), `numero_parcela` (se implementacao parcelada), `tentativa` (se retry).
+- **Fallback**: Sem fallback — gateway e critico. Se fora do ar, enfileira operacoes para retry. Historico de uptime 99.99%. Caso parcelamento 12x em cartao seja inviavel via Stripe BR (limite de parcelas), alternativa e Asaas (nativo BR). Decisao final em [[Stack Tecnologica]].
 
 ---
 
@@ -149,7 +159,7 @@ Todas as integracoes sao acessadas via MCP tools dentro do Claude Agent SDK. Cad
 - **Autenticacao**: API Key no header `Authorization: Bearer <key>`
 - **Rate Limits**: Depende do plano. Free: 100 emails/dia. Pro: sem limite pratico.
 - **Custo**: Free ate 100/dia. Pro ~$20/mes para 50k emails/mes.
-- **Uso no sistema**: Envio de relatorios por email, notificacoes (welcome, trial expiring, payment failed), emails transacionais (reset password delegado do Supabase Auth)
+- **Uso no sistema**: Envio de relatorios por email, notificacoes (welcome apos compra, alertas de inadimplencia da infra mensal, aviso de pausa/retomada do motor, cobrancas), emails transacionais (reset password delegado do Supabase Auth)
 - **Endpoints usados**: `POST /v3/mail/send` (envio), `GET /v3/stats` (metricas de entrega)
 - **Fallback**: Supabase Auth tem SMTP proprio para emails basicos (confirmacao, reset). SendGrid e para emails ricos (templates HTML).
 
@@ -161,7 +171,7 @@ Todas as integracoes sao acessadas via MCP tools dentro do Claude Agent SDK. Cad
 - **Autenticacao**: OAuth 2.0 (service account ou consent do cliente)
 - **Rate Limits**: 500 requests/100s por usuario, 1000000 requests/dia
 - **Custo**: Gratuito
-- **Uso no sistema**: Agendamento de calls de onboarding (Agente SDR), lembretes de reunioes de revisao de estrategia, agendamento de publicacoes
+- **Uso no sistema**: Agendamento de calls opcionais de esclarecimento (Agente Prospeccao), lembretes de onboarding, agendamento de publicacoes
 - **Endpoints usados**: `POST /calendars/{id}/events` (criar evento), `GET /calendars/{id}/events` (listar)
 - **Fallback**: Se nao configurado, agendamentos sao feitos via WhatsApp manualmente.
 

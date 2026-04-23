@@ -36,20 +36,20 @@ Todo trabalho pesado do sistema e executado via **jobs assincronos**. Nenhuma ch
 | Job Type | Descricao | Agente | Fila | Timeout | Prioridade |
 |---|---|---|---|---|---|
 | `gerar_business_context` | Consolida respostas do onboarding em JSON estruturado | (funcao deterministica) | `fila_alta` | 10s | Alta |
-| `gerar_estrategia` | Gera keywords, clusters e calendario editorial | [[Estrategista]] | `fila_alta` | 120s | Alta |
-| `gerar_briefing` | Pesquisa SERP + monta outline do artigo | [[Pesquisador]] | `fila_normal` | 180s | Normal |
-| `gerar_conteudo` | Escreve artigo completo baseado no briefing | [[Redator]] | `fila_alta` | 300s | Alta |
+| `gerar_estrategia` | Gera keywords, clusters e calendario editorial | [[Agente Estrategista]] | `fila_alta` | 120s | Alta |
+| `gerar_briefing` | Pesquisa SERP + monta outline do artigo | [[Agente Pesquisador]] | `fila_normal` | 180s | Normal |
+| `gerar_conteudo` | Escreve artigo completo baseado no briefing | [[Agente Redator]] | `fila_alta` | 300s | Alta |
 | `gerar_plano_visual` | Analisa artigo e cria plano de imagens | [[Agente Visual]] | `fila_normal` | 30s | Normal |
 | `gerar_imagens` | Gera imagens via API + otimiza (WebP, alt, filename) | [[Agente Visual]] | `fila_normal` | 120s | Normal |
-| `revisar_conteudo` | Avalia qualidade SEO + AIO do artigo + imagens (V2+) | [[Revisor]] | `fila_normal` | 60s | Normal |
-| `publicar_conteudo` | Publica artigo + imagens no WordPress via REST API | [[Publicador]] | `fila_alta` | 120s | Alta |
-| `distribuir_conteudo` | Posta versoes adaptadas em redes sociais (V2+) | [[Distribuidor]] | `fila_baixa` | 60s | Baixa |
-| `atualizar_metricas` | Busca dados do GSC e GA4 para conteudo publicado | [[Monitor]] | `fila_normal` | 600s | Normal |
+| `revisar_conteudo` | Avalia qualidade SEO + AIO do artigo + imagens (V2+) | [[Agente Revisor]] | `fila_normal` | 60s | Normal |
+| `publicar_conteudo` | Publica artigo + imagens no WordPress via REST API | [[Agente Publicador]] | `fila_alta` | 120s | Alta |
+| `distribuir_conteudo` | Posta versoes adaptadas em redes sociais (V2+) | [[Agente Distribuidor]] | `fila_baixa` | 60s | Baixa |
+| `atualizar_metricas` | Busca dados do GSC e GA4 para conteudo publicado | [[Agente Monitor]] | `fila_normal` | 600s | Normal |
 | `sincronizar_gsc` | Sync completo do Google Search Console | (funcao) | `fila_normal` | 300s | Normal |
 | `gerar_relatorio` | Gera relatorio mensal de performance | (funcao) | `fila_baixa` | 120s | Baixa |
 | `processar_pagamento` | Processa webhook do Stripe (assinatura, cobranca) | (funcao) | `fila_critica` | 30s | Critica |
 | `enviar_email` | Envia email transacional (boas-vindas, alerta, relatorio) | (funcao) | `fila_baixa` | 30s | Baixa |
-| `verificar_citacao_ia` | Testa se conteudo e citado em 5 plataformas de IA | [[Monitor]] | `fila_normal` | 300s | Normal |
+| `verificar_citacao_ia` | Testa se conteudo e citado em 5 plataformas de IA | [[Agente Monitor]] | `fila_normal` | 300s | Normal |
 
 **Total**: 15 tipos de jobs cobrindo todo o ciclo de vida do conteudo (texto + imagem) + operacoes de suporte.
 
@@ -553,7 +553,7 @@ O sistema deve ter um dashboard (acessivel somente por admin) mostrando:
 
 ## Tabela Relacionada: `execucoes_agentes`
 
-Referencia da tabela no banco de dados (ver [[Entidades e Schema]] para schema completo):
+Referencia da tabela no banco de dados (ver [[Entidades e Schema - Fase 2 (Conteudo e Publicacao)]] — Bloco A para schema completo):
 
 ```sql
 CREATE TABLE execucoes_agentes (
@@ -608,7 +608,7 @@ Jobs que falharam todas as tentativas vao para a Dead Letter Queue. Sao mantidos
 - [[Orquestracao]] — Fluxo completo de execucao dos agentes
 - [[Eventos e Gatilhos]] — Eventos que disparam jobs
 - [[Estados e Maquina de Estado]] — State machines do sistema
-- [[Entidades e Schema]] — Modelo de dados completo do banco
+- [[Entidades e Schema - Fase 1 (Onboarding)]] — Modelo de dados do banco (porta de entrada; linka para Fase 2 e Fase 3)
 - [[Arquitetura do Sistema]] — Visao geral da arquitetura
 - [[Stack Tecnologica]] — Tecnologias usadas (BullMQ, Redis, etc.)
 - [[Estrutura de Codigo]] — Organizacao do projeto

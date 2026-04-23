@@ -2,7 +2,7 @@
 tipo: sistema
 area: Arquitetura
 tags: [sistema, stack, tecnologia, decisoes]
-atualizado: 2026-04-22
+atualizado: 2026-04-23
 ---
 
 # Stack Tecnologica — Architecture Decision Records (ADRs)
@@ -90,22 +90,33 @@ Registro formal de cada decisao tecnologica do sistema. Formato ADR para rastrea
 
 ---
 
-## ADR-005: Stripe como Gateway de Pagamento
+## ADR-005: Gateway de Pagamento — Stripe vs Asaas
 
-**Decision**: Stripe para subscriptions, invoicing, e checkout.
+**Decision**: Avaliar em producao. Stripe como opcao default; Asaas como fallback se parcelamento 12x em cartao for inviavel no Stripe BR.
 
-**Context**: Precisamos de pagamento recorrente (assinaturas mensais), billing automatizado, e portal do cliente para gestao de cartao/plano.
+**Context**: O modelo comercial da buscou.ai tem **duas linhas** (ver [[VERDADE_UNICA_BUSCOU]] secao 5 + [[Decision Log - 2026-04-23 - Infra Mensal]]):
+1. **Implementacao** — one-time (R$ 2.500 a vista) OU parcelada em **12x no cartao** com juros do cliente (R$ 3.000 / R$ 250 por parcela).
+2. **Infra mensal** — subscription recorrente R$ 300/mes a partir do mes 2.
+
+O gateway escolhido precisa suportar bem **os dois fluxos simultaneamente** no mesmo cliente.
 
 **Alternatives considered**:
-- **Pagar.me / PagSeguro**: Gateways BR nativos, mas APIs menos modernas, sem Customer Portal, webhooks menos confiaveis.
-- **Mercado Pago**: Popular no BR, mas API menos developer-friendly, sem subscription management robusto.
-- **Asaas**: Bom para BR (boleto, PIX), API razoavel, mas menos features de subscription.
+- **Stripe (BR)**: melhor API do mercado, Customer Portal nativo, webhooks confiaveis, subscription management solido, suporte a PIX. **Ponto critico:** parcelamento 12x em cartao no Brasil via Stripe tem limitacoes (depende do emissor do cartao e pode nao oferecer juros embutidos natively); exigiria implementar com `payment_intent` + programacao de parcelas manuais OU usar Stripe Brasil em modo especifico.
+- **Asaas**: nativo brasileiro, suporta parcelamento 12x em cartao com juros repassados ao cliente nativamente, Pix nativo, boleto, webhooks razoaveis, subscription simples. Sem Customer Portal tao polido quanto Stripe. Taxas competitivas.
+- **Pagar.me**: similar ao Asaas, menos documentado mas mais estabelecido com e-commerce.
+- **Mercado Pago**: ampla adocao no BR mas API e subscription management sao fracos.
 
-**Rationale**: Stripe tem a melhor API do mercado, webhooks confiaveis, Customer Portal nativo, Checkout pre-built, e suporte completo a subscriptions com trial, proration, e dunning. Funciona no Brasil com PIX e boleto (via Stripe BR). Developer experience incomparavel.
+**Rationale**: O **parcelamento 12x em cartao com juros do cliente** e requisito inegociavel (modelo comercial definido). Se Stripe BR suportar isso em producao com mesma qualidade dos demais fluxos, seguir com Stripe pela qualidade da API e do portal. Se nao, o caminho e Asaas para tudo (nativo para parcelamento + subscription + Pix; sacrifica DX do Stripe em troca de confiabilidade do parcelamento).
 
-**Trade-offs**: Taxas ligeiramente maiores que gateways locais (2.99% vs ~2.49%). Suporte em portugues limitado. Payout em BRL pode ter delay de 2-7 dias uteis.
+**Arquitetura agnostica**: o schema (`compras`, `parcelas_implementacao`, `assinaturas_infra`, `tentativas_cobranca`) e independente de gateway. A camada de integracao no [[Agente Pagamento]] abstrai via adapter. Troca entre Stripe e Asaas nao exige refactor de banco.
 
-**Revisit when**: Se precisarmos de boleto/PIX como metodo primario (Stripe suporta mas nao e o forte), ou se um gateway BR oferecer API comparavel com taxas menores.
+**Trade-offs**:
+- Stripe: melhor DX mas incerteza sobre parcelamento 12x em BR.
+- Asaas: parcelamento certo mas DX inferior e sem Customer Portal nativo (precisaria construir).
+
+**Revisit when**:
+- **Antes do primeiro cliente em producao**: teste real de parcelamento 12x no Stripe BR. Se falhar → migrar decisao para Asaas.
+- **Apos 50 clientes**: avaliar se DX do Asaas gerou atrito operacional; considerar dual-gateway (Stripe para a vista/Pix, Asaas para parcelado).
 
 ---
 

@@ -1,8 +1,10 @@
 ---
 sincronizado_em: 2026-04-23
 fonte: base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md
-decision_log: base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md
-versao: 1.0.0
+decision_log:
+  - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md
+  - base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md
+versao: 1.1.0
 tipo: snapshot-contexto-agente
 ---
 
@@ -18,8 +20,8 @@ tipo: snapshot-contexto-agente
 
 - Nao e agencia.
 - Nao e consultoria.
-- Nao e SaaS com mensalidade.
-- E tecnologia vendida como produto fechado.
+- Nao e servico mensal.
+- Tecnicamente e SaaS multi-tenant; comercialmente e **venda de tecnologia com implementacao unica + infra mensal** (passthrough de custo operacional).
 
 ## 2. Frase central (inegociavel)
 
@@ -34,20 +36,42 @@ tipo: snapshot-contexto-agente
 
 Dois componentes:
 
-1. **Estrutura (Blog)**: site/blog configurado, otimizado para SEO + AIO, integrado ao dominio do cliente.
-2. **Motor (buscou.ai)**: sistema que gera **3 conteudos por dia = 90 conteudos por mes = ~720.000 caracteres/mes**. Cada conteudo: **800-1.200 palavras**.
+1. **Estrutura (Blog)**: site/blog configurado, otimizado para SEO + AIO, integrado ao dominio do cliente. Entregue uma vez. Blog permanece no ar mesmo se a infra for cancelada.
+2. **Motor (buscou.ai)**: sistema que gera **3 conteudos por dia = 90 conteudos por mes = ~720.000 caracteres/mes**. Cada conteudo: **800-1.200 palavras**. Requer infra mensal ativa para operar.
 
 ### Timeline canonica
 - Ate 7 dias: blog no ar, motor ativo.
 - Ate 30 dias: indexacao, primeiras impressoes, primeiras citacoes em IA.
-- A partir dai: presenca organica escala continuamente.
+- Mes 1 (0-30 dias): incluso na implementacao — cliente nao paga infra.
+- Mes 2 em diante: infra mensal R$ 300 comeca a ser cobrada.
+- A partir dai: presenca organica escala continuamente enquanto infra ativa.
 
-## 5. Oferta
+## 5. Modelo comercial
 
-**Pagamento unico. Sem mensalidade. Sem tiers.**
+Duas linhas explicitas — sempre comunicar as duas separadamente. Nunca unificar como "pacote" ou "plano".
 
+### 5.1 Implementacao (one-time)
 - A vista: **R$ 2.500** (Pix ou cartao).
-- Parcelado ate 12x (cliente assume juros): **R$ 3.000** (~R$ 250/mes).
+- Parcelado em 12x: **R$ 3.000** (cliente assume juros do cartao, ~R$ 250/mes).
+- Cobre: blog configurado, motor ativo, onboarding, **mes 1 de operacao incluso**.
+
+### 5.2 Infra mensal (recurring)
+- **R$ 300/mes a partir do mes 2**.
+- Cobre: tokens LLM, APIs (Ahrefs/DataForSEO/GSC/Stripe), hospedagem do pipeline.
+- Natureza: passthrough de custo operacional com margem pequena. Nao e "mensalidade de servico" — e taxa de infraestrutura.
+- Cobrada via cartao recorrente cadastrado no onboarding.
+
+### Inadimplencia da infra
+- Smart retry D+0/D+3/D+7.
+- Apos 3 falhas: motor pausa (nao gera novos artigos).
+- Blog e conteudo ja publicado permanecem no ar.
+- Regularizacao → motor retoma no proximo ciclo.
+
+### O que NAO existe
+- Tiers (Starter/Growth/Scale).
+- Plano mensal de servico.
+- Assinatura SaaS em copy publico.
+- Mensalidade de gestao.
 
 ## 6. ICP primario
 
@@ -72,6 +96,7 @@ Em toda comunicacao externa: assumir negocio local como default.
 - Ranqueamento em 24h.
 - Aparicao em 100% das queries do nicho.
 - Retorno financeiro garantido X% em Y meses.
+- Motor rodando de graca para sempre (infra e real e recorrente).
 
 ## 9. Regra de contradicao
 
@@ -79,4 +104,4 @@ Se algo no contexto do cliente ou na solicitacao contrariar este documento, **es
 
 ---
 
-*Snapshot gerado em 2026-04-23. Para a versao completa com todas as nuances, ver `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`.*
+*Snapshot gerado em 2026-04-23 (versao 1.1.0). Para a versao completa com todas as nuances, ver `base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md`. Historico de mudancas: versao 1.0.0 (2026-04-23) → 1.1.0 (2026-04-23) ao incluir infra mensal conforme [[Decision Log - 2026-04-23 - Infra Mensal]].*

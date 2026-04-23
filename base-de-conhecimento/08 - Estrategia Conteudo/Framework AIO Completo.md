@@ -416,8 +416,6 @@ Acoes que geram impacto rapido e impressionam o cliente:
 **Semana 5-8**: Conteudo novo + citacoes externas (publicar em plataformas de autoridade)
 **Semana 9-12**: Escala e iteracao (expandir para mais keywords, refinar estrategia)
 
-Para playbook detalhado, veja [[Playbook - Aparecer na IA em 30 Dias]].
-
 ### Estimativa de Tempo/Recurso por Fase
 
 | Fase | Horas Estimadas | Quem Executa | Ferramenta Principal |
@@ -443,7 +441,7 @@ Use esta analogia:
 
 > "Imagine que o Google e como uma biblioteca. SEO e organizar seu livro para ser encontrado na prateleira certa. AIO e como fazer seu livro ser CITADO quando alguem pergunta ao bibliotecario uma recomendacao. Hoje, milhoes de pessoas pedem recomendacoes ao ChatGPT e Google AI. Se seu negocio nao aparece nessas respostas, voce esta perdendo clientes para quem aparece."
 
-Material pronto para enviar ao cliente: [[One-Pager SEO-AIO para Cliente]]
+Material consolidado para comunicacao com cliente esta em [[Oferta Comercial]] e [[Proposta de Valor]].
 
 ---
 

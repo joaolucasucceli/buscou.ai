@@ -132,7 +132,7 @@ Cada publicacao em plataforma externa e uma mencao adicional:
 3. **Buscar no Google** — `"sua marca" -site:seusite.com` para encontrar mencoes externas
 4. **Verificar sentimento** — Mencoes sao positivas, negativas ou neutras?
 5. **Converter mencoes em links** — Para mencoes unlinked, enviar email pedindo link (taxa de conversao: 10-30%)
-6. **Registrar** — Documentar novas mencoes no [[Dashboard de Resultados]]
+6. **Registrar** — Mencoes sao capturadas pelo [[Agente Monitor]] e expostas no [[Dashboard do Cliente]]
 
 ---
 
@@ -157,7 +157,7 @@ Cada publicacao em plataforma externa e uma mencao adicional:
 - [[Como IA Escolhe Respostas]] — Mecanismo de selecao de fontes por IAs
 - [[Framework AIO Completo]] — Processo geral de AIO
 - [[Off-Page SEO e Link Building]] — Fundamentos de off-page
-- [[Dashboard de Resultados]] — Onde consolidar metricas
+- [[Agente Monitor]] — Agente que rastreia mencoes em tempo real
 - [[Ranking IA - Tracking Manual]] — Tracking manual de visibilidade em IA
 
 ---

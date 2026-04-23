@@ -18,8 +18,8 @@ atualizado: 2026-04-23
 > Este template define a estrutura obrigatoria que o [[Agente Redator]] segue para gerar TODOS os conteudos da plataforma. Cada artigo produzido deve aderir a este formato para garantir consistencia, qualidade SEO, otimizacao AIO e potencial de conversao.
 
 O template foi desenhado com tres objetivos simultaneos:
-1. **Rankear no Google** — estrutura otimizada para [[SEO On-Page]]
-2. **Ser citado por IAs** — formato answer-first para [[AIO]]
+1. **Rankear no Google** — estrutura otimizada para [[On-Page SEO]]
+2. **Ser citado por IAs** — formato answer-first para [[O que e AIO|AIO]]
 3. **Converter visitantes** — CTAs estrategicos ao longo do texto
 
 ---
@@ -87,7 +87,7 @@ Abaixo esta o template completo que o [[Agente Redator]] deve seguir. Os placeho
 - Responde a pergunta principal do artigo diretamente
 - Formato citavel por IAs (trecho que ChatGPT/Perplexity pode extrair)
 - Tom assertivo e claro, sem rodeios
-- Este e o bloco mais importante para [[AIO]] — IAs tendem a citar blockquotes e primeiros paragrafos
+- Este e o bloco mais importante para [[O que e AIO|AIO]] — IAs tendem a citar blockquotes e primeiros paragrafos
 
 ---
 
@@ -153,7 +153,7 @@ Abaixo esta o template completo que o [[Agente Redator]] deve seguir. Os placeho
 - Mencionar pelo menos 1 bairro relevante
 - Incluir dados locais quando disponiveis (populacao, mercado, concorrencia)
 - Referenciar pontos de referencia ou particularidades da regiao
-- Este bloco e critico para [[SEO Local]] e para aparecer em buscas geolocalizadas
+- Este bloco e critico para [[Local SEO]] e para aparecer em buscas geolocalizadas
 
 ---
 
@@ -267,7 +267,7 @@ Abaixo esta o template completo que o [[Agente Redator]] deve seguir. Os placeho
 - Perguntas no formato que pessoas realmente pesquisam
 - Respostas diretas e concisas (2-4 frases cada)
 - Cada pergunta em H3 (facilita extracao por IAs e Google)
-- Este bloco gera [[Schema Markup]] automatico (FAQPage)
+- Este bloco gera [[Schema Markup para IA|Schema Markup]] automatico (FAQPage)
 - Perguntas devem cobrir: preco, prazo, qualidade, localizacao, comparacao
 
 ---
@@ -708,7 +708,7 @@ Ver detalhes completos: [[Regras de Imagem SEO + AIO]], [[Plano Visual dos Artig
 - [[Framework AIO Completo]] — Estrategia detalhada de otimizacao para IA
 - [[Content Strategy e Topic Clusters]] — Estrategia de clusters tematicos
 - [[Objeto Business Context]] — Estrutura do contexto de negocio que alimenta o template
-- [[Schema Markup]] — Dados estruturados para SEO e AIO
+- [[Schema Markup para IA|Schema Markup]] — Dados estruturados para SEO e AIO
 - [[Fluxo V1]] — Fluxo completo do produto onde o template se encaixa
 - [[Agente Visual]] — Agente responsavel pela geracao de imagens
 - [[Regras de Imagem SEO + AIO]] — Otimizacao visual para buscadores e IA

@@ -120,11 +120,9 @@ Alinhado com a logica de [[Palavras-Chave e Intencao de Busca]] e priorizacao de
 
 O [[Agente Estrategista]] distribui os clusters priorizados no calendario do mes:
 
-| Tier (ver [[Modelo de Negocio]]) | Artigos/Mes | Distribuicao |
+| Modelo comercial | Artigos/Mes | Distribuicao |
 |---|---|---|
-| Starter (R$497) | 8 | 2/semana, alternando pillar e cluster |
-| Growth (R$1.497) | 20 | ~5/semana, pillar primeiro, depois clusters em ordem de prioridade |
-| Scale (R$3.997) | 50+ | Diario, multiplos clusters em paralelo |
+| Oferta unica buscou.ai (ver [[VERDADE_UNICA_BUSCOU]] secao 5) | 90 (3/dia) | Diario, multiplos clusters em paralelo (pillar primeiro, depois clusters em ordem de prioridade) |
 
 **Regras do calendario**:
 - Pillar page sempre publicada antes de seus clusters (autoridade tematica precede profundidade)

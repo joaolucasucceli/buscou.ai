@@ -271,7 +271,7 @@ CREATE TABLE derivados_imagem (
 
 - [[Agente Visual]]
 - [[Regras de Imagem SEO + AIO]]
-- [[Entidades e Schema]]
+- [[Entidades e Schema - Fase 2 (Conteudo e Publicacao)]] — Bloco C (`imagens_conteudo`, `versoes_conteudo`, `ponteiro_publicado`, `derivados_imagem`)
 - [[Agente Publicador]]
 - [[Estrutura de Codigo]]
 - [[Integracoes Externas]]

@@ -38,7 +38,7 @@ Nenhum humano escreve conteudo de marketing. O sistema escreve, publica e distri
 - **Pillar page**: "Guia Completo de Automacao de SEO em 2026"
 - **Cluster**: como automatizar pesquisa de keywords, automacao de publicacao, agentes de IA para SEO, ferramentas de automacao SEO
 - **Keyword principal**: "automatizar SEO" (vol ~480, KD ~25)
-- **ICP target**: Gestores de marketing de empresas mid-market conforme [[ICP - Cliente Ideal]]
+- **ICP target**: donos de negocio local (clinicas, imobiliarias, advogados, servicos) conforme [[ICP por Nicho]] e [[VERDADE_UNICA_BUSCOU]] secao 3
 - **Frameworks aplicados**: [[Framework SEO Completo]] (on-page, tecnico, conteudo) + [[Schema Markup para IA]]
 
 ### Pilar 2: AIO / GEO
@@ -133,4 +133,4 @@ Todos esses resultados sao rastreados pelo [[Agente Monitor]] e documentados men
 - [[Distribuicao Automatica]]
 - [[Estrategia de Distribuicao]]
 - [[SEO para SaaS]]
-- [[Playbook - Aparecer na IA em 30 Dias]]
+- [[Framework AIO Completo]]
