@@ -827,13 +827,22 @@ section { padding: 100px 0; position: relative; }
   color: var(--text-2);
   font-weight: 500;
   letter-spacing: -0.005em;
-  cursor: default;
-  pointer-events: none;
+  text-decoration: none;
+  transition: background 200ms var(--ease), color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.blog-mock-cats .cat-pill:hover {
+  background: var(--bg-elev-2);
+  color: var(--text);
+  border-color: var(--border-strong);
 }
 .blog-mock-cats .cat-pill.active {
   background: var(--ai);
   color: var(--bg);
   border-color: var(--ai);
+}
+.blog-mock-cats .cat-pill.active:hover {
+  background: var(--ai-300);
+  border-color: var(--ai-300);
 }
 .blog-mock-cats .cat-pill .count {
   font-family: var(--font-mono);
@@ -842,7 +851,7 @@ section { padding: 100px 0; position: relative; }
   opacity: 0.6;
 }
 
-/* featured row */
+/* featured row (clicavel -> /exemplo/blog/artigo) */
 .blog-mock-featured-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -850,7 +859,12 @@ section { padding: 100px 0; position: relative; }
   align-items: center;
   padding: 32px 0;
   border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 200ms var(--ease);
 }
+.blog-mock-featured-row:hover { transform: translateY(-2px); }
+.blog-mock-featured-row:hover .blog-mock-featured-content h4 { color: var(--ai); }
 .blog-mock-featured-visual {
   aspect-ratio: 4 / 3;
   background:
@@ -959,7 +973,16 @@ section { padding: 100px 0; position: relative; }
   gap: 24px;
   padding: 32px 0 8px;
 }
-.blog-mock-art { display: flex; flex-direction: column; }
+.blog-mock-art {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 200ms var(--ease);
+}
+.blog-mock-art:hover { transform: translateY(-3px); }
+.blog-mock-art:hover h5 { color: var(--ai); }
+.blog-mock-art h5 { transition: color 200ms var(--ease); }
 .blog-mock-thumb {
   aspect-ratio: 16 / 10;
   border-radius: var(--radius-md);
@@ -2030,18 +2053,18 @@ footer {
           </div>
         </div>
 
-        <!-- pills de categoria -->
+        <!-- pills de categoria (clicaveis -> /exemplo/blog/categoria) -->
         <div class="blog-mock-cats">
           <span class="cat-label">CATEGORIAS</span>
-          <span class="cat-pill active">Todos <span class="count">42</span></span>
-          <span class="cat-pill">Implantes <span class="count">12</span></span>
-          <span class="cat-pill">Ortodontia <span class="count">8</span></span>
-          <span class="cat-pill">Prevenção <span class="count">15</span></span>
-          <span class="cat-pill">Casos reais <span class="count">5</span></span>
+          <a class="cat-pill active" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Todos <span class="count">42</span></a>
+          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Implantes <span class="count">12</span></a>
+          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Ortodontia <span class="count">8</span></a>
+          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Prevenção <span class="count">15</span></a>
+          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Casos reais <span class="count">5</span></a>
         </div>
 
-        <!-- featured grid -->
-        <div class="blog-mock-featured-row">
+        <!-- featured grid (clicavel -> /exemplo/blog/artigo) -->
+        <a class="blog-mock-featured-row" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
           <div class="blog-mock-featured-visual">
             <div class="blog-mock-search-mock">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
@@ -2059,27 +2082,27 @@ footer {
               <span>+2.400 leitores</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- grid 3 cards com thumbs visuais variados -->
+        <!-- grid 3 cards com thumbs visuais variados (clicaveis -> /exemplo/blog/artigo) -->
         <div class="blog-mock-articles">
-          <article class="blog-mock-art">
+          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
             <div class="blog-mock-thumb thumb-serif">
               <div class="thumb-title">Aparelho <span class="brand-accent">transparente.</span></div>
             </div>
             <div class="meta">Ortodontia · 6 min</div>
             <h5>Aparelho transparente funciona mesmo? O que a prática mostra</h5>
-          </article>
+          </a>
 
-          <article class="blog-mock-art">
+          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
             <div class="blog-mock-thumb thumb-stat">
               <div class="thumb-stat-num">+340<span class="thumb-stat-small">PACIENTES / TRIM</span></div>
             </div>
             <div class="meta">Casos reais · 5 min</div>
             <h5>Como uma clínica de bairro triplicou consultas em 90 dias</h5>
-          </article>
+          </a>
 
-          <article class="blog-mock-art">
+          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
             <div class="blog-mock-thumb thumb-search">
               <div class="thumb-search-mock">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
@@ -2089,7 +2112,7 @@ footer {
             </div>
             <div class="meta">Prevenção · 5 min</div>
             <h5>Quantas vezes é preciso ir ao dentista por ano? Depende</h5>
-          </article>
+          </a>
         </div>
       </div>
     </div>
