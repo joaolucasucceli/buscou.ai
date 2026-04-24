@@ -186,6 +186,35 @@ Sem pressao de fechamento dentro da reuniao. A proposta escrita e que fecha.
 
 > "Nao. A implementacao monta o motor, a infra e o que faz o motor rodar. Sem infra, o motor fica parado — cada mes de 90 artigos otimizados precisa dos tokens, das APIs, da infraestrutura. Se voce paga so a implementacao, voce tem o blog e um motor parado. Nao serve ao objetivo. Pensa assim: implementacao e comprar o carro. Infra e colocar gasolina. Nao adianta comprar o carro e nunca por gasolina."
 
+### "O dono está ocupado, vou levar a proposta pra ele." (decisor ausente na call)
+
+Não é objeção no sentido clássico — é sinal de que você está em **reunião com intermediário**. Ver playbook dedicado em [[Padrao - Reuniao com Intermediario]].
+
+Resposta canônica:
+
+> "Perfeito ter você na call — quem é que vai ler a proposta com ele depois? Vou desenhar isso pensando em vocês dois juntos. Mando a proposta em PDF pronta pra impressão, você lê com ele, e combina a gente se fala por WhatsApp pra ajustar o que precisar. Validade de 7 dias."
+
+Regras específicas:
+- Não forçar respostas estratégicas que o intermediário não tem (orçamento, CRM exato, stack atual). Perguntas factuais de nicho/região/produto, sim
+- Proposta precisa funcionar **sem** sua presença verbal — decisor vai ler sozinho
+- Não aceitar pressão do intermediário por desconto fora dos canônicos (parceria networking R$ 1.000 off ou early client R$ 300 off). Descontos não-canônicos exigem Decision Log datado
+- Followup D+3 e D+6 normalmente, independente do intermediário confirmar reunião com decisor
+
+### "Vocês dão desconto?" (venda por parceria/indicação)
+
+Quando o cliente chega por **indicação direta de parceiro pré-estabelecido** (não um "conheci no LinkedIn"), há um benefício canônico oficializado em [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]: **R$ 1.000 off na implementação à vista** (R$ 2.500 → R$ 2.000).
+
+Resposta canônica:
+
+> "Normalmente não. Mas você vem por indicação de [parceiro] — parceria de networking, relação estabelecida. Isso qualifica pro benefício exclusivo: R$ 1.000 off na implementação à vista. Fica R$ 2.000 em vez de R$ 2.500. Infra mensal continua R$ 300, não muda. Benefício fica documentado na proposta, explícito — não é desconto oculto nem negociação de bazar."
+
+Regras:
+- Só aplicável com indicação direta de parceiro pré-estabelecido (conexões de networking longeva, não "acabei de conhecer")
+- Limite 3/quarter pra não virar desconto crônico
+- Aprovação do dono sempre
+- Badge "Benefício exclusivo — parceria de networking" aparece no próprio card de pricing da proposta (transparente, documentado)
+- Parcelado em 12× continua R$ 3.000 (não tem desconto em parcelado)
+
 ---
 
 ## Fluxo de venda

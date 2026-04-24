@@ -1,60 +1,65 @@
 ---
 tipo: convencao
 area: Vendas
-tags: [convencao, reuniao, ata, vendas]
+tags: [convencao, reuniao, playbook, vendas]
 atualizado: 2026-04-24
 ---
 
 # Reuniões — Convenção de registro
 
-Esta pasta guarda as **atas das reuniões de venda** da buscou.ai (reuniões de diagnóstico com leads, conforme [[Oferta Comercial]] e [[VERDADE_UNICA_BUSCOU]] seção 8).
+**⚠️ Mudança de convenção em 2026-04-24.** Esta pasta NÃO recebe mais atas novas per-cliente. Detalhes abaixo.
 
-## Quando criar uma ata
+## Nova convenção (vigente)
 
-Toda reunião de diagnóstico (mesmo curta, mesmo não-fit, mesmo com intermediário) gera ata. A ata é o registro único e durável daquilo que foi dito — nunca fiar memória ou transcrição bruta.
+Reuniões de venda da buscou.ai **não geram mais ata per-cliente**. A razão operacional:
 
-## Nomenclatura
+1. Manter um CRM interno (quem fechou, quem está em negociação, status de deal, próximos passos de cliente X) **não é responsabilidade do vault** — isso é operação comercial de dia-a-dia e mora em outras ferramentas (Linear issue da umbrella de venda, WhatsApp do dono).
+2. O aprendizado **transferível** de uma reunião — objeções novas, argumentos que funcionaram, padrões de persona — pertence a **playbooks abstratos** que generalizam, não a arquivos per-cliente que ninguém mais consulta depois.
+3. Salvar transcrição completa tem baixo valor marginal (transcrição é longa, tem ruído, rapidamente desatualiza) e alto custo (acúmulo de material sensível que não é usado).
 
-Formato: `YYYY-MM-DD - Nome da Empresa - Interlocutor Principal.md`
+### Fluxo novo
 
-Exemplos:
-- `2026-04-24 - Innovate LED - Mary Alves.md`
-- `2026-05-10 - Clinica Odontologica Sorriso - Dr. Pedro.md`
+Toda reunião de diagnóstico agora segue:
 
-Se houver mais de uma reunião com a mesma empresa no mesmo dia: `2026-04-24 - Innovate LED - Mary Alves (1).md`, `(2)`, etc.
+1. **Dono faz a reunião.** Grava ou tem transcrição.
+2. **Dono manda transcrição pro Claude Code** com pedido de proposta (ex: "gera proposta pra X").
+3. **Skill `gerador-proposta-buscou`** entra em ação:
+   - Gera PDF alta resolução em `C:\Users\joaol\Desktop\Propostas Buscou\<slug>-<data>.pdf`
+   - Absorve transcrição em **nível de persona** (não de cliente):
+     - Objeção nova descoberta → update em [[Oferta Comercial]] seção "Objecoes" (abstrato, sem nome do cliente)
+     - Argumento novo → playbook canônico, sem contexto do cliente específico
+     - Feature pedida → Linear issue abstrata ("Persona X pede feature Y")
+     - Regra canônica nova → Decision Log datado (requer aprovação do dono)
+   - **Não** salva transcrição
+   - **Não** cria arquivo nesta pasta
+4. **Entrega no chat:** caminho do PDF + resumo de aprendizados absorvidos.
+5. **Dono envia PDF** manualmente via WhatsApp pro cliente.
 
-## Frontmatter obrigatório
+### Status operacional do deal
 
-```yaml
----
-tipo: ata
-area: Vendas
-tags: [reuniao, venda, <slug-empresa>, <lead|cliente>]
-atualizado: YYYY-MM-DD
-status: lead | cliente-ativo | perdido | adiado
----
-```
+Se o dono precisa rastrear "Innovate LED está em negociação, followup em D+6", esse tracking fica em **Linear issue** (umbrella da venda BAI-XX), não aqui. Exemplo vigente: BAI-71 umbrella Innovate LED + sub-issues de followup BAI-73 e BAI-74.
 
-## Estrutura da ata
+## Arquivos nesta pasta
 
-1. **Dados da reunião** — data, duração, participantes, link da transcrição
-2. **Empresa** — nicho, região, origem do lead, quem decide
-3. **Resumo executivo** — 2-3 parágrafos
-4. **Desvios do script canônico** — honestidade intelectual sobre o que fugiu do padrão de [[Oferta Comercial]] (abertura, entendimento, metodologia, solução, oferta, fechamento)
-5. **Pedidos do cliente** — o que ele pediu explicitamente (features, condições comerciais, ajustes)
-6. **Oferta feita** — valores, condições, brindes, prazos prometidos
-7. **Próximos passos** — ação imediata + followups programados + issues Linear criadas
-8. **Observações** — qualquer insight, risco, aprendizado que valha registrar
+Um único arquivo histórico está preservado aqui como **registro de primeira venda real da buscou.ai**:
 
-## Regras
+- `2026-04-24 - Innovate LED - Mary Alves.md` — primeira ata da empresa, criada no BAI-71 antes da mudança de convenção. Mantida como marco.
 
-- **Não colar transcrição bruta.** A ata sumariza — transcrição linka via URL (Tactiq, Meet, outro).
-- **Datas absolutas sempre.** Nunca "amanhã", "semana passada".
-- **Vincular issue Linear da umbrella de venda** (BAI-X). A umbrella é o ponto de agregação de progresso comercial; a ata é o registro semântico.
-- **Atualizar o campo `status` no frontmatter** quando o ciclo de venda se resolver (ganhamos / perdemos / adiou).
+**Nenhum arquivo novo entra nesta pasta daqui pra frente.**
+
+## Para onde vão os aprendizados
+
+| Tipo de aprendizado | Destino |
+|---|---|
+| Objeção nova descoberta | `03 - Oferta/Oferta Comercial.md` seção "Objecoes e respostas" (abstrato, sem nome do cliente) |
+| Argumento novo que funcionou | `03 - Oferta/Oferta Comercial.md` relevante ou Decision Log se for canônico |
+| Padrão de persona observado | Playbook próprio em `10 - Go To Market/Padrao - <nome do padrão>.md` (ex: `Padrao - Reuniao com Intermediario.md`) |
+| Feature pedida pela persona | Linear issue abstrata + update em `04 - Produto/Roadmap do Produto.md` |
+| Regra canônica nova (preço, desconto, prazo) | Decision Log datado em `05 - Modelo de Negocio/` + update na VERDADE_UNICA |
 
 ## Links cruzados
 
-- [[Oferta Comercial]] — playbook do pitch canônico
-- [[Go To Market Inicial]] — fluxo comercial
-- [[VERDADE_UNICA_BUSCOU]] seção 8 — estrutura de venda consultiva
+- [[Oferta Comercial]] — playbook do pitch canônico + objeções (atualizado continuamente)
+- [[Padrao - Reuniao com Intermediario]] — primeiro playbook abstrato da nova convenção
+- Skill `gerador-proposta-buscou` em `~/.claude/skills/gerador-proposta-buscou/SKILL.md`
+- Umbrella Linear BAI-78 — sistema que materializa essa mudança

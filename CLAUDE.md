@@ -475,6 +475,28 @@ MOC: `base-de-conhecimento/00 - Verdade Unica/MOC - Identidade Visual.md`.
 3. Consumir tokens e componentes existentes.
 4. Se algo nao existe no DS, criar seguindo `Templates/Template - Componente UI.md` e documentar em `16 - Identidade Visual/` antes de usar.
 
+## Como gerar propostas comerciais
+
+Toda proposta comercial buscou.ai passa pela skill `gerador-proposta-buscou` (user-scope, em `~/.claude/skills/gerador-proposta-buscou/SKILL.md`).
+
+**Fluxo canônico:**
+1. Dono faz reunião de venda e manda a transcrição pro Claude
+2. Skill extrai variáveis + absorve aprendizado em **nível de persona** (sem CRM interno, sem salvar transcrição, sem nome do cliente no vault)
+3. Skill renderiza o template canônico em `prototipos/template-proposta-buscou/index.html` substituindo placeholders
+4. Chrome headless gera PDF light mode em `C:\Users\joaol\Desktop\Propostas Buscou\<slug>-<data>.pdf`
+5. Skill entrega no chat: path do PDF + resumo de aprendizados persona absorvidos
+6. Dono envia o PDF manualmente via WhatsApp pro cliente
+
+**Regras rígidas (vale pra qualquer fluxo de venda no projeto):**
+
+- **Template canônico** fica em `prototipos/template-proposta-buscou/` — fonte única. Nunca editar per-cliente.
+- **Nada per-cliente no projeto.** PDFs vão pra Desktop do dono, fora do repo. HTML temporário é descartado após cada uso.
+- **Sem CRM mental.** Aprendizados de transcrição ficam em playbooks abstratos no vault (sem nome do cliente). Status de deal mora em Linear issue da umbrella de venda, não no vault.
+- **Sem ata per-cliente.** Convenção mudou em 2026-04-24 — ver [`base-de-conhecimento/10 - Go To Market/Reunioes/README.md`](base-de-conhecimento/10%20-%20Go%20To%20Market/Reunioes/README.md).
+- **Descontos só canônicos.** R$ 1.000 off parceria networking ou R$ 300 off early client com case. Outro valor exige Decision Log datado antes — ver [Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Beneficio%20Parceiro%20Networking.md).
+
+**Fonte de verdade operacional da skill:** `~/.claude/skills/gerador-proposta-buscou/SKILL.md` — contém pipeline completo de 8 passos, regras canônicas vigentes, comando Chrome headless e formato de entrega.
+
 ## Principio Guia
 
 > "Nao e um estudo de SEO/AIO — e o blueprint de uma empresa automatizada de aquisicao organica."
