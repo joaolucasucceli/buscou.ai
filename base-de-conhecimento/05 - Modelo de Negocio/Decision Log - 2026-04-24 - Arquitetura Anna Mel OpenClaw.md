@@ -198,6 +198,82 @@ Esta decisao de stack sera **revisada** quando:
 
 Se qualquer uma dessas ocorrer, reabrir a questao: continuar OpenClaw+expandir, voltar pra Next.js/Supabase, ou adotar hibrido.
 
+## Adendo — 2026-04-24 (noite+) — Expansao Cal.com API na V1
+
+Depois da aprovacao inicial (Stack A, escopo reduzido Lead inbound com link estatico Cal.com), o dono decidiu expandir ainda no mesmo turno. Fala registrada:
+
+> *"Eu quero usar a API... você pode criar o evento lá... eu quero que você crie o evento e que a Ana Mel agende, consulte, agende, reagende, cancele. De segunda a segunda, 24 horas, agenda sempre aberta. Cancelamento e remarcação. Não vai escalar pra fazer manual, a Ana que vai fazer a remarcar, cancelar, tudo isso."*
+
+### Mudanca de escopo
+
+Antes deste adendo, a V1 previa **link estatico Cal.com** (lead sai do chat, escolhe slot na UI do Cal.com, volta). Agora a V1 entrega:
+
+- **Consulta de slots via Cal.com API v2** (`GET /v2/slots`).
+- **Criacao de booking via API** (`POST /v2/bookings`) — Anna coleta nome/email, escolhe slot, cria o booking e confirma no chat.
+- **Remarcacao via API** (`POST /v2/bookings/{uid}/reschedule`).
+- **Cancelamento via API** (`POST /v2/bookings/{uid}/cancel`).
+- **Agenda 24/7** (seg-dom 00:00-23:59 America/Sao_Paulo) — schedule atualizado via `PATCH /v2/schedules/1473049`.
+
+### Decisoes operacionais
+
+- **Skill `calcom-api`** (do ClawHub oficial) foi instalada em `/root/.openclaw/workspace/agents/anna-mel/skills/calcom/`. Fornece guidance inline com endpoints, auth, best practices — Anna Mel le o SKILL.md em runtime.
+- **Event type canonico** criado: id `5484425`, slug `diagnostico-buscouai`, 30 min, location Cal Video (Daily.co), minimumBookingNotice 60 min.
+- **Schedule canonico** atualizado: id `1473049`, "Atendimento 24/7 buscou.ai", disponivel seg-dom 00:00-23:59 `America/Sao_Paulo`.
+- **Booking URL publica (fallback):** `https://cal.com/buscou.ai/diagnostico-buscouai` — uso reservado se o lead pedir "quero escolher na tela" ou se a API cair.
+- **Sem escalacao por remarcacao/cancelamento na V1.** Anna Mel faz direto enquanto a reuniao ainda nao aconteceu; post-reuniao, escala pro Joao porque ja virou fase pos-diagnostico.
+
+### Env vars persistidas (VPS, fora do repo)
+
+Adicionadas em `/root/.config/systemd/user/openclaw-gateway.service.d/env.conf` (modo 600, systemctl --user reloaded):
+
+- `CAL_API_KEY=cal_live_...` (Bearer token Cal.com)
+- `CALCOM_EVENT_TYPE_ID=5484425`
+- `CALCOM_EVENT_TYPE_SLUG=diagnostico-buscouai`
+- `CALCOM_USERNAME=buscou.ai`
+- `CALCOM_SCHEDULE_ID=1473049`
+- `CALCOM_BOOKING_URL=https://cal.com/buscou.ai/diagnostico-buscouai`
+
+### Descobertas (viram conteudo operacional no MEMORY.md e TOOLS.md)
+
+1. **Cal.com API v2 exige `cal-api-version` diferente por familia de endpoint**: `/v2/schedules` → `2024-06-11`, `/v2/event-types` → `2024-06-14`, `/v2/slots` → `2024-09-04`, `/v2/bookings` (inclui reschedule/cancel) → `2024-08-13`.
+2. **Reschedule gera booking UID novo** — o antigo fica orfao. Anna Mel precisa atualizar o UID armazenado na daily note do lead apos cada reagendamento.
+3. **Params do /v2/slots** sao `start` e `end` (nao `startTime`/`endTime` como a SKILL.md do ClawHub sugeria).
+
+### Validacao E2E
+
+Realizada no VPS em 2026-04-24 (noite+) com chamadas curl diretas:
+
+- `GET /v2/me` → auth OK, user id 2385684, username `buscou.ai`, timezone America/Sao_Paulo.
+- `PATCH /v2/schedules/1473049` → schedule atualizado pra 24/7 seg-dom.
+- `POST /v2/event-types` → event type 5484425 criado.
+- `GET /v2/slots` → 10+ slots retornados pro dia corrente.
+- `POST /v2/bookings` → booking criado com sucesso (UID 9f2h... e depois 15fY...).
+- `POST /v2/bookings/{uid}/reschedule` → UID novo f2W8... retornado.
+- `POST /v2/bookings/{uid}/cancel` → sucesso.
+- `GET /v2/bookings?status=upcoming` pos-cleanup → `count=0`.
+
+Dois bookings de teste foram criados e cancelados — nenhum residuo na agenda do dono.
+
+### Impacto em arquivos
+
+- **MEMORY.md** ganhou bloco "Cal.com — agendamento (configuracao V1)" com IDs, env vars, headers por endpoint, quirk reschedule/UID.
+- **TOOLS.md** foi reescrito pra mover `calcom-api` de V1.1+ pra V1 disponivel, com 5 operacoes documentadas (slots, create, reschedule, cancel, list-by-email) + politica de remarcacao/cancelamento.
+- **SOUL.md** ganhou fluxo "quero agendar" em 3 turnos (coleta, oferecer 3-5 slots, confirmar e criar booking) + bloco "quero remarcar/cancelar".
+- IDENTITY.md, USER.md, AGENTS.md, HEARTBEAT.md: inalterados.
+
+Commit: `c884450` (`BAI-52: expansao Cal.com API — Anna Mel agenda/remarca/cancela via API`) sobre `bdf74ad` (persona original).
+
+### O que ainda fica fora (V1.1+)
+
+- **Regua de lembrete pre-reuniao** (D-1 "sua reuniao eh amanha 10h, confirma?") — requer heartbeat recorrente + query de bookings futuros.
+- **Cadencia de nutricao pos-reuniao** (D+1, D+3, D+7 follow-up de proposta) — requer stateful scheduling.
+- **Cal Video transcript integration** — resumo da reuniao de volta pra Anna.
+- **Webhook Cal.com → Anna Mel** — reagir a reagendamentos feitos pelo lead direto no Cal.com (nao via chat).
+
+### Aprovacao do adendo
+
+Verbal, no mesmo turno da plan mode original (2026-04-24 noite), via mensagem direta do dono no chat da execucao. Mantida a aprovacao formal do Stack A — este adendo expande o escopo operacional da V1 sem alterar a stack escolhida.
+
 ## Aprovacao
 
 Aprovado em plan mode por **Joao Lucas Ucceli** em 2026-04-24 (noite), seguindo protocolo SDD (plano com 4 opcoes apresentadas, dono escolheu Stack A). ExitPlanMode executado pos-escrita do plano em `C:\Users\joaol\.claude\plans\magical-shimmying-matsumoto.md`.
