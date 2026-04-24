@@ -56,10 +56,10 @@ post-{NN}-{tipo}-{slug}/
 
 Mesmo conteudo pode viver em mais de uma rede — cada linha representa uma peca produzida, com URLs das redes em que foi publicada.
 
-| # | Tipo | Data | Instagram | TikTok | Issues |
-|---|---|---|---|---|---|
-| 01 | carrossel manifesto | 2026-04-23 | https://www.instagram.com/p/DXfUQawjv8A | https://www.tiktok.com/@buscou.ai/photo/7632102014847159553 | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) · [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) |
-| 02 | foto IA — dor ICP local | 2026-04-23 | https://www.instagram.com/p/DXff54DFAAX | https://www.tiktok.com/@buscou.ai/photo/7632102698623438096 | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) · [BAI-63](https://linear.app/joao-lucas-ucceli/issue/BAI-63) |
+| # | Tipo | Data | Instagram | TikTok | LinkedIn | Issues |
+|---|---|---|---|---|---|---|
+| 01 | carrossel manifesto | 2026-04-23 | https://www.instagram.com/p/DXfUQawjv8A | https://www.tiktok.com/@buscou.ai/photo/7632102014847159553 | _TBD (BAI-66)_ | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) · [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) · [BAI-66](https://linear.app/joao-lucas-ucceli/issue/BAI-66) |
+| 02 | foto IA — dor ICP local | 2026-04-23 | https://www.instagram.com/p/DXff54DFAAX | https://www.tiktok.com/@buscou.ai/photo/7632102698623438096 | https://www.linkedin.com/posts/buscou-ai-502875405_buscouai-seolocal-aio-share-7453229563205181440-V146 | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) · [BAI-63](https://linear.app/joao-lucas-ucceli/issue/BAI-63) · [BAI-65](https://linear.app/joao-lucas-ucceli/issue/BAI-65) |
 
 Atualizar esta tabela a cada novo post arquivado (URL e data apos publicar em cada rede).
 

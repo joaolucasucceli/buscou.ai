@@ -15,8 +15,9 @@
 |---|---|---|---|
 | Instagram | https://www.instagram.com/p/DXff54DFAAX/ | 2026-04-23 | [BAI-39](https://linear.app/joao-lucas-ucceli/issue/BAI-39) |
 | TikTok | https://www.tiktok.com/@buscou.ai/photo/7632102698623438096 | 2026-04-23 | [BAI-63](https://linear.app/joao-lucas-ucceli/issue/BAI-63) |
+| LinkedIn | https://www.linkedin.com/posts/buscou-ai-502875405_buscouai-seolocal-aio-share-7453229563205181440-V146 | 2026-04-23 | [BAI-65](https://linear.app/joao-lucas-ucceli/issue/BAI-65) |
 
-Mesma imagem e mesma legenda em ambas as redes. Aspect ratio 4:5 (nativo IG) nao e otimo pro TikTok (prefere 9:16) — aceitavel pra MVP de paridade; TikTok exibe com padding. Iterar formato nativo em conteudo futuro produzido diretamente pro TikTok.
+Mesma imagem e mesma legenda nas 3 redes. Aspect ratio 4:5 (nativo IG) nao e otimo pro TikTok (prefere 9:16) nem pro LinkedIn (prefere 1:1 / 1.91:1) — aceitavel pra MVP de paridade; ambas as plataformas exibem com padding/crop. Iterar formato nativo em conteudo futuro produzido especificamente pra cada rede.
 
 ## Objetivo editorial
 
