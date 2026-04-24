@@ -8,6 +8,16 @@ aprovacao: Joao Lucas Ucceli — 2026-04-24
 
 # Decision Log — 2026-04-24 — Benefício Parceiro Networking
 
+> **[STATUS: ABSORVIDO — HISTORICO]** Este Decision Log foi **revogado/absorvido** pelo [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]] emitido no mesmo dia (posteriormente). A nova política geral substitui este benefício específico:
+>
+> - Limite de **3 aplicações por trimestre** → revogado (sem limite quantitativo).
+> - Valor fixo de **R$ 1.000 off** → substituído por **negociação caso a caso via Cupom Stripe** emitido pelo dono.
+> - Critério de "parceria prévia comprovada" → **absorvido** como um dos cenários legítimos dentro da política geral, não mais categoria isolada com criterios proprios.
+>
+> **Aplicação histórica da Innovate LED (BAI-71, R$ 1.000 off, R$ 2.500 → R$ 2.000)** permanece **válida** — aplicou a política vigente na data da venda e não retroage.
+>
+> Este documento fica arquivado como referência histórica do racional original da primeira exceção ao "preço fixo sem desconto". **Para decidir desconto em vendas novas, consultar o sucessor.**
+
 ## Contexto
 
 Em 24/04/2026, na **primeira reunião de venda real** da buscou.ai, o João ofereceu à Innovate LED (parceiro de networking no Espírito Santo) um desconto de R$ 1.000 na implementação à vista — R$ 2.500 → R$ 2.000. Esse desconto não está previsto em nenhum canônico existente:

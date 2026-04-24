@@ -200,23 +200,28 @@ Resposta canônica:
 Regras específicas:
 - Não forçar respostas estratégicas que o intermediário não tem (orçamento, CRM exato, stack atual). Perguntas factuais de nicho/região/produto, sim
 - Proposta precisa funcionar **sem** sua presença verbal — decisor vai ler sozinho
-- Não aceitar pressão do intermediário por desconto fora do canônico (única exceção: parceria networking R$ 1.000 off quando critério bater). Descontos não-canônicos exigem Decision Log datado
+- Pressão do intermediário por desconto segue a política canônica ([[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]): desconto de implementação é decidido pelo dono caso a caso, nunca pelo intermediário; intermediário não tem autonomia pra prometer valor diferente do canônico público
 - Followup D+3 e D+6 normalmente, independente do intermediário confirmar reunião com decisor
 
-### "Vocês dão desconto?" (venda por parceria/indicação)
+### "Vocês dão desconto?"
 
-Quando o cliente chega por **indicação direta de parceiro pré-estabelecido** (não um "conheci no LinkedIn"), há um benefício canônico oficializado em [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]: **R$ 1.000 off na implementação à vista** (R$ 2.500 → R$ 2.000).
+Política canônica vigente: [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]].
 
-Resposta canônica:
+A implementação é **negociável caso a caso em canal privado** via Cupom Stripe emitido pelo dono. A infra mensal (R$ 300) **não desconta em nenhuma hipótese**. O desconto **nunca é exposto publicamente** — não aparece em landing, redes, anúncio, carrossel ou material público.
 
-> "Normalmente não. Mas você vem por indicação de [parceiro] — parceria de networking, relação estabelecida. Isso qualifica pro benefício exclusivo: R$ 1.000 off na implementação à vista. Fica R$ 2.000 em vez de R$ 2.500. Infra mensal continua R$ 300, não muda. Benefício fica documentado na proposta, explícito — não é desconto oculto nem negociação de bazar."
+**Resposta canônica padrão (cliente que pede desconto sem qualificação prévia):**
+
+> "O preço-âncora é R$ 2.500 à vista ou R$ 3.000 em 12x pela implementação. É o custo real de colocar o motor de pé no seu domínio. A infra mensal (R$ 300) cobre tokens de IA, APIs e hospedagem — essa não tem margem pra desconto, é passthrough. Na implementação, se fizer sentido ajustar o escopo, a gente conversa — me conta o seu cenário."
+
+Se houver qualificação real (realidade orçamentária documentada, parceria de networking, ICP claro + negociação dentro de reunião Track 2 ou contato privado), o dono pode emitir cupom Stripe nominal — mas isso **não se oferece proativamente** em resposta genérica a "vocês dão desconto?". Cliente pede → qualifica → dono decide.
 
 Regras:
-- Só aplicável com indicação direta de parceiro pré-estabelecido (conexões de networking longeva, não "acabei de conhecer")
-- Limite 3/quarter pra não virar desconto crônico
-- Aprovação do dono sempre
-- Badge "Benefício exclusivo — parceria de networking" aparece no próprio card de pricing da proposta (transparente, documentado)
-- Parcelado em 12× continua R$ 3.000 (não tem desconto em parcelado)
+- **Aprovador único:** o dono. Ninguém mais emite cupom.
+- **Canal privado sempre.** Desconto nunca acontece em copy público ou canal massificado.
+- **Infra (R$ 300) não desconta.** Reforço: cupom atua exclusivamente em implementação.
+- **Registro obrigatório:** toda emissão de cupom vira issue Linear (labels `vendas` + `operacional`) + entrada na tabela "Histórico de aplicações" do Decision Log.
+- **Piso operacional de referência:** evitar ir abaixo de R$ 1.000 na implementação, salvo exceções documentadas.
+- **Parcelado em 12×** tambem pode receber cupom, mas a regra operacional é preferir ajustar à vista.
 
 ---
 
@@ -244,7 +249,7 @@ O fluxo e **dual-track** — dois caminhos convivem na landing, cliente escolhe.
 4. **Cadencia de nutricao pre-reuniao** (Anna Mel): D-1 lembrete + material de apoio.
 5. Reuniao de 30 min — roteiro canonico de 6 blocos (abertura / entendimento / metodologia / solucao / oferta / fechamento). Gravada e transcrita.
 6. **Cadencia de confirmacao pos-reuniao** (Anna Mel): "proposta chega em 24h".
-7. Joao gera proposta personalizada via [[gerador-proposta-buscou]] (contexto + valores canonicos + beneficio parceiro networking quando aplicavel). Validade 7 dias.
+7. Joao gera proposta personalizada via [[gerador-proposta-buscou]] (contexto + valores canonicos; se houve negociacao e emissao de cupom, a proposta documenta o valor final e codigo — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Validade 7 dias.
 8. **Cadencia de fechamento** (Anna Mel + Joao/Vitoria): D+1 follow-up, D+3 educativo, D+7 humano pra fechar.
 9. Cliente aceita → recebe link Stripe via WhatsApp (reusa infra do Track 1, passos 4-9 do Track 1 a partir daqui).
 10. Cliente recusa → Anna Mel encerra cadencia educada, lead entra em nurturing longo.
@@ -273,11 +278,16 @@ Todo cliente que fizer a reuniao de diagnostico e for fit recebe, em ate 24h, um
 
 ### Regra critica
 
-Valores canonicos **nao negociam** na proposta alem do unico desconto oficializado ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 1.000 off parceiro networking (relacao previa comprovada, so em Track 2, nunca divulgado publicamente). O documento personaliza **contexto e aplicacao**, nao preco.
+**Infra mensal (R$ 300) e inegociavel na proposta.** Passthrough de custo, sem margem.
 
-Se o cliente pedir desconto fora desse criterio:
-- Resposta padrao: "O preco e esse porque e o custo real de manter o motor rodando com 90 conteudos por mes. Nao tenho margem pra desconto sem reduzir escopo. Se escopo menor fizer sentido, posso propor — mas ai muda o volume de conteudo mensal. Prefere ajustar?"
-- **Nao mencionar** o desconto canonico espontaneamente pra quem nao se enquadra — e beneficio especifico, nao tabela publica.
+**Implementacao pode conter desconto caso o dono tenha emitido cupom apos negociacao privada** — nesse caso, a proposta documenta o valor final (ex: "Implementacao: R$ 1.000 — aplicado cupom [CODIGO]") e referencia o Decision Log vigente. Se nao houve negociacao previa, a proposta mostra sempre os valores-ancora canonicos (R$ 2.500 / R$ 3.000 em 12x).
+
+Politica completa: [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]] ([[VERDADE_UNICA_BUSCOU]] secao 5.3).
+
+Se o cliente pedir desconto **dentro da proposta** (pos-envio):
+- Resposta padrao: "O preco-ancora e esse. Se tiver uma limitacao orcamentaria especifica, me conta — eu avalio caso a caso. A infra mensal de R$ 300 nao consegue ajustar em nenhum cenario (e custo real de operacao do motor), mas na implementacao a gente pode conversar dependendo do seu cenario."
+- Dono decide se emite cupom com base em qualificacao (ICP, realidade orcamentaria, encaixe estrategico).
+- **Nao divulgar publicamente** a existencia de desconto nem mencionar valores de cupons emitidos pra outros clientes.
 
 ### Envio
 
@@ -348,8 +358,9 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 
 ## Regras inegociaveis
 
-- **Valor a vista da implementacao e R$ 2.500.** Track 1 (self-service Stripe) cobra sempre esse valor cheio — sem cupom publico, sem promocao, sem negociacao. Track 2 (consultivo) tem unica excecao documentada: R$ 1.000 off pra parceiro de networking comprovado ([[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]), aplicado caso-a-caso dentro da reuniao, nunca divulgado publicamente.
-- Infra mensal (R$ 300) nao desconta em hipotese nenhuma — e passthrough de custo, sem margem.
+- **Preco-ancora publico e R$ 2.500 a vista (ou R$ 3.000 em 12x).** Landing, redes, email e qualquer copy publico mostram sempre esse valor cheio — nunca expor desconto publicamente.
+- **Implementacao e negociavel caso a caso em canal privado** (reuniao Track 2 ou mensagem direta 1-a-1), via Cupom Stripe emitido pelo dono apos qualificacao — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]. Track 1 sem contato previo cobra valor cheio.
+- **Infra mensal (R$ 300) nao desconta em hipotese nenhuma** — e passthrough de custo, sem margem. Cupons atuam exclusivamente no price de implementacao.
 - Nao criar "planos" (Starter/Growth/Scale) — contraria [[VERDADE_UNICA_BUSCOU]].
 - Nao unificar implementacao + infra como "pacote total" na comunicacao — sempre separar.
 - Nao oferecer "so implementacao sem infra" — motor precisa de infra pra rodar.
@@ -359,7 +370,7 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - Nao chamar a infra de "mensalidade de servico" — e custo de infraestrutura.
 - **Track 2 (consultivo): nao fechar venda sem reuniao.** Cliente que passa pelo Track 2 precisa da reuniao + proposta escrita antes do pagamento.
 - **Track 2: nao enviar proposta sem reuniao acontecer.** Se cliente Track 2 quer proposta "direto", oferecer Track 1 Stripe ou pedir 15 min de call ao menos.
-- **Nao negociar preco na proposta** — personalizacao e de contexto e escopo, nao de valor.
+- **Proposta documenta valores reais.** Se houve negociacao + cupom emitido, a proposta mostra o valor final ja aplicado (nao o canonico publico). Se nao houve, mostra canonico.
 - **Landing expoe preco publico** (via Track 1). Nao ha mais regra "nao expor preco" — regra revogada em [[Decision Log - 2026-04-24 - Dual-Track]].
 
 ---
@@ -378,7 +389,8 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - [[Decision Log - 2026-04-23]] — origem
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao do modelo de cobranca
 - [[Decision Log - 2026-04-23 - Venda Consultiva]] — pivot do processo de venda (self-service → consultivo + proposta personalizada)
-- [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] — desconto R$ 1.000 off oficializado pra parceiros de networking
+- [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]] — **politica canonica vigente**: implementacao negociavel caso-a-caso via cupom Stripe, infra inegociavel
+- [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] — (historico, absorvido pela politica geral acima)
 
 ---
 

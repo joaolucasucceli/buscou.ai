@@ -17,8 +17,9 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
 **Fonte unica da verdade:** [base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md](base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md).
 **Governanca:** [base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md](base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md).
 **Decision Logs vigentes:**
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md) — **canonico vigente: implementacao negociavel caso-a-caso via Cupom Stripe (canal privado, nunca exposto publicamente); infra inegociavel.** Absorve e revoga o Parceiro Networking.
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md) — **canonico vigente: dual-track (self-service Stripe + consultivo Cal.com).** Substitui o pivot consultivo puro de 2026-04-23.
-- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md) — desconto R$ 1.000 off operacional interno (so Track 2).
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md) — **(historico, absorvido pela Politica de Desconto Implementacao).**
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md) — modelo implementacao + infra mensal (precos canonicos inalterados).
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md) — posicionamento, ICP, produto, oferta-base, linguagem.
 
@@ -32,8 +33,9 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
   - Inadimplencia da infra pausa o motor; blog e conteudo ja publicado permanecem no ar.
 - **Fluxo de venda — dual-track:**
   - **Track 1 (Self-service):** landing expoe preco publico + botao "Comprar agora" + Stripe Checkout one-time (PIX R$ 2.500 a vista ou cartao 12x R$ 3.000). Onboarding disparado automaticamente via Anna Mel (V2) ou Joao/Vitoria (V1 manual).
-  - **Track 2 (Consultivo):** landing tem "Agendar diagnostico" + formulario + Cal.com embed + confirmacao Uazapi + reuniao de 30 min + proposta escrita em 24h. Unica excecao de desconto documentada: parceiro networking R$ 1.000 off.
+  - **Track 2 (Consultivo):** landing tem "Agendar diagnostico" + formulario + Cal.com embed + confirmacao Uazapi + reuniao de 30 min + proposta escrita em 24h.
   - Cliente escolhe qual fluxo entrar. Ambos CTAs convivem com peso visual equivalente.
+  - **Politica de desconto:** implementacao negociavel caso-a-caso via Cupom Stripe em canal privado (nunca exposta em copy publico); infra mensal (R$ 300) **sempre inegociavel**. Ver [Decision Log - Politica de Desconto Implementacao](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md).
 - **Timeline:** ate 7 dias para blog no ar, ate 30 dias para primeiros sinais, escala continua dali em diante enquanto infra ativa.
 - **Nao e agencia, nao e consultoria, nao e servico mensal.** Tecnicamente e SaaS multi-tenant; comercialmente e **venda de tecnologia com infra passthrough**.
 - **ICP primario:** negocios locais. ICP secundario atende mas nao e foco de comunicacao.
@@ -499,7 +501,7 @@ Toda proposta comercial buscou.ai passa pela skill `gerador-proposta-buscou` (us
 - **Nada per-cliente no projeto.** PDFs vão pra Desktop do dono, fora do repo. HTML temporário é descartado após cada uso.
 - **Sem CRM mental.** Aprendizados de transcrição ficam em playbooks abstratos no vault (sem nome do cliente). Status de deal mora em Linear issue da umbrella de venda, não no vault.
 - **Sem ata per-cliente.** Convenção mudou em 2026-04-24 — ver [`base-de-conhecimento/10 - Go To Market/Reunioes/README.md`](base-de-conhecimento/10%20-%20Go%20To%20Market/Reunioes/README.md).
-- **Descontos só canônicos.** Única exceção oficial: R$ 1.000 off parceria networking em Track 2 (reunião consultiva) — nunca divulgado publicamente. Track 1 (self-service Stripe) cobra sempre valor canônico cheio. Outro valor exige Decision Log datado antes — ver [Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Beneficio%20Parceiro%20Networking.md).
+- **Descontos via Cupom Stripe caso-a-caso.** Política canônica vigente: implementação é negociável em canal privado (reunião Track 2 ou contato direto 1-a-1) via Cupom Stripe emitido pelo dono; infra mensal (R$ 300) é sempre inegociável. Desconto **nunca** é exposto em landing, redes ou copy público — âncora pública sempre R$ 2.500 / R$ 3.000 em 12x. Referência operacional de piso: R$ 1.000 na implementação (60% off). Proposta documenta valor final já com cupom aplicado. Ver [Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Politica%20de%20Desconto%20Implementacao.md).
 
 **Fonte de verdade operacional da skill:** `~/.claude/skills/gerador-proposta-buscou/SKILL.md` — contém pipeline completo de 8 passos, regras canônicas vigentes, comando Chrome headless e formato de entrega.
 

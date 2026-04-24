@@ -14,8 +14,9 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
 > **Ultimas alteracoes Nivel 1:**
+> - **2026-04-24** — **Politica de Desconto de Implementacao** (ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Implementacao passa a ser **negociavel caso a caso** via Cupom Stripe, aplicado em canal privado, nunca exposto em copy publico. Infra mensal permanece **inegociavel** (R$ 300/mes). Limite trimestral de 3 aplicacoes (do Parceiro Networking) e revogado. Beneficio Parceiro Networking e absorvido pela politica geral.
 > - **2026-04-24** — **Dual-Track V1: self-service Stripe + consultivo Cal.com** (ver [[Decision Log - 2026-04-24 - Dual-Track]]). Revoga o canonico "consultivo puro" de 2026-04-23. Landing passa a expor preco publico + dois CTAs (Comprar agora / Agendar diagnostico). Desconto "primeiros 5 clientes" removido do canonico (nao era divulgado publicamente).
-> - **2026-04-24** — Secao 5.3: Beneficio Parceiro Networking (R$ 1.000 off a vista, criterio estrito) como desconto operacional interno (ver [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]).
+> - **2026-04-24** — ~~Secao 5.3: Beneficio Parceiro Networking~~ (absorvido pela Politica de Desconto de Implementacao acima — ver [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] arquivado como historico).
 > - **2026-04-23** — Secao 11: contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
 > - **2026-04-23** — Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
 
@@ -166,25 +167,37 @@ Se o cliente deixar de pagar a infra mensal:
 4. Cliente recebe notificacoes em cada tentativa + aviso de pausa.
 5. Ao regularizar: motor retoma no proximo ciclo.
 
-### 5.3 — Descontos e beneficios canonicos
+### 5.3 — Politica de desconto de implementacao
 
-Em regra, os valores da implementacao e da infra mensal **nao negociam**. Em Track 1 (self-service via Stripe Checkout) o preco e **fixo e publico** — sem cupom, sem promocao, sem negociacao. Track 1 cobra sempre R$ 2.500 a vista ou R$ 3.000 em 12x.
+Fonte canonica: [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]].
 
-Em Track 2 (consultivo via reuniao) existe **um unico desconto operacional** oficializado por Decision Log — fora dele, nao abre excecao. **Nao e divulgado publicamente** em landing, redes sociais, email ou qualquer copy publico. E ferramenta interna do dono aplicada caso-a-caso dentro da reuniao.
+A partir de 2026-04-24, a politica de desconto da buscou.ai separa dois eixos:
 
-| Beneficio | Valor | Criterio | Fonte canonica |
-|---|---|---|---|
-| **Parceiro de Networking** | R$ 1.000 off na implementacao a vista (R$ 2.500 → R$ 2.000) | Relacao previa comprovada entre o dono e o parceiro + indicacao direta + ciclo comercial iniciado pela conexao. Maximo 3 aplicacoes por trimestre. | [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] |
+1. **Implementacao (one-time)** — **negociavel caso a caso**, dentro de limites operacionais, via Cupom Stripe (`promotion_codes`).
+2. **Infra mensal (recurring, R$ 300/mes)** — **inegociavel em qualquer cenario**. Passthrough de custo operacional — sem margem pra absorver desconto.
+
+**Ancora publica preservada.** Toda copy publica (landing, redes, email, anuncios, carrosseis) mostra sempre o preco canonico cheio: R$ 2.500 a vista ou R$ 3.000 em 12x. Descontos **nunca** aparecem em material publico — sao aplicados em canal privado apos negociacao com o dono.
+
+**Canal tecnico.** Desconto e aplicado via Stripe Checkout com `allow_promotion_codes: true`. Cupom emitido pelo dono, nominal ao cliente, uso unico.
 
 Regras:
-- **So aplicavel em Track 2** (reuniao consultiva). Track 1 Stripe sempre cobra o valor canonico cheio.
-- **So se aplica a vista.** Parcelado em 12x nao muda (R$ 3.000).
-- **Aprovacao exclusiva do dono.** Sem pre-aprovacao automatica.
-- **Nunca divulgado publicamente.** Nao aparece em copy, landing, redes, anuncio — so mencionado dentro da reuniao quando o criterio for batido.
-- **Registro obrigatorio** em ata da reuniao + issue Linear + historico do Decision Log correspondente.
-- **Infra mensal (R$ 300/mes) nao desconta em nenhum caso.** E passthrough de custo operacional, nao tem margem pra absorver desconto.
+- **Aprovador unico:** o dono (Joao Lucas Ucceli). Nem Vitoria, nem Anna Mel, nem qualquer outro agente emite cupom.
+- **Track 1 sem contato previo:** cliente paga valor canonico cheio. Cupom so emitido apos conversa privada (Track 2 reuniao ou mensagem direta 1-a-1).
+- **Track 2 com negociacao:** desconto registrado na proposta personalizada + cupom enviado junto com link de pagamento.
+- **Infra nunca desconta.** Cupons atuam exclusivamente no price de implementacao. R$ 300/mes e fixo.
+- **Registro obrigatorio:** toda emissao de cupom gera issue Linear (labels `vendas` + `operacional`) e aplicacao e registrada na tabela "Historico de aplicacoes" do Decision Log.
+- **Referencia operacional de piso:** evitar ir abaixo de R$ 1.000 de implementacao (60% off) salvo excecoes documentadas.
+- **Sem limite trimestral fixo** (limite 3/trimestre do Parceiro Networking foi revogado). Em contrapartida, ticket medio real e monitorado mensalmente.
 
-**Na duvida: nao aplicar.** O canonico e R$ 2.500 — o beneficio e excecao com criterio estrito.
+**Sinais de alerta** (gatilham novo Decision Log pra reavaliar preco-ancora):
+- Desvio medio do ticket real vs canonico > 40% por 3 meses consecutivos.
+- Desconto medio > 50% do canonico em qualquer janela.
+
+**Revisao obrigatoria** deste canonico quando atingir 20 clientes pagantes ou Q4 2026 (o que vier primeiro).
+
+**Beneficio Parceiro Networking** ([[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]) foi **absorvido** por esta politica geral — nao existe mais como categoria separada com criterios proprios. Aplicacao historica (Innovate LED, BAI-71) permanece valida sob o canonico vigente na data da venda.
+
+**Na duvida: nao aplicar desconto.** A ancora publica e R$ 2.500 — desconto e resposta a realidade orcamentaria qualificada, nao default.
 
 ### O que **NAO** existe
 
@@ -193,7 +206,7 @@ Regras:
 - **Sem mensalidade de gestao**, de consultoria, de agencia.
 - **Sem setup separado da implementacao.**
 - **Sem assinatura de SaaS** (no sentido comercial classico).
-- **Sem outros descontos** alem dos dois listados em 5.3.
+- **Sem outros descontos** alem dos aplicaveis pela politica descrita em 5.3 (cupons caso-a-caso emitidos pelo dono, infra inegociavel).
 
 ### Enquadramento
 
