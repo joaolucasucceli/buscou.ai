@@ -649,8 +649,6 @@ section { padding: 100px 0; position: relative; }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   position: relative;
-  transition: border-color 200ms var(--ease), background 200ms var(--ease), transform 200ms var(--ease);
-  cursor: pointer;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -667,7 +665,6 @@ section { padding: 100px 0; position: relative; }
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 400ms var(--ease);
 }
 .niche-photo::after {
   content: '';
@@ -676,29 +673,12 @@ section { padding: 100px 0; position: relative; }
   background: linear-gradient(180deg, transparent 55%, rgba(15, 17, 23, 0.55) 100%);
   pointer-events: none;
 }
-.niche:hover .niche-photo img { transform: scale(1.03); }
 .niche-body {
   padding: 22px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.niche::after {
-  content: '↗';
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-family: var(--font-mono);
-  color: var(--text-4);
-  font-size: 18px;
-  transition: color 200ms var(--ease), transform 200ms var(--ease);
-}
-.niche:hover {
-  border-color: var(--ai);
-  background: var(--bg-elev-2);
-  transform: translateY(-2px);
-}
-.niche:hover::after { color: var(--ai); transform: translate(2px, -2px); }
 
 .niche .icon {
   width: 28px;
@@ -728,6 +708,122 @@ section { padding: 100px 0; position: relative; }
 
 @media (max-width: 1000px) { .niches-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px)  { .niches-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   BLOG PREVIEW
+============================================================ */
+.blog-preview {
+  padding: 100px 0 80px;
+  position: relative;
+}
+.blog-preview-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.blog-browser {
+  margin-top: 48px;
+}
+.blog-mock {
+  background: var(--bg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.blog-mock-featured {
+  padding: 36px 40px;
+  background: linear-gradient(135deg, var(--bg-elev-1), var(--bg-elev-2));
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+.blog-mock-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ai);
+  padding: 4px 10px;
+  background: rgba(0, 229, 160, 0.08);
+  border: 1px solid rgba(0, 229, 160, 0.3);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.blog-mock-featured h3 {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  max-width: 620px;
+}
+.blog-mock-featured p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+.blog-mock-meta {
+  display: flex;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+.blog-mock-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.blog-mock-card {
+  padding: 22px 20px 20px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 12px);
+}
+.blog-mock-category {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blog-mock-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.blog-mock-meta-mini {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+}
+.blog-preview-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+.blog-preview-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+@media (max-width: 900px) {
+  .blog-mock { padding: 24px; }
+  .blog-mock-grid { grid-template-columns: 1fr; }
+  .blog-mock-featured { padding: 24px; }
+  .blog-mock-featured h3 { font-size: 20px; }
+}
 
 /* ============================================================
    HUMANOS — Quem está por trás
@@ -1178,6 +1274,7 @@ footer {
       <a href="#como-funciona">Como funciona</a>
       <a href="#para-quem">Para quem</a>
       <a href="#recursos">Recursos</a>
+      <a href="/exemplo/blog" target="_blank" rel="noopener">Blog</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="header-cta">
@@ -1628,7 +1725,64 @@ footer {
 
 
 <!-- ============================================================
-     7. HUMANOS — Quem está por trás
+     7. BLOG PREVIEW — Como fica o blog do cliente
+============================================================ -->
+<section class="blog-preview" id="blog-preview">
+  <div class="blog-preview-wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span>O que o motor publica</div>
+      <h2>Seu próprio blog,<br><em>trabalhando enquanto você atende.</em></h2>
+      <p>Publicação automática de 3 artigos por dia. Otimizados pra Google e pra IAs. Seu domínio, sua marca, seu tom.</p>
+    </div>
+
+    <div class="browser blog-browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          seudominio.com.br / blog
+        </div>
+      </div>
+      <div class="blog-mock">
+        <div class="blog-mock-featured">
+          <div class="blog-mock-tag">Artigo em destaque</div>
+          <h3>Como escolher um dentista na sua região — guia 2026</h3>
+          <p>Checklist de 8 pontos que todo paciente deveria considerar antes de marcar a primeira consulta. Atualizado com base nas buscas mais comuns dos últimos 90 dias.</p>
+          <div class="blog-mock-meta">
+            <span>12 min de leitura</span>
+            <span>Atualizado há 2 dias</span>
+          </div>
+        </div>
+        <div class="blog-mock-grid">
+          <article class="blog-mock-card">
+            <div class="blog-mock-category">Implantes</div>
+            <h4>Implante ou ponte fixa? Diferenças, custo e quando cada um faz sentido</h4>
+            <div class="blog-mock-meta-mini">8 min · 3 dias atrás</div>
+          </article>
+          <article class="blog-mock-card">
+            <div class="blog-mock-category">Ortodontia</div>
+            <h4>Aparelho transparente funciona mesmo? O que a prática clínica mostra</h4>
+            <div class="blog-mock-meta-mini">6 min · 5 dias atrás</div>
+          </article>
+          <article class="blog-mock-card">
+            <div class="blog-mock-category">Prevenção</div>
+            <h4>Quantas vezes é preciso ir ao dentista por ano? Depende do seu perfil</h4>
+            <div class="blog-mock-meta-mini">5 min · 1 semana atrás</div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-preview-cta">
+      <a href="/exemplo/blog" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Ver exemplo completo →</a>
+      <span class="blog-preview-note">Abre o protótipo do blog em nova aba</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     8. HUMANOS — Quem está por trás
 ============================================================ -->
 <section id="humanos">
   <div class="container">
@@ -1640,16 +1794,16 @@ footer {
         </picture>
       </div>
       <div class="humanos-copy">
-        <div class="eyebrow"><span class="dot"></span>Quem está por trás</div>
+        <div class="eyebrow"><span class="dot"></span>Por trás do motor</div>
         <h2>
-          Tem gente aqui.<br>
-          <em>Não é call center, não é planilha, não é promessa de IA.</em>
+          Tem gente preparando<br>
+          <em>a tecnologia pra você.</em>
         </h2>
         <p>
-          A buscou.ai é tocada por um time pequeno que atende cada cliente de perto. Na reunião de diagnóstico, você fala direto com quem monta sua estratégia — sem intermediário, sem script, sem venda por comissão.
+          Um time pequeno monta sua estratégia, configura o motor e garante que tudo funcione <strong>100% do tempo</strong>. Você fala com a gente direto na <strong>reunião de diagnóstico</strong> e no fechamento da proposta.
         </p>
         <p>
-          A tecnologia publica 90 conteúdos por mês. A gente garante que ela fale do seu negócio do jeito certo.
+          No dia-a-dia, quem te acompanha é a <strong>Anna Mel</strong> — nossa agente de WhatsApp que confirma agendamentos, faz onboarding, dispara cadências de cobrança e abre chamado pra gente quando precisa de humano. 24 horas por dia, 7 dias por semana.
         </p>
         <a href="#final-cta" class="btn btn-ghost btn-lg">Agendar diagnóstico →</a>
       </div>
