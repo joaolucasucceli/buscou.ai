@@ -14,8 +14,9 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
 > **Ultimas alteracoes Nivel 1:**
-> - **2026-04-24** — **Politica de Desconto de Implementacao** (ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Implementacao passa a ser **negociavel caso a caso** via Cupom Stripe, aplicado em canal privado, nunca exposto em copy publico. Infra mensal permanece **inegociavel** (R$ 300/mes). Limite trimestral de 3 aplicacoes (do Parceiro Networking) e revogado. Beneficio Parceiro Networking e absorvido pela politica geral.
-> - **2026-04-24** — **Dual-Track V1: self-service Stripe + consultivo Cal.com** (ver [[Decision Log - 2026-04-24 - Dual-Track]]). Revoga o canonico "consultivo puro" de 2026-04-23. Landing passa a expor preco publico + dois CTAs (Comprar agora / Agendar diagnostico). Desconto "primeiros 5 clientes" removido do canonico (nao era divulgado publicamente).
+> - **2026-04-24 (noite)** — **Reversao Track 1 Self-Service** (ver [[Decision Log - 2026-04-24 - Reversao Track 1]]). Revoga parcialmente o Dual-Track da manha: remove Track 1 self-service da landing. Fluxo volta a ser **unico consultivo** — landing nao expoe preco, pagamento via Payment Link Stripe enviado por WhatsApp pela Anna Mel (ou dono/Vitoria em V1 manual) pos-reuniao. Politica de Desconto preservada (cupons continuam, canal de aplicacao muda pra Payment Link).
+> - **2026-04-24 (tarde)** — **Politica de Desconto de Implementacao** (ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Implementacao passa a ser **negociavel caso a caso** via Cupom Stripe, aplicado em canal privado, nunca exposto em copy publico. Infra mensal permanece **inegociavel** (R$ 300/mes). Limite trimestral de 3 aplicacoes (do Parceiro Networking) e revogado. Beneficio Parceiro Networking e absorvido pela politica geral.
+> - **2026-04-24 (manha)** — ~~Dual-Track V1: self-service Stripe + consultivo Cal.com~~ **(parcialmente revogado pela Reversao Track 1 acima)** — ver [[Decision Log - 2026-04-24 - Dual-Track]]. Track 2 consultivo preservado como fluxo unico; Track 1 self-service removido.
 > - **2026-04-24** — ~~Secao 5.3: Beneficio Parceiro Networking~~ (absorvido pela Politica de Desconto de Implementacao acima — ver [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] arquivado como historico).
 > - **2026-04-23** — Secao 11: contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
 > - **2026-04-23** — Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
@@ -182,8 +183,8 @@ A partir de 2026-04-24, a politica de desconto da buscou.ai separa dois eixos:
 
 Regras:
 - **Aprovador unico:** o dono (Joao Lucas Ucceli). Nem Vitoria, nem Anna Mel, nem qualquer outro agente emite cupom.
-- **Track 1 sem contato previo:** cliente paga valor canonico cheio. Cupom so emitido apos conversa privada (Track 2 reuniao ou mensagem direta 1-a-1).
-- **Track 2 com negociacao:** desconto registrado na proposta personalizada + cupom enviado junto com link de pagamento.
+- **Reuniao e canal obrigatorio** (pos-Reversao Track 1, ver [[Decision Log - 2026-04-24 - Reversao Track 1]]): cupom so e emitido apos reuniao + proposta personalizada. Nao ha self-service sem reuniao.
+- **Canal de aplicacao do cupom:** Payment Link do Stripe enviado via WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual) ja com o cupom aplicado ou codigo enviado pra cliente inserir.
 - **Infra nunca desconta.** Cupons atuam exclusivamente no price de implementacao. R$ 300/mes e fixo.
 - **Registro obrigatorio:** toda emissao de cupom gera issue Linear (labels `vendas` + `operacional`) e aplicacao e registrada na tabela "Historico de aplicacoes" do Decision Log.
 - **Referencia operacional de piso:** evitar ir abaixo de R$ 1.000 de implementacao (60% off) salvo excecoes documentadas.
@@ -242,6 +243,9 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | "solucoes" (soltinho) | Usar "tecnologia", "sistema" ou "motor". |
 | "sem BANT" (em copy publico) | Ha qualificacao leve na reuniao consultiva; evitar dar a entender que e compra automatica. |
 | "plano total" / "pacote total" | Nunca unificar implementacao + infra como pacote. |
+| "checkout direto na landing" / "comprar agora" (em copy publico) | Revogado em 2026-04-24 noite ([[Decision Log - 2026-04-24 - Reversao Track 1]]). Landing nao tem mais botao de compra direta. |
+| "self-service" (em copy publico) | Revogado em 2026-04-24 noite. Uso interno/docs OK como referencia historica. |
+| "preco na landing" / expor "R$ 2.500" / "R$ 3.000" / "R$ 300" em copy publico | Revogado em 2026-04-24 noite. Valores so aparecem em reuniao + proposta personalizada + Payment Link enviado via WhatsApp. |
 
 ### PERMITIDO e recomendado
 
@@ -261,13 +265,11 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | "busca" | Onde aparecemos. |
 | "SEO" / "AIO" | Canais onde otimizamos. |
 | "presenca organica" | Resultado para o cliente. |
-| "reuniao de diagnostico" | Termo canonico do Track 2 consultivo. |
-| "proposta personalizada" | Documento escrito (PDF/HTML) enviado em ate 24h pos-reuniao (Track 2). |
-| "agendar diagnostico" | CTA canonico do Track 2 (consultivo). |
-| "comprar agora" | CTA canonico do Track 1 (self-service). |
-| "Track 1" / "Track 2" | Nomes internos dos dois caminhos de venda (nao expor em copy publico, mas OK em docs internas). |
-| "self-service" | Descreve Track 1 — landing com preco + Stripe Checkout. Permitido desde dual-track 2026-04-24. |
-| "diagnostico hiperpersonalizado" | Variacao em copy do Track 2 pra enfatizar que e sobre o negocio dele. |
+| "reuniao de diagnostico" | Termo canonico do fluxo consultivo (unico). |
+| "proposta personalizada" | Documento escrito (PDF/HTML) enviado em ate 24h pos-reuniao. |
+| "agendar diagnostico" | **CTA canonico unico** de conversao da landing. |
+| "Payment Link" | Link de pagamento Stripe enviado via WhatsApp pela Anna Mel pos-aceite da proposta. |
+| "diagnostico hiperpersonalizado" | Variacao em copy pra enfatizar que e sobre o negocio dele. |
 
 ### Como falar do modelo comercial
 
@@ -312,56 +314,45 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 
 ---
 
-## 8. ESTRUTURA DE VENDA (fluxo dual-track)
+## 8. ESTRUTURA DE VENDA (fluxo unico consultivo)
 
-A compra tem **dois caminhos** que convivem na landing — cliente escolhe qual seguir. Ver [[Decision Log - 2026-04-24 - Dual-Track]] pra racional completo.
+A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnostico. Ver [[Decision Log - 2026-04-24 - Reversao Track 1]] pra racional completo. Revoga parcialmente o Dual-Track da manha de 2026-04-24 — Track 1 self-service removido; Track 2 preservado como fluxo unico.
 
-### Track 1 — Self-service via Stripe
-
-**Quando usar (perfil do cliente):** ja decidiu comprar, conhece o produto, nao quer passar por reuniao. Tipico de e-commerces, infoprodutores e clientes de indicacao quente.
+**Quando usar (perfil do cliente):** todo cliente passa pelo mesmo caminho, seja decidido, indeciso, ICP primario ou secundario. A qualificacao acontece na reuniao.
 
 1. Cliente chega na landing `www.buscouai.com`.
-2. Clica em **"Comprar agora"** (CTA primario Track 1).
-3. Modal abre: nome, telefone, empresa, @IG da empresa.
-4. Submit cria registro em `leads` (status `lead_novo`) + POST `/api/checkout` cria Stripe Checkout Session.
-5. Redirect pro Stripe Checkout — cliente paga:
-   - **PIX a vista:** R$ 2.500 (one-time)
-   - **Cartao 12x:** R$ 3.000 (12 parcelas de R$ 250, cliente assume juros)
-6. Webhook `/api/webhook/stripe` promove `lead` → `cliente`, grava em `compras`.
-7. **Anna Mel** (V2) ou Joao/Vitoria (V1 manual) enviam via WhatsApp: confirmacao + credenciais + primeiros passos + prazo 7 dias.
-8. Cliente acessa painel, preenche dados de onboarding (dominio, nicho, regiao, tom de voz) que alimentam os agentes.
-9. Blog no ar em ate 7 dias, motor publicando 3x/dia.
-10. **Dia 27 pos-pagamento:** Anna Mel envia link de subscription pra cliente escolher infra:
-    - **Cartao:** Stripe Subscription R$ 300/mes auto-renovavel
-    - **PIX:** pagamento unico mensal, Anna Mel repete a regua
-11. Regua mensal Anna Mel: D-3 avisa, D0 cobra, recupera se falhar.
-
-### Track 2 — Consultivo via agendamento integrado
-
-**Quando usar (perfil do cliente):** quer conversar antes de comprar, precisa entender escopo personalizado, tem duvida de fit. Tipico de clinicas, imobiliarias, advogados, servicos locais.
-
-1. Cliente chega na landing.
-2. Clica em **"Agendar diagnostico"** (CTA secundario Track 2).
+2. Clica em **"Agendar diagnostico"** (CTA unico de conversao — aparece em header, hero, final-cta).
 3. Modal abre: nome, telefone, empresa, @IG da empresa.
 4. Submit cria `lead` (status `lead_agendando`) e carrega [[Cal.com]] embed.
 5. Cliente seleciona slot disponivel (sincronizado com Google Calendar Joao+Vitoria).
 6. Confirma reserva — Cal.com cria evento.
-7. Webhook `/api/schedule/book` grava em `meetings`, dispara Uazapi (msg de confirmacao pelo numero canonico) e atualiza `lead` → `lead_agendado`.
+7. Webhook `/api/schedule/book` grava em `meetings`, dispara Uazapi (msg de confirmacao pelo numero canonico +55 27 99696-0847) e atualiza `lead` → `lead_agendado`.
 8. **Cadencia de nutricao pre-reuniao (Anna Mel):** D-1 lembrete + material de apoio + pergunta de qualificacao.
 9. **Reuniao de diagnostico** (30 min, Joao+Vitoria, Google Meet), gravada/transcrita.
 10. **Cadencia de confirmacao pos-reuniao (Anna Mel):** confirma proximo passo ("proposta chega em 24h").
-11. Pos-reuniao: Joao gera proposta personalizada (skill [[gerador-proposta-buscou]]) com contexto + valores canonicos + [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] quando aplicavel. Validade 7 dias.
+11. Pos-reuniao: Joao gera proposta personalizada (skill [[gerador-proposta-buscou]]) com contexto + valores canonicos + cupom aplicado quando houve negociacao ([[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Validade 7 dias.
 12. **Cadencia de fechamento (Anna Mel + Joao/Vitoria):** D+1 follow-up, D+3 educativo, D+7 humano pra fechar.
-13. Cliente aceita → recebe link Stripe via WhatsApp (reusa infra do Track 1, passos 5-11 do Track 1 a partir daqui).
-14. Cliente recusa → Anna Mel encerra cadencia educada. Lead entra em nurturing de longo prazo.
+13. Cliente aceita → **Anna Mel envia Payment Link Stripe via WhatsApp** com valor acertado (com cupom se houve negociacao). Em V1 manual, Joao/Vitoria enviam pessoalmente.
+14. Cliente paga pelo Payment Link (Stripe-hosted) — PIX a vista ou cartao 12x; Stripe processa promocao se cupom aplicado.
+15. Webhook `/api/webhook/stripe` promove `lead` → `cliente`, grava em `compras` com `amount_discount_cents` + `promo_code_used` preenchidos (ver BAI-118).
+16. **Anna Mel** (V2) ou Joao/Vitoria (V1 manual) enviam via WhatsApp: confirmacao + credenciais do painel + primeiros passos + prazo 7 dias.
+17. Cliente acessa painel, preenche dados de onboarding (dominio, nicho, regiao, tom de voz) que alimentam os agentes.
+18. Blog no ar em ate 7 dias, motor publicando 3x/dia.
+19. **Dia 27 pos-pagamento:** Anna Mel envia link de subscription da infra:
+    - **Cartao:** Stripe Subscription R$ 300/mes auto-renovavel.
+    - **PIX:** pagamento unico mensal, Anna Mel repete a regua.
+20. Regua mensal Anna Mel: D-3 avisa, D0 cobra, recupera se falhar.
+21. Cliente recusa (passo 12-13) → Anna Mel encerra cadencia educada, lead entra em nurturing de longo prazo.
 
 ### Regras
 
-- **Track 1 sempre cobra preco canonico cheio.** Sem cupom publico, sem promocao. R$ 2.500 a vista ou R$ 3.000 em 12x.
-- **Track 2 preserva reuniao obrigatoria + proposta escrita.** Unica excecao de desconto: parceiro networking R$ 1.000 off, nunca divulgado publicamente.
-- **Qualificacao leve** acontece no Track 2 durante a reuniao. Se nao fit, entrega diagnostico e nao envia proposta.
-- **Anna Mel** (quando BAI-49 F3 operante) faz onboarding pos-venda + regua de cobranca em ambos os tracks. Ate la, operacao V1 manual (Joao+Vitoria com copy assinado "equipe buscou.ai").
-- **Ciclo-alvo:** Track 1 fecha em minutos; Track 2 fecha em ate 7 dias entre primeiro contato e pagamento.
+- **CTA unico de conversao:** "Agendar diagnostico" em header, hero e final-cta. Landing nao tem botao de compra direta nem preco exposto.
+- **Reuniao obrigatoria antes de pagamento.** Nao existe caminho self-service publico. Cliente paga sempre apos reuniao + proposta escrita.
+- **Qualificacao leve** acontece na reuniao. Se nao fit, entrega diagnostico de cortesia e nao envia proposta.
+- **Canal de pagamento:** Payment Link do Stripe enviado via WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual). Nao e Checkout publico.
+- **Desconto e cupom** ([[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]): aplicado pelo dono no Payment Link enviado, nunca exposto publicamente.
+- **Anna Mel** (quando BAI-49 F3 operante) faz nutricao pre + confirmacao pos + cadencia de fechamento + onboarding pos-venda + regua de cobranca. Ate la, operacao V1 manual (Joao+Vitoria com copy assinado "equipe buscou.ai").
+- **Ciclo-alvo:** primeiro contato (agendamento) ao pagamento em ate 7 dias.
 
 ### Canal de comunicacao pos-venda (V1)
 
@@ -369,9 +360,11 @@ A compra tem **dois caminhos** que convivem na landing — cliente escolhe qual 
 
 ### O que NAO existe no fluxo
 
-- **Sem tiers** (Starter/Growth/Scale) — preco unico em ambos os tracks.
+- **Sem tiers** (Starter/Growth/Scale) — preco unico.
 - **Sem plano mensal de servico** — infra mensal e passthrough de custo (ver secao 5).
-- **Sem BANT formal** — qualificacao acontece organicamente na reuniao (Track 2) ou e inexistente (Track 1).
+- **Sem BANT formal** — qualificacao acontece organicamente na reuniao.
+- **Sem checkout direto na landing** — revogado em 2026-04-24 noite.
+- **Sem preco publico na landing** — revogado em 2026-04-24 noite.
 - **Sem renovacao obrigatoria** — cliente usa enquanto paga infra; inadimplencia pausa o motor sem penalidade.
 
 ---

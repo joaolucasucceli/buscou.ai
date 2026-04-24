@@ -10,6 +10,7 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
 - Infra mensal (recurring): R$ 300/mes a partir do **mes 2** — cobre tokens LLM, APIs externas e hospedagem do pipeline.
 - Se cliente nao pagar a infra: motor pausa; blog e conteudo ja publicado ficam no ar.
 - **Sem tiers, sem plano mensal de servico, sem assinatura SaaS em copy publico.**
+- **Valores acima sao canonicos internos** — nunca expostos em landing, redes ou qualquer copy publico. So aparecem em reuniao + proposta personalizada + Payment Link enviado via WhatsApp (ver Decision Log Reversao Track 1).
 **ICP primario:** negocios locais (clinicas, imobiliarias, advogados, servicos locais).
 
 ## Decisoes Canonicas (fixas)
@@ -17,8 +18,9 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
 **Fonte unica da verdade:** [base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md](base-de-conhecimento/00 - Verdade Unica/VERDADE_UNICA_BUSCOU.md).
 **Governanca:** [base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md](base-de-conhecimento/00 - Verdade Unica/Governanca - Decisoes Canonicas.md).
 **Decision Logs vigentes:**
-- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md) — **canonico vigente: implementacao negociavel caso-a-caso via Cupom Stripe (canal privado, nunca exposto publicamente); infra inegociavel.** Absorve e revoga o Parceiro Networking.
-- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md) — **canonico vigente: dual-track (self-service Stripe + consultivo Cal.com).** Substitui o pivot consultivo puro de 2026-04-23.
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Reversao Track 1.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Reversao Track 1.md) — **canonico vigente: fluxo unico consultivo.** Landing sem preco publico, CTA unico "Agendar diagnostico", pagamento via Payment Link Stripe enviado por WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual) pos-reuniao. Revoga parcialmente o Dual-Track (Track 1 removido).
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md) — **canonico vigente: implementacao negociavel caso-a-caso via Cupom Stripe (canal privado, aplicado no Payment Link enviado por WhatsApp, nunca exposto publicamente); infra inegociavel.** Absorve e revoga o Parceiro Networking.
+- [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Dual-Track.md) — **(parcialmente revogado pela Reversao Track 1).** Track 2 consultivo preservado; Track 1 self-service removido.
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Beneficio Parceiro Networking.md) — **(historico, absorvido pela Politica de Desconto Implementacao).**
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23 - Infra Mensal.md) — modelo implementacao + infra mensal (precos canonicos inalterados).
 - [base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-23.md) — posicionamento, ICP, produto, oferta-base, linguagem.
@@ -31,11 +33,11 @@ Projeto da buscou.ai — tecnologia que coloca empresas nos resultados de busca 
   - Implementacao: R$ 2.500 a vista **ou** R$ 3.000 em 12x (cliente assume juros). Cobre blog + motor + onboarding + mes 1.
   - Infra mensal: R$ 300/mes a partir do mes 2. Cobre tokens/APIs/hospedagem.
   - Inadimplencia da infra pausa o motor; blog e conteudo ja publicado permanecem no ar.
-- **Fluxo de venda — dual-track:**
-  - **Track 1 (Self-service):** landing expoe preco publico + botao "Comprar agora" + Stripe Checkout one-time (PIX R$ 2.500 a vista ou cartao 12x R$ 3.000). Onboarding disparado automaticamente via Anna Mel (V2) ou Joao/Vitoria (V1 manual).
-  - **Track 2 (Consultivo):** landing tem "Agendar diagnostico" + formulario + Cal.com embed + confirmacao Uazapi + reuniao de 30 min + proposta escrita em 24h.
-  - Cliente escolhe qual fluxo entrar. Ambos CTAs convivem com peso visual equivalente.
-  - **Politica de desconto:** implementacao negociavel caso-a-caso via Cupom Stripe em canal privado (nunca exposta em copy publico); infra mensal (R$ 300) **sempre inegociavel**. Ver [Decision Log - Politica de Desconto Implementacao](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md).
+- **Fluxo de venda — unico consultivo** (ver [Decision Log - Reversao Track 1](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Reversao Track 1.md)):
+  - **Landing:** CTA unico "Agendar diagnostico" em header, hero e final-cta. **Sem preco publico. Sem botao "Comprar agora". Sem Stripe Checkout publico.**
+  - **Fluxo:** cliente agenda via Cal.com → reuniao de 30 min → proposta personalizada em 24h → cliente aceita → Anna Mel envia Payment Link Stripe via WhatsApp com valor acertado (com cupom se houve negociacao) → cliente paga pelo Payment Link (Stripe-hosted) → webhook promove lead a cliente.
+  - **V1 manual:** ate BAI-49 Fase 3 operante, Joao/Vitoria fazem o papel da Anna Mel (enviar Payment Link + onboarding + regua) com copy assinado "equipe buscou.ai".
+  - **Politica de desconto:** implementacao negociavel caso-a-caso via Cupom Stripe aplicado no Payment Link enviado (canal privado, nunca exposta em copy publico); infra mensal (R$ 300) **sempre inegociavel**. Ver [Decision Log - Politica de Desconto Implementacao](base-de-conhecimento/05 - Modelo de Negocio/Decision Log - 2026-04-24 - Politica de Desconto Implementacao.md).
 - **Timeline:** ate 7 dias para blog no ar, ate 30 dias para primeiros sinais, escala continua dali em diante enquanto infra ativa.
 - **Nao e agencia, nao e consultoria, nao e servico mensal.** Tecnicamente e SaaS multi-tenant; comercialmente e **venda de tecnologia com infra passthrough**.
 - **ICP primario:** negocios locais. ICP secundario atende mas nao e foco de comunicacao.

@@ -41,11 +41,12 @@ Valores canonicos em [[VERDADE_UNICA_BUSCOU]] secao 5. O que o cliente recebe, e
 
 ## O que voce vende
 
-> **"Tecnologia que faz sua empresa aparecer quando o cliente busca. No Google e na IA. Voce pode comprar direto — R$ 2.500 a vista (PIX) ou R$ 3.000 em 12x — ou agendar um diagnostico de 30 min pra entender se faz sentido pro seu negocio antes. De um jeito ou de outro, voce paga implementacao uma vez e uma infra mensal (R$ 300) que mantem o motor rodando com 90 conteudos publicados por mes no seu blog."**
+> **"Tecnologia que faz sua empresa aparecer quando o cliente busca. No Google e na IA. Voce agenda um diagnostico de 30 min, a gente mostra onde sua empresa aparece hoje e monta uma proposta sob medida pro seu negocio. Apos aceite, voce recebe o link de pagamento no WhatsApp e o blog fica no ar em ate 7 dias. O modelo tem duas linhas: implementacao unica e uma infra mensal que mantem o motor rodando com 90 conteudos publicados por mes."**
 
-**Dual-track (ver [[Decision Log - 2026-04-24 - Dual-Track]]):**
-- **Track 1 (self-service):** cliente decidido — compra direto via Stripe Checkout na landing.
-- **Track 2 (consultivo):** cliente quer conversar — agenda Cal.com, reuniao de 30 min, proposta escrita em 24h.
+**Fluxo unico consultivo (ver [[Decision Log - 2026-04-24 - Reversao Track 1]]):**
+- Landing tem CTA unico **"Agendar diagnostico"** — zero preco publico.
+- Cliente agenda via Cal.com → reuniao de 30 min → proposta escrita em 24h → **Anna Mel envia Payment Link Stripe via WhatsApp** pos-aceite (V1 manual: Joao/Vitoria ate BAI-49 F3 operante).
+- Politica de desconto ([[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]) preservada — cupom aplicado no Payment Link enviado, nunca em copy publico.
 
 ---
 
@@ -213,7 +214,7 @@ A implementação é **negociável caso a caso em canal privado** via Cupom Stri
 
 > "O preço-âncora é R$ 2.500 à vista ou R$ 3.000 em 12x pela implementação. É o custo real de colocar o motor de pé no seu domínio. A infra mensal (R$ 300) cobre tokens de IA, APIs e hospedagem — essa não tem margem pra desconto, é passthrough. Na implementação, se fizer sentido ajustar o escopo, a gente conversa — me conta o seu cenário."
 
-Se houver qualificação real (realidade orçamentária documentada, parceria de networking, ICP claro + negociação dentro de reunião Track 2 ou contato privado), o dono pode emitir cupom Stripe nominal — mas isso **não se oferece proativamente** em resposta genérica a "vocês dão desconto?". Cliente pede → qualifica → dono decide.
+Se houver qualificação real (realidade orçamentária documentada, parceria de networking, ICP claro + negociação dentro da reunião de diagnóstico ou contato privado), o dono pode emitir cupom Stripe nominal aplicado no Payment Link enviado via WhatsApp — mas isso **não se oferece proativamente** em resposta genérica a "vocês dão desconto?". Cliente pede → qualifica → dono decide.
 
 Regras:
 - **Aprovador único:** o dono. Ninguém mais emite cupom.
@@ -227,34 +228,27 @@ Regras:
 
 ## Fluxo de venda
 
-O fluxo e **dual-track** — dois caminhos convivem na landing, cliente escolhe. Ver [[Decision Log - 2026-04-24 - Dual-Track]] pra racional completo e [[VERDADE_UNICA_BUSCOU]] §8 pra fluxo canonico.
+O fluxo e **unico consultivo** — todo cliente passa pelo mesmo caminho. Ver [[Decision Log - 2026-04-24 - Reversao Track 1]] pra racional completo e [[VERDADE_UNICA_BUSCOU]] §8 pra fluxo canonico.
 
-### Track 1 — Self-service (cliente ja decidiu)
+1. Cliente chega em `www.buscouai.com` — landing **sem preco publico**, CTA unico "Agendar diagnostico" (repetido em header, hero, final-cta).
+2. Clica em **"Agendar diagnostico"**.
+3. Modal: nome, telefone, empresa, @IG. Cal.com embed carrega com slots disponiveis sincronizados com Google Calendar Joao+Vitoria.
+4. Cliente seleciona slot, confirma. Anna Mel envia msg de confirmacao via Uazapi no WhatsApp pelo numero canonico.
+5. **Cadencia de nutricao pre-reuniao** (Anna Mel): D-1 lembrete + material de apoio.
+6. Reuniao de 30 min — roteiro canonico de 6 blocos (abertura / entendimento / metodologia / solucao / oferta / fechamento). Gravada e transcrita.
+7. **Cadencia de confirmacao pos-reuniao** (Anna Mel): "proposta chega em 24h".
+8. Joao gera proposta personalizada via [[gerador-proposta-buscou]] (contexto + valores canonicos; se houve negociacao e emissao de cupom, a proposta documenta o valor final e codigo — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Validade 7 dias.
+9. **Cadencia de fechamento** (Anna Mel + Joao/Vitoria): D+1 follow-up, D+3 educativo, D+7 humano pra fechar.
+10. Cliente aceita → **Anna Mel envia Payment Link Stripe via WhatsApp** com valor acertado (com cupom se houve negociacao). Em V1 manual, Joao/Vitoria enviam pessoalmente.
+11. Cliente paga pelo Payment Link (Stripe-hosted) — PIX a vista ou cartao 12x.
+12. Webhook Stripe promove `lead` → `cliente`, grava em `compras` com desconto aplicado (quando houver).
+13. Anna Mel (ou Joao/Vitoria em V1 manual) envia: credenciais + primeiros passos + prazo 7 dias via WhatsApp.
+14. Cliente acessa painel, preenche dados de onboarding. Blog no ar em ate 7 dias. Motor publica 3x/dia.
+15. **D+27:** Anna Mel envia link de subscription da infra R$ 300/mes (cartao auto-renovavel ou PIX mensal).
+16. D+30: primeira cobranca. Regua mensal Anna Mel (D-3 avisa, D0 cobra, recupera).
+17. Cliente recusa (passo 9-10) → Anna Mel encerra cadencia educada, lead entra em nurturing longo.
 
-1. Cliente chega em `www.buscouai.com` — landing expoe preco publico + dois CTAs.
-2. Clica em **"Comprar agora"** (CTA primario).
-3. Modal: nome, telefone, empresa, @IG. Submit cria lead no banco + Stripe Checkout Session.
-4. Cliente paga no Stripe: PIX a vista (R$ 2.500) ou cartao 12x (R$ 3.000).
-5. Webhook promove `lead` → `cliente`. Anna Mel (ou Joao/Vitoria em V1 manual) envia credenciais + primeiros passos + prazo 7 dias via WhatsApp.
-6. Cliente acessa painel, preenche dados de onboarding (dominio, nicho, regiao, tom de voz).
-7. Blog no ar em ate 7 dias. Motor publica 3x/dia.
-8. **D+27:** Anna Mel envia link de subscription da infra R$ 300/mes (cartao auto-renovavel ou PIX mensal).
-9. D+30: primeira cobranca. Regua mensal Anna Mel (D-3 avisa, D0 cobra, recupera).
-
-### Track 2 — Consultivo (cliente quer conversar antes)
-
-1. Cliente chega na landing e clica **"Agendar diagnostico"**.
-2. Modal: nome, telefone, empresa, @IG. Cal.com embed carrega com slots.
-3. Cliente seleciona slot, confirma. Anna Mel envia msg de confirmacao via Uazapi no WhatsApp.
-4. **Cadencia de nutricao pre-reuniao** (Anna Mel): D-1 lembrete + material de apoio.
-5. Reuniao de 30 min — roteiro canonico de 6 blocos (abertura / entendimento / metodologia / solucao / oferta / fechamento). Gravada e transcrita.
-6. **Cadencia de confirmacao pos-reuniao** (Anna Mel): "proposta chega em 24h".
-7. Joao gera proposta personalizada via [[gerador-proposta-buscou]] (contexto + valores canonicos; se houve negociacao e emissao de cupom, a proposta documenta o valor final e codigo — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Validade 7 dias.
-8. **Cadencia de fechamento** (Anna Mel + Joao/Vitoria): D+1 follow-up, D+3 educativo, D+7 humano pra fechar.
-9. Cliente aceita → recebe link Stripe via WhatsApp (reusa infra do Track 1, passos 4-9 do Track 1 a partir daqui).
-10. Cliente recusa → Anna Mel encerra cadencia educada, lead entra em nurturing longo.
-
-Qualificacao leve acontece no Track 2 durante a reuniao — se nao fit, entrega diagnostico de cortesia e nao envia proposta. Ciclo-alvo Track 2: primeiro contato ao pagamento em ate 7 dias.
+Qualificacao leve acontece durante a reuniao — se nao fit, entrega diagnostico de cortesia e nao envia proposta. Ciclo-alvo: primeiro contato ao pagamento em ate 7 dias.
 
 ---
 
@@ -359,7 +353,7 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 ## Regras inegociaveis
 
 - **Preco-ancora publico e R$ 2.500 a vista (ou R$ 3.000 em 12x).** Landing, redes, email e qualquer copy publico mostram sempre esse valor cheio — nunca expor desconto publicamente.
-- **Implementacao e negociavel caso a caso em canal privado** (reuniao Track 2 ou mensagem direta 1-a-1), via Cupom Stripe emitido pelo dono apos qualificacao — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]. Track 1 sem contato previo cobra valor cheio.
+- **Implementacao e negociavel caso a caso em canal privado** (reuniao de diagnostico ou mensagem direta 1-a-1), via Cupom Stripe emitido pelo dono apos qualificacao — ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]. Cupom aplicado no Payment Link enviado via WhatsApp (nao em checkout publico — revogado em [[Decision Log - 2026-04-24 - Reversao Track 1]]).
 - **Infra mensal (R$ 300) nao desconta em hipotese nenhuma** — e passthrough de custo, sem margem. Cupons atuam exclusivamente no price de implementacao.
 - Nao criar "planos" (Starter/Growth/Scale) — contraria [[VERDADE_UNICA_BUSCOU]].
 - Nao unificar implementacao + infra como "pacote total" na comunicacao — sempre separar.
@@ -368,10 +362,11 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - Nao prometer retorno financeiro X em tempo Y.
 - Nao vender "SEO" — vender "aparecer no Google e na IA".
 - Nao chamar a infra de "mensalidade de servico" — e custo de infraestrutura.
-- **Track 2 (consultivo): nao fechar venda sem reuniao.** Cliente que passa pelo Track 2 precisa da reuniao + proposta escrita antes do pagamento.
-- **Track 2: nao enviar proposta sem reuniao acontecer.** Se cliente Track 2 quer proposta "direto", oferecer Track 1 Stripe ou pedir 15 min de call ao menos.
+- **Nao fechar venda sem reuniao.** Todo cliente passa pela reuniao de diagnostico + proposta escrita antes do pagamento (fluxo unico consultivo). Nao ha self-service.
+- **Nao enviar proposta sem reuniao acontecer.** Se cliente quer proposta "direto", oferecer 15 min de call ao menos.
 - **Proposta documenta valores reais.** Se houve negociacao + cupom emitido, a proposta mostra o valor final ja aplicado (nao o canonico publico). Se nao houve, mostra canonico.
-- **Landing expoe preco publico** (via Track 1). Nao ha mais regra "nao expor preco" — regra revogada em [[Decision Log - 2026-04-24 - Dual-Track]].
+- **Landing NAO expoe preco publico** — readicionado em 2026-04-24 (noite) via [[Decision Log - 2026-04-24 - Reversao Track 1]]. Valores so aparecem em reuniao, proposta personalizada e Payment Link enviado via WhatsApp.
+- **Canal de pagamento:** Payment Link do Stripe enviado via WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual) pos-aceite da proposta. Nao ha checkout publico na landing.
 
 ---
 
@@ -385,13 +380,15 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - [[ICP por Nicho]] / [[Nicho Inicial]] — para quem vender
 - [[Tom de Voz e Marketing]] — linguagem
 - [[SLAs e Garantias]] — pos-venda
-- [[Agente Pagamento]] — quem opera os dois fluxos de cobranca
+- [[Agente Pagamento]] — quem opera o fluxo de cobranca (Payment Link pos-aceite + regua mensal infra)
 - [[Decision Log - 2026-04-23]] — origem
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao do modelo de cobranca
 - [[Decision Log - 2026-04-23 - Venda Consultiva]] — pivot do processo de venda (self-service → consultivo + proposta personalizada)
+- [[Decision Log - 2026-04-24 - Reversao Track 1]] — **canonico vigente**: fluxo unico consultivo, landing sem preco, Payment Link via WhatsApp pos-reuniao
 - [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]] — **politica canonica vigente**: implementacao negociavel caso-a-caso via cupom Stripe, infra inegociavel
-- [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] — (historico, absorvido pela politica geral acima)
+- [[Decision Log - 2026-04-24 - Dual-Track]] — (parcialmente revogado: Track 1 removido, Track 2 preservado como unico)
+- [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] — (historico, absorvido pela politica de desconto)
 
 ---
 
-*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 5, 6, 7, 8 — ultima verificacao 2026-04-23 (pos-pivot consultivo).*
+*Alinhado com [[VERDADE_UNICA_BUSCOU]] secoes 5, 6, 7, 8 — ultima verificacao 2026-04-24 (pos-Reversao Track 1).*
