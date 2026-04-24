@@ -45,29 +45,41 @@ Cliente escolhe qual fluxo entrar. Landing expoe ambos os CTAs com peso visual e
 2. Clica em "Comprar agora" (CTA primario).
 3. Modal abre com formulario:
    - Nome, telefone, empresa, @IG da empresa (todos obrigatorios exceto @IG)
-4. Submit → POST /api/checkout → Stripe Checkout Session criada.
+4. Submit do modal:
+   a. POST /api/lead → cria registro em `leads` com status "lead_novo"
+   b. POST /api/checkout → Stripe Checkout Session criada com metadata do lead
 5. Redirecionamento pro Stripe Checkout.
 6. Cliente escolhe metodo de pagamento:
    - PIX a vista: R$ 2.500 (one-time)
    - Cartao parcelado em 12x: R$ 3.000 (12 parcelas de R$ 250, cliente assume juros)
 7. Pagamento processado.
 8. Webhook /api/webhook/stripe recebe checkout.session.completed.
-9. Sistema grava compra no banco (tabela compras, status "pago").
-10. Anna Mel (V2) ou Joao/Vitoria (V1) enviam via WhatsApp ao numero do cliente:
-    a. Confirmacao de pagamento recebido.
-    b. Credenciais de acesso ao painel cliente (quando existir).
-    c. Primeiros passos do onboarding.
-    d. Prazo: blog no ar em ate 7 dias.
-11. Cliente usa o sistema de forma autonoma.
+9. Sistema promove o lead em cliente:
+   a. Grava em `compras` (status "pago")
+   b. Atualiza `leads` → status "cliente"
+   c. Cria registro em `organizacoes` (o tenant do cliente)
+10. Anna Mel (V2) ou Joao/Vitoria (V1) enviam via WhatsApp:
+    a. Confirmacao de pagamento recebido
+    b. Credenciais de acesso ao painel cliente
+    c. Primeiros passos do onboarding
+    d. Prazo: blog no ar em ate 7 dias
+11. Cliente acessa o painel e preenche dados necessarios pro desenvolvimento do blog:
+    - Dominio (proprio ou subdominio buscou.ai)
+    - Nicho de atuacao
+    - Regiao e publico-alvo
+    - Informacoes da empresa (sobre, diferenciais, tom de voz)
+    Estes dados alimentam os agentes (Pesquisador → Estrategista → Redator → Publicador)
+    que comecam a configurar e popular o blog.
 
 ### Cobranca da infra mensal (a partir do dia 30 pos-implementacao)
 
-12. Dia 27 pos-pagamento (D-3 da mensalidade): Anna Mel envia link de subscription
-    pro cliente escolher forma de pagamento da infra R$ 300/mes:
+12. Dia 27 pos-pagamento (D-3 da primeira mensalidade): Anna Mel envia link de
+    subscription pro cliente escolher forma de pagamento da infra R$ 300/mes:
     a. Cartao → Stripe Subscription recurring (R$ 300/mes auto-renovavel)
     b. PIX → pagamento unico mensal (Anna Mel repete a regua mes a mes)
 13. Dia 30: primeira cobranca da infra processada.
-14. Se pago → Anna Mel parabeniza, confirma status OK.
+14. Se pago → Anna Mel parabeniza, confirma status OK, **avisa o proximo ciclo**
+    ("sua proxima cobranca chega em ~30 dias").
 15. Se nao pago → Anna Mel inicia cadencia de cobranca / recuperacao
     (tabela cobrancas_recuperacao, ver BAI-51).
 16. Inadimplencia persistente pausa o motor (blog permanece no ar, conteudo para).
@@ -80,19 +92,51 @@ Cliente escolhe qual fluxo entrar. Landing expoe ambos os CTAs com peso visual e
 2. Clica em "Agendar diagnostico" (CTA secundario).
 3. Modal abre com formulario:
    - Nome, telefone, empresa, @IG da empresa (todos obrigatorios exceto @IG).
-4. Apos submit valido: Cal.com embed carregado com pre-fill dos campos.
-5. Cliente seleciona slot disponivel (integracao com Google Calendar Joao+Vitoria).
-6. Confirma reserva.
-7. Webhook Cal.com → POST /api/schedule/book:
-   a. Grava em meetings (status "agendado").
-   b. Cria/atualiza lead em leads.
-   c. Dispara Uazapi: mensagem de confirmacao no WhatsApp do cliente pelo
-      numero canonico +55 27 99696-0847.
-8. Reuniao de diagnostico acontece (30 min, Joao+Vitoria).
-9. Pos-reuniao: proposta personalizada gerada (skill gerador-proposta-buscou)
-   enviada via WhatsApp.
-10. Cliente paga via link Stripe enviado manual (pode reutilizar infra do Track 1).
-11. Onboarding segue igual ao Track 1 a partir do pagamento confirmado.
+4. Submit cria registro em `leads` com status "lead_agendando".
+5. Cal.com embed carrega com pre-fill dos campos do formulario.
+6. Cliente seleciona slot disponivel (integracao com Google Calendar Joao+Vitoria).
+7. Confirma reserva → Cal.com cria evento nos calendarios do Joao+Vitoria.
+8. Webhook Cal.com → POST /api/schedule/book:
+   a. Grava em `meetings` (status "agendado").
+   b. Atualiza `leads` → status "lead_agendado".
+   c. Dispara Uazapi: mensagem de confirmacao do agendamento
+      ("parabens pelo seu agendamento, esta confirmado para {data} as {hora}").
+
+9. CADENCIA DE NUTRICAO PRE-REUNIAO (Anna Mel):
+   Do agendamento ate o dia da reuniao, Anna Mel envia:
+   - D-1 lembrete do horario
+   - Material de apoio relevante (link pro blog buscou.ai, case, video curto)
+   - Perguntas de pre-qualificacao ("qual e o maior desafio de presenca
+     digital do seu negocio hoje?")
+   Objetivo: manter lead quente ate a reuniao.
+
+10. REUNIAO DE DIAGNOSTICO acontece (30 min, Joao+Vitoria via Google Meet).
+
+11. CADENCIA DE CONFIRMACAO POS-REUNIAO (Anna Mel):
+    Logo apos a reuniao:
+    - Confirma proximo passo ("reuniao concluida! proposta chega em ate 24h")
+    - Agradece o tempo
+    Objetivo: sinalizar que o processo continua sem que o cliente precise cobrar.
+
+12. Pos-reuniao: Joao gera proposta personalizada (skill gerador-proposta-buscou,
+    usa transcricao + valores canonicos + beneficio parceiro networking quando
+    aplicavel) e envia via WhatsApp manualmente.
+
+13. CADENCIA DE FECHAMENTO (Anna Mel + Joao/Vitoria em colaboracao):
+    Do envio da proposta ate o cliente decidir:
+    - D+1: Anna Mel confirma recebimento ("viu a proposta? alguma duvida?")
+    - D+3: Anna Mel faz follow-up educativo ("como voce esta pensando sobre isso?")
+    - D+7: Joao/Vitoria entram humanamente (se ainda em aberto) pra fechar
+    Anna Mel NAO substitui Joao/Vitoria no fechamento humano — ajuda com
+    acompanhamento leve, enquanto o fechamento relacional fica com o time.
+    Objetivo: reduzir esforco humano no follow-up sem perder o toque humano
+    no momento de decisao.
+
+14. Cliente decide:
+    - Comprar → recebe link Stripe via WhatsApp (reusa infra do Track 1,
+      passo 5-10 do Track 1 executa a partir daqui). Onboarding igual Track 1.
+    - Nao comprar → Anna Mel encerra cadencia educada. Lead volta pro pool
+      pra nurturing de longo prazo (futura: automacao de reativacao trimestral).
 ```
 
 ## Operacao V1 (hoje) vs V2 (Anna Mel operacional)
@@ -129,7 +173,7 @@ Aplicar em ate 7 dias da data deste Decision Log:
 - **§Regras Inegociaveis:**
   - Remover: "Nao expor preco na landing. Preco aparece em reuniao + proposta personalizada, nao em copy publico."
   - Adicionar: "Preco publico e exposto pra Track 1 self-service. Track 2 consultivo mantem proposta escrita apos reuniao."
-  - **Manter**: "Valores canonicos NAO negociam na proposta alem dos 2 descontos oficiais (parceiro networking R$ 1.000 off + primeiros 5 clientes R$ 300 off)."
+  - **Manter**: "Valores canonicos NAO negociam em Track 1. Em Track 2, unica excecao documentada e o beneficio parceiro networking (R$ 1.000 off, nunca divulgado publicamente)."
 - **§Fluxo de venda:** substituir fluxo linear antigo pelos dois fluxos canonicos descritos neste Decision Log.
 
 ### [[Roadmap do Produto]]
