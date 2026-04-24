@@ -38,11 +38,14 @@ Valores canonicos em [[VERDADE_UNICA_BUSCOU]] secao 5. O que o cliente recebe, e
 - **Nao vende "agencia"** — nao somos.
 - **Nao vende "consultoria"** — nao fazemos.
 - **Nao vende "assinatura SaaS"** — comercialmente vendemos implementacao + infra passthrough.
-- **Nao vende self-service.** Toda compra passa pela reuniao de diagnostico + proposta personalizada (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]).
 
 ## O que voce vende
 
-> **"Tecnologia que faz sua empresa aparecer quando o cliente busca. No Google e na IA. A gente comeca com uma reuniao de diagnostico pra entender seu negocio, te mostro como aplica no seu caso, e te mando uma proposta personalizada por escrito em 24h. Depois do aceite, paga implementacao uma vez e uma infra mensal pra manter o motor rodando."**
+> **"Tecnologia que faz sua empresa aparecer quando o cliente busca. No Google e na IA. Voce pode comprar direto — R$ 2.500 a vista (PIX) ou R$ 3.000 em 12x — ou agendar um diagnostico de 30 min pra entender se faz sentido pro seu negocio antes. De um jeito ou de outro, voce paga implementacao uma vez e uma infra mensal (R$ 300) que mantem o motor rodando com 90 conteudos publicados por mes no seu blog."**
+
+**Dual-track (ver [[Decision Log - 2026-04-24 - Dual-Track]]):**
+- **Track 1 (self-service):** cliente decidido — compra direto via Stripe Checkout na landing.
+- **Track 2 (consultivo):** cliente quer conversar — agenda Cal.com, reuniao de 30 min, proposta escrita em 24h.
 
 ---
 
@@ -197,7 +200,7 @@ Resposta canônica:
 Regras específicas:
 - Não forçar respostas estratégicas que o intermediário não tem (orçamento, CRM exato, stack atual). Perguntas factuais de nicho/região/produto, sim
 - Proposta precisa funcionar **sem** sua presença verbal — decisor vai ler sozinho
-- Não aceitar pressão do intermediário por desconto fora dos canônicos (parceria networking R$ 1.000 off ou early client R$ 300 off). Descontos não-canônicos exigem Decision Log datado
+- Não aceitar pressão do intermediário por desconto fora do canônico (única exceção: parceria networking R$ 1.000 off quando critério bater). Descontos não-canônicos exigem Decision Log datado
 - Followup D+3 e D+6 normalmente, independente do intermediário confirmar reunião com decisor
 
 ### "Vocês dão desconto?" (venda por parceria/indicação)
@@ -219,23 +222,34 @@ Regras:
 
 ## Fluxo de venda
 
-O fluxo e **consultivo** — reuniao obrigatoria + proposta personalizada escrita. Nao ha caminho self-service na V1.
+O fluxo e **dual-track** — dois caminhos convivem na landing, cliente escolhe. Ver [[Decision Log - 2026-04-24 - Dual-Track]] pra racional completo e [[VERDADE_UNICA_BUSCOU]] §8 pra fluxo canonico.
 
-1. Cliente descobre (organico do proprio blog, indicacao, prospecao ativa, anuncio).
-2. Acessa a landing `www.buscouai.com`. A landing **nao expoe preco** — o CTA unico e "Agendar diagnostico".
-3. Clica no CTA, abre WhatsApp com mensagem pre-preenchida "Oi, vi o site da buscou.ai e quero agendar um diagnostico do meu negocio".
-4. Conversa curta pra combinar horario da **reuniao de diagnostico** (30-60 min, obrigatoria).
-5. Reuniao acontece — roteiro canonico de 6 blocos (abertura / entendimento / metodologia / solucao / oferta / fechamento). Gravada e transcrita.
-6. **Pos-reuniao:** dono cola a transcricao no painel admin. Sistema gera proposta visual personalizada (PDF/HTML) com contexto da conversa + escopo + valores canonicos + validade de 7 dias.
-7. Dono baixa e envia a proposta manualmente via WhatsApp em **ate 24h**.
-8. Cliente analisa — socio, conjuge, contador se precisar — e aceita dentro da validade.
-9. Dono envia link de pagamento no WhatsApp: Pix a vista ou cartao parcelado pra implementacao **+ cadastro do cartao recorrente da infra** (pode ser o mesmo cartao).
-10. Onboarding automatico (11 etapas) comeca em seguida — ver [[Onboarding Automatico]].
-11. Blog no ar em ate 7 dias apos o pagamento.
-12. Motor publicando 3x/dia.
-13. Dia 1 do mes 2: primeira cobranca automatica da infra (R$ 300).
+### Track 1 — Self-service (cliente ja decidiu)
 
-Qualificacao leve acontece na propria reuniao — se nao fit ICP, entrega-se diagnostico de cortesia e nao envia proposta. Ciclo-alvo do primeiro contato ate pagamento: **ate 7 dias**.
+1. Cliente chega em `www.buscouai.com` — landing expoe preco publico + dois CTAs.
+2. Clica em **"Comprar agora"** (CTA primario).
+3. Modal: nome, telefone, empresa, @IG. Submit cria lead no banco + Stripe Checkout Session.
+4. Cliente paga no Stripe: PIX a vista (R$ 2.500) ou cartao 12x (R$ 3.000).
+5. Webhook promove `lead` → `cliente`. Anna Mel (ou Joao/Vitoria em V1 manual) envia credenciais + primeiros passos + prazo 7 dias via WhatsApp.
+6. Cliente acessa painel, preenche dados de onboarding (dominio, nicho, regiao, tom de voz).
+7. Blog no ar em ate 7 dias. Motor publica 3x/dia.
+8. **D+27:** Anna Mel envia link de subscription da infra R$ 300/mes (cartao auto-renovavel ou PIX mensal).
+9. D+30: primeira cobranca. Regua mensal Anna Mel (D-3 avisa, D0 cobra, recupera).
+
+### Track 2 — Consultivo (cliente quer conversar antes)
+
+1. Cliente chega na landing e clica **"Agendar diagnostico"**.
+2. Modal: nome, telefone, empresa, @IG. Cal.com embed carrega com slots.
+3. Cliente seleciona slot, confirma. Anna Mel envia msg de confirmacao via Uazapi no WhatsApp.
+4. **Cadencia de nutricao pre-reuniao** (Anna Mel): D-1 lembrete + material de apoio.
+5. Reuniao de 30 min — roteiro canonico de 6 blocos (abertura / entendimento / metodologia / solucao / oferta / fechamento). Gravada e transcrita.
+6. **Cadencia de confirmacao pos-reuniao** (Anna Mel): "proposta chega em 24h".
+7. Joao gera proposta personalizada via [[gerador-proposta-buscou]] (contexto + valores canonicos + beneficio parceiro networking quando aplicavel). Validade 7 dias.
+8. **Cadencia de fechamento** (Anna Mel + Joao/Vitoria): D+1 follow-up, D+3 educativo, D+7 humano pra fechar.
+9. Cliente aceita → recebe link Stripe via WhatsApp (reusa infra do Track 1, passos 4-9 do Track 1 a partir daqui).
+10. Cliente recusa → Anna Mel encerra cadencia educada, lead entra em nurturing longo.
+
+Qualificacao leve acontece no Track 2 durante a reuniao — se nao fit, entrega diagnostico de cortesia e nao envia proposta. Ciclo-alvo Track 2: primeiro contato ao pagamento em ate 7 dias.
 
 ---
 
@@ -259,11 +273,11 @@ Todo cliente que fizer a reuniao de diagnostico e for fit recebe, em ate 24h, um
 
 ### Regra critica
 
-Valores canonicos **nao negociam** na proposta alem dos dois descontos ja oficializados ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 300 off primeiros 5 clientes (case) e R$ 1.000 off parceiro networking (relacao previa comprovada). O documento personaliza **contexto e aplicacao**, nao preco.
+Valores canonicos **nao negociam** na proposta alem do unico desconto oficializado ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 1.000 off parceiro networking (relacao previa comprovada, so em Track 2, nunca divulgado publicamente). O documento personaliza **contexto e aplicacao**, nao preco.
 
-Se o cliente pedir desconto fora dos dois criterios oficiais:
+Se o cliente pedir desconto fora desse criterio:
 - Resposta padrao: "O preco e esse porque e o custo real de manter o motor rodando com 90 conteudos por mes. Nao tenho margem pra desconto sem reduzir escopo. Se escopo menor fizer sentido, posso propor — mas ai muda o volume de conteudo mensal. Prefere ajustar?"
-- **Nao mencionar** os descontos canonicos espontaneamente pra quem nao se enquadra — sao beneficios especificos, nao tabela publica.
+- **Nao mencionar** o desconto canonico espontaneamente pra quem nao se enquadra — e beneficio especifico, nao tabela publica.
 
 ### Envio
 
@@ -334,7 +348,7 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 
 ## Regras inegociaveis
 
-- **Valor a vista da implementacao e R$ 2.500** — excecoes exclusivas aos dois descontos canonicos ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 300 off pros primeiros 5 clientes com case ([[Decision Log - 2026-04-23]]) **e** R$ 1.000 off pra parceiro de networking comprovado ([[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]). Fora desses dois, nao negocia.
+- **Valor a vista da implementacao e R$ 2.500.** Track 1 (self-service Stripe) cobra sempre esse valor cheio — sem cupom publico, sem promocao, sem negociacao. Track 2 (consultivo) tem unica excecao documentada: R$ 1.000 off pra parceiro de networking comprovado ([[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]), aplicado caso-a-caso dentro da reuniao, nunca divulgado publicamente.
 - Infra mensal (R$ 300) nao desconta em hipotese nenhuma — e passthrough de custo, sem margem.
 - Nao criar "planos" (Starter/Growth/Scale) — contraria [[VERDADE_UNICA_BUSCOU]].
 - Nao unificar implementacao + infra como "pacote total" na comunicacao — sempre separar.
@@ -343,10 +357,10 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - Nao prometer retorno financeiro X em tempo Y.
 - Nao vender "SEO" — vender "aparecer no Google e na IA".
 - Nao chamar a infra de "mensalidade de servico" — e custo de infraestrutura.
-- **Nao fechar venda sem reuniao.** Compra e consultiva na V1 — mesmo cliente muito quente precisa passar pela reuniao + proposta (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]).
-- **Nao expor preco na landing.** Preco aparece em reuniao + proposta personalizada, nao em copy publico.
-- **Nao enviar proposta sem reuniao acontecer.** Se cliente quer proposta "direto", pedir 15 min de call ao menos — a reuniao coleta material pra personalizar.
+- **Track 2 (consultivo): nao fechar venda sem reuniao.** Cliente que passa pelo Track 2 precisa da reuniao + proposta escrita antes do pagamento.
+- **Track 2: nao enviar proposta sem reuniao acontecer.** Se cliente Track 2 quer proposta "direto", oferecer Track 1 Stripe ou pedir 15 min de call ao menos.
 - **Nao negociar preco na proposta** — personalizacao e de contexto e escopo, nao de valor.
+- **Landing expoe preco publico** (via Track 1). Nao ha mais regra "nao expor preco" — regra revogada em [[Decision Log - 2026-04-24 - Dual-Track]].
 
 ---
 

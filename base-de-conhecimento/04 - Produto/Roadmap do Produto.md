@@ -16,10 +16,13 @@ atualizado: 2026-04-24
 ```
 MVP (M1-2)   V1 (M3-4)   V1.1 (gatilhada)   V2 (M5-8)       V3 (M9-12)     FUTURO
     |            |              |                 |                |              |
- Motor core  Pipeline     Integracoes         Self-service     Multi-blog     API publica
- Blog base   completo     externas            Monitoramento    Renovacao      White-label
- 5 clientes  10-15 cli.   CRM via webhook     50+ clientes     150+ cli.      Internacional
+ Motor core  Pipeline     Integracoes         Monitoramento    Multi-blog     API publica
+ Blog base   completo     externas            avancado         Renovacao      White-label
+ Dual-track  Anna Mel     CRM via webhook     50+ clientes     150+ cli.      Internacional
+ 5 clientes  10-15 cli.                                                       Marketplace
 ```
+
+**Dual-track desde V1 (2026-04-24):** Stripe Checkout (Track 1 self-service PIX/cartao) + Cal.com embed + webhook Uazapi (Track 2 consultivo com agendamento integrado). Ver [[Decision Log - 2026-04-24 - Dual-Track]].
 
 **Principio:** cada fase valida uma hipotese antes de investir na proxima. Nao construir por construir.
 
