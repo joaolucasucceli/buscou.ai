@@ -13,10 +13,11 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 > aqui **esta errado** e deve ser corrigido para refletir este documento.
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
-> **Ultimas alteracoes Nivel 1 (2026-04-23):**
-> - **Processo de venda consultivo** — reuniao de diagnostico obrigatoria + proposta personalizada pos-call (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]). Valores canonicos nao mudam.
-> - Secao 11 — contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
-> - Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
+> **Ultimas alteracoes Nivel 1:**
+> - **2026-04-24** — Secao 5.3: Beneficio Parceiro Networking (R$ 1.000 off a vista, criterio estrito) como desconto canonico oficial (ver [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]).
+> - **2026-04-23** — Processo de venda consultivo: reuniao de diagnostico obrigatoria + proposta personalizada pos-call (ver [[Decision Log - 2026-04-23 - Venda Consultiva]]). Valores canonicos nao mudam.
+> - **2026-04-23** — Secao 11: contato oficial canonico em WhatsApp (ver [[Decision Log - 2026-04-23 - Contato Oficial]]).
+> - **2026-04-23** — Modelo comercial com infra mensal (ver [[Decision Log - 2026-04-23 - Infra Mensal]]).
 
 ---
 
@@ -165,6 +166,24 @@ Se o cliente deixar de pagar a infra mensal:
 4. Cliente recebe notificacoes em cada tentativa + aviso de pausa.
 5. Ao regularizar: motor retoma no proximo ciclo.
 
+### 5.3 — Descontos e beneficios canonicos
+
+Em regra, os valores da implementacao e da infra mensal **nao negociam**. Existem apenas **dois** descontos oficializados por Decision Log — fora deles, nao abre excecao.
+
+| Beneficio | Valor | Criterio | Fonte canonica |
+|---|---|---|---|
+| **Primeiros 5 clientes** | R$ 300 off na implementacao a vista (R$ 2.500 → R$ 2.200) | Cliente aceita virar case + depoimento publico. Apenas para os 5 primeiros contratos assinados. | [[Decision Log - 2026-04-23]] |
+| **Parceiro de Networking** | R$ 1.000 off na implementacao a vista (R$ 2.500 → R$ 2.000) | Relacao previa comprovada entre o dono e o parceiro + indicacao direta + ciclo comercial iniciado pela conexao. Maximo 3 aplicacoes por trimestre. | [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] |
+
+Regras comuns aos dois:
+- **So se aplicam a vista.** Parcelado em 12x nao muda (R$ 3.000).
+- **Nao sao cumulativos.** Se o parceiro tambem topar dar case, aplica-se o maior (networking).
+- **Aprovacao exclusiva do dono.** Sem pre-aprovacao automatica.
+- **Registro obrigatorio** em ata da reuniao + issue Linear + historico do Decision Log correspondente.
+- **Infra mensal (R$ 300/mes) nao desconta em nenhum caso.** E passthrough de custo operacional, nao tem margem pra absorver desconto.
+
+**Na duvida: nao aplicar.** O canonico e R$ 2.500 — o beneficio e excecao.
+
 ### O que **NAO** existe
 
 - **Sem tiers** (Starter / Growth / Scale).
@@ -172,6 +191,7 @@ Se o cliente deixar de pagar a infra mensal:
 - **Sem mensalidade de gestao**, de consultoria, de agencia.
 - **Sem setup separado da implementacao.**
 - **Sem assinatura de SaaS** (no sentido comercial classico).
+- **Sem outros descontos** alem dos dois listados em 5.3.
 
 ### Enquadramento
 

@@ -230,8 +230,11 @@ Todo cliente que fizer a reuniao de diagnostico e for fit recebe, em ate 24h, um
 
 ### Regra critica
 
-Valores canonicos **nao negociam** na proposta. O documento personaliza **contexto e aplicacao**, nao preco. Se o cliente pedir desconto:
+Valores canonicos **nao negociam** na proposta alem dos dois descontos ja oficializados ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 300 off primeiros 5 clientes (case) e R$ 1.000 off parceiro networking (relacao previa comprovada). O documento personaliza **contexto e aplicacao**, nao preco.
+
+Se o cliente pedir desconto fora dos dois criterios oficiais:
 - Resposta padrao: "O preco e esse porque e o custo real de manter o motor rodando com 90 conteudos por mes. Nao tenho margem pra desconto sem reduzir escopo. Se escopo menor fizer sentido, posso propor — mas ai muda o volume de conteudo mensal. Prefere ajustar?"
+- **Nao mencionar** os descontos canonicos espontaneamente pra quem nao se enquadra — sao beneficios especificos, nao tabela publica.
 
 ### Envio
 
@@ -302,7 +305,8 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 
 ## Regras inegociaveis
 
-- Nao dar desconto no valor a vista da implementacao (R$ 2.500 e o preco-ancora canonico).
+- **Valor a vista da implementacao e R$ 2.500** — excecoes exclusivas aos dois descontos canonicos ([[VERDADE_UNICA_BUSCOU]] secao 5.3): R$ 300 off pros primeiros 5 clientes com case ([[Decision Log - 2026-04-23]]) **e** R$ 1.000 off pra parceiro de networking comprovado ([[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]]). Fora desses dois, nao negocia.
+- Infra mensal (R$ 300) nao desconta em hipotese nenhuma — e passthrough de custo, sem margem.
 - Nao criar "planos" (Starter/Growth/Scale) — contraria [[VERDADE_UNICA_BUSCOU]].
 - Nao unificar implementacao + infra como "pacote total" na comunicacao — sempre separar.
 - Nao oferecer "so implementacao sem infra" — motor precisa de infra pra rodar.
@@ -331,6 +335,7 @@ Foco nos primeiros 12 meses: **aquisicao pura + retencao de infra**. Upsell de p
 - [[Decision Log - 2026-04-23]] — origem
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao do modelo de cobranca
 - [[Decision Log - 2026-04-23 - Venda Consultiva]] — pivot do processo de venda (self-service → consultivo + proposta personalizada)
+- [[Decision Log - 2026-04-24 - Beneficio Parceiro Networking]] — desconto R$ 1.000 off oficializado pra parceiros de networking
 
 ---
 

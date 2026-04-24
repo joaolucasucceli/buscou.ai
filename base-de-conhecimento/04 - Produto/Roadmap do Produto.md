@@ -2,7 +2,7 @@
 tipo: empresa
 area: Produto
 tags: [empresa, roadmap, produto, venda-unica, canonico]
-atualizado: 2026-04-23
+atualizado: 2026-04-24
 ---
 
 # Roadmap do Produto
@@ -14,11 +14,11 @@ atualizado: 2026-04-23
 ## Visao geral
 
 ```
-MVP (M1-2)     V1 (M3-4)      V2 (M5-8)       V3 (M9-12)     FUTURO
-    |              |               |                |              |
- Motor core    Pipeline        Self-service     Multi-blog     API publica
- Blog base    completo        Monitoramento    Renovacao      White-label
- 5 clientes   10-15 cli.      50+ clientes     150+ cli.      Internacional
+MVP (M1-2)   V1 (M3-4)   V1.1 (gatilhada)   V2 (M5-8)       V3 (M9-12)     FUTURO
+    |            |              |                 |                |              |
+ Motor core  Pipeline     Integracoes         Self-service     Multi-blog     API publica
+ Blog base   completo     externas            Monitoramento    Renovacao      White-label
+ 5 clientes  10-15 cli.   CRM via webhook     50+ clientes     150+ cli.      Internacional
 ```
 
 **Principio:** cada fase valida uma hipotese antes de investir na proxima. Nao construir por construir.
@@ -98,6 +98,48 @@ Estabilizar o produto para 10-15 clientes, com onboarding semi-automatico e moni
 
 ---
 
+## V1.1 — Integracoes externas (gatilhada por demanda de cliente)
+
+Micro-fase entre V1 e V2 — nao esperava execucao ate bater demanda real. **Gatilhada em 2026-04-24** pela reuniao com Innovate LED ([BAI-71](https://linear.app/joao-lucas-ucceli/issue/BAI-71)), que pediu integracao com CRM do cliente.
+
+### Objetivo
+
+Entregar uma integracao generica formulario → CRM via webhook configuravel, transformando o blog de ponto unico de CTA WhatsApp em ponte para o CRM existente do cliente. Primeiro alvo de POC: **Kommo** (confirmar com cliente antes do desenvolvimento — ver [BAI-77](https://linear.app/joao-lucas-ucceli/issue/BAI-77)).
+
+### O que construir
+
+| Componente | Descricao | Stack |
+|---|---|---|
+| Formulario generico no blog | Campos: nome, email, telefone, produto de interesse, mensagem livre. Renderizado em CTAs configurados. | Next.js + shadcn |
+| Webhook POST configuravel | URL + mapping de campos definidos no onboarding wizard. | Supabase Edge Functions |
+| Adaptador Kommo (POC) | Mapping dos campos pro formato Kommo API, auth via OAuth2 ou API key. | Node |
+| Fallback | Se webhook falhar (timeout, 4xx, 5xx): lead gravado localmente + CTA WhatsApp mantido. | Supabase Postgres |
+| Log de disparos | Ultimos 100 disparos (sucesso/erro/payload) acessiveis no admin. | Supabase + Dashboard |
+| Onboarding wizard extension | Etapa adicional configurando URL webhook + mapping de campos. | Next.js wizard |
+
+### Produto comercial
+
+- Como **brinde** nesta venda especifica (Innovate LED — parceiro de networking).
+- Como **add-on pago** pra proximos clientes — valor a definir apos POC (sugestao inicial: cobrado a parte no scoping tecnico de cada CRM alem do Kommo).
+- Resto dos clientes continua usando CTA WhatsApp (comportamento default).
+
+### Meta V1.1
+
+- Formulario funcional no blog + webhook POC com Kommo testado end-to-end em sandbox.
+- Innovate LED (se fechar) entra em onboarding com integracao ativa.
+- Documentacao tecnica em [[Integracoes Externas]] seccao "CRM Out" atualizada.
+
+### Gate de saida
+
+> **Se o webhook entrega lead no CRM sandbox sem perda de dados + fallback funciona + cliente Innovate LED (ou primeiro cliente que usar) valida end-to-end, fase encerrada e feature fica viva no produto.**
+
+### Issue tracker
+
+- [BAI-76](https://linear.app/joao-lucas-ucceli/issue/BAI-76) — Feature V1.1: Integracao generica de CRM via webhook.
+- [BAI-77](https://linear.app/joao-lucas-ucceli/issue/BAI-77) — Confirmar qual CRM a Innovate LED usa (pre-requisito do scoping).
+
+---
+
 ## V2 — Meses 5-8
 
 ### Objetivo
@@ -113,7 +155,7 @@ Escalar para 50+ clientes com self-service completo e monitoramento AIO robusto.
 | Agente Distribuidor (LinkedIn, Reddit, Medium) | Alta |
 | Dashboard v2 (IVT detalhado, comparativo, ROI estimado) | Alta |
 | Renovacao anual opcional (fluxo de oferta) | Media |
-| Modulos adicionais (integracoes, relatorios custom) | Media |
+| Modulos adicionais (relatorios custom, integracoes adicionais alem do webhook CRM ja entregue em V1.1) | Media |
 | Multi-tenant escalavel (1000+ clientes) | Critica |
 
 ### Meta V2
