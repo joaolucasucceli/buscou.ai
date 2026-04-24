@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Mel · MVP v2 · buscou.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* === TOKENS · buscou.ai dark-first === */
+:root {
+  --bg: #08090D;
+  --bg-2: #0F1117;
+  --card: #12151C;
+  --border: #1F242D;
+  --border-strong: #2A313D;
+  --text: #FFFFFF;
+  --text-2: #A8B0BD;
+  --text-3: #6B7280;
+  --mint: #00E5A0;
+  --mint-dim: rgba(0, 229, 160, 0.12);
+  --mint-soft: rgba(0, 229, 160, 0.04);
+  --violeta: #7C5CFF;
+  --violeta-dim: rgba(124, 92, 255, 0.15);
+
+  --font-sans: 'Geist', -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-serif: 'Instrument Serif', serif;
+
+  --title: clamp(2rem, 5vw, 4.5rem);
+  --h2: clamp(1.4rem, 3vw, 2.5rem);
+  --h3: clamp(1rem, 1.6vw, 1.4rem);
+  --body: clamp(0.85rem, 1.15vw, 1.05rem);
+  --small: clamp(0.75rem, 0.95vw, 0.9rem);
+  --tiny: clamp(0.65rem, 0.8vw, 0.8rem);
+  --mono: clamp(0.72rem, 0.9vw, 0.88rem);
+
+  --pad: clamp(1.5rem, 4vw, 4rem);
+  --gap: clamp(0.75rem, 1.5vw, 1.5rem);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.7s;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow-x: hidden; background: var(--bg); color: var(--text); }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--body);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: var(--pad);
+  position: relative;
+}
+
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+  gap: var(--gap);
+}
+
+img, video { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+
+/* === SLIDE HEAD === */
+.shead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: clamp(0.5rem, 1vw, 1rem);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--tiny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+.shead .brand { color: var(--text-2); }
+.shead .brand .ai { color: var(--mint); }
+
+/* === REVEAL === */
+.r { opacity: 0; transform: translateY(20px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.slide.visible .r { opacity: 1; transform: translateY(0); }
+.slide.visible .r:nth-child(1) { transition-delay: 0.05s; }
+.slide.visible .r:nth-child(2) { transition-delay: 0.15s; }
+.slide.visible .r:nth-child(3) { transition-delay: 0.25s; }
+.slide.visible .r:nth-child(4) { transition-delay: 0.35s; }
+.slide.visible .r:nth-child(5) { transition-delay: 0.45s; }
+.slide.visible .r:nth-child(6) { transition-delay: 0.55s; }
+.slide.visible .r:nth-child(7) { transition-delay: 0.65s; }
+.slide.visible .r:nth-child(8) { transition-delay: 0.75s; }
+
+/* === CAPA === */
+.capa {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(0, 229, 160, 0.06) 0%, transparent 60%), var(--bg);
+}
+.capa::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  pointer-events: none;
+}
+.capa-wrap { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: clamp(1rem, 2vw, 2rem); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 16px var(--mint); animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.capa h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #FFF 0%, #C4CAD3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.capa h1 span { color: var(--mint); -webkit-text-fill-color: var(--mint); font-style: italic; }
+.capa-sub { font-size: clamp(1rem, 1.6vw, 1.4rem); color: var(--text-2); max-width: 680px; line-height: 1.4; }
+.capa-tags {
+  font-family: var(--font-mono);
+  font-size: var(--mono);
+  color: var(--text-3);
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: clamp(1rem, 2vw, 2rem);
+  border-top: 1px solid var(--border);
+}
+.capa-tags span { color: var(--mint); }
+.searchbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.75rem, 1.2vw, 1.1rem) clamp(1rem, 2vw, 1.8rem);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(18, 21, 28, 0.6);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: var(--small);
+  color: var(--text-2);
+}
+.cursor { display: inline-block; width: 2px; height: 1em; background: var(--mint); animation: blink 1s infinite; vertical-align: text-bottom; margin-left: 2px; }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* === TYPOGRAPHY === */
+.slide h2 { font-size: var(--h2); font-weight: 500; letter-spacing: -0.028em; line-height: 1.1; }
+.slide h2 em { font-family: var(--font-serif); font-style: italic; color: var(--mint); font-weight: 400; }
+.slide h3 { font-size: var(--h3); font-weight: 500; letter-spacing: -0.02em; }
+.slide p { color: var(--text-2); font-size: var(--body); line-height: 1.55; }
+.m { font-family: var(--font-mono); font-size: var(--mono); }
+
+/* === GRID 4 === */
+.g4 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); flex: 1; min-height: 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: clamp(1rem, 2vw, 1.75rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.875rem);
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+.card-lbl { font-family: var(--font-mono); font-size: var(--tiny); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); }
+.card h3 { color: var(--text); }
+.card p { font-size: var(--small); }
+.card-a::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--mint); }
+
+/* === LAYERS === */
+.layers { display: flex; flex-direction: column; gap: clamp(0.35rem, 0.8vw, 0.625rem); flex: 1; min-height: 0; justify-content: center; }
+.layer {
+  display: grid; grid-template-columns: 2rem 1fr auto;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  align-items: center;
+  padding: clamp(0.5rem, 1vw, 0.875rem) clamp(0.875rem, 1.8vw, 1.5rem);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--mint);
+  border-radius: var(--r-sm);
+}
+.l-num { font-family: var(--font-mono); font-size: var(--small); color: var(--text-3); letter-spacing: 0.05em; }
+.l-body h3 { font-size: var(--small); font-weight: 500; }
+.l-body p { font-size: var(--tiny); color: var(--text-3); margin-top: 2px; }
+.l-tag { font-family: var(--font-mono); font-size: var(--tiny); color: var(--mint); opacity: 0.85; }
+
+/* === GRID 3 === */
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); flex: 1; min-height: 0; }
+.ctx {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: clamp(1rem, 1.8vw, 1.5rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.875rem);
+  overflow: hidden;
+  min-height: 0;
+}
+.ctx-head { display: flex; align-items: center; justify-content: space-between; }
+.ctx-num { font-family: var(--font-mono); font-size: var(--tiny); padding: 3px 8px; border-radius: 4px; background: var(--mint-dim); color: var(--mint); letter-spacing: 0.05em; }
+.ctx h3 { font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: 500; }
+.ctx-role { font-family: var(--font-serif); font-style: italic; font-size: clamp(0.95rem, 1.3vw, 1.15rem); color: var(--mint); line-height: 1.3; }
+.ctx ul { list-style: none; display: flex; flex-direction: column; gap: clamp(0.3rem, 0.6vw, 0.5rem); flex: 1; min-height: 0; overflow: hidden; }
+.ctx li { font-size: var(--small); color: var(--text-2); padding-left: 1.1rem; position: relative; line-height: 1.4; }
+.ctx li::before { content: '▸'; position: absolute; left: 0; color: var(--mint); font-size: 0.75em; }
+.ctx-foot { padding-top: clamp(0.35rem, 0.8vw, 0.625rem); margin-top: auto; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: var(--tiny); color: var(--text-3); }
+.ctx-foot strong { color: var(--mint); font-weight: 500; }
+
+/* === TOOLS === */
+.tools { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: clamp(0.625rem, 1.2vw, 1rem); flex: 1; min-height: 0; }
+.tool {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: clamp(0.875rem, 1.5vw, 1.25rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.35rem, 0.7vw, 0.6rem);
+  overflow: hidden;
+  min-height: 0;
+}
+.t-icon {
+  width: clamp(1.5rem, 2.5vw, 2rem);
+  height: clamp(1.5rem, 2.5vw, 2rem);
+  border-radius: 6px;
+  background: var(--mint-dim);
+  color: var(--mint);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 600; font-size: var(--small);
+  flex-shrink: 0;
+}
+.tool code { font-family: var(--font-mono); font-size: var(--small); color: var(--text); font-weight: 500; line-height: 1.2; }
+.tool p { font-size: var(--tiny); color: var(--text-3); line-height: 1.45; }
+.t-ctx { font-family: var(--font-mono); font-size: var(--tiny); color: var(--mint); margin-top: auto; padding-top: 0.35rem; border-top: 1px solid var(--border); opacity: 0.85; }
+
+/* === GANTT === */
+.gantt { display: flex; flex-direction: column; gap: clamp(0.4rem, 0.9vw, 0.7rem); flex: 1; min-height: 0; justify-content: center; }
+.g-scale, .g-row { display: grid; grid-template-columns: clamp(9rem, 16vw, 13rem) 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: center; }
+.g-scale { font-family: var(--font-mono); font-size: var(--tiny); color: var(--text-3); padding-bottom: clamp(0.25rem, 0.5vw, 0.5rem); border-bottom: 1px solid var(--border); }
+.g-weeks { display: grid; grid-template-columns: repeat(5, 1fr); letter-spacing: 0.05em; }
+.g-lbl { font-size: var(--small); font-weight: 500; }
+.g-id { font-family: var(--font-mono); color: var(--mint); margin-right: 0.5rem; font-weight: 400; }
+.g-track {
+  position: relative;
+  height: clamp(1.6rem, 2.5vw, 2.1rem);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.g-track::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 20% 100%; opacity: 0.5; }
+.g-bar {
+  position: absolute; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--mint-dim) 0%, var(--mint) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center;
+  padding: 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--tiny);
+  color: var(--bg);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.g-bar.v { background: linear-gradient(90deg, var(--violeta-dim) 0%, var(--violeta) 100%); color: var(--text); }
+.g-foot { padding-top: clamp(0.5rem, 1vw, 0.9rem); display: flex; gap: clamp(1rem, 2vw, 2rem); font-family: var(--font-mono); font-size: var(--tiny); color: var(--text-3); justify-content: center; flex-wrap: wrap; }
+.g-foot strong { color: var(--mint); font-weight: 500; }
+
+/* === DECISOES 14 === */
+.dec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.4rem, 0.9vw, 0.7rem); flex: 1; min-height: 0; }
+.dec {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: clamp(0.625rem, 1.2vw, 0.95rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.2rem, 0.4vw, 0.35rem);
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+.dec-n { font-family: var(--font-mono); font-size: var(--tiny); color: var(--mint); font-weight: 500; }
+.dec-t { font-size: var(--small); font-weight: 500; line-height: 1.25; color: var(--text); }
+.dec-b { font-size: var(--tiny); color: var(--text-3); line-height: 1.35; overflow: hidden; }
+.dec.new { border-left: 2px solid var(--mint); }
+.dec.new .dec-n::after { content: ' · nova'; color: var(--mint); }
+
+/* === PILARES === */
+.pilares { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1.5rem); flex: 1; min-height: 0; }
+.pilar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: clamp(1rem, 2vw, 1.75rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.p-icon {
+  width: clamp(2.5rem, 4vw, 3.5rem);
+  height: clamp(2.5rem, 4vw, 3.5rem);
+  border-radius: 50%;
+  background: var(--mint-dim);
+  display: grid; place-items: center;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  color: var(--mint);
+  font-family: var(--font-mono); font-weight: 600;
+}
+.pilar h3 { font-size: clamp(1rem, 1.5vw, 1.3rem); }
+.pilar p { font-size: var(--small); line-height: 1.5; }
+.p-mono { font-family: var(--font-mono); font-size: var(--tiny); color: var(--mint); padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.625rem, 1.2vw, 1rem); background: var(--mint-soft); border-radius: 4px; border: 1px solid var(--border); margin-top: auto; }
+
+/* === HORIZONTE === */
+.horiz { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.9rem); flex: 1; min-height: 0; justify-content: center; }
+.v {
+  display: grid; grid-template-columns: clamp(4rem, 7vw, 5.5rem) 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  align-items: start;
+  padding: clamp(0.625rem, 1.2vw, 1rem) clamp(0.875rem, 1.8vw, 1.5rem);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+.v-tag { font-family: var(--font-mono); font-size: clamp(0.9rem, 1.4vw, 1.1rem); font-weight: 600; color: var(--mint); letter-spacing: 0.02em; }
+.v-items { display: flex; flex-wrap: wrap; gap: clamp(0.3rem, 0.6vw, 0.5rem); }
+.v-item { font-size: var(--tiny); padding: 3px 10px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 20px; color: var(--text-2); font-family: var(--font-mono); letter-spacing: 0.01em; }
+
+/* === ROI === */
+.roi {
+  align-items: center; justify-content: center; text-align: center;
+  background: radial-gradient(ellipse at 50% 60%, var(--mint-soft) 0%, transparent 60%), var(--bg);
+}
+.roi-wrap { display: flex; flex-direction: column; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); position: relative; z-index: 1; }
+.roi-date {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3rem, 10vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--mint);
+}
+.roi-sub { font-family: var(--font-sans); font-size: clamp(1rem, 1.6vw, 1.4rem); color: var(--text); max-width: 720px; line-height: 1.4; font-weight: 400; }
+.roi-m { display: flex; gap: clamp(1rem, 2.5vw, 3rem); padding-top: clamp(0.75rem, 1.5vw, 1.25rem); border-top: 1px solid var(--border); flex-wrap: wrap; justify-content: center; }
+.roi-m-val { font-family: var(--font-mono); font-size: clamp(0.9rem, 1.4vw, 1.15rem); color: var(--mint); font-weight: 600; }
+.roi-m-lbl { font-family: var(--font-mono); font-size: var(--tiny); color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* === NAV === */
+.progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--mint); z-index: 100; width: 0%; transition: width 0.1s linear; }
+.dots { position: fixed; right: clamp(1rem, 2vw, 2rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.5rem; z-index: 50; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.dot:hover { transform: scale(1.3); }
+.dot.active { background: var(--mint); transform: scale(1.4); }
+.hint {
+  position: fixed;
+  bottom: clamp(0.5rem, 1vw, 1rem);
+  left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: var(--tiny);
+  color: var(--text-3);
+  z-index: 50;
+  padding: clamp(0.35rem, 0.7vw, 0.6rem) clamp(0.625rem, 1.2vw, 1rem);
+  background: rgba(18, 21, 28, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* === BREAKPOINTS === */
+@media (max-height: 700px) {
+  :root { --pad: clamp(1rem, 3vw, 2.5rem); --gap: clamp(0.5rem, 1.2vw, 1rem); --title: clamp(1.5rem, 4vw, 3rem); --h2: clamp(1.1rem, 2.5vw, 1.8rem); }
+}
+@media (max-height: 600px) {
+  :root { --pad: clamp(0.75rem, 2.5vw, 1.5rem); --gap: clamp(0.35rem, 0.8vw, 0.75rem); }
+  .dots, .hint { display: none; }
+}
+@media (max-width: 860px) {
+  .g4, .g3, .tools, .pilares { grid-template-columns: 1fr; }
+  .dec-grid { grid-template-columns: 1fr 1fr; }
+  .g-scale, .g-row { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<nav class="dots" id="dots"></nav>
+<div class="hint">← → · espaco · scroll</div>
+
+<!-- 01 · CAPA -->
+<section class="slide capa">
+  <div class="capa-wrap">
+    <span class="eyebrow r">buscou.ai · arquitetura</span>
+    <h1 class="r">Anna <span>Mel</span></h1>
+    <div class="searchbar r">
+      <span style="color: var(--mint)">▸</span>
+      <span>agente unica de atendimento<span class="cursor"></span></span>
+    </div>
+    <p class="capa-sub r">Uma persona, tres contextos, seis tools. MVP v2 — atende, agenda, aprende, recupera.</p>
+    <div class="capa-tags r">
+      <span>lead &rarr; agenda</span>
+      <span>cliente &rarr; aprende</span>
+      <span>inadimplente &rarr; recupera</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · IDENTIDADE -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>02 / quem e a Anna Mel</span>
+    <span>01 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>Uma <em>unica</em> persona feminina, escopo fechado, transparencia total.</h2></div>
+    <div class="g4">
+      <div class="card card-a r">
+        <span class="card-lbl">persona</span>
+        <h3>Anna Mel</h3>
+        <p>Nome fixo (A-N-N-A M-E-L). Voz feminina expressa em cada mensagem — "oi", "oii", "tudo bem" nunca "opa", "cara", "mano".</p>
+      </div>
+      <div class="card card-a r">
+        <span class="card-lbl">tom</span>
+        <h3>Consultiva, amigavel, proxima, respeitosa</h3>
+        <p>Orienta sem pressionar. Calor sem intimidade. Informalidade leve sem giria. Nunca corporate, nunca distante.</p>
+      </div>
+      <div class="card card-a r">
+        <span class="card-lbl">escopo</span>
+        <h3>Fala so de buscou.ai</h3>
+        <p>Produto, SEO, AIO, oferta, onboarding, conta, agenda de reuniao, recuperacao. Fora do tema &rarr; redirecionamento cortes.</p>
+      </div>
+      <div class="card card-a r">
+        <span class="card-lbl">transparencia</span>
+        <h3>Admite ser IA</h3>
+        <p>"Sou a Anna Mel, agente de atendimento da buscou.ai" na primeira mensagem. Alinha com a marca — vendemos IA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · ARQUITETURA -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>03 / arquitetura MVP</span>
+    <span>02 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>Como ela processa uma <em>mensagem</em> — 7 camadas.</h2></div>
+    <div class="layers">
+      <div class="layer r"><span class="l-num">01</span><div class="l-body"><h3>Webhook Uazapi</h3><p>recebe texto, audio ou imagem do WhatsApp</p></div><span class="l-tag">WhatsApp</span></div>
+      <div class="layer r"><span class="l-num">02</span><div class="l-body"><h3>Buffer Redis 20s</h3><p>debounce de rajadas — agrega msgs fragmentadas</p></div><span class="l-tag">Upstash</span></div>
+      <div class="layer r"><span class="l-num">03</span><div class="l-body"><h3>Whisper / Vision</h3><p>transcreve audio, le imagens (prints de bug, docs)</p></div><span class="l-tag">OpenAI</span></div>
+      <div class="layer r"><span class="l-num">04</span><div class="l-body"><h3>Busca FAQ · ILIKE + trigram</h3><p>top 5 similares em faqs_aprendidas — RAG simples</p></div><span class="l-tag">Postgres pg_trgm</span></div>
+      <div class="layer r"><span class="l-num">05</span><div class="l-body"><h3>Memoria de sessao</h3><p>20 mensagens · TTL 48h</p></div><span class="l-tag">Redis</span></div>
+      <div class="layer r"><span class="l-num">06</span><div class="l-body"><h3>Constituicao + conhecimento</h3><p>system prompt fixo ate 3500 tokens</p></div><span class="l-tag">Git · versionada</span></div>
+      <div class="layer r"><span class="l-num">07</span><div class="l-body"><h3>GPT-4o com 6 tools</h3><p>resposta em blocos separados por <code>---</code> com delay humanizado</p></div><span class="l-tag">OpenAI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · 3 CONTEXTOS -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>04 / cobertura dos 3 contextos</span>
+    <span>03 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>Mesma persona, <em>papeis diferentes</em> em cada contexto.</h2></div>
+    <div class="g3">
+      <div class="ctx r">
+        <div class="ctx-head"><span class="ctx-num">01 · lead</span></div>
+        <h3>Pre-venda</h3>
+        <div class="ctx-role">acolhe &middot; qualifica &middot; agenda</div>
+        <ul>
+          <li>Lead chega reativo (botao WhatsApp da landing)</li>
+          <li>Anna acolhe, pergunta nome, tira duvidas</li>
+          <li>Qualifica: nicho, cidade, dor</li>
+          <li>Consulta Google Calendar <span class="m">BuscouAI-Comercial</span></li>
+          <li>Agenda reuniao de 30min</li>
+          <li>Closer humano fecha no call</li>
+        </ul>
+        <div class="ctx-foot"><strong>nunca</strong> envia link de pagamento pra lead</div>
+      </div>
+      <div class="ctx r">
+        <div class="ctx-head"><span class="ctx-num">02 · cliente</span></div>
+        <h3>Suporte ativo</h3>
+        <div class="ctx-role">responde &middot; aprende &middot; le imagens</div>
+        <ul>
+          <li>Busca ILIKE em FAQs aprendidas (top 5)</li>
+          <li>Responde do prompt + base acumulada</li>
+          <li>Pergunta nova &rarr; <span class="m">registrar_faq_aprendida</span></li>
+          <li>Vision le prints de erro, docs, screenshots</li>
+          <li>Conhecimento cresce a cada conversa</li>
+          <li>100% IA — sem escalacao humana</li>
+        </ul>
+        <div class="ctx-foot">contato humano <strong>so na reuniao</strong> (contexto lead)</div>
+      </div>
+      <div class="ctx r">
+        <div class="ctx-head"><span class="ctx-num">03 · atraso</span></div>
+        <h3>Recuperacao ativa</h3>
+        <div class="ctx-role">alerta &middot; cobra &middot; recupera</div>
+        <ul>
+          <li>Gatilho: <span class="m">status_pagamento=atraso</span></li>
+          <li>Vercel Cron diario dispara regua</li>
+          <li><strong>D+1</strong> cordial &middot; <strong>D+3</strong> alerta</li>
+          <li><strong>D+7</strong> motor pausa + link recuperacao</li>
+          <li><strong>D+14</strong> reforco &middot; <strong>D+21</strong> ultima tentativa</li>
+          <li>Stop: cliente paga &rarr; regua <span class="m">recuperada</span></li>
+        </ul>
+        <div class="ctx-foot">aqui <strong>sim</strong> envia link — recuperar, nao fechar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · 6 TOOLS -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>05 / as 6 tools do MVP</span>
+    <span>04 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>Seis ferramentas: <em>agenda, aprende, recupera</em>.</h2></div>
+    <div class="tools">
+      <div class="tool r"><span class="t-icon">01</span><code>consultar_agenda()</code><p>Le slots livres do Google Calendar compartilhado BuscouAI-Comercial em horario comercial (9-19h).</p><span class="t-ctx">contexto: lead</span></div>
+      <div class="tool r"><span class="t-icon">02</span><code>criar_reuniao()</code><p>Cria evento no GCal com Joao e Vitoria como convidados default. Envia invite automatico.</p><span class="t-ctx">contexto: lead</span></div>
+      <div class="tool r"><span class="t-icon">03</span><code>remarcar_reuniao()</code><p>Reagenda evento existente. Notifica participantes.</p><span class="t-ctx">contexto: lead</span></div>
+      <div class="tool r"><span class="t-icon">04</span><code>cancelar_reuniao()</code><p>Cancela evento no GCal com motivo registrado em mensagens_atendimento.</p><span class="t-ctx">contexto: lead</span></div>
+      <div class="tool r"><span class="t-icon">05</span><code>registrar_faq_aprendida()</code><p>Salva pergunta e resposta em faqs_aprendidas. Normaliza para busca trigram.</p><span class="t-ctx">contexto: cliente ativo</span></div>
+      <div class="tool r"><span class="t-icon">06</span><code>enviar_link_recuperacao()</code><p>Envia URL <span class="m">/recuperacao/{org_id}</span> (PIX manual). Atualiza cobrancas_recuperacao.</p><span class="t-ctx">contexto: inadimplente</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · GANTT -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>06 / plano de entrega</span>
+    <span>05 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>Cinco filhas em <em>~ 4 semanas</em>, owner unico Joao.</h2></div>
+    <div class="gantt">
+      <div class="g-scale r">
+        <span></span>
+        <div class="g-weeks"><span>sem 1 · 04/28</span><span>sem 2 · 05/04</span><span>sem 3 · 05/11</span><span>sem 4 · 05/18</span><span>sem 5 · 05/26</span></div>
+      </div>
+      <div class="g-row r"><span class="g-lbl"><span class="g-id">BAI-50</span>F0 · Decision log</span><div class="g-track"><div class="g-bar" style="left: 0%; width: 12%;">28/04</div></div></div>
+      <div class="g-row r"><span class="g-lbl"><span class="g-id">BAI-51</span>F1 · Setup tecnico</span><div class="g-track"><div class="g-bar" style="left: 8%; width: 18%;">04/05</div></div></div>
+      <div class="g-row r"><span class="g-lbl"><span class="g-id">BAI-52</span>F2 · Constituicao</span><div class="g-track"><div class="g-bar" style="left: 20%; width: 20%;">08/05</div></div></div>
+      <div class="g-row r"><span class="g-lbl"><span class="g-id">BAI-53</span>F3 · Anna no ar</span><div class="g-track"><div class="g-bar" style="left: 35%; width: 33%;">18/05</div></div></div>
+      <div class="g-row r"><span class="g-lbl"><span class="g-id">BAI-54</span>F4 · Dogfooding</span><div class="g-track"><div class="g-bar v" style="left: 65%; width: 33%;">26/05 &middot; umbrella</div></div></div>
+      <div class="g-foot r">
+        <span>umbrella <strong>BAI-49</strong> &rarr; 2026-05-26</span>
+        <span>dep: <strong>BAI-41</strong> Gmail corp</span>
+        <span>dep opcional: <strong>BAI-22</strong> Stripe (V1.1)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · 14 DECISOES -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>07 / decisoes canonicas</span>
+    <span>06 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>14 decisoes fechadas — <em>nao negociaveis</em> sem novo decision log.</h2></div>
+    <div class="dec-grid">
+      <div class="dec r"><span class="dec-n">01</span><span class="dec-t">Persona unica Anna Mel</span><span class="dec-b">A-N-N-A M-E-L · nome fixo</span></div>
+      <div class="dec new r"><span class="dec-n">02</span><span class="dec-t">Voz feminina expressa</span><span class="dec-b">"oi" nunca "opa" / "cara" / "mano"</span></div>
+      <div class="dec r"><span class="dec-n">03</span><span class="dec-t">Escopo fechado</span><span class="dec-b">so buscou.ai · redir. cortes fora</span></div>
+      <div class="dec r"><span class="dec-n">04</span><span class="dec-t">Admite ser IA</span><span class="dec-b">1a msg · alinha com marca</span></div>
+      <div class="dec r"><span class="dec-n">05</span><span class="dec-t">Hibrida c/ vies humano</span><span class="dec-b">proxima sem ser intima</span></div>
+      <div class="dec new r"><span class="dec-n">06</span><span class="dec-t">Stack OpenClaw VPS (revisado)</span><span class="dec-b">OpenClaw framework + Codex CLI + Uazapi · V1 reduzida</span></div>
+      <div class="dec new r"><span class="dec-n">07</span><span class="dec-t">/root/.openclaw/ no VPS (revisado)</span><span class="dec-b">workspace/agents/anna-mel · 72.60.9.128</span></div>
+      <div class="dec r"><span class="dec-n">08</span><span class="dec-t">LGPD by design</span><span class="dec-b">consentimento + retencao + esquecimento</span></div>
+      <div class="dec r"><span class="dec-n">09</span><span class="dec-t">Vault prevalece</span><span class="dec-b">conflito c/ cliente · verdade canonica</span></div>
+      <div class="dec r"><span class="dec-n">10</span><span class="dec-t">Constituicao versionada</span><span class="dec-b">git · arquivo unico</span></div>
+      <div class="dec new r"><span class="dec-n">11</span><span class="dec-t">Lead = agenda, nao fecha</span><span class="dec-b">closer humano no call</span></div>
+      <div class="dec new r"><span class="dec-n">12</span><span class="dec-t">Cliente ativo = 100% IA</span><span class="dec-b">sem escalacao · aprende sempre</span></div>
+      <div class="dec new r"><span class="dec-n">13</span><span class="dec-t">Regua ativa 5 msgs</span><span class="dec-b">D+1 / D+3 / D+7 / D+14 / D+21</span></div>
+      <div class="dec new r"><span class="dec-n">14</span><span class="dec-t">Contato reativo</span><span class="dec-b">lead inicia · sem webhook landing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · LGPD -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>08 / privacidade por design</span>
+    <span>07 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>LGPD nao e <em>adendo</em> — e tres pilares no MVP.</h2></div>
+    <div class="pilares">
+      <div class="pilar r">
+        <span class="p-icon">01</span>
+        <h3>Consentimento</h3>
+        <p>Primeira mensagem da Anna ja inclui opt-in inline. Opt-in tacito por continuidade da conversa.</p>
+        <span class="p-mono">conversas_atendimento.consentimento_lgpd_em</span>
+      </div>
+      <div class="pilar r">
+        <span class="p-icon">02</span>
+        <h3>Retencao</h3>
+        <p>Tres janelas: lead nao-convertido <strong>90 dias</strong>, cliente ativo <strong>indefinido</strong>, ex-cliente <strong>6 meses</strong>. Hard-delete via cron.</p>
+        <span class="p-mono">cron · purga de retencao</span>
+      </div>
+      <div class="pilar r">
+        <span class="p-icon">03</span>
+        <h3>Esquecimento</h3>
+        <p>Endpoint publico pra solicitar esquecimento imediato. Delete em cascata: conversas, mensagens, reunioes, cobrancas.</p>
+        <span class="p-mono">POST /api/privacy/forget</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · HORIZONTE -->
+<section class="slide">
+  <div class="shead">
+    <span class="brand">buscou<span class="ai">.ai</span></span>
+    <span>09 / horizonte V1.1 &rarr; V2</span>
+    <span>08 / 10</span>
+  </div>
+  <div class="slide-content">
+    <div class="r"><h2>MVP e o comeco — o resto esta <em>preservado</em> no vault.</h2></div>
+    <div class="horiz">
+      <div class="v r">
+        <span class="v-tag">V1.1</span>
+        <div class="v-items">
+          <span class="v-item">Stripe webhooks · inadimplencia auto</span>
+          <span class="v-item">Stripe Checkout na regua</span>
+          <span class="v-item">Embeddings pgvector</span>
+          <span class="v-item">2 calendarios alocados</span>
+          <span class="v-item">Behavioral Memory Layer</span>
+          <span class="v-item">Eduarda extractor paralelo</span>
+        </div>
+      </div>
+      <div class="v r">
+        <span class="v-tag">V1.2</span>
+        <div class="v-items">
+          <span class="v-item">Corpus RAG pgvector completo</span>
+          <span class="v-item">Mode detection hibrida</span>
+          <span class="v-item">Tools de suporte avancado</span>
+          <span class="v-item">Consulta metricas reais</span>
+          <span class="v-item">Multi-lingua</span>
+        </div>
+      </div>
+      <div class="v r">
+        <span class="v-tag">V1.3</span>
+        <div class="v-items">
+          <span class="v-item">Macro signals SEO/AIO</span>
+          <span class="v-item">Deteccao AI engine origem</span>
+          <span class="v-item">Contato proativo · webhook landing</span>
+        </div>
+      </div>
+      <div class="v r">
+        <span class="v-tag">V2</span>
+        <div class="v-items">
+          <span class="v-item">Chat in-app</span>
+          <span class="v-item">Multi-canal</span>
+          <span class="v-item">Dashboard kanban</span>
+          <span class="v-item">Score preditivo</span>
+          <span class="v-item">Agente pos-venda</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · ROI -->
+<section class="slide roi">
+  <div class="roi-wrap">
+    <span class="eyebrow r" style="color: var(--text-3)">quando comeca a dar ROI</span>
+    <h1 class="roi-date r">26 / 05 / 26</h1>
+    <p class="roi-sub r">Fim da F4 — dogfooding 15/15 validado, regua operando end-to-end, FAQ crescendo, Anna pronta pro primeiro cliente externo real.</p>
+    <div class="roi-m r">
+      <div><div class="roi-m-val">15/15</div><div class="roi-m-lbl">cenarios</div></div>
+      <div><div class="roi-m-val">&lt; $0.05</div><div class="roi-m-lbl">custo/msg</div></div>
+      <div><div class="roi-m-val">&lt; 10s</div><div class="roi-m-lbl">latencia</div></div>
+      <div><div class="roi-m-val">100% IA</div><div class="roi-m-lbl">em suporte</div></div>
+      <div><div class="roi-m-val">6 tools</div><div class="roi-m-lbl">ativas</div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  dotsEl.innerHTML = '';
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    dotsEl.appendChild(d);
+  });
+  const dots = dotsEl.querySelectorAll('.dot');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        const idx = Array.from(slides).indexOf(e.target);
+        if (idx >= 0) {
+          current = idx;
+          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+          progress.style.width = ((idx + 1) / slides.length * 100) + '%';
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach((s) => obs.observe(s));
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)) {
+      e.preventDefault();
+      slides[Math.min(current + 1, slides.length - 1)].scrollIntoView({ behavior: 'smooth' });
+    } else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) {
+      e.preventDefault();
+      slides[Math.max(current - 1, 0)].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'Home') { e.preventDefault(); slides[0].scrollIntoView({ behavior: 'smooth' }); }
+    else if (e.key === 'End') { e.preventDefault(); slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' }); }
+  });
+
+  let ty = null;
+  document.addEventListener('touchstart', (e) => { ty = e.touches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (ty === null) return;
+    const diff = ty - e.changedTouches[0].clientY;
+    if (Math.abs(diff) > 50) {
+      const next = diff > 0 ? Math.min(current + 1, slides.length - 1) : Math.max(current - 1, 0);
+      slides[next].scrollIntoView({ behavior: 'smooth' });
+    }
+    ty = null;
+  }, { passive: true });
+
+  slides[0].classList.add('visible');
+})();
+</script>
+</body>
+</html>

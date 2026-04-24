@@ -14,6 +14,7 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
 > **Ultimas alteracoes Nivel 1:**
+> - **2026-04-24 (noite)** — **Arquitetura Anna Mel: pivot para OpenClaw no VPS (escopo reduzido MVP)** (ver [[Decision Log - 2026-04-24 - Arquitetura Anna Mel OpenClaw]]). Revoga decisoes canonicas #6 (stack) e #7 (pasta) da Anna Mel. V1 e executada no framework OpenClaw em `root@72.60.9.128` com apenas **Lead inbound context** (sem regua, sem FAQ aprendizado, sem Cal.com integration profunda). Outras 12 decisoes canonicas da Anna Mel permanecem intactas.
 > - **2026-04-24 (noite)** — **Reversao Track 1 Self-Service** (ver [[Decision Log - 2026-04-24 - Reversao Track 1]]). Revoga parcialmente o Dual-Track da manha: remove Track 1 self-service da landing. Fluxo volta a ser **unico consultivo** — landing nao expoe preco, pagamento via Payment Link Stripe enviado por WhatsApp pela Anna Mel (ou dono/Vitoria em V1 manual) pos-reuniao. Politica de Desconto preservada (cupons continuam, canal de aplicacao muda pra Payment Link).
 > - **2026-04-24 (tarde)** — **Politica de Desconto de Implementacao** (ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Implementacao passa a ser **negociavel caso a caso** via Cupom Stripe, aplicado em canal privado, nunca exposto em copy publico. Infra mensal permanece **inegociavel** (R$ 300/mes). Limite trimestral de 3 aplicacoes (do Parceiro Networking) e revogado. Beneficio Parceiro Networking e absorvido pela politica geral.
 > - **2026-04-24 (manha)** — ~~Dual-Track V1: self-service Stripe + consultivo Cal.com~~ **(parcialmente revogado pela Reversao Track 1 acima)** — ver [[Decision Log - 2026-04-24 - Dual-Track]]. Track 2 consultivo preservado como fluxo unico; Track 1 self-service removido.
@@ -318,6 +319,8 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 
 A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnostico. Ver [[Decision Log - 2026-04-24 - Reversao Track 1]] pra racional completo. Revoga parcialmente o Dual-Track da manha de 2026-04-24 — Track 1 self-service removido; Track 2 preservado como fluxo unico.
 
+> **Nota operacional sobre a Anna Mel (V1):** a partir de 2026-04-24 a arquitetura da Anna Mel foi pivotada pra OpenClaw no VPS com **escopo V1 reduzido** — so Lead inbound. Ver [[Decision Log - 2026-04-24 - Arquitetura Anna Mel OpenClaw]]. Na V1, **todas as acoes pos-reuniao abaixo marcadas como "Anna Mel envia"** (Payment Link, credenciais, regua D+27, cadencia multi-dia) sao executadas **manualmente** por Joao/Vitoria. V1.1+ Anna Mel assume progressivamente cada automacao.
+
 **Quando usar (perfil do cliente):** todo cliente passa pelo mesmo caminho, seja decidido, indeciso, ICP primario ou secundario. A qualificacao acontece na reuniao.
 
 1. Cliente chega na landing `www.buscouai.com`.
@@ -351,7 +354,7 @@ A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnosti
 - **Qualificacao leve** acontece na reuniao. Se nao fit, entrega diagnostico de cortesia e nao envia proposta.
 - **Canal de pagamento:** Payment Link do Stripe enviado via WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual). Nao e Checkout publico.
 - **Desconto e cupom** ([[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]): aplicado pelo dono no Payment Link enviado, nunca exposto publicamente.
-- **Anna Mel** (quando BAI-49 F3 operante) faz nutricao pre + confirmacao pos + cadencia de fechamento + onboarding pos-venda + regua de cobranca. Ate la, operacao V1 manual (Joao+Vitoria com copy assinado "equipe buscou.ai").
+- **Anna Mel V1** (OpenClaw no VPS, ver [[Decision Log - 2026-04-24 - Arquitetura Anna Mel OpenClaw]]) atende apenas **Lead inbound** — recebe mensagem fria, qualifica leve, oferece agendamento via link Cal.com estatico, escala pro Joao quando necessario. Nutricao pre-reuniao, confirmacao pos-reuniao, cadencia de fechamento, envio de Payment Link, regua D+27 e demais automacoes sao operacao manual de Joao/Vitoria na V1; cada uma volta a ser automatizada em V1.1+.
 - **Ciclo-alvo:** primeiro contato (agendamento) ao pagamento em ate 7 dias.
 
 ### Canal de comunicacao pos-venda (V1)
