@@ -33,6 +33,8 @@ desktop.ini
 *.swo
 
 # === Claude Code (local-only, nao compartilha) ===
+# NUNCA commitar settings.json - grava comandos Bash autorizados que podem conter API keys inline.
+.claude/settings.json
 .claude/settings.local.json
 .claude/plans/
 
