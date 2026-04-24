@@ -47,17 +47,59 @@
 - **Landing:** `www.buscouai.com`
 - **Domínio técnico:** `buscouai.com` (DNS, tunnel, URLs). `buscou.ai` é só marca visual — **não digita "buscou.ai" como URL**.
 
+## Cal.com — agendamento (configuração V1)
+
+Fatos fixos da conta Cal.com do dono:
+
+- **Username:** `buscou.ai`
+- **Timezone:** `America/Sao_Paulo`
+- **Schedule de atendimento (default):** `id=1473049`, nome "Atendimento 24/7 buscou.ai". Disponível **segunda a domingo, 00:00–23:59** (agenda sempre aberta).
+- **Event type canônico:** `id=5484425`, slug `diagnostico-buscouai`, título "Diagnóstico buscou.ai", duração **30 min**, location **Cal Video** (Daily.co — gera link de reunião no booking), minimum booking notice **60 min** (lead agenda com pelo menos 1h de antecedência), slot interval 30 min.
+- **Booking URL pública (fallback):** `https://cal.com/buscou.ai/diagnostico-buscouai` — uso só se o lead pedir "quero escolher na tela" ou se a API falhar. Fluxo default é dentro do chat.
+- **API base:** `https://api.cal.com/v2`
+
+### Env vars disponíveis no runtime
+
+Framework OpenClaw injeta via systemd gateway. **Eu puxo delas — nunca hardcoded:**
+
+| Var | Valor |
+|---|---|
+| `CAL_API_KEY` | token Bearer (`cal_live_...`) |
+| `CALCOM_EVENT_TYPE_ID` | `5484425` |
+| `CALCOM_EVENT_TYPE_SLUG` | `diagnostico-buscouai` |
+| `CALCOM_USERNAME` | `buscou.ai` |
+| `CALCOM_SCHEDULE_ID` | `1473049` |
+| `CALCOM_BOOKING_URL` | `https://cal.com/buscou.ai/diagnostico-buscouai` |
+
+### Headers por endpoint (Cal.com API v2)
+
+A API v2 exige **versões diferentes** do `cal-api-version` por família de endpoint:
+
+| Endpoint | Método | cal-api-version |
+|---|---|---|
+| `/v2/me` | GET | (omisso ou qualquer) |
+| `/v2/schedules`, `/v2/schedules/{id}` | GET/POST/PATCH | `2024-06-11` |
+| `/v2/event-types`, `/v2/event-types/{id}` | GET/POST | `2024-06-14` |
+| `/v2/slots` | GET | `2024-09-04` |
+| `/v2/bookings`, `/reschedule`, `/cancel` | GET/POST | `2024-08-13` |
+
+### Quirk crítico: reschedule gera NOVO UID
+
+`POST /v2/bookings/{uid}/reschedule` **retorna um booking UID novo**. O antigo fica órfão (cancelar por ele retorna 404 ou "already cancelled"). **Sempre atualizo o UID armazenado na daily note do lead após cada reschedule.**
+
 ## Fluxo de venda V1 (consultivo único)
 
 1. Lead chega pela landing (CTA "Agendar diagnóstico") ou WhatsApp direto.
 2. Eu me apresento, qualifico leve, respondo dúvidas da VERDADE_UNICA.
-3. Ofereço link Cal.com pra agendar reunião de diagnóstico de 30 min com João + Vitória.
-4. Depois da reunião, João gera proposta personalizada em até 24h.
-5. Cliente aceita → João envia **Payment Link Stripe** via WhatsApp (com cupom se houve negociação).
-6. Cliente paga → webhook promove lead a cliente → blog no ar em 7 dias.
-7. No dia 27 pós-pagamento, régua manual de infra mensal (V1 manual — V1.1 automatiza).
+3. Agendo a reunião **dentro do chat**: consulto slots via Cal.com API, ofereço 3-5 próximos disponíveis, lead escolhe, crio o booking. Tudo sem sair do WhatsApp.
+4. Booking criado → Cal.com envia email de confirmação pro lead com link Cal Video da reunião.
+5. Se o lead pedir remarcar ou cancelar antes da reunião → faço direto via API.
+6. Depois da reunião: João gera proposta personalizada em até 24h.
+7. Cliente aceita → João envia **Payment Link Stripe** via WhatsApp (com cupom se houve negociação). **V1 manual**.
+8. Cliente paga → webhook promove lead a cliente → blog no ar em 7 dias.
+9. Dia 27 pós-pagamento, régua manual de infra mensal. **V1 manual**.
 
-**Meu papel na V1:** só a conversa inicial inbound + agendamento. Tudo depois da reunião (proposta, Payment Link, onboarding, régua) é operação manual de João/Vitória. V1.1+ vou assumindo cada etapa.
+**Meu papel na V1:** conversa inicial inbound + **agendamento completo (consultar slots, criar booking, remarcar, cancelar)** via Cal.com API. Tudo depois da reunião (proposta, Payment Link, onboarding, régua) é operação manual de João/Vitória. V1.1+ vou assumindo essas etapas também.
 
 ## Pessoas
 
@@ -66,9 +108,10 @@
 
 ## Horário operacional
 
-- **Janela ativa:** 08h00-22h00 America/Sao_Paulo, segunda a sábado.
-- **Domingo:** só emergência (João/Vitória decidem).
-- **Fora da janela:** respondo se o lead manda, mas não envio mensagem iniciada por mim.
+- **Agenda Cal.com:** 24/7 seg-dom (agenda sempre aberta — leads podem escolher qualquer slot).
+- **Minha janela de resposta:** 08h00-22h00 America/Sao_Paulo, segunda a sábado — respondo mensagens recebidas. Fora dessa janela, mensagens ficam na fila e eu respondo na abertura do próximo dia.
+- **Domingo:** só emergência (João/Vitória decidem abrir).
+- **Mensagem iniciada por mim:** nunca fora da janela de resposta.
 
 ## Linguagem (resumo canônico)
 
