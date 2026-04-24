@@ -15,8 +15,9 @@
 |---|---|---|---|
 | Instagram | https://www.instagram.com/p/DXfUQawjv8A | 2026-04-23 | [BAI-38](https://linear.app/joao-lucas-ucceli/issue/BAI-38) |
 | TikTok | https://www.tiktok.com/@buscou.ai/photo/7632102014847159553 | 2026-04-23 | [BAI-64](https://linear.app/joao-lucas-ucceli/issue/BAI-64) |
+| LinkedIn | https://www.linkedin.com/posts/buscou-ai-502875405_buscouai-seolocal-aio-share-7453231048320225280-pz6z | 2026-04-23 | [BAI-66](https://linear.app/joao-lucas-ucceli/issue/BAI-66) |
 
-Carrossel de 6 fotos publicado nas duas redes com **mesma legenda v3** (3 emojis 📱 😬 💬 + 9 hashtags). TikTok aceita Photo Mode multi-foto via Post for Me API sem ajuste — payload idêntico ao do IG, nenhum campo extra em `platform_configurations`. Aspect ratio 4:5 não é nativo do TikTok (prefere 9:16), exibe com padding — aceitável pra MVP de paridade.
+Carrossel de 6 fotos publicado nas 3 redes com **mesma legenda v3** (3 emojis 📱 😬 💬 + 9 hashtags). Post for Me aceita multi-image nas 3 redes com payload uniforme (`media` array), nenhum campo extra em `platform_configurations`. Caveat visual: LinkedIn **não tem carrossel swipe nativo** — exibe os 6 cards em layout grid (perde a narrativa card-a-card do formato original). Alternativa futura: publicar como document post (PDF com 6 slides) pra LinkedIn ter swipe real.
 
 ## Objetivo editorial
 
