@@ -17,6 +17,10 @@
 <meta name="twitter:title" content="buscou.ai — Se alguem buscou, quem apareceu foi voce?">
 <meta name="twitter:description" content="Tecnologia que coloca seu negocio nos resultados de busca e em respostas de IA automaticamente.">
 <link rel="canonical" href="https://www.buscouai.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"buscou.ai","legalName":"BuscouAI","url":"https://www.buscouai.com","logo":"https://www.buscouai.com/buscou-ai-primary-dark.svg","description":"Tecnologia que coloca seu negocio nos resultados de busca do Google e nas respostas de IA.","contactPoint":{"@type":"ContactPoint","telephone":"+55-27-99696-0847","contactType":"sales","areaServed":"BR","availableLanguage":"Portuguese"}}
 </script>
@@ -515,20 +519,36 @@ section { padding: 100px 0; position: relative; }
   position: relative;
   overflow: hidden;
 }
+@property --flow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
 .flow-wrap::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 30%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--ai), transparent);
-  animation: flow-sweep 4s ease-in-out infinite;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--flow-angle),
+    transparent 0deg,
+    transparent 270deg,
+    var(--ai) 330deg,
+    var(--ai-300) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: flow-orbit 4s linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px var(--ai-glow));
 }
-@keyframes flow-sweep {
-  0% { left: -30%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
+@keyframes flow-orbit {
+  to { --flow-angle: 360deg; }
 }
 
 .flow-step {
@@ -710,7 +730,7 @@ section { padding: 100px 0; position: relative; }
 @media (max-width: 540px)  { .niches-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   BLOG PREVIEW
+   BLOG PREVIEW — fiel ao prototipo do blog real
 ============================================================ */
 .blog-preview {
   padding: 100px 0 80px;
@@ -724,88 +744,337 @@ section { padding: 100px 0; position: relative; }
 .blog-browser {
   margin-top: 48px;
 }
-.blog-mock {
+.blog-mock-page {
+  padding: 32px 40px 40px;
   background: var(--bg);
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
-.blog-mock-featured {
-  padding: 36px 40px;
-  background: linear-gradient(135deg, var(--bg-elev-1), var(--bg-elev-2));
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  position: relative;
+
+/* mini-hero */
+.blog-mock-hero {
+  text-align: center;
+  padding: 16px 0 32px;
+  max-width: 640px;
+  margin: 0 auto;
 }
-.blog-mock-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ai);
-  padding: 4px 10px;
-  background: rgba(0, 229, 160, 0.08);
-  border: 1px solid rgba(0, 229, 160, 0.3);
-  border-radius: 4px;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.blog-mock-featured h3 {
-  font-size: 26px;
+.blog-mock-hero .eyebrow { margin-bottom: 16px; }
+.blog-mock-hero h3 {
+  font-size: 28px;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 12px;
-  max-width: 620px;
-}
-.blog-mock-featured p {
-  font-size: 14px;
-  color: var(--text-2);
-  line-height: 1.6;
-  max-width: 620px;
-  margin-bottom: 16px;
-}
-.blog-mock-meta {
-  display: flex;
-  gap: 18px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-3);
-}
-.blog-mock-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.blog-mock-card {
-  padding: 22px 20px 20px;
-  background: var(--bg-elev-1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 12px);
-}
-.blog-mock-category {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-3);
-  margin-bottom: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.blog-mock-card h4 {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 24px;
   color: var(--text);
 }
-.blog-mock-meta-mini {
+.blog-mock-hero h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-2);
+  font-weight: 400;
+}
+
+.blog-mock-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  background: rgba(15, 17, 23, 0.8);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
+}
+.blog-mock-search svg { color: var(--text-3); flex-shrink: 0; }
+.blog-mock-search .placeholder {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+  text-align: left;
+}
+.blog-mock-search .caret {
+  width: 2px;
+  height: 14px;
+  background: var(--ai);
+  box-shadow: 0 0 8px var(--ai-glow);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+/* pills de categoria */
+.blog-mock-cats {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.blog-mock-cats .cat-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+  margin-right: 4px;
+}
+.blog-mock-cats .cat-pill {
+  padding: 6px 12px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  cursor: default;
+  pointer-events: none;
+}
+.blog-mock-cats .cat-pill.active {
+  background: var(--ai);
+  color: var(--bg);
+  border-color: var(--ai);
+}
+.blog-mock-cats .cat-pill .count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  margin-left: 6px;
+  opacity: 0.6;
+}
+
+/* featured row */
+.blog-mock-featured-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+}
+.blog-mock-featured-visual {
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(ellipse at 30% 50%, var(--brand-soft), transparent 60%),
+    radial-gradient(ellipse at 80% 60%, var(--ai-soft), transparent 60%),
+    var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blog-mock-featured-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+}
+.blog-mock-search-mock {
+  position: relative;
+  max-width: 280px;
+  width: 80%;
+  padding: 10px 16px;
+  background: rgba(15, 17, 23, 0.85);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.blog-mock-search-mock svg { color: var(--text-3); flex-shrink: 0; }
+.blog-mock-search-mock span:not(.caret) { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.blog-mock-search-mock .caret {
+  width: 2px;
+  height: 12px;
+  background: var(--ai);
+  box-shadow: 0 0 8px var(--ai-glow);
+  margin-left: auto;
+  flex-shrink: 0;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+.blog-mock-featured-content .kicker {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--text-3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ai);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
+.blog-mock-featured-content .kicker .pill {
+  padding: 2px 8px;
+  background: var(--ai-soft);
+  border-radius: 4px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+.blog-mock-featured-content h4 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+.blog-mock-featured-content h4 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-2);
+  font-weight: 400;
+}
+.blog-mock-featured-content p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.blog-mock-featured-content .blog-mock-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: flex;
+  gap: 10px;
+}
+
+/* article grid */
+.blog-mock-articles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 32px 0 8px;
+}
+.blog-mock-art { display: flex; flex-direction: column; }
+.blog-mock-thumb {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.blog-mock-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.thumb-serif {
+  background:
+    radial-gradient(ellipse at 70% 70%, var(--brand-soft), transparent 60%),
+    var(--bg-elev-1);
+}
+.thumb-serif .thumb-title {
+  position: relative;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  text-align: center;
+  z-index: 1;
+}
+.thumb-serif .thumb-title .brand-accent {
+  color: var(--brand-300);
+  font-family: var(--font-mono);
+  font-style: normal;
+}
+.thumb-stat {
+  background:
+    radial-gradient(ellipse at 30% 30%, var(--ai-soft), transparent 60%),
+    var(--bg-elev-1);
+}
+.thumb-stat .thumb-stat-num {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1;
+  text-align: center;
+  z-index: 1;
+}
+.thumb-stat .thumb-stat-small {
+  font-size: 9px;
+  color: var(--ai);
+  display: block;
+  margin-top: 6px;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+}
+.thumb-search {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 107, 61, 0.1), transparent 60%),
+    var(--bg-elev-1);
+}
+.thumb-search-mock {
+  position: relative;
+  max-width: 220px;
+  width: 88%;
+  padding: 8px 14px;
+  background: rgba(8, 9, 13, 0.7);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text);
+  z-index: 1;
+}
+.thumb-search-mock svg { color: var(--text-3); flex-shrink: 0; }
+.thumb-search-mock span:not(.caret) { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.thumb-search-mock .caret {
+  width: 2px;
+  height: 11px;
+  background: var(--ai);
+  box-shadow: 0 0 8px var(--ai-glow);
+  margin-left: auto;
+  flex-shrink: 0;
+  animation: blink 1.1s steps(1) infinite;
+}
+.blog-mock-art .meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.blog-mock-art h5 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--text);
+}
+
 .blog-preview-cta {
   display: flex;
   flex-direction: column;
@@ -819,10 +1088,15 @@ section { padding: 100px 0; position: relative; }
   color: var(--text-3);
 }
 @media (max-width: 900px) {
-  .blog-mock { padding: 24px; }
-  .blog-mock-grid { grid-template-columns: 1fr; }
-  .blog-mock-featured { padding: 24px; }
-  .blog-mock-featured h3 { font-size: 20px; }
+  .blog-mock-page { padding: 24px; }
+  .blog-mock-featured-row { grid-template-columns: 1fr; gap: 24px; }
+  .blog-mock-articles { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .blog-mock-hero h3 { font-size: 22px; }
+  .blog-mock-featured-content h4 { font-size: 20px; }
+}
+@media (max-width: 540px) {
+  .blog-mock-articles { grid-template-columns: 1fr; }
+  .thumb-stat .thumb-stat-num { font-size: 36px; }
 }
 
 /* ============================================================
@@ -1743,31 +2017,78 @@ footer {
           seudominio.com.br / blog
         </div>
       </div>
-      <div class="blog-mock">
-        <div class="blog-mock-featured">
-          <div class="blog-mock-tag">Artigo em destaque</div>
-          <h3>Como escolher um dentista na sua região — guia 2026</h3>
-          <p>Checklist de 8 pontos que todo paciente deveria considerar antes de marcar a primeira consulta. Atualizado com base nas buscas mais comuns dos últimos 90 dias.</p>
-          <div class="blog-mock-meta">
-            <span>12 min de leitura</span>
-            <span>Atualizado há 2 dias</span>
+
+      <div class="blog-mock-page">
+        <!-- mini-hero com search -->
+        <div class="blog-mock-hero">
+          <div class="eyebrow"><span class="dot"></span>Blog · Clínica Odonto Vitória</div>
+          <h3>Tudo que sua região <em>está perguntando</em>.</h3>
+          <div class="blog-mock-search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
+            <span class="placeholder">Buscar artigos…</span>
+            <span class="caret"></span>
           </div>
         </div>
-        <div class="blog-mock-grid">
-          <article class="blog-mock-card">
-            <div class="blog-mock-category">Implantes</div>
-            <h4>Implante ou ponte fixa? Diferenças, custo e quando cada um faz sentido</h4>
-            <div class="blog-mock-meta-mini">8 min · 3 dias atrás</div>
+
+        <!-- pills de categoria -->
+        <div class="blog-mock-cats">
+          <span class="cat-label">CATEGORIAS</span>
+          <span class="cat-pill active">Todos <span class="count">42</span></span>
+          <span class="cat-pill">Implantes <span class="count">12</span></span>
+          <span class="cat-pill">Ortodontia <span class="count">8</span></span>
+          <span class="cat-pill">Prevenção <span class="count">15</span></span>
+          <span class="cat-pill">Casos reais <span class="count">5</span></span>
+        </div>
+
+        <!-- featured grid -->
+        <div class="blog-mock-featured-row">
+          <div class="blog-mock-featured-visual">
+            <div class="blog-mock-search-mock">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
+              <span>dentista perto de mim aberto agora</span>
+              <span class="caret"></span>
+            </div>
+          </div>
+          <div class="blog-mock-featured-content">
+            <div class="kicker"><span class="pill">Destaque</span> · IMPLANTES · 18 abr</div>
+            <h4>Implante dentário em <em>Vitória</em>: o que saber antes da primeira consulta</h4>
+            <p>Checklist de 8 pontos que todo paciente deveria considerar. Baseado nas buscas mais comuns dos últimos 90 dias.</p>
+            <div class="blog-mock-meta">
+              <span>12 min</span>
+              <span>·</span>
+              <span>+2.400 leitores</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- grid 3 cards com thumbs visuais variados -->
+        <div class="blog-mock-articles">
+          <article class="blog-mock-art">
+            <div class="blog-mock-thumb thumb-serif">
+              <div class="thumb-title">Aparelho <span class="brand-accent">transparente.</span></div>
+            </div>
+            <div class="meta">Ortodontia · 6 min</div>
+            <h5>Aparelho transparente funciona mesmo? O que a prática mostra</h5>
           </article>
-          <article class="blog-mock-card">
-            <div class="blog-mock-category">Ortodontia</div>
-            <h4>Aparelho transparente funciona mesmo? O que a prática clínica mostra</h4>
-            <div class="blog-mock-meta-mini">6 min · 5 dias atrás</div>
+
+          <article class="blog-mock-art">
+            <div class="blog-mock-thumb thumb-stat">
+              <div class="thumb-stat-num">+340<span class="thumb-stat-small">PACIENTES / TRIM</span></div>
+            </div>
+            <div class="meta">Casos reais · 5 min</div>
+            <h5>Como uma clínica de bairro triplicou consultas em 90 dias</h5>
           </article>
-          <article class="blog-mock-card">
-            <div class="blog-mock-category">Prevenção</div>
-            <h4>Quantas vezes é preciso ir ao dentista por ano? Depende do seu perfil</h4>
-            <div class="blog-mock-meta-mini">5 min · 1 semana atrás</div>
+
+          <article class="blog-mock-art">
+            <div class="blog-mock-thumb thumb-search">
+              <div class="thumb-search-mock">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
+                <span>quantas vezes ir ao dentista</span>
+                <span class="caret"></span>
+              </div>
+            </div>
+            <div class="meta">Prevenção · 5 min</div>
+            <h5>Quantas vezes é preciso ir ao dentista por ano? Depende</h5>
           </article>
         </div>
       </div>
