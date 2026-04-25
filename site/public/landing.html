@@ -725,6 +725,13 @@ section { padding: 100px 0; position: relative; }
 }
 .niche .query-sample::before { content: '"'; color: var(--ai); }
 .niche .query-sample::after  { content: '"'; color: var(--ai); }
+.niche .query-sample .query-text {
+  display: inline-block;
+  transition: opacity 250ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .niche .query-sample .query-text { transition: none; }
+}
 
 @media (max-width: 1000px) { .niches-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px)  { .niches-grid { grid-template-columns: 1fr; } }
@@ -1585,8 +1592,6 @@ footer {
       <a href="#como-funciona">Como funciona</a>
       <a href="#para-quem">Para quem</a>
       <a href="#recursos">Recursos</a>
-      <a href="/exemplo/blog" target="_blank" rel="noopener">Blog</a>
-      <a href="/exemplo/dashboard" target="_blank" rel="noopener">Dashboard</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="header-cta">
@@ -1761,7 +1766,7 @@ footer {
           </div>
           <h3>Imobiliárias</h3>
           <p>Capte compradores no momento em que pesquisam por bairros, tipos e faixas de preço.</p>
-          <div class="query-sample">apartamento 2q zona sul</div>
+          <div class="query-sample" data-nicho="imobiliarias"><span class="query-text">apartamento 2q zona sul</span></div>
         </div>
       </a>
       <a href="#" class="niche">
@@ -1777,7 +1782,7 @@ footer {
           </div>
           <h3>Clínicas</h3>
           <p>Apareça quando paciente busca especialidade, região ou convênio. Agenda cheia por mês.</p>
-          <div class="query-sample">dentista aberto agora</div>
+          <div class="query-sample" data-nicho="clinicas"><span class="query-text">dentista aberto agora</span></div>
         </div>
       </a>
       <a href="#" class="niche">
@@ -1793,7 +1798,7 @@ footer {
           </div>
           <h3>Prestadores de serviço</h3>
           <p>Advogados, contadores, consultores, técnicos. Quem atende por especialidade e região.</p>
-          <div class="query-sample">advogado trabalhista urgente</div>
+          <div class="query-sample" data-nicho="prestadores"><span class="query-text">advogado trabalhista urgente</span></div>
         </div>
       </a>
       <a href="#" class="niche">
@@ -1809,7 +1814,7 @@ footer {
           </div>
           <h3>Negócios locais</h3>
           <p>Restaurantes, academias, autoescolas, arquitetos. Qualquer serviço que atende por região.</p>
-          <div class="query-sample">autoescola perto de mim</div>
+          <div class="query-sample" data-nicho="negocios-locais"><span class="query-text">autoescola perto de mim</span></div>
         </div>
       </a>
       <a href="#" class="niche">
@@ -1825,7 +1830,7 @@ footer {
           </div>
           <h3>E-commerces</h3>
           <p>Lojas virtuais que precisam aparecer no momento da intenção de compra. Busca de produto vira venda.</p>
-          <div class="query-sample">tênis corrida masculino barato</div>
+          <div class="query-sample" data-nicho="ecommerces"><span class="query-text">tênis corrida masculino barato</span></div>
         </div>
       </a>
       <a href="#" class="niche">
@@ -1841,7 +1846,7 @@ footer {
           </div>
           <h3>Infoprodutores</h3>
           <p>Cursos, mentorias, comunidades. Escala audiência orgânica sem depender de tráfego pago.</p>
-          <div class="query-sample">curso de copywriting do zero</div>
+          <div class="query-sample" data-nicho="infoprodutores"><span class="query-text">curso de copywriting do zero</span></div>
         </div>
       </a>
     </div>
@@ -2038,10 +2043,6 @@ footer {
       </div>
     </div>
 
-    <div class="preview-cta">
-      <a href="/exemplo/dashboard" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Ver demonstração ↗</a>
-      <span class="preview-cta-note">Navegação completa do sistema · Abre em nova aba</span>
-    </div>
   </div>
 </section>
 
@@ -2142,10 +2143,6 @@ footer {
       </div>
     </div>
 
-    <div class="blog-preview-cta">
-      <a href="/exemplo/blog" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Ver exemplo do blog ↗</a>
-      <span class="blog-preview-note">90 artigos por mês no domínio do cliente · Abre em nova aba</span>
-    </div>
   </div>
 </section>
 
@@ -2403,6 +2400,78 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
+// Rotação de queries nos cards de #para-quem
+(function rotateNicheQueries() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const queries = {
+    "imobiliarias": [
+      "apartamento 2q zona sul",
+      "casa térrea com quintal grande",
+      "apto pra alugar mobiliado",
+      "imóvel pra reforma garagem",
+      "studio próximo ao metrô"
+    ],
+    "clinicas": [
+      "dentista aberto agora",
+      "clínica perto de mim",
+      "consulta convênio amil",
+      "implante dentário valor",
+      "aparelho transparente preço"
+    ],
+    "prestadores": [
+      "advogado trabalhista urgente",
+      "contador para abrir cnpj",
+      "psicólogo online primeira sessão",
+      "consultor financeiro pessoal",
+      "técnico ar condicionado domicílio"
+    ],
+    "negocios-locais": [
+      "autoescola perto de mim",
+      "mecânico aberto domingo",
+      "academia 24h zona sul",
+      "arquiteto reforma residencial",
+      "restaurante delivery noite"
+    ],
+    "ecommerces": [
+      "tênis corrida masculino barato",
+      "frete grátis acima de 100",
+      "produto orgânico online",
+      "loja confiável avaliações",
+      "cupom primeira compra"
+    ],
+    "infoprodutores": [
+      "curso de copywriting do zero",
+      "mentoria para emagrecer online",
+      "curso de inglês com certificado",
+      "aula de violão iniciante",
+      "marketing digital pra leigos"
+    ]
+  };
+
+  const els = document.querySelectorAll('.query-sample[data-nicho]');
+  els.forEach(function(el, idx) {
+    const nicho = el.dataset.nicho;
+    const list = queries[nicho];
+    if (!list || list.length < 2) return;
+    const span = el.querySelector('.query-text');
+    if (!span) return;
+    let i = 0;
+    function tick() {
+      span.style.opacity = '0';
+      setTimeout(function() {
+        i = (i + 1) % list.length;
+        span.textContent = list[i];
+        span.style.opacity = '1';
+      }, 280);
+    }
+    setTimeout(function loop() {
+      tick();
+      setTimeout(loop, 4200);
+    }, 2200 + idx * 450);
+  });
+})();
 </script>
 
 </body>
