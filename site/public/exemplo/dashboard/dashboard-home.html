@@ -803,6 +803,18 @@ em {
     border-color: var(--ai);
   }
 }
+
+/* Fix mobile <=768px: padding lateral menor + KPI 2-col */
+@media (max-width: 768px) {
+  .main { padding: 16px 16px 96px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+@media (max-width: 480px) {
+  .kpi-row { grid-template-columns: 1fr; }
+  .sidebar { padding: 8px 12px; }
+  .sidebar nav a { font-size: 11px; padding: 5px 10px; }
+  .sidebar nav a svg { width: 14px; height: 14px; }
+}
 </style>
 </head>
 <body>
@@ -905,7 +917,7 @@ em {
 
   <!-- ============= KPI ROW ============= -->
   <section class="kpi-row">
-    <div class="kpi accent">
+    <div class="kpi">
       <div class="kpi-label">Buscas capturadas</div>
       <div class="kpi-value">4.218</div>
       <div class="kpi-delta up">↑ 28% <span>vs mês anterior</span></div>
@@ -914,6 +926,26 @@ em {
       <div class="kpi-label">Aparições em IA</div>
       <div class="kpi-value">1.962</div>
       <div class="kpi-delta up">↑ 41% <span>vs mês anterior</span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Visualizações no blog</div>
+      <div class="kpi-value">24.532</div>
+      <div class="kpi-delta up">↑ 64% <span>vs mês anterior</span></div>
+    </div>
+    <div class="kpi accent">
+      <div class="kpi-label">WhatsApp iniciados</div>
+      <div class="kpi-value">412</div>
+      <div class="kpi-delta up">↑ 22% <span>vs mês anterior</span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Palavras-chave (top 10)</div>
+      <div class="kpi-value">187</div>
+      <div class="kpi-delta up">+34 <span>vs mês anterior</span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Share of voice IA</div>
+      <div class="kpi-value">34<span class="kpi-of">%</span></div>
+      <div class="kpi-delta up">↑ 8pp <span>vs mês anterior</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Conteúdo publicado</div>

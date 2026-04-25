@@ -240,6 +240,19 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
     border-color: var(--ai);
   }
 }
+
+/* Fix mobile <=768px: stats 1col + calendar enxuto */
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .calendar-grid { grid-template-columns: repeat(7, minmax(36px, 1fr)); gap: 4px; }
+  .main { padding: 16px 16px 96px; }
+}
+@media (max-width: 480px) {
+  .sidebar { padding: 8px 12px; }
+  .sidebar nav a { font-size: 11px; padding: 5px 10px; }
+  .sidebar nav a svg { width: 14px; height: 14px; }
+  .calendar-grid { grid-template-columns: repeat(7, minmax(28px, 1fr)); }
+}
 </style>
 </head>
 <body>

@@ -502,6 +502,16 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
     border-color: var(--ai);
   }
 }
+
+/* Fix mobile <=480px: sidebar font menor pra labels caberem */
+@media (max-width: 768px) {
+  .main { padding: 16px 16px 96px; }
+}
+@media (max-width: 480px) {
+  .sidebar { padding: 8px 12px; }
+  .sidebar nav a { font-size: 11px; padding: 5px 10px; }
+  .sidebar nav a svg { width: 14px; height: 14px; }
+}
 </style>
 </head>
 <body>
