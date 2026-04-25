@@ -1289,12 +1289,96 @@ section { padding: 100px 0; position: relative; }
   grid-template-columns: 200px 1fr;
   min-height: 540px;
 }
-.dash-side {
-  padding: 20px 12px;
-  border-right: 1px solid var(--border);
-  background: var(--bg);
+/* === Topbar do mock dashboard (espelha o prototipo) === */
+.dash-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(8, 9, 13, 0.85);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
 }
-.dash-side .brand { font-size: 16px; padding: 0 10px 24px; display: block; }
+.dash-top-left { display: flex; align-items: center; gap: 24px; }
+.dash-top .brand { font-size: 18px; font-weight: 500; letter-spacing: -0.04em; }
+.dash-top .ws-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text);
+  cursor: default;
+}
+.dash-top .ws-avatar {
+  width: 22px; height: 22px;
+  background: var(--ai);
+  color: var(--bg);
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.dash-top .ws-name { font-weight: 500; }
+.dash-top .ws-chev { color: var(--text-3); flex-shrink: 0; }
+.dash-top-right { display: flex; align-items: center; gap: 8px; }
+.dash-top .ds-icon-btn {
+  position: relative;
+  width: 32px; height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-2);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: default;
+}
+.dash-top .ds-badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  background: var(--ai);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 999px;
+  min-width: 14px;
+  text-align: center;
+  line-height: 1.2;
+}
+.dash-top .ds-user {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-300));
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  border: none;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Sidebar polida === */
+.dash-side {
+  padding: 16px 10px;
+  border-right: 1px solid var(--border);
+  background: var(--bg-elev-1);
+  display: flex;
+  flex-direction: column;
+}
 .dash-side .group-label {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -1302,90 +1386,220 @@ section { padding: 100px 0; position: relative; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 0 10px;
-  margin: 20px 0 6px;
+  margin: 8px 0 6px;
+  font-weight: 500;
 }
-.dash-side ul { list-style: none; }
+.dash-side .group-label:not(:first-child) { margin-top: 18px; }
+.dash-side ul { list-style: none; display: flex; flex-direction: column; gap: 1px; }
 .dash-side li {
-  padding: 8px 10px;
+  padding: 7px 10px;
   border-radius: 6px;
   font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
   color: var(--text-2);
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: background 200ms var(--ease), color 200ms var(--ease);
 }
-.dash-side li.active { background: var(--bg-elev-2); color: var(--text); }
-.dash-side li.active svg { color: var(--ai); }
-.dash-side li svg { color: var(--text-4); flex-shrink: 0; }
+.dash-side li.active { background: var(--ai-soft); color: var(--ai); }
+.dash-side li.active svg { color: var(--ai); opacity: 1; }
+.dash-side li svg { color: var(--text-3); flex-shrink: 0; opacity: 0.85; }
 
-.dash-main { padding: 28px 32px; }
+/* === Main === */
+.dash-main { padding: 28px 32px; background: var(--bg); }
 .dash-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 28px;
+  gap: 16px;
 }
-.dash-head h3 { font-size: 18px; font-weight: 500; }
+.dash-head h3 {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.dash-head h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-2);
+  font-weight: 400;
+}
 .dash-head .live-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 4px 12px;
   background: var(--ai-soft);
-  border: 1px solid rgba(0,229,160,0.2);
+  border: 1px solid rgba(0, 229, 160, 0.2);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--ai);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .dash-head .live-tag .dot { width: 5px; height: 5px; background: var(--ai); border-radius: 50%; animation: dot-pulse 2s infinite; }
 
-.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-@media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+/* === KPI grid (8 cards 4×2) === */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+@media (max-width: 1100px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 540px) { .kpi-row { grid-template-columns: 1fr; } }
 .kpi {
-  padding: 18px;
-  background: var(--bg-elev-2);
+  padding: 16px 18px;
+  background: var(--bg-elev-1);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
 }
-.kpi .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
-.kpi .v { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
-.kpi .d { font-family: var(--font-mono); font-size: 10px; color: var(--ai); margin-top: 2px; }
-.kpi.accent { border-color: rgba(0,229,160,0.2); background: linear-gradient(180deg, rgba(0,229,160,0.05), transparent); }
+.kpi .l {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.kpi .v {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.kpi .v .of {
+  font-size: 14px;
+  color: var(--text-3);
+  font-weight: 300;
+  margin-left: 2px;
+}
+.kpi .d {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ai);
+  letter-spacing: 0;
+}
+.kpi .d.neutral { color: var(--text-3); }
+.kpi.accent {
+  border-color: rgba(0, 229, 160, 0.4);
+  background: linear-gradient(135deg, rgba(0, 229, 160, 0.06), transparent), var(--bg-elev-1);
+  box-shadow: 0 0 24px rgba(0, 229, 160, 0.06);
+}
 
+/* === Chart card === */
 .dash-card {
-  padding: 20px;
-  background: var(--bg-elev-2);
+  padding: 20px 22px;
+  background: var(--bg-elev-1);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 12px;
 }
-.dash-card .ct { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-.dash-card h4 { font-size: 13px; font-weight: 500; }
-.dash-card .legend { font-family: var(--font-mono); font-size: 9px; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; }
-
-.search-list { display: flex; flex-direction: column; gap: 8px; }
-.search-item {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 16px;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px dashed var(--border);
+.dash-card .ct { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 16px; }
+.dash-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
 }
-.search-item:last-child { border: none; }
-.search-item .q { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
-.search-item .src { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
-.search-item .pos { font-family: var(--font-mono); font-size: 11px; color: var(--ai); font-weight: 500; }
+.dash-card h4 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-2);
+  font-weight: 400;
+}
+.dash-card .legend { font-family: var(--font-mono); font-size: 9px; color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; }
+.dash-card .period-pills {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+}
+.dash-card .period-pills span {
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  border-radius: var(--radius-pill);
+  cursor: default;
+  letter-spacing: 0.05em;
+}
+.dash-card .period-pills span.active { background: var(--ai-soft); color: var(--ai); }
+.dash-card .chart-x {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+}
+.dash-card .chart-legend-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+.dash-card .leg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.dash-card .leg-dot.mint { background: var(--ai); }
+.dash-card .leg-dot.brand { background: var(--brand); }
 
 @media (max-width: 900px) {
   .dash { grid-template-columns: 1fr; }
-  .dash-side { border-right: none; border-bottom: 1px solid var(--border); }
-  .kpi-row { grid-template-columns: 1fr; }
-  .dash-main { padding: 20px; }
+  .dash-side {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .dash-side::-webkit-scrollbar { display: none; }
+  .dash-side .group-label { display: none; }
+  .dash-side ul {
+    flex-direction: row;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .dash-side li {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+  }
+  .dash-side li.active {
+    background: var(--ai);
+    color: var(--bg);
+    border-color: var(--ai);
+  }
+  .dash-side li.active svg { color: var(--bg); }
+  .dash-main { padding: 20px 16px; }
+  .dash-top { padding: 8px 12px; }
+  .dash-top .ws-name { display: none; }
+  .dash-top .ds-icon-btn { width: 30px; height: 30px; }
 }
 
 /* ============================================================
@@ -1932,32 +2146,54 @@ footer {
           app.buscouai.com / dashboard
         </div>
       </div>
+
+      <div class="dash-top">
+        <div class="dash-top-left">
+          <span class="brand">buscou<span class="ai">.ai</span></span>
+          <button class="ws-switcher" type="button" aria-label="Trocar workspace">
+            <span class="ws-avatar">CV</span>
+            <span class="ws-name">Clínica Odonto Vitória</span>
+            <svg class="ws-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+          </button>
+        </div>
+        <div class="dash-top-right">
+          <button class="ds-icon-btn" type="button" aria-label="Notificações">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="ds-badge">3</span>
+          </button>
+          <button class="ds-user" type="button" aria-label="Conta">DM</button>
+        </div>
+      </div>
+
       <div class="dash">
         <aside class="dash-side">
-          <span class="brand">buscou<span class="ai">.ai</span></span>
           <div class="group-label">Workspace</div>
           <ul>
             <li class="active">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
               Visão geral
             </li>
             <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
               Buscas capturadas
             </li>
             <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="m16.95 7.05 2.12-2.12"/><path d="M21 12h-3"/><path d="m16.95 16.95 2.12 2.12"/><path d="M12 21v-3"/><path d="m7.05 16.95-2.12 2.12"/><path d="M3 12h3"/><path d="m7.05 7.05-2.12-2.12"/><circle cx="12" cy="12" r="3"/></svg>
               Respostas em IA
             </li>
             <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>
+              Conteúdo
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-9.5 9.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
               Conversões
             </li>
           </ul>
           <div class="group-label">Configuração</div>
           <ul>
             <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/><path d="M12 14h.01"/></svg>
               Empresa
             </li>
           </ul>
@@ -1965,14 +2201,14 @@ footer {
         <div class="dash-main">
           <div class="dash-head">
             <div>
-              <div class="eyebrow" style="margin-bottom: 4px;">Últimos 30 dias</div>
-              <h3>Boa tarde, Clínica Odonto Vitória</h3>
+              <div class="eyebrow" style="margin-bottom: 6px;"><span class="dot"></span>Últimos 30 dias</div>
+              <h3>Boa tarde, <em>Dra. Marcela</em></h3>
             </div>
-            <div class="live-tag"><span class="dot"></span>Exemplo · visualização do produto</div>
+            <div class="live-tag"><span class="dot"></span>Atualizado agora · 14:32</div>
           </div>
 
-          <div class="kpi-row">
-            <div class="kpi accent">
+          <div class="kpi-row kpi-row-8">
+            <div class="kpi">
               <div class="l">Buscas capturadas</div>
               <div class="v">4.218</div>
               <div class="d">↑ 28% vs mês anterior</div>
@@ -1983,9 +2219,29 @@ footer {
               <div class="d">↑ 41% vs mês anterior</div>
             </div>
             <div class="kpi">
+              <div class="l">Visualizações no blog</div>
+              <div class="v">24.532</div>
+              <div class="d">↑ 64% vs mês anterior</div>
+            </div>
+            <div class="kpi accent">
               <div class="l">WhatsApp iniciados</div>
               <div class="v">412</div>
               <div class="d">↑ 22% vs mês anterior</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Palavras-chave (top 10)</div>
+              <div class="v">187</div>
+              <div class="d">+34 vs mês anterior</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Share of voice IA</div>
+              <div class="v">34<span class="of">%</span></div>
+              <div class="d">↑ 8pp vs mês anterior</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Conteúdo publicado</div>
+              <div class="v">87 <span class="of">/ 90</span></div>
+              <div class="d neutral">No ritmo de 90 / mês</div>
             </div>
             <div class="kpi">
               <div class="l">Clientes gerados</div>
@@ -1994,49 +2250,51 @@ footer {
             </div>
           </div>
 
-          <div class="dash-card">
+          <div class="dash-card chart-card">
             <div class="ct">
-              <h4>Presença no Google + IAs</h4>
-              <div class="legend">últimos 30 dias</div>
+              <div>
+                <div class="eyebrow" style="margin-bottom: 4px;"><span class="dot"></span>Tendência</div>
+                <h4>Presença no Google + <em>IAs</em></h4>
+              </div>
+              <div class="period-pills">
+                <span>7d</span>
+                <span class="active">30d</span>
+                <span>90d</span>
+              </div>
             </div>
-            <svg viewBox="0 0 600 100" preserveAspectRatio="none" style="width: 100%; height: 80px;">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none" style="width: 100%; height: 140px;">
               <defs>
-                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#00E5A0" stop-opacity="0.35"/>
+                <linearGradient id="mintGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00E5A0" stop-opacity="0.32"/>
                   <stop offset="100%" stop-color="#00E5A0" stop-opacity="0"/>
                 </linearGradient>
+                <linearGradient id="brandGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#7C5CFF" stop-opacity="0"/>
+                </linearGradient>
               </defs>
-              <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5 L600,100 L0,100 Z" fill="url(#chartGrad)"/>
-              <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5" stroke="#00E5A0" stroke-width="1.5" fill="none"/>
+              <line x1="0" y1="50"  x2="600" y2="50"  stroke="#1F2230" stroke-dasharray="2 5"/>
+              <line x1="0" y1="100" x2="600" y2="100" stroke="#1F2230" stroke-dasharray="2 5"/>
+              <line x1="0" y1="150" x2="600" y2="150" stroke="#1F2230" stroke-dasharray="2 5"/>
+              <path d="M 10,150 C 100,144 200,135 290,124 C 380,112 480,92 590,78 L 590,182 L 10,182 Z" fill="url(#brandGrad)"/>
+              <path d="M 10,150 C 100,144 200,135 290,124 C 380,112 480,92 590,78" fill="none" stroke="#7C5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 10,182 C 80,182 150,172 220,154 C 290,124 360,90 430,62 C 480,44 540,32 590,24 L 590,182 L 10,182 Z" fill="url(#mintGrad)"/>
+              <path d="M 10,182 C 80,182 150,172 220,154 C 290,124 360,90 430,62 C 480,44 540,32 590,24" fill="none" stroke="#00E5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="590" cy="78" r="8" fill="#7C5CFF" opacity="0.18"/>
+              <circle cx="590" cy="78" r="3" fill="#7C5CFF"/>
+              <circle cx="590" cy="24" r="8" fill="#00E5A0" opacity="0.22"/>
+              <circle cx="590" cy="24" r="3" fill="#00E5A0"/>
             </svg>
-          </div>
-
-          <div class="dash-card">
-            <div class="ct">
-              <h4>Buscas capturadas ao vivo</h4>
-              <div class="legend">hoje</div>
+            <div class="chart-x">
+              <span>25 mar</span>
+              <span>1 abr</span>
+              <span>8 abr</span>
+              <span>15 abr</span>
+              <span>22 abr</span>
             </div>
-            <div class="search-list">
-              <div class="search-item">
-                <span class="q">dentista aberto agora vitória</span>
-                <span class="src">ChatGPT</span>
-                <span class="pos">#1</span>
-              </div>
-              <div class="search-item">
-                <span class="q">implante dentário zona sul es</span>
-                <span class="src">Google</span>
-                <span class="pos">#2</span>
-              </div>
-              <div class="search-item">
-                <span class="q">clareamento dental aparelho</span>
-                <span class="src">Perplexity</span>
-                <span class="pos">#1</span>
-              </div>
-              <div class="search-item">
-                <span class="q">melhor dentista pediatra</span>
-                <span class="src">Gemini</span>
-                <span class="pos">#3</span>
-              </div>
+            <div class="chart-legend-row">
+              <span><span class="leg-dot mint"></span>IAs (ChatGPT, Gemini, Perplexity, Claude)</span>
+              <span><span class="leg-dot brand"></span>Google</span>
             </div>
           </div>
         </div>
