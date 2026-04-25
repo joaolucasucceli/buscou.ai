@@ -26,7 +26,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    TOKENS — espelho do @buscou/design-system
@@ -252,6 +252,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
 .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
 
 section { padding: 100px 0; position: relative; }
+@media (max-width: 768px) { section { padding: 64px 0; } }
 
 .section-head {
   max-width: 780px;
@@ -368,7 +369,9 @@ section { padding: 100px 0; position: relative; }
 .hero-sub-ctas {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
+  flex-wrap: wrap;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-3);
@@ -377,6 +380,9 @@ section { padding: 100px 0; position: relative; }
 }
 .hero-sub-ctas span { display: inline-flex; align-items: center; gap: 8px; }
 .hero-sub-ctas svg { color: var(--ai); }
+@media (max-width: 540px) {
+  .hero-sub-ctas { gap: 12px; font-size: 10px; }
+}
 
 /* Hero visual: live search simulation */
 .hero-visual {
@@ -468,41 +474,6 @@ section { padding: 100px 0; position: relative; }
 }
 .hero-response p strong { color: var(--text); font-weight: 500; }
 .hero-response p .your { color: var(--ai); font-family: var(--font-mono); background: var(--ai-soft); padding: 1px 6px; border-radius: 4px; }
-
-/* ============================================================
-   LOGOS / SOCIAL PROOF ROW
-============================================================ */
-.proof-row {
-  padding: 32px 0 0;
-  position: relative;
-}
-.proof-row-inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 32px;
-  display: flex;
-  gap: 48px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  opacity: 0.65;
-}
-.proof-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-.proof-tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-2);
-}
 
 /* ============================================================
    FLOW (Busca → Conteúdo → Resposta → Cliente)
@@ -740,7 +711,6 @@ section { padding: 100px 0; position: relative; }
    BLOG PREVIEW — fiel ao prototipo do blog real
 ============================================================ */
 .blog-preview {
-  padding: 100px 0 80px;
   position: relative;
 }
 .blog-preview-wrap {
@@ -1105,18 +1075,6 @@ section { padding: 100px 0; position: relative; }
   color: var(--text);
 }
 
-.blog-preview-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 36px;
-}
-.blog-preview-note {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-3);
-}
 @media (max-width: 900px) {
   .blog-mock-page { padding: 24px; }
   .blog-mock-featured-row { grid-template-columns: 1fr; gap: 24px; }
@@ -1230,7 +1188,6 @@ section { padding: 100px 0; position: relative; }
    PREVIEW (dashboard mockup)
 ============================================================ */
 .preview {
-  padding: 0;
   position: relative;
 }
 .preview-wrap {
@@ -1245,18 +1202,6 @@ section { padding: 100px 0; position: relative; }
   overflow: hidden;
   box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(124,92,255,0.08);
   position: relative;
-}
-.preview-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 36px;
-}
-.preview-cta-note {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-3);
 }
 .browser-bar {
   padding: 12px 16px;
@@ -1735,6 +1680,7 @@ footer {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+.footer-bottom .copyright { text-transform: none; letter-spacing: 0.02em; }
 .footer-bottom .status { display: inline-flex; align-items: center; gap: 8px; color: var(--ai); }
 .footer-bottom .status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ai); animation: dot-pulse 2s infinite; }
 
@@ -1745,37 +1691,25 @@ footer {
 @media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   FLOATING WHATSAPP
+   UTILITY: tight eyebrow + chart svg + social row
 ============================================================ */
-.wa-float {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 200;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--whatsapp);
-  color: #fff;
-  display: flex;
+.eyebrow-tight-6 { margin-bottom: 6px; }
+.eyebrow-tight-4 { margin-bottom: 4px; }
+.dash-card-svg { width: 100%; height: 140px; }
+
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
-  transition: transform 200ms var(--ease-spring), box-shadow 200ms var(--ease);
-}
-.wa-float:hover { transform: scale(1.05); box-shadow: 0 14px 40px rgba(37, 211, 102, 0.5); }
-.wa-float::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  border: 1px solid var(--border-strong);
   border-radius: 50%;
-  border: 2px solid var(--whatsapp);
-  animation: wa-ring 2s ease-out infinite;
+  color: var(--text-2);
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
 }
-@keyframes wa-ring {
-  0%   { opacity: 0.6; transform: scale(1); }
-  100% { opacity: 0;   transform: scale(1.6); }
-}
+.social-icon:hover { color: var(--ai); border-color: var(--ai); }
 
 /* ============================================================
    LOAD ANIMATIONS
@@ -1809,7 +1743,7 @@ footer {
       <a href="#faq">FAQ</a>
     </nav>
     <div class="header-cta">
-      <a href="#final-cta" class="btn btn-primary">Agendar diagnóstico →</a>
+      <a href="https://cal.com/buscou-ai/diagnostico" target="_blank" rel="noopener" class="btn btn-primary">Agendar diagnóstico →</a>
     </div>
   </div>
 </header>
@@ -1831,7 +1765,7 @@ footer {
     </p>
 
     <div class="hero-ctas">
-      <a href="#final-cta" class="btn btn-primary btn-lg">Agendar diagnóstico →</a>
+      <a href="https://cal.com/buscou-ai/diagnostico" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Agendar diagnóstico →</a>
       <a href="#como-funciona" class="btn btn-ghost btn-lg">Ver como funciona ↓</a>
     </div>
 
@@ -1967,7 +1901,7 @@ footer {
     </div>
 
     <div class="niches-grid">
-      <a href="#" class="niche">
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-imobiliarias.webp" type="image/webp">
@@ -1982,8 +1916,8 @@ footer {
           <p>Capte compradores no momento em que pesquisam por bairros, tipos e faixas de preço.</p>
           <div class="query-sample" data-nicho="imobiliarias"><span class="query-text">apartamento 2q zona sul</span></div>
         </div>
-      </a>
-      <a href="#" class="niche">
+      </div>
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-clinicas.webp" type="image/webp">
@@ -1998,8 +1932,8 @@ footer {
           <p>Apareça quando paciente busca especialidade, região ou convênio. Agenda cheia por mês.</p>
           <div class="query-sample" data-nicho="clinicas"><span class="query-text">dentista aberto agora</span></div>
         </div>
-      </a>
-      <a href="#" class="niche">
+      </div>
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-prestadores.webp" type="image/webp">
@@ -2014,8 +1948,8 @@ footer {
           <p>Advogados, contadores, consultores, técnicos. Quem atende por especialidade e região.</p>
           <div class="query-sample" data-nicho="prestadores"><span class="query-text">advogado trabalhista urgente</span></div>
         </div>
-      </a>
-      <a href="#" class="niche">
+      </div>
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-negocios-locais.webp" type="image/webp">
@@ -2030,8 +1964,8 @@ footer {
           <p>Restaurantes, academias, autoescolas, arquitetos. Qualquer serviço que atende por região.</p>
           <div class="query-sample" data-nicho="negocios-locais"><span class="query-text">autoescola perto de mim</span></div>
         </div>
-      </a>
-      <a href="#" class="niche">
+      </div>
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-ecommerces.webp" type="image/webp">
@@ -2046,8 +1980,8 @@ footer {
           <p>Lojas virtuais que precisam aparecer no momento da intenção de compra. Busca de produto vira venda.</p>
           <div class="query-sample" data-nicho="ecommerces"><span class="query-text">tênis corrida masculino barato</span></div>
         </div>
-      </a>
-      <a href="#" class="niche">
+      </div>
+      <div class="niche">
         <div class="niche-photo">
           <picture>
             <source srcset="/images/nicho-infoprodutores.webp" type="image/webp">
@@ -2062,7 +1996,7 @@ footer {
           <p>Cursos, mentorias, comunidades. Escala audiência orgânica sem depender de tráfego pago.</p>
           <div class="query-sample" data-nicho="infoprodutores"><span class="query-text">curso de copywriting do zero</span></div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -2076,7 +2010,7 @@ footer {
     <div class="section-head">
       <div class="eyebrow"><span class="dot"></span>O que você recebe</div>
       <h2>Seis coisas acontecendo<br><em>ao mesmo tempo. 24h por dia.</em></h2>
-      <p>Você contrata um plano. Recebe uma infraestrutura inteira de presença digital automatizada.</p>
+      <p>Você ativa o motor uma vez. Recebe uma infraestrutura inteira de presença digital automatizada.</p>
     </div>
 
     <div class="features-grid">
@@ -2150,18 +2084,18 @@ footer {
       <div class="dash-top">
         <div class="dash-top-left">
           <span class="brand">buscou<span class="ai">.ai</span></span>
-          <button class="ws-switcher" type="button" aria-label="Trocar workspace">
+          <button class="ws-switcher" type="button" aria-hidden="true" tabindex="-1">
             <span class="ws-avatar">CV</span>
             <span class="ws-name">Clínica Odonto Vitória</span>
             <svg class="ws-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
           </button>
         </div>
         <div class="dash-top-right">
-          <button class="ds-icon-btn" type="button" aria-label="Notificações">
+          <button class="ds-icon-btn" type="button" aria-hidden="true" tabindex="-1">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
             <span class="ds-badge">3</span>
           </button>
-          <button class="ds-user" type="button" aria-label="Conta">DM</button>
+          <button class="ds-user" type="button" aria-hidden="true" tabindex="-1">DM</button>
         </div>
       </div>
 
@@ -2201,7 +2135,7 @@ footer {
         <div class="dash-main">
           <div class="dash-head">
             <div>
-              <div class="eyebrow" style="margin-bottom: 6px;"><span class="dot"></span>Últimos 30 dias</div>
+              <div class="eyebrow eyebrow-tight-6"><span class="dot"></span>Últimos 30 dias</div>
               <h3>Boa tarde, <em>Dra. Marcela</em></h3>
             </div>
             <div class="live-tag"><span class="dot"></span>Atualizado agora · 14:32</div>
@@ -2253,7 +2187,7 @@ footer {
           <div class="dash-card chart-card">
             <div class="ct">
               <div>
-                <div class="eyebrow" style="margin-bottom: 4px;"><span class="dot"></span>Tendência</div>
+                <div class="eyebrow eyebrow-tight-4"><span class="dot"></span>Tendência</div>
                 <h4>Presença no Google + <em>IAs</em></h4>
               </div>
               <div class="period-pills">
@@ -2262,7 +2196,7 @@ footer {
                 <span>90d</span>
               </div>
             </div>
-            <svg viewBox="0 0 600 200" preserveAspectRatio="none" style="width: 100%; height: 140px;">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none" class="dash-card-svg">
               <defs>
                 <linearGradient id="mintGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#00E5A0" stop-opacity="0.32"/>
@@ -2429,7 +2363,7 @@ footer {
         <p>
           No dia-a-dia, quem te acompanha é a <strong>Anna Mel</strong> — nossa agente de WhatsApp que confirma agendamentos, faz onboarding, dispara cadências de cobrança e abre chamado pra gente quando precisa de humano. 24 horas por dia, 7 dias por semana.
         </p>
-        <a href="#final-cta" class="btn btn-ghost btn-lg">Agendar diagnóstico →</a>
+        <a href="https://cal.com/buscou-ai/diagnostico" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Agendar diagnóstico →</a>
       </div>
     </div>
   </div>
@@ -2437,7 +2371,7 @@ footer {
 
 
 <!-- ============================================================
-     8. FAQ
+     9. FAQ
 ============================================================ -->
 <section id="faq">
   <div class="container">
@@ -2502,7 +2436,7 @@ footer {
 
 
 <!-- ============================================================
-     9. FINAL CTA
+     10. FINAL CTA
 ============================================================ -->
 <section class="final-cta" id="final-cta">
   <div class="inner">
@@ -2512,9 +2446,9 @@ footer {
       <em>quando alguém busca</em><br>
       pelo que você <span class="mint">vende</span>?
     </h2>
-    <p class="sub">Reunião de 30 minutos, sem compromisso. Você sai com um plano claro de aparição orgânica — ou compra direto e começa hoje.</p>
+    <p class="sub">Reunião de 30 minutos, sem compromisso. Você sai com um diagnóstico claro de aparição orgânica e o caminho pra ativar o motor.</p>
     <div class="buttons">
-      <a href="#" class="btn btn-primary btn-lg">Agendar diagnóstico →</a>
+      <a href="https://cal.com/buscou-ai/diagnostico" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Agendar diagnóstico →</a>
     </div>
   </div>
 </section>
@@ -2531,14 +2465,14 @@ footer {
       <div class="footer-brand">
         <a href="#" class="brand">buscou<span class="ai">.ai</span></a>
         <p>Apareça onde o cliente procura. No Google, nas IAs, 24 horas por dia.</p>
-        <div class="footer-social" style="display: flex; gap: 12px; margin-top: 20px;">
-          <a href="https://www.instagram.com/buscou.ai/" target="_blank" rel="noopener" aria-label="Instagram" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-2); transition: color 200ms var(--ease), border-color 200ms var(--ease);" onmouseover="this.style.color='var(--ai)';this.style.borderColor='var(--ai)';" onmouseout="this.style.color='var(--text-2)';this.style.borderColor='var(--border-strong)';">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/buscou.ai/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="https://www.tiktok.com/@buscou.ai" target="_blank" rel="noopener" aria-label="TikTok" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-2); transition: color 200ms var(--ease), border-color 200ms var(--ease);" onmouseover="this.style.color='var(--ai)';this.style.borderColor='var(--ai)';" onmouseout="this.style.color='var(--text-2)';this.style.borderColor='var(--border-strong)';">
+          <a href="https://www.tiktok.com/@buscou.ai" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.967c-.849-.971-1.165-1.956-1.282-2.645h.004c-.097-.57-.057-.94-.05-.94h-3.854v14.892c0 .2 0 .398-.008.594l-.001.073-.006.106c0 .014-.002.029-.003.044v.01a3.275 3.275 0 01-1.647 2.596 3.218 3.218 0 01-1.596.42c-1.794 0-3.248-1.463-3.248-3.27 0-1.807 1.454-3.27 3.248-3.27.34 0 .676.053.997.157l.005-3.925a7.178 7.178 0 00-5.536 1.614 7.583 7.583 0 00-1.655 2.04c-.163.281-.779 1.412-.853 3.247-.047 1.041.266 2.12.415 2.566v.01c.093.262.457 1.158 1.049 1.913a7.856 7.856 0 001.683 1.58v-.01l.01.01c2.203 1.497 4.644 1.399 4.644 1.399.423-.017 1.839 0 3.447-.762 1.785-.844 2.801-2.1 2.801-2.1a7.827 7.827 0 001.376-2.242c.343-.886.458-1.95.458-2.375V7.39c.056.033.797.522.797.522s1.067.683 2.736 1.13c1.198.316 2.812.382 2.812.382V5.195c-.565.062-1.712-.117-2.888-.699z"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/buscou-ai-502875405/" target="_blank" rel="noopener" aria-label="LinkedIn" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-2); transition: color 200ms var(--ease), border-color 200ms var(--ease);" onmouseover="this.style.color='var(--ai)';this.style.borderColor='var(--ai)';" onmouseout="this.style.color='var(--text-2)';this.style.borderColor='var(--border-strong)';">
+          <a href="https://www.linkedin.com/in/buscou-ai-502875405/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
@@ -2569,7 +2503,7 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 BuscouAI · buscouai.com</span>
+      <span class="copyright">© 2026 BuscouAI · buscouai.com</span>
       <span class="status"><span class="dot"></span>Plataforma no ar</span>
     </div>
   </div>
