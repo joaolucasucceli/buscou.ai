@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>buscou.ai — Roadmap V1</title>
+<meta name="description" content="Plano de execução V1 da buscou.ai. 8 sprints do que já existe ao produto completo.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#08090D">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THEME — buscou.ai brand on-page
+============================================================ */
+:root {
+  --bg: #08090D;
+  --bg-elev-1: #0F1117;
+  --bg-elev-2: #161823;
+  --bg-elev-3: #1C1F2C;
+  --border: #1F2230;
+  --border-strong: #2E3142;
+
+  --text: #ECEDF0;
+  --text-2: #A4A7B3;
+  --text-3: #6B6E7B;
+  --text-4: #4A4D5A;
+
+  --brand: #7C5CFF;
+  --brand-soft: rgba(124, 92, 255, 0.12);
+  --brand-300: #A88FFF;
+
+  --ai: #00E5A0;
+  --ai-soft: rgba(0, 229, 160, 0.08);
+  --ai-glow: rgba(0, 229, 160, 0.45);
+
+  --font-sans: 'Geist', -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 0.7s;
+
+  --slide-padding: clamp(1.5rem, 4vw, 4.5rem);
+  --content-gap: clamp(0.75rem, 2vw, 2rem);
+  --title-size: clamp(2rem, 6.5vw, 5.5rem);
+  --h2-size: clamp(1.5rem, 4vw, 3rem);
+  --h3-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  --body-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  --small-size: clamp(0.7rem, 1vw, 0.85rem);
+  --eyebrow-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  --num-size: clamp(4rem, 14vw, 11rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ambient grid background — same as landing */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 80%);
+}
+
+/* noise overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   SLIDE BASE — viewport fitting (mandatory)
+============================================================ */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;
+  overflow: hidden;
+  padding: var(--slide-padding);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+============================================================ */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
+}
+.eyebrow .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ai);
+  box-shadow: 0 0 0 0 var(--ai-glow);
+  animation: dot-pulse 2s infinite;
+}
+@keyframes dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,229,160,0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(0,229,160,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,229,160,0); }
+}
+
+h1, h2, h3 { font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; }
+em.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-2);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.mint { color: var(--ai); }
+.muted { color: var(--text-2); }
+
+.brand-lockup {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  display: inline-flex;
+  align-items: baseline;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+.brand-lockup .ai {
+  color: var(--ai);
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 14px var(--ai-glow);
+}
+
+/* ============================================================
+   ANIMATIONS — reveal on visible
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration) var(--ease-out-expo),
+    transform var(--duration) var(--ease-out-expo);
+}
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.slide.visible .reveal:nth-child(1) { transition-delay: 0.05s; }
+.slide.visible .reveal:nth-child(2) { transition-delay: 0.15s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: 0.25s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: 0.35s; }
+.slide.visible .reveal:nth-child(5) { transition-delay: 0.45s; }
+.slide.visible .reveal:nth-child(6) { transition-delay: 0.55s; }
+.slide.visible .reveal:nth-child(7) { transition-delay: 0.65s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   SLIDE 1 — TITLE
+============================================================ */
+.slide-title {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 20%, var(--brand-soft), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, var(--ai-soft), transparent 60%);
+}
+.slide-title .slide-content {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.slide-title-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: clamp(0.5rem, 2vh, 1.5rem);
+}
+.slide-title-meta {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+.slide-title h1 {
+  font-size: var(--title-size);
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+  margin: clamp(1rem, 4vh, 3rem) 0 clamp(1rem, 3vh, 2rem);
+}
+.slide-title h1 em.serif { color: var(--text-2); display: block; }
+.slide-title-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: clamp(1rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+.slide-title-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.slide-title-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: rgba(15, 17, 23, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text);
+  max-width: min(420px, 90vw);
+}
+.slide-title-search svg { color: var(--text-3); flex-shrink: 0; }
+.slide-title-search .caret {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--ai);
+  box-shadow: 0 0 10px var(--ai-glow);
+  animation: blink 1.1s steps(1) infinite;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   SLIDE 2 — DIAGNOSTICO (BIG NUMBER)
+============================================================ */
+.diagnostico-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  width: 100%;
+}
+.diagnostico-num {
+  font-family: var(--font-mono);
+  font-size: var(--num-size);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  color: var(--text);
+  line-height: 0.9;
+  position: relative;
+}
+.diagnostico-num::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--ai);
+  box-shadow: 0 0 14px var(--ai-glow);
+  margin-top: clamp(0.75rem, 2vh, 1.5rem);
+}
+.diagnostico-num-label {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+}
+.diagnostico-text h2 {
+  font-size: var(--h2-size);
+  margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+}
+.diagnostico-text p {
+  color: var(--text-2);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+.diagnostico-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.diagnostico-pill {
+  padding: 8px 14px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+}
+.diagnostico-pill .mint-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ai);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   FRENTES — grid de cards (slides 3 e 4)
+============================================================ */
+.frentes-header {
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+.frentes-header h2 {
+  font-size: var(--h2-size);
+  margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+}
+.frentes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  width: 100%;
+}
+.frentes-grid.two-cols { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) {
+  .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr; }
+}
+.frente-card {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.6rem);
+  min-height: clamp(120px, 18vh, 160px);
+}
+.frente-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--ai);
+}
+.frente-card .num {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-4);
+  letter-spacing: 0.1em;
+}
+.frente-card h3 {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.frente-card p {
+  font-size: clamp(0.75rem, 1.05vw, 0.9rem);
+  color: var(--text-3);
+  line-height: 1.5;
+}
+.frente-card .meta {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  color: var(--ai);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: auto;
+  padding-top: clamp(0.4rem, 1vh, 0.6rem);
+}
+
+/* ============================================================
+   TRANSICAO (slide 5) e SPRINT slides
+============================================================ */
+.slide-section-divider .slide-content {
+  align-items: flex-start;
+  justify-content: center;
+}
+.slide-section-divider .big-num {
+  font-family: var(--font-mono);
+  font-size: clamp(8rem, 22vw, 18rem);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  color: var(--text);
+  line-height: 0.85;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  background: linear-gradient(180deg, var(--text) 0%, var(--text-3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.slide-section-divider h1 {
+  font-size: var(--title-size);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+.slide-section-divider h1 em.serif { color: var(--text-2); display: block; }
+
+/* ============================================================
+   SPRINT SLIDES (6-13)
+============================================================ */
+.sprint-slide .slide-content { padding-right: clamp(1.5rem, 4vw, 4rem); }
+.sprint-grid {
+  display: grid;
+  grid-template-columns: clamp(120px, 20vw, 220px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: flex-start;
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .sprint-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.sprint-num-wrap { display: flex; flex-direction: column; }
+.sprint-num {
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  color: var(--ai);
+  line-height: 0.85;
+  text-shadow: 0 0 32px rgba(0, 229, 160, 0.18);
+}
+.sprint-num-label {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: clamp(0.4rem, 1vh, 0.75rem);
+}
+.sprint-content { display: flex; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); }
+.sprint-owner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--ai-soft);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--ai);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+.sprint-content h2 {
+  font-size: var(--h2-size);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.sprint-content h2 em.serif { color: var(--text-2); }
+.sprint-tagline {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  color: var(--text-2);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 700px;
+  font-style: italic;
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+.sprint-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.7rem);
+  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+  max-width: 760px;
+}
+.sprint-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: clamp(0.5rem, 1.2vh, 0.85rem) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--body-size);
+  line-height: 1.5;
+  color: var(--text);
+}
+.sprint-bullets li:last-child { border-bottom: none; }
+.sprint-bullets li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--ai);
+  border-radius: 50%;
+  margin-top: 0.55em;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--ai-glow);
+}
+.sprint-bullets li code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--ai);
+  background: var(--ai-soft);
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   MAPA DE EXECUCAO (slide 14)
+============================================================ */
+.mapa-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  width: 100%;
+  margin-top: clamp(1rem, 3vh, 2rem);
+}
+.mapa-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-width: clamp(100px, 12vw, 130px);
+  min-height: clamp(60px, 10vh, 80px);
+  position: relative;
+  text-align: center;
+}
+.mapa-node.sequencial { border-color: var(--border-strong); }
+.mapa-node.paralelo { border-color: rgba(0, 229, 160, 0.3); background: linear-gradient(135deg, rgba(0, 229, 160, 0.04), transparent), var(--bg-elev-1); }
+.mapa-node.fechamento { border-color: rgba(124, 92, 255, 0.3); background: linear-gradient(135deg, rgba(124, 92, 255, 0.04), transparent), var(--bg-elev-1); }
+.mapa-node .num {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-weight: 500;
+  color: var(--ai);
+}
+.mapa-node.fechamento .num { color: var(--brand-300); }
+.mapa-node .label {
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  color: var(--text-2);
+  margin-top: 4px;
+}
+.mapa-arrow {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--text-3);
+}
+.mapa-bracket {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.3rem, 0.8vh, 0.5rem);
+  padding: clamp(0.5rem, 1vh, 0.75rem);
+  border-left: 2px solid var(--ai);
+  margin-left: 6px;
+  position: relative;
+}
+.mapa-bracket::before {
+  content: 'paralelo';
+  position: absolute;
+  top: -0.6rem;
+  left: -0.5rem;
+  background: var(--bg);
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.55rem, 0.7vw, 0.7rem);
+  color: var(--ai);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.mapa-legend {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: clamp(1rem, 2.5vh, 1.75rem);
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+.mapa-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.mapa-legend .leg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+.mapa-legend .leg-dot.seq { background: var(--text-3); }
+.mapa-legend .leg-dot.par { background: var(--ai); }
+.mapa-legend .leg-dot.fim { background: var(--brand); }
+
+/* ============================================================
+   SLIDE FINAL (V1 fechada)
+============================================================ */
+.slide-final {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%, var(--brand-soft), transparent 60%),
+    radial-gradient(ellipse 40% 30% at 30% 70%, var(--ai-soft), transparent 60%);
+}
+.slide-final h2 {
+  font-size: var(--title-size);
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+.slide-final h2 em.serif { color: var(--text-2); display: block; }
+.slide-final p.lead {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 820px;
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+.slide-final p.lead .mint { color: var(--ai); font-family: var(--font-mono); font-size: 0.92em; }
+.slide-final .closing-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.7rem);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+  max-width: 700px;
+}
+.slide-final .closing-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: var(--body-size);
+  color: var(--text-2);
+}
+.slide-final .closing-bullets li svg {
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  color: var(--ai);
+}
+.slide-final .footer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: auto;
+  padding-top: clamp(1rem, 2vh, 1.5rem);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   PROGRESS BAR + NAV DOTS
+============================================================ */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ai), var(--brand));
+  width: 0%;
+  z-index: 100;
+  transition: width 0.2s linear;
+  box-shadow: 0 0 12px var(--ai-glow);
+}
+
+.nav-dots {
+  position: fixed;
+  right: clamp(0.75rem, 2vw, 1.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.6rem);
+  z-index: 100;
+}
+.nav-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  padding: 0;
+}
+.nav-dots button:hover { border-color: var(--ai); background: rgba(0,229,160,0.15); }
+.nav-dots button.active { background: var(--ai); border-color: var(--ai); box-shadow: 0 0 10px var(--ai-glow); transform: scale(1.2); }
+
+@media (max-height: 600px), (max-width: 600px) {
+  .nav-dots { display: none; }
+}
+
+/* keyboard hint */
+.keyboard-hint {
+  position: fixed;
+  bottom: clamp(0.75rem, 2vh, 1.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.8vw, 0.72rem);
+  color: var(--text-4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 50;
+  pointer-events: none;
+}
+@media (max-height: 600px) { .keyboard-hint { display: none; } }
+
+/* slide number indicator */
+.slide-number {
+  position: fixed;
+  bottom: clamp(0.75rem, 2vh, 1.5rem);
+  right: clamp(1rem, 2vw, 2rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  z-index: 50;
+}
+.slide-number .current { color: var(--text); font-weight: 500; }
+
+/* mobile padding */
+@media (max-width: 600px) {
+  .slide-content { padding: clamp(1rem, 5vw, 1.5rem); }
+  .sprint-grid { grid-template-columns: 1fr; }
+  .diagnostico-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- nav dots (generated by JS) -->
+<nav class="nav-dots" id="navDots" aria-label="Navegação"></nav>
+
+<!-- keyboard hint -->
+<div class="keyboard-hint">↑ ↓ · espaço · scroll</div>
+
+<!-- slide counter -->
+<div class="slide-number"><span class="current" id="slideCurrent">01</span> / <span id="slideTotal">15</span></div>
+
+
+<!-- ============================================================
+     SLIDE 1 — CAPA
+============================================================ -->
+<section class="slide slide-title">
+  <div class="slide-content">
+    <div class="slide-title-top reveal">
+      <a class="brand-lockup">buscou<span class="ai">.ai</span></a>
+      <span class="slide-title-meta">2026 · v1</span>
+    </div>
+
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span>Roadmap V1 · planejamento de execução</div>
+      <h1>
+        Do que já existe<br>
+        <em class="serif">ao produto completo.</em>
+      </h1>
+    </div>
+
+    <div class="slide-title-bottom reveal">
+      <span class="slide-title-tagline">8 sprints · 9 frentes consolidadas · V1 fechada</span>
+      <div class="slide-title-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
+        <span>onde a buscou.ai está hoje</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 2 — DIAGNÓSTICO (estado atual em número)
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>01 · Estado atual</div>
+
+    <div class="diagnostico-grid">
+      <div class="reveal">
+        <div class="diagnostico-num">55</div>
+        <div class="diagnostico-num-label">issues entregues · 9 frentes</div>
+      </div>
+
+      <div class="diagnostico-text reveal">
+        <h2>Já temos uma base sólida.</h2>
+        <p>
+          Landing pública no ar, posicionamento canônico travado, backend multi-tenant configurado, primeiro agente IA deployado, identidade visual e sistema de propostas operacionais.
+        </p>
+        <div class="diagnostico-pills">
+          <span class="diagnostico-pill"><span class="mint-dot"></span>Landing buscouai.com</span>
+          <span class="diagnostico-pill"><span class="mint-dot"></span>Cal.com integrado</span>
+          <span class="diagnostico-pill"><span class="mint-dot"></span>Anna Mel V1 deployada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 3 — FRENTES PRONTAS (parte 1)
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="frentes-header reveal">
+      <div class="eyebrow"><span class="dot"></span>01 · Frentes consolidadas</div>
+      <h2>O que já está pronto.</h2>
+    </div>
+
+    <div class="frentes-grid reveal">
+      <div class="frente-card">
+        <div class="num">01</div>
+        <h3>Posicionamento canônico</h3>
+        <p>VERDADE_UNICA + 5 Decision Logs. Modelo comercial, fluxo consultivo, política de desconto travados.</p>
+        <div class="meta">Vault Obsidian</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">02</div>
+        <h3>Landing no ar</h3>
+        <p>Site Next.js 15 em buscouai.com. Dark-first, copy canônica, CTAs Cal.com integrados, build limpo.</p>
+        <div class="meta">Em produção</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">03</div>
+        <h3>Backend Supabase</h3>
+        <p>Projeto buscou-ai com 4 migrations aplicadas. Schema multi-tenant, RLS, seed dogfood.</p>
+        <div class="meta">10 tabelas + RLS</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">04</div>
+        <h3>Identidade + Vault</h3>
+        <p>Design System v1 (tokens, SVGs, componentes React) + 16 pastas temáticas no Obsidian.</p>
+        <div class="meta">Tokens canônicos</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">05</div>
+        <h3>Governança SDP v2</h3>
+        <p>Metodologia SDD + 17 regras de execução + templates de issue + Linear estruturado.</p>
+        <div class="meta">DoR + DoD</div>
+      </div>
+
+      <div class="frente-card" style="opacity: 0.4;">
+        <div class="num">06 / 09</div>
+        <h3 class="muted">→ próximo slide</h3>
+        <p style="color: var(--text-4);">Anna Mel · Stripe · Presença · Propostas</p>
+        <div class="meta" style="color: var(--text-4);">continua</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 4 — FRENTES PRONTAS (parte 2)
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="frentes-header reveal">
+      <div class="eyebrow"><span class="dot"></span>01 · Frentes consolidadas <em class="serif" style="font-size: 0.75em;">(continuação)</em></div>
+      <h2>O que já está pronto.</h2>
+    </div>
+
+    <div class="frentes-grid two-cols reveal">
+      <div class="frente-card">
+        <div class="num">06</div>
+        <h3>Anna Mel V1 deployada</h3>
+        <p>Servidor OpenClaw em 72.60.9.128. Persona em 7 MDs, tunnels Cloudflare ativos em openclaw.buscouai.com e uazapi.buscouai.com.</p>
+        <div class="meta">Lead inbound · em testes</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">07</div>
+        <h3>Stripe sandbox</h3>
+        <p>Credenciais coletadas, produtos + prices canônicos criados (R$ 2.500 implementação à vista, R$ 3.000 em 12x, R$ 300 infra mensal).</p>
+        <div class="meta">2 produtos · 3 prices</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">08</div>
+        <h3>Presença digital ativa</h3>
+        <p>Instagram + TikTok + LinkedIn com 2 publicações em cada. Gmail corporativo, postforme.dev integrado, telefone canônico definido.</p>
+        <div class="meta">4 canais ao vivo</div>
+      </div>
+
+      <div class="frente-card">
+        <div class="num">09</div>
+        <h3>Sistema de propostas</h3>
+        <p>Skill gerador-proposta-buscou + template canônico em modo slide + pipeline PDF light mode. Primeira proposta real (Innovate LED) gerada e enviada.</p>
+        <div class="meta">PDF automatizado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 5 — TRANSIÇÃO (8 sprints)
+============================================================ -->
+<section class="slide slide-section-divider">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · O que falta</div>
+    <div class="big-num reveal">08</div>
+    <h1 class="reveal">
+      sprints<br>
+      <em class="serif">até a V1 completa.</em>
+    </h1>
+    <p class="reveal" style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: clamp(1rem, 2vh, 1.5rem);">
+      Sequencial nas 4 primeiras · paralelo após o motor
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 6 — SPRINT 01: AUTH + PAINEL ADMIN
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 01 · base obrigatória</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">01</div>
+        <div class="sprint-num-label">sprint</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao · base</div>
+        <h2 class="reveal">Auth + Painel Admin</h2>
+        <p class="sprint-tagline reveal">
+          Sem painel pra gerenciar clientes, cupons e financeiro, nada começa.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Schema: <code>usuarios</code>, <code>organizations</code>, <code>roles</code>, <code>sessions</code></li>
+          <li>Rota <code>/login</code> com Supabase Auth e redirect role-based</li>
+          <li>Painel <code>/admin</code> com visão geral + CRUD de clientes</li>
+          <li>Painel <code>/admin/cupons</code> — cria Stripe Coupon via API</li>
+          <li>Painel <code>/admin/financeiro</code> — MRR, lista compras, Payment Links emitidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 7 — SPRINT 02: PAGAMENTO + ONBOARDING
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 02 · pagamento</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">02</div>
+        <div class="sprint-num-label">sprint</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao + Vitoria</div>
+        <h2 class="reveal">Pagamento + onboarding cliente</h2>
+        <p class="sprint-tagline reveal">
+          Cliente paga → vira organização → entra no painel dele.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Schema: <code>compras</code>, <code>assinaturas_infra</code>, <code>parcelas</code>, <code>clientes_stripe</code></li>
+          <li>API admin que cria Payment Link Stripe com cupom (canal privado)</li>
+          <li>Webhook <code>/api/webhook/stripe</code> processa <code>checkout.session.completed</code> e <code>invoice.*</code></li>
+          <li>Pagamento confirmado → promove lead → cliente → cria organização</li>
+          <li>WhatsApp pós-pagamento com credenciais (V1 manual)</li>
+          <li>Área cliente <code>/painel/onboarding</code> — logo, cores, tom, preferências de imagem</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 8 — SPRINT 03: BLOG MULTI-TENANT
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 03 · provisionamento</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">03</div>
+        <div class="sprint-num-label">sprint</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Vitoria + Joao</div>
+        <h2 class="reveal">Blog multi-tenant</h2>
+        <p class="sprint-tagline reveal">
+          Cliente que pagou tem blog próprio no ar em ≤ 24h.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Decisão arquitetural: subdomain <code>cliente.buscouai.com</code> vs path <code>/b/cliente</code></li>
+          <li>Pipeline: organização criada → blog vazio provisionado automaticamente</li>
+          <li>Templates aplicando branding do cliente (logo, cores, tom)</li>
+          <li>Configuração de domínio próprio do cliente (DNS + SSL)</li>
+          <li>Páginas do blog: home, post, categoria, busca</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 9 — SPRINT 04: MOTOR V1
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 04 · coração do produto</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">04</div>
+        <div class="sprint-num-label">sprint · pesado</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao</div>
+        <h2 class="reveal">Motor V1 — <em class="serif">6 agentes core</em></h2>
+        <p class="sprint-tagline reveal">
+          Pipeline E2E publicando 90 conteúdos/mês com qualidade SEO + AIO.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li><strong>Pesquisador</strong> — SERP, keywords, gaps de conteúdo</li>
+          <li><strong>Estrategista</strong> — clusters temáticos, calendário 90/mês</li>
+          <li><strong>Redator</strong> — artigos 800–1.200 palavras (answer-first)</li>
+          <li><strong>Revisor</strong> — score SEO + AIO ≥ 75 antes de publicar</li>
+          <li><strong>Publicador</strong> — publica no blog do cliente via API</li>
+          <li><strong>Monitor</strong> — ranking, AI Overviews, Search Console</li>
+          <li><strong>Orquestrador</strong> — coordena tudo via MCP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 10 — SPRINT 05: ANNA MEL V1.1
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 05 · cadências · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">05</div>
+        <div class="sprint-num-label">sprint · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao</div>
+        <h2 class="reveal">Anna Mel V1.1</h2>
+        <p class="sprint-tagline reveal">
+          Anna automatiza nutrição, fechamento e cobrança recorrente.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Cadência nutrição pré-call (D-1 + material de apoio)</li>
+          <li>Cadência confirmação (D-1, 6h, 3h)</li>
+          <li>Cadência pós-reunião (D+1, D+3, D+7) + envio de Payment Link</li>
+          <li>Régua D+27 mensal da infra (R$ 300 recorrente)</li>
+          <li>Webhook Cal.com → Anna (lê reagendamentos pelo lead)</li>
+          <li>Contextos novos: <em class="serif">cliente ativo</em> + <em class="serif">inadimplente</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 11 — SPRINT 06: TRACKING REAL
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 06 · métricas · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">06</div>
+        <div class="sprint-num-label">sprint · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao + Vitoria</div>
+        <h2 class="reveal">Tracking real per-tenant</h2>
+        <p class="sprint-tagline reveal">
+          Substitui o mock estático da landing por dashboard real do cliente.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Google Analytics 4 com auto-provisioning no onboarding</li>
+          <li>Google Tag Manager auto-provisioning</li>
+          <li>Microsoft Clarity per-tenant</li>
+          <li>Página <code>/painel/metricas</code> consumindo GA Data API</li>
+          <li>Atualiza a seção <code>#preview</code> da landing pra refletir dados reais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 12 — SPRINT 07: OUTBOUND + IG
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 07 · topo de funil · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">07</div>
+        <div class="sprint-num-label">sprint · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao + Vitoria</div>
+        <h2 class="reveal">Outbound + Conteúdo IG</h2>
+        <p class="sprint-tagline reveal">
+          Topo de funil ativo enquanto o motor entrega.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Base IG completa (calendário editorial + tom + playbooks por formato)</li>
+          <li>Próximas publicações IG (carrossel, foto IA, motion 15s)</li>
+          <li>Lista de 50 leads ICP local (clínicas, imobiliárias, advogados, serviços)</li>
+          <li>Script de outbound + cadência de toques no WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 13 — SPRINT 08: POLISH + DOCS
+============================================================ -->
+<section class="slide sprint-slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 08 · fechamento</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">08</div>
+        <div class="sprint-num-label">sprint · final</div>
+      </div>
+
+      <div class="sprint-content">
+        <div class="sprint-owner reveal">Joao + Vitoria</div>
+        <h2 class="reveal">Polish + Documentação V1</h2>
+        <p class="sprint-tagline reveal">
+          V1 estável, documentada, pronta pra escalar.
+        </p>
+        <ul class="sprint-bullets reveal">
+          <li>Testes E2E completos (Stripe + Anna Mel + Onboarding + Motor)</li>
+          <li>Documentação técnica completa no vault Obsidian</li>
+          <li>Roadmap V2 redigido (5 agentes complementares + Stripe Subscription auto)</li>
+          <li>Closeout: V1 do produto inteiro fechada e marcada como entregue</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 14 — MAPA DE EXECUÇÃO
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>03 · Mapa de execução</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.75rem, 2vh, 1.5rem);">
+      Ordem · paralelismo.
+    </h2>
+    <p class="reveal" style="font-size: var(--body-size); color: var(--text-2); max-width: 720px; margin-bottom: clamp(1rem, 2.5vh, 1.75rem);">
+      Sprints 1 a 4 são <strong style="color: var(--text);">sequenciais obrigatórias</strong>. Cada uma destrava a próxima. Após o Motor (sprint 4), as três frentes 5 / 6 / 7 podem rodar <strong style="color: var(--ai);">em paralelo</strong> dependendo da capacidade de Joao + Vitoria. A sprint 8 só fecha quando todas as paralelas terminarem.
+    </p>
+
+    <div class="mapa-grid reveal">
+      <div class="mapa-node sequencial"><div class="num">01</div><div class="label">Auth + Admin</div></div>
+      <div class="mapa-arrow">→</div>
+      <div class="mapa-node sequencial"><div class="num">02</div><div class="label">Pagamento</div></div>
+      <div class="mapa-arrow">→</div>
+      <div class="mapa-node sequencial"><div class="num">03</div><div class="label">Blog</div></div>
+      <div class="mapa-arrow">→</div>
+      <div class="mapa-node sequencial"><div class="num">04</div><div class="label">Motor</div></div>
+      <div class="mapa-arrow">→</div>
+      <div class="mapa-bracket">
+        <div class="mapa-node paralelo"><div class="num">05</div><div class="label">Anna V1.1</div></div>
+        <div class="mapa-node paralelo"><div class="num">06</div><div class="label">Tracking</div></div>
+        <div class="mapa-node paralelo"><div class="num">07</div><div class="label">Outbound + IG</div></div>
+      </div>
+      <div class="mapa-arrow">→</div>
+      <div class="mapa-node fechamento"><div class="num">08</div><div class="label">Polish + Docs</div></div>
+    </div>
+
+    <div class="mapa-legend reveal">
+      <span><span class="leg-dot seq"></span>sequencial</span>
+      <span><span class="leg-dot par"></span>paralelo</span>
+      <span><span class="leg-dot fim"></span>fechamento</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 15 — V1 FECHADA
+============================================================ -->
+<section class="slide slide-final">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>04 · Definição de pronto</div>
+
+    <h2 class="reveal">
+      V1 fechada quando<br>
+      <em class="serif">o ciclo inteiro roda.</em>
+    </h2>
+
+    <p class="lead reveal">
+      Lead chega na landing → agenda <span class="mint">Cal.com</span> → reunião acontece → recebe <span class="mint">Payment Link</span> via WhatsApp → paga → recebe credenciais → faz onboarding → blog vai ao ar em ≤7 dias → motor publica 3 artigos/dia → cliente vê <span class="mint">métricas reais</span>.
+    </p>
+
+    <ul class="closing-bullets reveal">
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Anna Mel automatizando Lead inbound + cadências completas pós-reunião
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Documentação técnica completa publicada no vault Obsidian
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Pelo menos 1 cliente real ativado, pagando e rodando a infra
+      </li>
+    </ul>
+
+    <div class="footer-meta reveal">
+      <span><a class="brand-lockup">buscou<span class="ai">.ai</span></a> · roadmap v1</span>
+      <span>2026 · plano de execução</span>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   Slide presentation controller
+============================================================ */
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.total = this.slides.length;
+    this.currentIndex = 0;
+
+    this.progressBar = document.getElementById('progressBar');
+    this.navDotsContainer = document.getElementById('navDots');
+    this.slideCurrent = document.getElementById('slideCurrent');
+    this.slideTotal = document.getElementById('slideTotal');
+
+    this.slideTotal.textContent = String(this.total).padStart(2, '0');
+
+    this.setupNavDots();
+    this.setupIntersectionObserver();
+    this.setupKeyboardNav();
+    this.setupTouchNav();
+    this.setupScrollTracking();
+  }
+
+  setupNavDots() {
+    this.navDotsContainer.innerHTML = '';
+    this.slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.setAttribute('aria-label', `Ir para slide ${i + 1}`);
+      if (i === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => this.goTo(i));
+      this.navDotsContainer.appendChild(btn);
+    });
+    this.dots = this.navDotsContainer.querySelectorAll('button');
+  }
+
+  setupIntersectionObserver() {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const idx = Array.from(this.slides).indexOf(entry.target);
+          this.updateActiveDot(idx);
+          this.currentIndex = idx;
+          this.slideCurrent.textContent = String(idx + 1).padStart(2, '0');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    this.slides.forEach((s) => obs.observe(s));
+  }
+
+  updateActiveDot(idx) {
+    this.dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  goTo(idx) {
+    this.slides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  setupKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        if (this.currentIndex < this.total - 1) this.goTo(this.currentIndex + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (this.currentIndex > 0) this.goTo(this.currentIndex - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        this.goTo(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        this.goTo(this.total - 1);
+      }
+    });
+  }
+
+  setupTouchNav() {
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(diff) > 60) {
+        if (diff > 0 && this.currentIndex < this.total - 1) {
+          this.goTo(this.currentIndex + 1);
+        } else if (diff < 0 && this.currentIndex > 0) {
+          this.goTo(this.currentIndex - 1);
+        }
+      }
+    }, { passive: true });
+  }
+
+  setupScrollTracking() {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      this.progressBar.style.width = `${progress}%`;
+    }, { passive: true });
+  }
+}
+
+new SlidePresentation();
+</script>
+
+</body>
+</html>
