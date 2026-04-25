@@ -1239,16 +1239,19 @@ section { padding: 100px 0; position: relative; }
   box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(124,92,255,0.08);
   position: relative;
 }
-a.browser-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+.browser-iframe-wrap {
+  /* herda visual do .browser; sem decoracao adicional */
 }
-a.browser-link:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-strong);
-  box-shadow: 0 56px 140px rgba(0,0,0,0.7), 0 0 120px rgba(0,229,160,0.18);
+.browser-iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: none;
+  background: var(--bg-elev-1);
+  color-scheme: dark;
+}
+@media (max-width: 768px) {
+  .browser-iframe { aspect-ratio: 4 / 5; }
 }
 .preview-cta {
   display: flex;
@@ -1928,7 +1931,7 @@ footer {
       <p>Cada busca, cada aparição, cada cliente. Transparência total do primeiro ao último clique.</p>
     </div>
 
-    <a class="browser browser-link" href="/exemplo/dashboard" target="_blank" rel="noopener" aria-label="Abrir exemplo do dashboard em nova aba">
+    <div class="browser browser-iframe-wrap">
       <div class="browser-bar">
         <div class="browser-dots"><span></span><span></span><span></span></div>
         <div class="browser-url">
@@ -1936,115 +1939,15 @@ footer {
           app.buscouai.com / dashboard
         </div>
       </div>
-      <div class="dash">
-        <aside class="dash-side">
-          <span class="brand">buscou<span class="ai">.ai</span></span>
-          <div class="group-label">Workspace</div>
-          <ul>
-            <li class="active">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-              Visão geral
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
-              Buscas capturadas
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.8-2.8"/><path d="M18 12h4"/></svg>
-              Respostas em IA
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-              Conversões
-            </li>
-          </ul>
-          <div class="group-label">Configuração</div>
-          <ul>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-              Empresa
-            </li>
-          </ul>
-        </aside>
-        <div class="dash-main">
-          <div class="dash-head">
-            <div>
-              <div class="eyebrow" style="margin-bottom: 4px;">Últimos 30 dias</div>
-              <h3>Boa tarde, Clínica Odonto Vitória</h3>
-            </div>
-            <div class="live-tag"><span class="dot"></span>Exemplo · visualização do produto</div>
-          </div>
-
-          <div class="kpi-row">
-            <div class="kpi accent">
-              <div class="l">Buscas capturadas</div>
-              <div class="v">4.218</div>
-              <div class="d">↑ 28% vs mês anterior</div>
-            </div>
-            <div class="kpi">
-              <div class="l">Aparições em IA</div>
-              <div class="v">1.962</div>
-              <div class="d">↑ 41% vs mês anterior</div>
-            </div>
-            <div class="kpi">
-              <div class="l">Clientes gerados</div>
-              <div class="v">137</div>
-              <div class="d">↑ 19% vs mês anterior</div>
-            </div>
-          </div>
-
-          <div class="dash-card">
-            <div class="ct">
-              <h4>Presença no Google + IAs</h4>
-              <div class="legend">últimos 30 dias</div>
-            </div>
-            <svg viewBox="0 0 600 100" preserveAspectRatio="none" style="width: 100%; height: 80px;">
-              <defs>
-                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#00E5A0" stop-opacity="0.35"/>
-                  <stop offset="100%" stop-color="#00E5A0" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5 L600,100 L0,100 Z" fill="url(#chartGrad)"/>
-              <path d="M0,85 L30,80 L60,75 L90,78 L120,65 L150,60 L180,55 L210,58 L240,48 L270,42 L300,38 L330,35 L360,28 L390,30 L420,22 L450,18 L480,20 L510,14 L540,10 L570,8 L600,5" stroke="#00E5A0" stroke-width="1.5" fill="none"/>
-            </svg>
-          </div>
-
-          <div class="dash-card">
-            <div class="ct">
-              <h4>Buscas capturadas ao vivo</h4>
-              <div class="legend">hoje</div>
-            </div>
-            <div class="search-list">
-              <div class="search-item">
-                <span class="q">dentista aberto agora vitória</span>
-                <span class="src">ChatGPT</span>
-                <span class="pos">#1</span>
-              </div>
-              <div class="search-item">
-                <span class="q">implante dentário zona sul es</span>
-                <span class="src">Google</span>
-                <span class="pos">#2</span>
-              </div>
-              <div class="search-item">
-                <span class="q">clareamento dental aparelho</span>
-                <span class="src">Perplexity</span>
-                <span class="pos">#1</span>
-              </div>
-              <div class="search-item">
-                <span class="q">melhor dentista pediatra</span>
-                <span class="src">Gemini</span>
-                <span class="pos">#3</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
+      <iframe src="/exemplo/dashboard"
+              loading="lazy"
+              class="browser-iframe"
+              title="Exemplo do dashboard buscou.ai"></iframe>
+    </div>
 
     <div class="preview-cta">
-      <a href="/exemplo/dashboard" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Explorar dashboard →</a>
-      <span class="preview-cta-note">Abre o protótipo do dashboard em nova aba</span>
+      <a href="/exemplo/dashboard" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Abrir em tela cheia ↗</a>
+      <span class="preview-cta-note">Use a sidebar acima pra navegar entre as telas — ou abra em nova aba pra ver maior</span>
     </div>
   </div>
 </section>
@@ -2070,85 +1973,15 @@ footer {
         </div>
       </div>
 
-      <div class="blog-mock-page">
-        <!-- mini-hero com search -->
-        <div class="blog-mock-hero">
-          <div class="eyebrow"><span class="dot"></span>Blog · Clínica Odonto Vitória</div>
-          <h3>Tudo que sua região <em>está perguntando</em>.</h3>
-          <div class="blog-mock-search">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
-            <span class="placeholder">Buscar artigos…</span>
-            <span class="caret"></span>
-          </div>
-        </div>
-
-        <!-- pills de categoria (clicaveis -> /exemplo/blog/categoria) -->
-        <div class="blog-mock-cats">
-          <span class="cat-label">CATEGORIAS</span>
-          <a class="cat-pill active" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Todos <span class="count">42</span></a>
-          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Implantes <span class="count">12</span></a>
-          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Ortodontia <span class="count">8</span></a>
-          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Prevenção <span class="count">15</span></a>
-          <a class="cat-pill" href="/exemplo/blog/categoria" target="_blank" rel="noopener">Casos reais <span class="count">5</span></a>
-        </div>
-
-        <!-- featured grid (clicavel -> /exemplo/blog/artigo) -->
-        <a class="blog-mock-featured-row" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
-          <div class="blog-mock-featured-visual">
-            <div class="blog-mock-search-mock">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
-              <span>dentista perto de mim aberto agora</span>
-              <span class="caret"></span>
-            </div>
-          </div>
-          <div class="blog-mock-featured-content">
-            <div class="kicker"><span class="pill">Destaque</span> · IMPLANTES · 18 abr</div>
-            <h4>Implante dentário em <em>Vitória</em>: o que saber antes da primeira consulta</h4>
-            <p>Checklist de 8 pontos que todo paciente deveria considerar. Baseado nas buscas mais comuns dos últimos 90 dias.</p>
-            <div class="blog-mock-meta">
-              <span>12 min</span>
-              <span>·</span>
-              <span>+2.400 leitores</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- grid 3 cards com thumbs visuais variados (clicaveis -> /exemplo/blog/artigo) -->
-        <div class="blog-mock-articles">
-          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
-            <div class="blog-mock-thumb thumb-serif">
-              <div class="thumb-title">Aparelho <span class="brand-accent">transparente.</span></div>
-            </div>
-            <div class="meta">Ortodontia · 6 min</div>
-            <h5>Aparelho transparente funciona mesmo? O que a prática mostra</h5>
-          </a>
-
-          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
-            <div class="blog-mock-thumb thumb-stat">
-              <div class="thumb-stat-num">+340<span class="thumb-stat-small">PACIENTES / TRIM</span></div>
-            </div>
-            <div class="meta">Casos reais · 5 min</div>
-            <h5>Como uma clínica de bairro triplicou consultas em 90 dias</h5>
-          </a>
-
-          <a class="blog-mock-art" href="/exemplo/blog/artigo" target="_blank" rel="noopener">
-            <div class="blog-mock-thumb thumb-search">
-              <div class="thumb-search-mock">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
-                <span>quantas vezes ir ao dentista</span>
-                <span class="caret"></span>
-              </div>
-            </div>
-            <div class="meta">Prevenção · 5 min</div>
-            <h5>Quantas vezes é preciso ir ao dentista por ano? Depende</h5>
-          </a>
-        </div>
-      </div>
+      <iframe src="/exemplo/blog"
+              loading="lazy"
+              class="browser-iframe"
+              title="Exemplo do blog buscou.ai"></iframe>
     </div>
 
     <div class="blog-preview-cta">
-      <a href="/exemplo/blog" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Ver exemplo completo →</a>
-      <span class="blog-preview-note">Abre o protótipo do blog em nova aba</span>
+      <a href="/exemplo/blog" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Abrir em tela cheia ↗</a>
+      <span class="blog-preview-note">Navegue pelos artigos acima — ou abra em nova aba pra ver maior</span>
     </div>
   </div>
 </section>

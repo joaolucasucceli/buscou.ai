@@ -271,6 +271,58 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
 ============================================================ */
 @media (max-width: 1100px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .bar-row { grid-template-columns: 140px 1fr 50px; } }
 @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 24px 20px 96px; } .topbar .workspace-name { display: none; } .kpi-row { grid-template-columns: 1fr; } .bar-row { grid-template-columns: 1fr; gap: 4px; } .bar-row .bar-value { text-align: left; } }
+
+/* Mobile sidebar como nav horizontal scrollable (override do display:none acima) */
+@media (max-width: 768px) {
+  .sidebar {
+    display: flex;
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+  }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-footer { display: none; }
+  .nav-group-label { display: none; }
+  .sidebar nav {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .sidebar nav ul {
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
+  .sidebar nav a {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+  }
+  .sidebar nav a.active {
+    background: var(--ai);
+    color: var(--bg);
+    border-color: var(--ai);
+  }
+}
 </style>
 </head>
 <body>
