@@ -120,29 +120,10 @@ Pago uma vez. Payment Link enviado via WhatsApp pelo João depois do cliente ace
 
 ### Proibido usar em uso próprio
 
-| Termo proibido | Por quê |
-|---|---|
-| "agência" | Não somos. |
-| "gestão de X" | Não gerimos — entregamos tecnologia. |
-| "consultoria" | Não consultamos. |
-| "serviço mensal" | Não é serviço. |
-| "mensalidade de serviço" | Mensalidade só existe pra infra (componente técnico). |
-| "mensalidade de gestão" | Idem. |
-| "plano mensal" | Não há planos. |
-| "assinatura SaaS" (em copy público) | Comercialmente não somos. |
-| "plano" (Starter/Growth/Scale) | Não há planos. Oferta única. |
-| "contrato mensal" | Não há. |
-| "horas de trabalho" | Não vendemos horas. |
-| "piloto automático" | Abstrato — usar "automação de presença". |
-| "sistema operacional" | Abstrato — cortar. |
-| "transformação digital" | Clichê. |
-| "jornada" | Clichê. |
-| "sinergia" | Clichê. |
-| "soluções" (soltinho) | Usar "tecnologia", "sistema" ou "motor". |
-| "plano total" / "pacote total" | Nunca unificar implementação + infra como pacote. |
-| "checkout direto" / "comprar agora" (em copy público) | Revogado 2026-04-24. |
-| "self-service" (em copy público) | Revogado 2026-04-24. |
-| Expor "R$ 2.500" / "R$ 3.000" / "R$ 300" em copy público | Revogado 2026-04-24. Valores só em reunião + proposta + Payment Link via WhatsApp. |
+- **Categorizar errado:** "agência", "gestão", "consultoria", "serviço mensal", "mensalidade de serviço/gestão", "horas de trabalho" — não somos nada disso.
+- **Empacotar errado:** "plano mensal", "plano" (Starter/Growth/Scale), "contrato mensal", "assinatura SaaS" (em copy público), "plano total", "pacote total" — não há planos nem unificação.
+- **Cliché vazio:** "transformação digital", "jornada", "sinergia", "soluções" (soltinho), "piloto automático", "sistema operacional".
+- **Revogado em 2026-04-24:** "checkout direto", "comprar agora" e expor valores (R$ 2.500 / R$ 3.000 / R$ 300) em copy público — só em reunião + proposta + Payment Link via WhatsApp.
 
 ### Permitido e recomendado
 
@@ -178,10 +159,21 @@ Pago uma vez. Payment Link enviado via WhatsApp pelo João depois do cliente ace
 
 ### Nome da marca (obrigatório)
 
-- **Visual:** `buscou.ai` — minúsculo, com ponto.
+- **Visual (uso em peças gráficas, logo):** `buscou.ai` — minúsculo, com ponto.
 - **Institucional (jurídico):** `BuscouAI`.
 - **Domínio real:** `buscouai.com`.
 - **Nunca:** `Buscou.ai`, `Buscou.AI`, `BUSCOU.AI`, `buscou.AI`.
+
+### Convenção anti-auto-link em msg WhatsApp
+
+WhatsApp transforma `buscou.ai` em link clicável que aponta pra domínio inexistente (`https://buscou.ai`) — o real é `buscouai.com`. Lead clica, dá DNS fail, marca parece quebrada. Por isso, ao escrever a marca em corpo de mensagem:
+
+- **Preferido:** `Buscou` (capitalizado, vira nome próprio)
+- **Aceito informal:** `buscou ai` (com espaço, sem ponto)
+- **URL explícita:** `buscouai.com` ou `https://www.buscouai.com`
+- **Nunca:** `buscou.ai` cru no meio de frase
+
+Pessoa real no WhatsApp evita link auto-detectado em texto fluido — soa natural.
 
 ## 7. Promessa vs entrega (sem venda enganosa)
 
