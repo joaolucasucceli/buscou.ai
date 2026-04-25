@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>buscou.ai — Roadmap V1</title>
-<meta name="description" content="Plano de execução V1 da buscou.ai. 8 sprints do que já existe ao produto completo.">
+<title>buscou.ai — Material de estudo V1</title>
+<meta name="description" content="Material de estudo completo da buscou.ai. Verdade Única, operação ativa, jornadas e plano de execução em 34 slides.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#08090D">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -12,9 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   THEME — buscou.ai brand on-page
-============================================================ */
 :root {
   --bg: #08090D;
   --bg-elev-1: #0F1117;
@@ -36,6 +33,13 @@
   --ai-soft: rgba(0, 229, 160, 0.08);
   --ai-glow: rgba(0, 229, 160, 0.45);
 
+  --danger: #FCA5A5;
+  --danger-soft: rgba(239, 68, 68, 0.08);
+  --danger-border: rgba(239, 68, 68, 0.22);
+
+  --warn: #FCD34D;
+  --warn-soft: rgba(252, 211, 77, 0.08);
+
   --font-sans: 'Geist', -apple-system, sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --font-serif: 'Instrument Serif', Georgia, serif;
@@ -47,11 +51,11 @@
   --slide-padding: clamp(1.5rem, 4vw, 4.5rem);
   --content-gap: clamp(0.75rem, 2vw, 2rem);
   --title-size: clamp(2rem, 6.5vw, 5.5rem);
-  --h2-size: clamp(1.5rem, 4vw, 3rem);
-  --h3-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  --body-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  --small-size: clamp(0.7rem, 1vw, 0.85rem);
-  --eyebrow-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  --h2-size: clamp(1.4rem, 3.6vw, 2.8rem);
+  --h3-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  --body-size: clamp(0.85rem, 1.3vw, 1rem);
+  --small-size: clamp(0.7rem, 0.95vw, 0.82rem);
+  --eyebrow-size: clamp(0.62rem, 0.82vw, 0.74rem);
   --num-size: clamp(4rem, 14vw, 11rem);
 }
 
@@ -71,13 +75,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ambient grid background — same as landing */
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px);
@@ -85,22 +86,13 @@ body::before {
   mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 80%);
 }
-
-/* noise overlay */
 body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.03;
+  content: ''; position: fixed; inset: 0;
+  pointer-events: none; z-index: 1; opacity: 0.03;
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   mix-blend-mode: overlay;
 }
 
-/* ============================================================
-   SLIDE BASE — viewport fitting (mandatory)
-============================================================ */
 .slide {
   width: 100vw;
   height: 100vh;
@@ -112,7 +104,6 @@ body::after {
   position: relative;
   z-index: 2;
 }
-
 .slide-content {
   flex: 1;
   display: flex;
@@ -126,9 +117,6 @@ body::after {
   width: 100%;
 }
 
-/* ============================================================
-   TYPOGRAPHY HELPERS
-============================================================ */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--eyebrow-size);
@@ -139,11 +127,10 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
+  margin-bottom: clamp(0.6rem, 1.5vh, 1.1rem);
 }
 .eyebrow .dot {
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--ai);
   box-shadow: 0 0 0 0 var(--ai-glow);
@@ -155,7 +142,7 @@ body::after {
   100% { box-shadow: 0 0 0 0 rgba(0,229,160,0); }
 }
 
-h1, h2, h3 { font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; }
+h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; }
 em.serif {
   font-family: var(--font-serif);
   font-style: italic;
@@ -164,7 +151,9 @@ em.serif {
   letter-spacing: -0.015em;
 }
 .mint { color: var(--ai); }
+.brand-c { color: var(--brand-300); }
 .muted { color: var(--text-2); }
+.tx3 { color: var(--text-3); }
 
 .brand-lockup {
   font-family: var(--font-sans);
@@ -181,9 +170,6 @@ em.serif {
   text-shadow: 0 0 14px var(--ai-glow);
 }
 
-/* ============================================================
-   ANIMATIONS — reveal on visible
-============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -193,36 +179,29 @@ em.serif {
 }
 .slide.visible .reveal { opacity: 1; transform: translateY(0); }
 .slide.visible .reveal:nth-child(1) { transition-delay: 0.05s; }
-.slide.visible .reveal:nth-child(2) { transition-delay: 0.15s; }
-.slide.visible .reveal:nth-child(3) { transition-delay: 0.25s; }
-.slide.visible .reveal:nth-child(4) { transition-delay: 0.35s; }
-.slide.visible .reveal:nth-child(5) { transition-delay: 0.45s; }
-.slide.visible .reveal:nth-child(6) { transition-delay: 0.55s; }
-.slide.visible .reveal:nth-child(7) { transition-delay: 0.65s; }
+.slide.visible .reveal:nth-child(2) { transition-delay: 0.13s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: 0.22s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: 0.31s; }
+.slide.visible .reveal:nth-child(5) { transition-delay: 0.40s; }
+.slide.visible .reveal:nth-child(6) { transition-delay: 0.49s; }
+.slide.visible .reveal:nth-child(7) { transition-delay: 0.58s; }
+.slide.visible .reveal:nth-child(8) { transition-delay: 0.66s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
   html { scroll-behavior: auto; }
 }
 
-/* ============================================================
-   SLIDE 1 — TITLE
-============================================================ */
+/* ============= CAPA ============= */
 .slide-title {
   background:
     radial-gradient(ellipse 70% 60% at 50% 20%, var(--brand-soft), transparent 60%),
     radial-gradient(ellipse 50% 40% at 80% 100%, var(--ai-soft), transparent 60%);
 }
-.slide-title .slide-content {
-  align-items: flex-start;
-  justify-content: space-between;
-}
+.slide-title .slide-content { align-items: flex-start; justify-content: space-between; }
 .slide-title-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-top: clamp(0.5rem, 2vh, 1.5rem);
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; padding-top: clamp(0.5rem, 2vh, 1.5rem);
 }
 .slide-title-meta {
   font-family: var(--font-mono);
@@ -238,17 +217,11 @@ em.serif {
 }
 .slide-title h1 em.serif { color: var(--text-2); display: block; }
 .slide-title-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-  gap: clamp(1rem, 4vw, 3rem);
-  flex-wrap: wrap;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  width: 100%; gap: clamp(1rem, 4vw, 3rem); flex-wrap: wrap;
 }
 .slide-title-tagline {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  display: inline-flex; align-items: center; gap: 10px;
   padding: 8px 18px;
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--border-strong);
@@ -260,9 +233,7 @@ em.serif {
   text-transform: uppercase;
 }
 .slide-title-search {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 12px;
   padding: 14px 22px;
   background: rgba(15, 17, 23, 0.65);
   backdrop-filter: blur(8px);
@@ -275,9 +246,7 @@ em.serif {
 }
 .slide-title-search svg { color: var(--text-3); flex-shrink: 0; }
 .slide-title-search .caret {
-  display: inline-block;
-  width: 2px;
-  height: 14px;
+  display: inline-block; width: 2px; height: 14px;
   background: var(--ai);
   box-shadow: 0 0 10px var(--ai-glow);
   animation: blink 1.1s steps(1) infinite;
@@ -285,9 +254,101 @@ em.serif {
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* ============================================================
-   SLIDE 2 — DIAGNOSTICO (BIG NUMBER)
-============================================================ */
+/* ============= SUMÁRIO ============= */
+.toc-list {
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1.4vh, 1rem);
+  width: 100%; max-width: 920px;
+  margin-top: clamp(0.75rem, 2vh, 1.5rem);
+}
+.toc-row {
+  display: grid;
+  grid-template-columns: clamp(56px, 7vw, 84px) 1fr clamp(80px, 12vw, 130px);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: center;
+  padding: clamp(0.75rem, 1.6vh, 1.1rem) clamp(0.85rem, 1.5vw, 1.3rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.3s var(--ease);
+}
+.toc-row:hover { border-color: var(--ai); }
+.toc-row .roman {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--ai);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.toc-row .toc-text h3 {
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.toc-row .toc-text p {
+  font-size: clamp(0.78rem, 1vw, 0.88rem);
+  color: var(--text-3);
+  line-height: 1.5;
+}
+.toc-row .toc-meta {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.74rem);
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+@media (max-width: 700px) {
+  .toc-row { grid-template-columns: 56px 1fr; }
+  .toc-row .toc-meta { display: none; }
+}
+
+/* ============= PART DIVIDER (I/II/III/IV) ============= */
+.slide-part-divider {
+  background:
+    radial-gradient(ellipse 50% 40% at 30% 50%, var(--brand-soft), transparent 60%),
+    radial-gradient(ellipse 40% 30% at 75% 30%, var(--ai-soft), transparent 60%);
+}
+.slide-part-divider .slide-content { align-items: flex-start; justify-content: center; }
+.part-tag {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+}
+.part-roman {
+  font-family: var(--font-mono);
+  font-size: clamp(7rem, 20vw, 16rem);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  background: linear-gradient(180deg, var(--ai) 0%, rgba(0, 229, 160, 0.4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 80px rgba(0, 229, 160, 0.2);
+  margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+}
+.part-divider-title {
+  font-size: var(--title-size);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  margin-bottom: clamp(1rem, 2.5vh, 1.75rem);
+}
+.part-divider-title em.serif { color: var(--text-2); display: block; }
+.part-divider-summary {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: var(--text-2);
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+/* ============= DIAGNÓSTICO ============= */
 .diagnostico-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -305,10 +366,8 @@ em.serif {
   position: relative;
 }
 .diagnostico-num::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 3px;
+  content: ''; display: block;
+  width: 80px; height: 3px;
   background: var(--ai);
   box-shadow: 0 0 14px var(--ai-glow);
   margin-top: clamp(0.75rem, 2vh, 1.5rem);
@@ -333,12 +392,92 @@ em.serif {
   margin-bottom: clamp(1rem, 3vh, 2rem);
 }
 .diagnostico-pills {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: flex; gap: 8px; flex-wrap: wrap;
 }
 .diagnostico-pill {
-  padding: 8px 14px;
+  padding: 7px 12px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.74rem);
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+}
+.diagnostico-pill .mint-dot {
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--ai);
+  margin-right: 6px; vertical-align: middle;
+}
+
+/* ============= FACT STACK (Quem somos) ============= */
+.fact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.45rem, 1.2vh, 0.75rem);
+  width: 100%;
+  max-width: 920px;
+  margin-top: clamp(0.75rem, 2vh, 1.25rem);
+}
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.1rem);
+  padding: clamp(0.65rem, 1.4vh, 0.95rem) clamp(0.85rem, 1.5vw, 1.25rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.fact-row.negative { border-color: var(--danger-border); background: linear-gradient(180deg, var(--danger-soft), transparent), var(--bg-elev-1); }
+.fact-row.positive { border-color: rgba(0, 229, 160, 0.25); background: linear-gradient(180deg, var(--ai-soft), transparent), var(--bg-elev-1); }
+.fact-row .icon-box {
+  width: 30px; height: 30px;
+  border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.fact-row.negative .icon-box { background: rgba(239,68,68,0.12); color: var(--danger); }
+.fact-row.positive .icon-box { background: var(--ai-soft); color: var(--ai); }
+.fact-row .text {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+.fact-row.negative .text { color: var(--text-2); }
+
+/* ============= CENTRAL PHRASE (Frase central) ============= */
+.phrase-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vh, 2.25rem);
+  width: 100%;
+}
+.phrase-big {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 6.5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  max-width: 18ch;
+}
+.phrase-big .mint { color: var(--ai); font-style: italic; font-family: var(--font-serif); }
+.phrase-meta {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.channel-pills {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: clamp(0.5rem, 1.5vh, 0.75rem);
+}
+.channel-pill {
+  padding: 8px 16px;
   background: var(--bg-elev-1);
   border: 1px solid var(--border);
   border-radius: 100px;
@@ -346,57 +485,460 @@ em.serif {
   font-size: var(--small-size);
   color: var(--text-2);
   letter-spacing: 0.05em;
+  display: inline-flex; align-items: center; gap: 8px;
 }
-.diagnostico-pill .mint-dot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--ai);
-  margin-right: 6px;
-  vertical-align: middle;
+.channel-pill .led {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--ai); box-shadow: 0 0 6px var(--ai-glow);
 }
 
-/* ============================================================
-   FRENTES — grid de cards (slides 3 e 4)
-============================================================ */
-.frentes-header {
-  margin-bottom: clamp(1rem, 3vh, 2rem);
+/* ============= TWO COLUMN (ICP, Produto, Modelo, Comunicação, Identidade) ============= */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.85rem, 2vw, 1.75rem);
+  width: 100%;
+  margin-top: clamp(0.75rem, 2vh, 1.25rem);
 }
-.frentes-header h2 {
-  font-size: var(--h2-size);
-  margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+@media (max-width: 700px) {
+  .two-col-grid { grid-template-columns: 1fr; gap: 0.85rem; }
 }
+.two-col-card {
+  padding: clamp(0.95rem, 2vw, 1.4rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.2vh, 0.75rem);
+  position: relative;
+}
+.two-col-card.accent { border-color: rgba(0, 229, 160, 0.28); }
+.two-col-card.brand-accent { border-color: rgba(124, 92, 255, 0.32); }
+.two-col-card .col-tag {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.78vw, 0.7rem);
+  color: var(--text-3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.two-col-card.accent .col-tag { color: var(--ai); }
+.two-col-card.brand-accent .col-tag { color: var(--brand-300); }
+.two-col-card h3 {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.two-col-card .price {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--ai);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.two-col-card .price-note {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+.two-col-card ul {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: clamp(0.3rem, 0.8vh, 0.5rem);
+  margin-top: 4px;
+}
+.two-col-card ul li {
+  font-size: clamp(0.78rem, 1.05vw, 0.9rem);
+  color: var(--text-2);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.4;
+}
+.two-col-card ul li::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--ai);
+  margin-top: 0.55em;
+  flex-shrink: 0;
+}
+
+/* ============= COMPARE GRID (Linguagem) ============= */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.85rem, 2vw, 1.5rem);
+  width: 100%;
+  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+}
+@media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+.compare-col {
+  padding: clamp(0.85rem, 1.7vw, 1.25rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.6rem);
+}
+.compare-col.proibido { border-color: var(--danger-border); }
+.compare-col.permitido { border-color: rgba(0, 229, 160, 0.28); }
+.compare-col-head {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: clamp(0.5rem, 1vh, 0.75rem);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.compare-col-head .icon-box {
+  width: 24px; height: 24px;
+  border-radius: 5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.compare-col.proibido .icon-box { background: rgba(239,68,68,0.12); color: var(--danger); }
+.compare-col.permitido .icon-box { background: var(--ai-soft); color: var(--ai); }
+.compare-col-head h3 {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.compare-col.proibido h3 { color: var(--danger); }
+.compare-col.permitido h3 { color: var(--ai); }
+.compare-list {
+  display: flex; flex-wrap: wrap;
+  gap: 6px;
+}
+.compare-list span {
+  display: inline-block;
+  padding: 5px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: clamp(0.7rem, 0.95vw, 0.82rem);
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.compare-col.proibido .compare-list span {
+  color: var(--danger);
+  text-decoration: line-through;
+  text-decoration-color: rgba(252, 165, 165, 0.45);
+  border-color: rgba(239,68,68,0.18);
+}
+.compare-col.permitido .compare-list span {
+  color: var(--text);
+  border-color: rgba(0, 229, 160, 0.25);
+}
+
+/* ============= STACK GRID (Stack técnica, Marketing) ============= */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1.1vw, 0.85rem);
+  width: 100%;
+  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+}
+@media (max-width: 900px) { .stack-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .stack-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; } }
+.stack-tile {
+  padding: clamp(0.7rem, 1.4vw, 1rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  gap: 6px;
+  position: relative;
+  min-height: clamp(110px, 14vh, 140px);
+}
+.stack-tile .led {
+  position: absolute;
+  top: clamp(0.7rem, 1.4vw, 1rem);
+  right: clamp(0.7rem, 1.4vw, 1rem);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ai);
+  box-shadow: 0 0 8px var(--ai-glow);
+}
+.stack-tile.partial .led { background: var(--brand-300); box-shadow: 0 0 8px rgba(124,92,255,0.5); }
+.stack-tile.todo .led { background: var(--text-4); box-shadow: none; }
+.stack-tile h4 {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding-right: 16px;
+}
+.stack-tile p {
+  font-size: clamp(0.68rem, 0.92vw, 0.78rem);
+  color: var(--text-3);
+  line-height: 1.4;
+}
+.stack-tile .url {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.78vw, 0.68rem);
+  color: var(--ai);
+  margin-top: auto;
+  padding-top: 6px;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+.stack-tile.partial .url { color: var(--brand-300); }
+.stack-tile.todo .url { color: var(--text-4); }
+.stack-legend {
+  display: flex;
+  gap: clamp(0.85rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+  margin-top: clamp(0.75rem, 1.5vh, 1.1rem);
+}
+.stack-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.stack-legend .leg-dot { width: 8px; height: 8px; border-radius: 50%; }
+.stack-legend .leg-dot.ok { background: var(--ai); box-shadow: 0 0 6px var(--ai-glow); }
+.stack-legend .leg-dot.partial { background: var(--brand-300); }
+.stack-legend .leg-dot.todo { background: var(--text-4); }
+
+/* ============= JOURNEY TIMELINE ============= */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1.1vw, 0.85rem);
+  width: 100%;
+  margin-top: clamp(0.75rem, 2vh, 1.25rem);
+}
+@media (max-width: 1000px) { .journey-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .journey-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; } }
+@media (max-width: 480px) { .journey-grid { grid-template-columns: 1fr; } }
+.journey-step {
+  position: relative;
+  padding: clamp(0.7rem, 1.3vw, 0.95rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.journey-step::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 28px; height: 2px;
+  background: var(--ai);
+  box-shadow: 0 0 8px var(--ai-glow);
+}
+.journey-step .num {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.82vw, 0.72rem);
+  color: var(--text-4);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.journey-step h4 {
+  font-size: clamp(0.82rem, 1.15vw, 0.95rem);
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.journey-step p {
+  font-size: clamp(0.66rem, 0.9vw, 0.76rem);
+  color: var(--text-3);
+  line-height: 1.4;
+}
+.journey-step .duration {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.58rem, 0.78vw, 0.68rem);
+  color: var(--ai);
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  background: var(--ai-soft);
+  border-radius: 100px;
+}
+
+/* ============= FUNNEL ============= */
+.funnel-stack {
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 720px;
+  margin: clamp(0.75rem, 2vh, 1.25rem) auto 0;
+}
+.funnel-step {
+  width: 100%;
+  padding: clamp(0.6rem, 1.3vh, 0.85rem) clamp(0.85rem, 1.5vw, 1.25rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+.funnel-step:nth-child(1) { width: 100%; }
+.funnel-step:nth-child(2) { width: 90%; }
+.funnel-step:nth-child(3) { width: 78%; }
+.funnel-step:nth-child(4) { width: 66%; }
+.funnel-step:nth-child(5) { width: 56%; }
+.funnel-step:nth-child(6) { width: 46%; }
+.funnel-step:nth-child(7) { width: 38%; border-color: rgba(0,229,160,0.4); background: linear-gradient(180deg, var(--ai-soft), transparent), var(--bg-elev-1); }
+@media (max-width: 700px) { .funnel-step { width: 100% !important; } }
+.funnel-step .label {
+  font-size: clamp(0.78rem, 1.05vw, 0.92rem);
+  color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.funnel-step .label .num {
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 0.82vw, 0.72rem);
+  color: var(--text-4);
+  letter-spacing: 0.1em;
+}
+.funnel-step .metric {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.95vw, 0.82rem);
+  color: var(--ai);
+  letter-spacing: 0.05em;
+}
+.funnel-step:last-child .metric { color: var(--ai); font-weight: 500; }
+
+/* ============= CADENCE LIST ============= */
+.cadence-section {
+  display: flex; flex-direction: column;
+  gap: clamp(0.4rem, 1vh, 0.55rem);
+  width: 100%;
+  margin-bottom: clamp(0.75rem, 1.8vh, 1.2rem);
+}
+.cadence-section-title {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.88vw, 0.76rem);
+  color: var(--brand-300);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.cadence-row {
+  display: grid;
+  grid-template-columns: clamp(72px, 11vw, 110px) clamp(72px, 9vw, 100px) 1fr;
+  gap: clamp(0.65rem, 1.3vw, 1rem);
+  align-items: center;
+  padding: clamp(0.4rem, 0.9vh, 0.55rem) 0;
+}
+.cadence-row .cadence-when {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.88vw, 0.76rem);
+  color: var(--ai);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cadence-row .cadence-channel {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.78vw, 0.68rem);
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.cadence-row .cadence-action {
+  font-size: clamp(0.78rem, 1.05vw, 0.9rem);
+  color: var(--text-2);
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .cadence-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+/* ============= RECURRING (régua + uso) ============= */
+.recur-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.85rem, 2vw, 1.5rem);
+  width: 100%;
+  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+}
+@media (max-width: 800px) { .recur-grid { grid-template-columns: 1fr; } }
+.recur-card {
+  padding: clamp(0.95rem, 1.8vw, 1.35rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1.2vh, 0.75rem);
+}
+.recur-card h3 {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+}
+.recur-card .recur-tag {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  color: var(--ai);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.recur-steps {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: clamp(0.35rem, 0.9vh, 0.5rem);
+}
+.recur-steps li {
+  display: grid;
+  grid-template-columns: clamp(56px, 8vw, 78px) 1fr;
+  gap: 12px;
+  align-items: baseline;
+  font-size: clamp(0.78rem, 1.05vw, 0.9rem);
+  color: var(--text-2);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.recur-steps li:last-child { border-bottom: none; }
+.recur-steps li .when {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.75rem);
+  color: var(--ai);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.recur-steps li.fail .when { color: var(--warn); }
+.recur-steps li strong { color: var(--text); font-weight: 500; }
+
+/* ============= PROMPT ROW (Promessa vs Entrega) ============= */
+/* (não usado neste corte, mas reserva pra futuro) */
+
+/* ============= FRENTES (existentes — mantidas) ============= */
+.frentes-header { margin-bottom: clamp(0.75rem, 2vh, 1.25rem); }
+.frentes-header h2 { font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.6rem); }
 .frentes-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  gap: clamp(0.6rem, 1.3vw, 1rem);
   width: 100%;
 }
 .frentes-grid.two-cols { grid-template-columns: repeat(2, 1fr); }
-@media (max-width: 900px) {
-  .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .frentes-grid, .frentes-grid.two-cols { grid-template-columns: 1fr; } }
 .frente-card {
-  padding: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(0.85rem, 1.7vw, 1.25rem);
   background: var(--bg-elev-1);
   border: 1px solid var(--border);
   border-radius: 12px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.4rem, 1vh, 0.6rem);
-  min-height: clamp(120px, 18vh, 160px);
+  display: flex; flex-direction: column;
+  gap: clamp(0.35rem, 0.9vh, 0.55rem);
+  min-height: clamp(110px, 16vh, 150px);
 }
 .frente-card::before {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   top: 0; left: 0;
-  width: 32px;
-  height: 2px;
+  width: 32px; height: 2px;
   background: var(--ai);
 }
 .frente-card .num {
@@ -406,36 +948,30 @@ em.serif {
   letter-spacing: 0.1em;
 }
 .frente-card h3 {
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem);
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--text);
 }
 .frente-card p {
-  font-size: clamp(0.75rem, 1.05vw, 0.9rem);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
   color: var(--text-3);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 .frente-card .meta {
   font-family: var(--font-mono);
-  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  font-size: clamp(0.58rem, 0.78vw, 0.68rem);
   color: var(--ai);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: auto;
-  padding-top: clamp(0.4rem, 1vh, 0.6rem);
+  padding-top: clamp(0.35rem, 0.9vh, 0.5rem);
 }
 
-/* ============================================================
-   TRANSICAO (slide 5) e SPRINT slides
-============================================================ */
-.slide-section-divider .slide-content {
-  align-items: flex-start;
-  justify-content: center;
-}
+/* ============= TRANSIÇÃO 8 SPRINTS ============= */
+.slide-section-divider .slide-content { align-items: flex-start; justify-content: center; }
 .slide-section-divider .big-num {
   font-family: var(--font-mono);
-  font-size: clamp(8rem, 22vw, 18rem);
+  font-size: clamp(7rem, 20vw, 16rem);
   font-weight: 300;
   letter-spacing: -0.06em;
   color: var(--text);
@@ -450,28 +986,24 @@ em.serif {
   font-size: var(--title-size);
   letter-spacing: -0.045em;
   line-height: 0.95;
-  margin-bottom: clamp(1rem, 3vh, 2rem);
+  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
 }
 .slide-section-divider h1 em.serif { color: var(--text-2); display: block; }
 
-/* ============================================================
-   SPRINT SLIDES (6-13)
-============================================================ */
+/* ============= SPRINT SLIDES ============= */
 .sprint-slide .slide-content { padding-right: clamp(1.5rem, 4vw, 4rem); }
 .sprint-grid {
   display: grid;
-  grid-template-columns: clamp(120px, 20vw, 220px) 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: clamp(110px, 18vw, 200px) 1fr;
+  gap: clamp(1.25rem, 3.5vw, 2.5rem);
   align-items: flex-start;
   width: 100%;
 }
-@media (max-width: 700px) {
-  .sprint-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
+@media (max-width: 700px) { .sprint-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
 .sprint-num-wrap { display: flex; flex-direction: column; }
 .sprint-num {
   font-family: var(--font-mono);
-  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
   font-weight: 300;
   letter-spacing: -0.06em;
   color: var(--ai);
@@ -484,19 +1016,17 @@ em.serif {
   color: var(--text-3);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-top: clamp(0.4rem, 1vh, 0.75rem);
+  margin-top: clamp(0.35rem, 1vh, 0.6rem);
 }
-.sprint-content { display: flex; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); }
+.sprint-content { display: flex; flex-direction: column; gap: clamp(0.45rem, 1.2vh, 0.85rem); }
 .sprint-owner {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px;
   background: var(--ai-soft);
   border: 1px solid rgba(0, 229, 160, 0.2);
   border-radius: 100px;
   font-family: var(--font-mono);
-  font-size: var(--small-size);
+  font-size: clamp(0.62rem, 0.82vw, 0.72rem);
   color: var(--ai);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -509,7 +1039,7 @@ em.serif {
 }
 .sprint-content h2 em.serif { color: var(--text-2); }
 .sprint-tagline {
-  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-size: clamp(0.92rem, 1.4vw, 1.08rem);
   color: var(--text-2);
   font-weight: 400;
   line-height: 1.5;
@@ -520,28 +1050,24 @@ em.serif {
 }
 .sprint-bullets {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.4rem, 1vh, 0.7rem);
-  margin-top: clamp(0.5rem, 1.5vh, 1rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.35rem, 0.9vh, 0.6rem);
+  margin-top: clamp(0.4rem, 1vh, 0.75rem);
   max-width: 760px;
 }
 .sprint-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: clamp(0.5rem, 1.2vh, 0.85rem) 0;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: clamp(0.4rem, 1vh, 0.7rem) 0;
   border-bottom: 1px solid var(--border);
-  font-size: var(--body-size);
-  line-height: 1.5;
+  font-size: clamp(0.85rem, 1.2vw, 0.98rem);
+  line-height: 1.45;
   color: var(--text);
 }
 .sprint-bullets li:last-child { border-bottom: none; }
 .sprint-bullets li::before {
   content: '';
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   background: var(--ai);
   border-radius: 50%;
   margin-top: 0.55em;
@@ -558,55 +1084,152 @@ em.serif {
   letter-spacing: 0;
 }
 
-/* ============================================================
-   MAPA DE EXECUCAO (slide 14)
-============================================================ */
-.mapa-grid {
-  display: flex;
+/* ============= SPRINT STATUS VARIANTS ============= */
+.sprint-slide.done .sprint-num {
+  color: var(--text-3);
+  text-shadow: none;
+  position: relative;
+}
+.sprint-slide.done .sprint-num::after {
+  content: '✓';
+  position: absolute;
+  top: -0.05em;
+  right: -0.6em;
+  font-size: 0.45em;
+  color: var(--ai);
+  background: var(--ai-soft);
+  border: 1px solid rgba(0, 229, 160, 0.4);
+  border-radius: 50%;
+  width: 1.1em; height: 1.1em;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 0 8px var(--ai-glow);
+}
+.sprint-slide.done .sprint-num-label { color: var(--ai); }
+.sprint-slide.todo .sprint-num { color: var(--brand-300); text-shadow: 0 0 32px rgba(124, 92, 255, 0.18); }
+.sprint-slide.todo .sprint-num-label { color: var(--brand-300); }
+.sprint-slide.todo .sprint-owner {
+  background: var(--brand-soft);
+  border-color: rgba(124, 92, 255, 0.25);
+  color: var(--brand-300);
+}
+
+.sprint-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.78vw, 0.68rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  width: fit-content;
+}
+.sprint-status-pill.done {
+  background: var(--ai-soft);
+  border: 1px solid rgba(0, 229, 160, 0.28);
+  color: var(--ai);
+}
+.sprint-status-pill.todo {
+  background: var(--brand-soft);
+  border: 1px solid rgba(124, 92, 255, 0.32);
+  color: var(--brand-300);
+}
+.sprint-status-pill .led {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* sprint detail — sub-blocks (BD/FE/BE/integrações/segurança/observabilidade) */
+.sprint-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.5rem, 1vw, 0.85rem);
+  margin-top: clamp(0.5rem, 1.2vh, 0.85rem);
+  max-width: 760px;
+}
+@media (max-width: 600px) { .sprint-detail-grid { grid-template-columns: 1fr; } }
+.sprint-detail-card {
+  padding: clamp(0.55rem, 1.2vw, 0.85rem);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.sprint-detail-card .sd-tag {
+  font-family: var(--font-mono);
+  font-size: clamp(0.58rem, 0.78vw, 0.68rem);
+  color: var(--ai);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+}
+.sprint-slide.todo .sprint-detail-card .sd-tag { color: var(--brand-300); }
+.sprint-detail-card p {
+  font-size: clamp(0.72rem, 0.98vw, 0.84rem);
+  color: var(--text-2);
+  line-height: 1.45;
+}
+.sprint-detail-card code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--ai);
+  background: var(--ai-soft);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ============= MAPA ============= */
+.mapa-grid {
+  display: flex; align-items: center; justify-content: center;
   flex-wrap: wrap;
-  gap: clamp(0.5rem, 1.5vw, 1rem);
+  gap: clamp(0.5rem, 1.3vw, 0.85rem);
   width: 100%;
-  margin-top: clamp(1rem, 3vh, 2rem);
+  margin-top: clamp(0.75rem, 2vh, 1.5rem);
 }
 .mapa-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(0.75rem, 1.5vw, 1.25rem);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: clamp(0.7rem, 1.4vw, 1rem);
   background: var(--bg-elev-1);
   border: 1px solid var(--border);
   border-radius: 10px;
-  min-width: clamp(100px, 12vw, 130px);
-  min-height: clamp(60px, 10vh, 80px);
-  position: relative;
+  min-width: clamp(95px, 11vw, 125px);
+  min-height: clamp(56px, 9vh, 75px);
   text-align: center;
 }
 .mapa-node.sequencial { border-color: var(--border-strong); }
-.mapa-node.paralelo { border-color: rgba(0, 229, 160, 0.3); background: linear-gradient(135deg, rgba(0, 229, 160, 0.04), transparent), var(--bg-elev-1); }
-.mapa-node.fechamento { border-color: rgba(124, 92, 255, 0.3); background: linear-gradient(135deg, rgba(124, 92, 255, 0.04), transparent), var(--bg-elev-1); }
+.mapa-node.paralelo {
+  border-color: rgba(0, 229, 160, 0.3);
+  background: linear-gradient(135deg, rgba(0, 229, 160, 0.04), transparent), var(--bg-elev-1);
+}
+.mapa-node.fechamento {
+  border-color: rgba(124, 92, 255, 0.3);
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.04), transparent), var(--bg-elev-1);
+}
 .mapa-node .num {
   font-family: var(--font-mono);
-  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.25vw, 1rem);
   font-weight: 500;
   color: var(--ai);
 }
 .mapa-node.fechamento .num { color: var(--brand-300); }
 .mapa-node .label {
-  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  font-size: clamp(0.62rem, 0.85vw, 0.76rem);
   color: var(--text-2);
   margin-top: 4px;
 }
 .mapa-arrow {
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
   color: var(--text-3);
 }
 .mapa-bracket {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   gap: clamp(0.3rem, 0.8vh, 0.5rem);
   padding: clamp(0.5rem, 1vh, 0.75rem);
   border-left: 2px solid var(--ai);
@@ -616,8 +1239,7 @@ em.serif {
 .mapa-bracket::before {
   content: 'paralelo';
   position: absolute;
-  top: -0.6rem;
-  left: -0.5rem;
+  top: -0.6rem; left: -0.5rem;
   background: var(--bg);
   padding: 0 8px;
   font-family: var(--font-mono);
@@ -628,28 +1250,22 @@ em.serif {
 }
 .mapa-legend {
   display: flex;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(0.85rem, 2vw, 1.75rem);
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: clamp(1rem, 2.5vh, 1.75rem);
+  margin-top: clamp(0.85rem, 2vh, 1.5rem);
   font-family: var(--font-mono);
   font-size: var(--small-size);
   color: var(--text-3);
   letter-spacing: 0.05em;
 }
 .mapa-legend span { display: inline-flex; align-items: center; gap: 8px; }
-.mapa-legend .leg-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
+.mapa-legend .leg-dot { width: 8px; height: 8px; border-radius: 2px; }
 .mapa-legend .leg-dot.seq { background: var(--text-3); }
 .mapa-legend .leg-dot.par { background: var(--ai); }
 .mapa-legend .leg-dot.fim { background: var(--brand); }
 
-/* ============================================================
-   SLIDE FINAL (V1 fechada)
-============================================================ */
+/* ============= V1 FECHADA ============= */
 .slide-final {
   background:
     radial-gradient(ellipse 60% 50% at 50% 50%, var(--brand-soft), transparent 60%),
@@ -663,25 +1279,22 @@ em.serif {
 }
 .slide-final h2 em.serif { color: var(--text-2); display: block; }
 .slide-final p.lead {
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   color: var(--text);
   line-height: 1.5;
   max-width: 820px;
-  margin-bottom: clamp(1rem, 3vh, 2rem);
+  margin-bottom: clamp(1rem, 3vh, 1.75rem);
 }
 .slide-final p.lead .mint { color: var(--ai); font-family: var(--font-mono); font-size: 0.92em; }
 .slide-final .closing-bullets {
   list-style: none;
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   gap: clamp(0.4rem, 1vh, 0.7rem);
   margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
   max-width: 700px;
 }
 .slide-final .closing-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  display: flex; align-items: flex-start; gap: 14px;
   font-size: var(--body-size);
   color: var(--text-2);
 }
@@ -705,34 +1318,26 @@ em.serif {
   text-transform: uppercase;
 }
 
-/* ============================================================
-   PROGRESS BAR + NAV DOTS
-============================================================ */
+/* ============= UI: progress + dots + counter ============= */
 .progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: fixed; top: 0; left: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--ai), var(--brand));
-  width: 0%;
-  z-index: 100;
+  width: 0%; z-index: 100;
   transition: width 0.2s linear;
   box-shadow: 0 0 12px var(--ai-glow);
 }
-
 .nav-dots {
   position: fixed;
   right: clamp(0.75rem, 2vw, 1.5rem);
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.4rem, 1vh, 0.6rem);
+  display: flex; flex-direction: column;
+  gap: clamp(0.3rem, 0.7vh, 0.5rem);
   z-index: 100;
 }
 .nav-dots button {
-  width: 8px;
-  height: 8px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   border: 1px solid var(--border-strong);
   background: transparent;
@@ -741,13 +1346,9 @@ em.serif {
   padding: 0;
 }
 .nav-dots button:hover { border-color: var(--ai); background: rgba(0,229,160,0.15); }
-.nav-dots button.active { background: var(--ai); border-color: var(--ai); box-shadow: 0 0 10px var(--ai-glow); transform: scale(1.2); }
+.nav-dots button.active { background: var(--ai); border-color: var(--ai); box-shadow: 0 0 10px var(--ai-glow); transform: scale(1.25); }
+@media (max-height: 600px), (max-width: 600px) { .nav-dots { display: none; } }
 
-@media (max-height: 600px), (max-width: 600px) {
-  .nav-dots { display: none; }
-}
-
-/* keyboard hint */
 .keyboard-hint {
   position: fixed;
   bottom: clamp(0.75rem, 2vh, 1.5rem);
@@ -763,7 +1364,6 @@ em.serif {
 }
 @media (max-height: 600px) { .keyboard-hint { display: none; } }
 
-/* slide number indicator */
 .slide-number {
   position: fixed;
   bottom: clamp(0.75rem, 2vh, 1.5rem);
@@ -776,52 +1376,45 @@ em.serif {
 }
 .slide-number .current { color: var(--text); font-weight: 500; }
 
-/* mobile padding */
 @media (max-width: 600px) {
   .slide-content { padding: clamp(1rem, 5vw, 1.5rem); }
   .sprint-grid { grid-template-columns: 1fr; }
-  .diagnostico-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .diagnostico-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- progress bar -->
 <div class="progress-bar" id="progressBar"></div>
-
-<!-- nav dots (generated by JS) -->
 <nav class="nav-dots" id="navDots" aria-label="Navegação"></nav>
-
-<!-- keyboard hint -->
 <div class="keyboard-hint">↑ ↓ · espaço · scroll</div>
-
-<!-- slide counter -->
-<div class="slide-number"><span class="current" id="slideCurrent">01</span> / <span id="slideTotal">15</span></div>
+<div class="slide-number"><span class="current" id="slideCurrent">01</span> / <span id="slideTotal">37</span></div>
 
 
 <!-- ============================================================
-     SLIDE 1 — CAPA
+     SLIDE 01 — CAPA
 ============================================================ -->
 <section class="slide slide-title">
   <div class="slide-content">
     <div class="slide-title-top reveal">
       <a class="brand-lockup">buscou<span class="ai">.ai</span></a>
-      <span class="slide-title-meta">2026 · v1</span>
+      <span class="slide-title-meta">2026 · v1 · material de estudo</span>
     </div>
 
     <div class="reveal">
-      <div class="eyebrow"><span class="dot"></span>Roadmap V1 · planejamento de execução</div>
+      <div class="eyebrow"><span class="dot"></span>Visão integral · 4 partes · 37 slides</div>
       <h1>
-        Do que já existe<br>
-        <em class="serif">ao produto completo.</em>
+        Verdades, fluxos,<br>
+        o que já foi feito<br>
+        <em class="serif">e o que falta.</em>
       </h1>
     </div>
 
     <div class="slide-title-bottom reveal">
-      <span class="slide-title-tagline">8 sprints · 9 frentes consolidadas · V1 fechada</span>
+      <span class="slide-title-tagline">Documento canônico · revisar antes de executar</span>
       <div class="slide-title-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>
-        <span>onde a buscou.ai está hoje</span>
+        <span>buscou.ai · estudo completo</span>
         <span class="caret"></span>
       </div>
     </div>
@@ -830,27 +1423,138 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 2 — DIAGNÓSTICO (estado atual em número)
+     SLIDE 02 — SUMÁRIO
 ============================================================ -->
 <section class="slide">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>01 · Estado atual</div>
+    <div class="eyebrow reveal"><span class="dot"></span>Sumário · navegação</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Quatro partes · um quadro completo.
+    </h2>
+    <p class="reveal" style="font-size: var(--body-size); color: var(--text-2); max-width: 700px; margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);">
+      Lê na ordem. Cada parte abre com um divider e fecha com a próxima. Aprovação implica recriação no Linear como lastro operacional do projeto.
+    </p>
 
-    <div class="diagnostico-grid">
-      <div class="reveal">
-        <div class="diagnostico-num">55</div>
-        <div class="diagnostico-num-label">issues entregues · 9 frentes</div>
+    <div class="toc-list reveal">
+      <div class="toc-row">
+        <span class="roman">I</span>
+        <div class="toc-text">
+          <h3>Verdades</h3>
+          <p>Definição da empresa · posicionamento · ICP · produto · modelo comercial · linguagem canônica.</p>
+        </div>
+        <span class="toc-meta">7 slides</span>
+      </div>
+      <div class="toc-row">
+        <span class="roman">II</span>
+        <div class="toc-text">
+          <h3>Fluxos</h3>
+          <p>Jornada do cliente · funil de venda · cadências Anna Mel · onboarding · recorrência infra.</p>
+        </div>
+        <span class="toc-meta">6 slides</span>
+      </div>
+      <div class="toc-row">
+        <span class="roman">III</span>
+        <div class="toc-text">
+          <h3>O que já foi realizado</h3>
+          <p>9 sprints concluídas — operação ativa hoje. Recadastrar como concluídas no Linear.</p>
+        </div>
+        <span class="toc-meta">10 slides</span>
+      </div>
+      <div class="toc-row">
+        <span class="roman">IV</span>
+        <div class="toc-text">
+          <h3>Próximos passos</h3>
+          <p>8 sprints planejadas — BD · FE · BE · integrações · segurança · observabilidade detalhados.</p>
+        </div>
+        <span class="toc-meta">11 slides</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 03 — DIVIDER PARTE I
+============================================================ -->
+<section class="slide slide-part-divider">
+  <div class="slide-content">
+    <div class="part-tag reveal">Parte I</div>
+    <div class="part-roman reveal">I</div>
+    <h1 class="part-divider-title reveal">
+      Verdades<br>
+      <em class="serif">o que é canônico.</em>
+    </h1>
+    <p class="part-divider-summary reveal">
+      Tudo que está aqui é Nível 1 — alteração exige Decision Log datado e aprovação explícita do dono. Toda copy, conteúdo, agente ou sistema parte daqui. Se contradiz a Verdade Única, está errado.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 04 — QUEM SOMOS
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>I · Definição da empresa</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      buscou.ai é <em class="serif">tecnologia</em>.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Vendemos a tecnologia do blog + motor — implementação única e infra mensal. Tecnicamente é um SaaS multi-tenant; comercialmente é venda de tecnologia com infra passthrough.
+    </p>
+
+    <div class="fact-stack reveal">
+      <div class="fact-row negative">
+        <div class="icon-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+        <div class="text">Não é agência. Não vende horas, headcount nem retainer.</div>
+      </div>
+      <div class="fact-row negative">
+        <div class="icon-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+        <div class="text">Não é consultoria. Não entrega diagnóstico em PDF como produto principal.</div>
+      </div>
+      <div class="fact-row negative">
+        <div class="icon-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+        <div class="text">Não é serviço de gestão. Não tem mensalidade de gestão, plano mensal, tier ou assinatura SaaS em copy público.</div>
+      </div>
+      <div class="fact-row positive">
+        <div class="icon-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="text">É <strong style="color: var(--text); font-weight: 500;">tecnologia vendida como produto fechado</strong> — estrutura (blog) + motor (sistema de geração de conteúdo), com implementação única e infra mensal passthrough de custo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 05 — FRASE CENTRAL + CANAIS
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>I · Posicionamento canônico</div>
+
+    <div class="phrase-wrap">
+      <div class="phrase-big reveal">
+        Se alguém buscou,<br>
+        quem apareceu <span class="mint">foi você?</span>
       </div>
 
-      <div class="diagnostico-text reveal">
-        <h2>Já temos uma base sólida.</h2>
-        <p>
-          Landing pública no ar, posicionamento canônico travado, backend multi-tenant configurado, primeiro agente IA deployado, identidade visual e sistema de propostas operacionais.
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 8px;">
+        <span class="phrase-meta">Frase central inegociável · toda copy parte daqui</span>
+        <p style="font-size: clamp(0.9rem, 1.25vw, 1.05rem); color: var(--text-2); max-width: 640px; line-height: 1.5;">
+          Promete <strong style="color: var(--text); font-weight: 500;">aparecer</strong> com consistência. Nunca top 1, nunca 24h, nunca exclusividade de nicho.
         </p>
-        <div class="diagnostico-pills">
-          <span class="diagnostico-pill"><span class="mint-dot"></span>Landing buscouai.com</span>
-          <span class="diagnostico-pill"><span class="mint-dot"></span>Cal.com integrado</span>
-          <span class="diagnostico-pill"><span class="mint-dot"></span>Anna Mel V1 deployada</span>
+      </div>
+
+      <div class="reveal" style="width: 100%;">
+        <span class="phrase-meta" style="margin-bottom: 10px; display: block;">Canais onde fazemos aparecer</span>
+        <div class="channel-pills">
+          <span class="channel-pill"><span class="led"></span>Google · SEO</span>
+          <span class="channel-pill"><span class="led"></span>ChatGPT</span>
+          <span class="channel-pill"><span class="led"></span>Perplexity</span>
+          <span class="channel-pill"><span class="led"></span>Gemini</span>
+          <span class="channel-pill"><span class="led"></span>Claude</span>
+          <span class="channel-pill"><span class="led"></span>AI Overviews</span>
         </div>
       </div>
     </div>
@@ -859,56 +1563,37 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 3 — FRENTES PRONTAS (parte 1)
+     SLIDE 06 — ICP
 ============================================================ -->
 <section class="slide">
   <div class="slide-content">
-    <div class="frentes-header reveal">
-      <div class="eyebrow"><span class="dot"></span>01 · Frentes consolidadas</div>
-      <h2>O que já está pronto.</h2>
-    </div>
+    <div class="eyebrow reveal"><span class="dot"></span>I · Para quem</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      Negócios locais primeiro.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.9rem, 1.25vw, 1.05rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      ICP primário guia toda comunicação externa. Atendemos secundários, mas falamos sempre pra quem depende de canal de intenção.
+    </p>
 
-    <div class="frentes-grid reveal">
-      <div class="frente-card">
-        <div class="num">01</div>
-        <h3>Posicionamento canônico</h3>
-        <p>VERDADE_UNICA + 5 Decision Logs. Modelo comercial, fluxo consultivo, política de desconto travados.</p>
-        <div class="meta">Vault Obsidian</div>
+    <div class="two-col-grid reveal">
+      <div class="two-col-card accent">
+        <span class="col-tag">Primário · foco de comunicação</span>
+        <h3>Negócios locais</h3>
+        <ul>
+          <li>Clínicas — odontológicas, estéticas, médicas, veterinárias</li>
+          <li>Imobiliárias e corretores</li>
+          <li>Advogados e escritórios jurídicos</li>
+          <li>Serviços locais — contabilidade, marketing, consultoria, assistência técnica, reformas</li>
+        </ul>
       </div>
-
-      <div class="frente-card">
-        <div class="num">02</div>
-        <h3>Landing no ar</h3>
-        <p>Site Next.js 15 em buscouai.com. Dark-first, copy canônica, CTAs Cal.com integrados, build limpo.</p>
-        <div class="meta">Em produção</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">03</div>
-        <h3>Backend Supabase</h3>
-        <p>Projeto buscou-ai com 4 migrations aplicadas. Schema multi-tenant, RLS, seed dogfood.</p>
-        <div class="meta">10 tabelas + RLS</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">04</div>
-        <h3>Identidade + Vault</h3>
-        <p>Design System v1 (tokens, SVGs, componentes React) + 16 pastas temáticas no Obsidian.</p>
-        <div class="meta">Tokens canônicos</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">05</div>
-        <h3>Governança SDP v2</h3>
-        <p>Metodologia SDD + 17 regras de execução + templates de issue + Linear estruturado.</p>
-        <div class="meta">DoR + DoD</div>
-      </div>
-
-      <div class="frente-card" style="opacity: 0.4;">
-        <div class="num">06 / 09</div>
-        <h3 class="muted">→ próximo slide</h3>
-        <p style="color: var(--text-4);">Anna Mel · Stripe · Presença · Propostas</p>
-        <div class="meta" style="color: var(--text-4);">continua</div>
+      <div class="two-col-card">
+        <span class="col-tag">Secundário · atende, não comunica</span>
+        <h3>Empresas com canal de intenção</h3>
+        <ul>
+          <li>Qualquer empresa que dependa de SEO + AIO, mesmo não-local</li>
+          <li>Atendimento ocorre, mas a landing, ads, conteúdo e cadências sempre falam pra negócios locais</li>
+          <li>Regra: <em class="serif">se o ICP secundário se identifica sozinho, ótimo. Mas a porta de entrada fala pro local.</em></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -916,91 +1601,612 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 4 — FRENTES PRONTAS (parte 2)
+     SLIDE 07 — PRODUTO
 ============================================================ -->
 <section class="slide">
   <div class="slide-content">
-    <div class="frentes-header reveal">
-      <div class="eyebrow"><span class="dot"></span>01 · Frentes consolidadas <em class="serif" style="font-size: 0.75em;">(continuação)</em></div>
-      <h2>O que já está pronto.</h2>
+    <div class="eyebrow reveal"><span class="dot"></span>I · Produto</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      Dois componentes técnicos.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.9rem, 1.25vw, 1.05rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Estrutura entregue uma vez (blog do cliente). Motor roda enquanto a infra estiver paga (publica 3 conteúdos/dia).
+    </p>
+
+    <div class="two-col-grid reveal">
+      <div class="two-col-card">
+        <span class="col-tag">Componente 1 · entregue uma vez</span>
+        <h3>Estrutura — Blog</h3>
+        <ul>
+          <li>Site/blog completo, configurado, hospedado em domínio do cliente</li>
+          <li>SEO + AIO técnico — schema, llms.txt, Core Web Vitals, interlinking</li>
+          <li>Identidade visual aplicada (logo, cores, tom)</li>
+          <li>Pertence ao cliente — permanece no ar mesmo se a infra for cancelada</li>
+        </ul>
+      </div>
+      <div class="two-col-card accent">
+        <span class="col-tag">Componente 2 · enquanto infra ativa</span>
+        <h3>Motor — buscou.ai</h3>
+        <ul>
+          <li><strong style="color: var(--text); font-weight: 500;">90 conteúdos/mês</strong> (3/dia) — 800 a 1.200 palavras cada</li>
+          <li>~720K caracteres/mês otimizados SEO + AIO answer-first</li>
+          <li>Publicação automática · 11 agentes IA + Orquestrador</li>
+          <li>Inadimplência pausa o motor; blog e artigos publicados ficam no ar</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="frentes-grid two-cols reveal">
-      <div class="frente-card">
-        <div class="num">06</div>
-        <h3>Anna Mel V1 deployada</h3>
-        <p>Servidor OpenClaw em 72.60.9.128. Persona em 7 MDs, tunnels Cloudflare ativos em openclaw.buscouai.com e uazapi.buscouai.com.</p>
-        <div class="meta">Lead inbound · em testes</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">07</div>
-        <h3>Stripe sandbox</h3>
-        <p>Credenciais coletadas, produtos + prices canônicos criados (R$ 2.500 implementação à vista, R$ 3.000 em 12x, R$ 300 infra mensal).</p>
-        <div class="meta">2 produtos · 3 prices</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">08</div>
-        <h3>Presença digital ativa</h3>
-        <p>Instagram + TikTok + LinkedIn com 2 publicações em cada. Gmail corporativo, postforme.dev integrado, telefone canônico definido.</p>
-        <div class="meta">4 canais ao vivo</div>
-      </div>
-
-      <div class="frente-card">
-        <div class="num">09</div>
-        <h3>Sistema de propostas</h3>
-        <p>Skill gerador-proposta-buscou + template canônico em modo slide + pipeline PDF light mode. Primeira proposta real (Innovate LED) gerada e enviada.</p>
-        <div class="meta">PDF automatizado</div>
-      </div>
+    <div class="reveal" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: clamp(0.75rem, 2vh, 1.25rem);">
+      <span class="diagnostico-pill"><span class="mint-dot"></span>7 dias · blog no ar</span>
+      <span class="diagnostico-pill"><span class="mint-dot"></span>30 dias · primeiros sinais (impressões + AI)</span>
+      <span class="diagnostico-pill"><span class="mint-dot"></span>30+ dias · presença escala continuamente</span>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     SLIDE 5 — TRANSIÇÃO (8 sprints)
+     SLIDE 08 — MODELO COMERCIAL
 ============================================================ -->
-<section class="slide slide-section-divider">
+<section class="slide">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · O que falta</div>
-    <div class="big-num reveal">08</div>
-    <h1 class="reveal">
-      sprints<br>
-      <em class="serif">até a V1 completa.</em>
-    </h1>
-    <p class="reveal" style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: clamp(1rem, 2vh, 1.5rem);">
-      Sequencial nas 4 primeiras · paralelo após o motor
+    <div class="eyebrow reveal"><span class="dot"></span>I · Modelo comercial</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      Duas linhas <em class="serif">explícitas</em>.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.9rem, 1.25vw, 1.05rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Sempre separar implementação e infra. Nunca unificar como "pacote total" ou "plano completo".
+    </p>
+
+    <div class="two-col-grid reveal">
+      <div class="two-col-card accent">
+        <span class="col-tag">One-time · pago no início</span>
+        <h3>Implementação</h3>
+        <div class="price">R$ 2.500</div>
+        <span class="price-note">à vista (PIX) · ou R$ 3.000 em 12x R$ 250 (cartão, juros do cliente)</span>
+        <ul style="margin-top: 8px;">
+          <li>Blog publicado e configurado no domínio do cliente</li>
+          <li>Motor configurado · primeira estratégia gerada</li>
+          <li>Onboarding guiado (5 passos)</li>
+          <li>Mês 1 de operação do motor incluso (~90 conteúdos)</li>
+        </ul>
+      </div>
+      <div class="two-col-card brand-accent">
+        <span class="col-tag">Recurring · a partir do mês 2</span>
+        <h3>Infra mensal</h3>
+        <div class="price brand-c">R$ 300 / mês</div>
+        <span class="price-note">cartão recorrente · cobrado dia fixo</span>
+        <ul style="margin-top: 8px;">
+          <li>Tokens LLM (Claude, OpenAI) dos 11 agentes</li>
+          <li>APIs externas — Ahrefs, DataForSEO, GSC, Stripe, Cal.com</li>
+          <li>Hospedagem do pipeline + VPS Anna Mel</li>
+          <li><strong style="color: var(--text); font-weight: 500;">Inegociável.</strong> Inadimplência pausa motor; blog permanece</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top: clamp(0.75rem, 2vh, 1.25rem); font-family: var(--font-mono); font-size: var(--small-size); color: var(--text-3); letter-spacing: 0.06em; max-width: 760px;">
+      <strong style="color: var(--ai);">Política de desconto:</strong> implementação negociável caso-a-caso via Cupom Stripe em canal privado (Payment Link enviado por WhatsApp). Infra inegociável. Âncora pública sempre R$ 2.500 / R$ 3.000 — desconto nunca exposto em landing, redes ou copy.
     </p>
   </div>
 </section>
 
 
 <!-- ============================================================
-     SLIDE 6 — SPRINT 01: AUTH + PAINEL ADMIN
+     SLIDE 09 — LINGUAGEM
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 01 · base obrigatória</div>
+    <div class="eyebrow reveal"><span class="dot"></span>I · Linguagem canônica</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      O que dizer · o que cortar.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.85rem, 1.2vw, 0.98rem); color: var(--text-2); max-width: 760px; margin-bottom: clamp(0.5rem, 1.5vh, 0.85rem);">
+      Termos proibidos viram bandeira vermelha em copy público. Linguagem permitida é o vocabulário canônico — usar em landing, ads, redes, propostas e WhatsApp.
+    </p>
+
+    <div class="compare-grid reveal">
+      <div class="compare-col proibido">
+        <div class="compare-col-head">
+          <div class="icon-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+          <h3>Proibido em copy público</h3>
+        </div>
+        <div class="compare-list">
+          <span>agência</span>
+          <span>gestão</span>
+          <span>consultoria</span>
+          <span>serviço mensal</span>
+          <span>mensalidade de gestão</span>
+          <span>plano mensal</span>
+          <span>plano (Starter/Growth)</span>
+          <span>assinatura SaaS</span>
+          <span>contrato mensal</span>
+          <span>horas de trabalho</span>
+          <span>piloto automático</span>
+          <span>sistema operacional</span>
+          <span>transformação digital</span>
+          <span>jornada</span>
+          <span>sinergia</span>
+          <span>solução (soltinho)</span>
+          <span>checkout direto</span>
+          <span>comprar agora</span>
+          <span>preço público</span>
+          <span>R$ 2.500 / R$ 300 (em landing)</span>
+        </div>
+      </div>
+
+      <div class="compare-col permitido">
+        <div class="compare-col-head">
+          <div class="icon-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Permitido · vocabulário canônico</h3>
+        </div>
+        <div class="compare-list">
+          <span>tecnologia</span>
+          <span>sistema</span>
+          <span>motor</span>
+          <span>estrutura</span>
+          <span>automação</span>
+          <span>implementação única</span>
+          <span>infra mensal</span>
+          <span>custo de operação do motor</span>
+          <span>taxa de infraestrutura</span>
+          <span>aparecer</span>
+          <span>busca</span>
+          <span>SEO · AIO</span>
+          <span>presença orgânica</span>
+          <span>reunião de diagnóstico</span>
+          <span>proposta personalizada</span>
+          <span>diagnóstico hiperpersonalizado</span>
+          <span>agendar diagnóstico (CTA único)</span>
+          <span>Payment Link</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 10 — DIVIDER PARTE II
+============================================================ -->
+<section class="slide slide-part-divider">
+  <div class="slide-content">
+    <div class="part-tag reveal">Parte II</div>
+    <div class="part-roman reveal">II</div>
+    <h1 class="part-divider-title reveal">
+      Fluxos<br>
+      <em class="serif">como o cliente entra, paga, usa.</em>
+    </h1>
+    <p class="part-divider-summary reveal">
+      Jornada do cliente, funil de venda detalhado, cadências da Anna Mel, onboarding pós-pagamento e régua de cobrança recorrente. Mapa operacional do que precisa rodar pra V1 fechar o ciclo.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 11 — JORNADA COMPLETA DO CLIENTE
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>II · Jornada completa do cliente</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.75rem);">
+      12 fases · descoberta até resultado.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.82rem, 1.15vw, 0.95rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.2vh, 0.85rem);">
+      Lead inbound entra por busca orgânica, IA ou indicação. Vai pra agendamento Cal.com → reunião → proposta → Payment Link via WhatsApp → onboarding → blog no ar em ≤7 dias → resultado.
+    </p>
+
+    <div class="journey-grid reveal">
+      <div class="journey-step">
+        <span class="num">01 · Descoberta</span>
+        <h4>Busca orgânica</h4>
+        <p>Lead encontra a Buscou via Google, AI Overviews, ChatGPT ou indicação. Dog-fooding do próprio motor.</p>
+        <span class="duration">Topo de funil</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">02 · Landing</span>
+        <h4>buscouai.com</h4>
+        <p>Hero "Se alguém buscou..." · produto · CTA "Agendar diagnóstico". Sem preço público.</p>
+        <span class="duration">≤ 2 min</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">03 · Agendamento</span>
+        <h4>Cal.com embed</h4>
+        <p>Lead seleciona slot 30 min com Joao+Vitoria. Cria evento + Google Meet automático.</p>
+        <span class="duration">D+0</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">04 · Pré-call</span>
+        <h4>Anna Mel WhatsApp</h4>
+        <p>D-1 lembrete + material de apoio + qualificação leve. Confirma presença.</p>
+        <span class="duration">D-1</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">05 · Reunião</span>
+        <h4>Diagnóstico 30 min</h4>
+        <p>Google Meet · Joao+Vitoria. Diagnóstico hiperpersonalizado, fit ICP, contexto.</p>
+        <span class="duration">D+1 a D+7</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">06 · Proposta</span>
+        <h4>PDF personalizado</h4>
+        <p>Skill <code style="font-family: var(--font-mono); font-size: 0.92em; color: var(--ai);">gerador-proposta-buscou</code> renderiza template + Chrome headless. Envio WhatsApp.</p>
+        <span class="duration">≤ 24h pós-call</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">07 · Negociação</span>
+        <h4>Cupom (se houver)</h4>
+        <p>Implementação negociável caso-a-caso · canal privado. Infra sempre R$ 300.</p>
+        <span class="duration">D+1 a D+7</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">08 · Pagamento</span>
+        <h4>Payment Link Stripe</h4>
+        <p>Anna envia link via WhatsApp. PIX à vista ou cartão 12x. Cupom já aplicado se houve.</p>
+        <span class="duration">D+0 do aceite</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">09 · Onboarding</span>
+        <h4>Painel cliente</h4>
+        <p>Wizard 5 passos: domínio, nicho, tom, concorrentes, GSC. Alimenta agentes.</p>
+        <span class="duration">24-48h</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">10 · Ativação</span>
+        <h4>Blog no ar</h4>
+        <p>Pesquisador → Estrategista → Redator → Revisor → Visual → Publicador → Monitor.</p>
+        <span class="duration">≤ 7 dias</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">11 · Operação</span>
+        <h4>3 artigos/dia</h4>
+        <p>90 conteúdos/mês. Cliente vê dashboard com métricas, calendário, fila.</p>
+        <span class="duration">contínuo</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">12 · Resultado</span>
+        <h4>Presença + infra</h4>
+        <p>30 dias: primeiros sinais. 90 dias: tração. Mensal: R$ 300 infra automática.</p>
+        <span class="duration">D+30 e diante</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 12 — FUNIL DE VENDA DETALHADO
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>II · Fluxo consultivo único</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.6rem);">
+      Lead até cliente — <em class="serif">um caminho só</em>.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.85rem, 1.2vw, 0.98rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Sem checkout público. Sem preço na landing. Toda venda passa por reunião + proposta escrita + Payment Link via WhatsApp. Decisão canônica vigente desde 2026-04-24 (Reversão Track 1).
+    </p>
+
+    <div class="funnel-stack reveal">
+      <div class="funnel-step">
+        <span class="label"><span class="num">01</span> Lead chega na landing</span>
+        <span class="metric">100%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">02</span> Agendamento Cal.com</span>
+        <span class="metric">meta &gt; 2%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">03</span> Reunião realizada</span>
+        <span class="metric">&gt; 80% mostram</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">04</span> Proposta enviada (24h)</span>
+        <span class="metric">100% c/ fit</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">05</span> Aceite</span>
+        <span class="metric">meta &gt; 60%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">06</span> Payment Link aberto</span>
+        <span class="metric">&gt; 80%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="label"><span class="num">07</span> Cliente ativado</span>
+        <span class="metric">100% pós-webhook</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 13 — CADÊNCIAS ANNA MEL
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>II · Cadências Anna Mel · V1 vs V1.1+</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.5rem);">
+      Quando · canal · ação.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.8rem, 1.1vw, 0.92rem); color: var(--text-2); max-width: 760px; margin-bottom: clamp(0.5rem, 1.2vh, 0.75rem);">
+      <strong style="color: var(--ai);">V1 hoje:</strong> Anna recebe lead inbound + agenda via Cal.com API direto no chat. Bridge Node.js + UAZapi + OpenClaw 24/7. <strong style="color: var(--brand-300);">V1.1+:</strong> régua D-1, cadência D+1/D+3/D+7, Payment Link automático, régua infra, webhook Cal.com.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.85rem, 1.8vw, 1.5rem); width: 100%;" class="reveal">
+      <div>
+        <div class="cadence-section">
+          <div class="cadence-section-title" style="color: var(--ai);">Pré-reunião · V1 ✓</div>
+          <div class="cadence-row"><span class="cadence-when">Imediato</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Lead inbound · qualificação leve · agenda Cal.com no chat</span></div>
+          <div class="cadence-row"><span class="cadence-when">D-1 18h</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Lembrete + material de apoio (V1.1)</span></div>
+          <div class="cadence-row"><span class="cadence-when">−30 min</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">"Te aguardo no Meet em 30 min" (V1.1)</span></div>
+        </div>
+
+        <div class="cadence-section">
+          <div class="cadence-section-title">Pós-reunião · V1.1</div>
+          <div class="cadence-row"><span class="cadence-when">Imediato</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">"Boa conversa. Proposta em 24h."</span></div>
+          <div class="cadence-row"><span class="cadence-when">D+1</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Proposta enviada · "posso esclarecer"</span></div>
+        </div>
+
+        <div class="cadence-section">
+          <div class="cadence-section-title">Fechamento · V1.1</div>
+          <div class="cadence-row"><span class="cadence-when">D+1</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Follow-up educativo</span></div>
+          <div class="cadence-row"><span class="cadence-when">D+3</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Conteúdo SEO+AIO</span></div>
+          <div class="cadence-row"><span class="cadence-when">D+7</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Toque humano direto</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="cadence-section">
+          <div class="cadence-section-title">Pagamento · V1.1</div>
+          <div class="cadence-row"><span class="cadence-when">Aceite</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Payment Link Stripe + cupom</span></div>
+          <div class="cadence-row"><span class="cadence-when">Webhook</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">Credenciais painel + boas-vindas</span></div>
+        </div>
+
+        <div class="cadence-section">
+          <div class="cadence-section-title">Infra recorrente · V1.1</div>
+          <div class="cadence-row"><span class="cadence-when">D-3</span><span class="cadence-channel">WhatsApp</span><span class="cadence-action">"Cobrança em 3 dias"</span></div>
+          <div class="cadence-row"><span class="cadence-when">D0</span><span class="cadence-channel">Stripe</span><span class="cadence-action">Cobrança automática R$ 300</span></div>
+          <div class="cadence-row"><span class="cadence-when">D+3</span><span class="cadence-channel">Smart retry</span><span class="cadence-action">Falhou · retenta + WhatsApp</span></div>
+          <div class="cadence-row"><span class="cadence-when">D+7</span><span class="cadence-channel">Stripe</span><span class="cadence-action">Última tentativa · pausa</span></div>
+        </div>
+
+        <div class="cadence-section">
+          <div class="cadence-section-title" style="color: var(--ai);">Segurança Anna · V1 ✓</div>
+          <div class="cadence-row"><span class="cadence-when">Sempre</span><span class="cadence-channel">Cenário E</span><span class="cadence-action">Não admite IA · recusa áudio · vivência humana (Vitória/ES)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 14 — ONBOARDING 7 DIAS
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>II · Onboarding pós-pagamento</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.6rem);">
+      De pagou a blog no ar em <em class="serif">≤ 7 dias</em>.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.82rem, 1.15vw, 0.95rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Webhook Stripe dispara onboarding automático. Cliente preenche wizard, agentes provisionam blog e geram primeiro lote. Zero handoff manual no caminho feliz.
+    </p>
+
+    <div class="journey-grid reveal" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="journey-step">
+        <span class="num">Dia 0</span>
+        <h4>Pagamento confirmado</h4>
+        <p>Webhook Stripe → cliente criado em Supabase → Anna envia credenciais painel + boas-vindas. WhatsApp humano follow-up.</p>
+        <span class="duration">Imediato</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dia 1</span>
+        <h4>Wizard 5 passos</h4>
+        <p>Cliente acessa /painel/onboarding. Domínio, nicho, tom de voz, concorrentes, conexão GSC.</p>
+        <span class="duration">≤ 24h</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dias 2–3</span>
+        <h4>Provisionamento</h4>
+        <p>Blog vazio criado em subdomain ou domínio próprio. Branding aplicado. DNS + SSL configurados.</p>
+        <span class="duration">Automático</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dias 4–5</span>
+        <h4>Pesquisa + estratégia</h4>
+        <p>Pesquisador roda SERP + keywords + gaps. Estrategista monta calendário 90/mês. Cliente revisa primeiros temas.</p>
+        <span class="duration">2 dias</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dias 6–7</span>
+        <h4>Primeiro lote no ar</h4>
+        <p>Pipeline E2E roda · Redator · Revisor · Visual · Publicador. Primeiro artigo publicado. WhatsApp: "Seu blog está vivo".</p>
+        <span class="duration">Marco SLA</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dia 8+</span>
+        <h4>Operação contínua</h4>
+        <p>3 artigos/dia automático. Monitor coleta GSC, ranking, AI Overviews. Painel cliente atualiza diariamente.</p>
+        <span class="duration">Contínuo</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dia 27</span>
+        <h4>Aviso infra</h4>
+        <p>Anna envia "Sua infra renova em 3 dias" via WhatsApp.</p>
+        <span class="duration">D-3 da infra</span>
+      </div>
+      <div class="journey-step">
+        <span class="num">Dia 30</span>
+        <h4>Primeira infra</h4>
+        <p>Stripe cobra R$ 300 no cartão recorrente. Sucesso → recibo. Falha → smart retry.</p>
+        <span class="duration">Mês 2 começa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 15 — RECORRÊNCIA INFRA + USO CLIENTE
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>II · Recorrência mensal · cliente ativo</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.6rem);">
+      Régua de cobrança · rotina de uso.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.85rem, 1.2vw, 0.98rem); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Mês 2 em diante: cobrança mensal automática + cliente acessa painel pra ver resultado. Inadimplência pausa motor sem penalidade — blog permanece no ar.
+    </p>
+
+    <div class="recur-grid reveal">
+      <div class="recur-card">
+        <span class="recur-tag">Régua Stripe · cartão recorrente</span>
+        <h3>Cobrança mensal R$ 300</h3>
+        <ul class="recur-steps">
+          <li><span class="when">D-3</span><span><strong>Anna avisa:</strong> "Sua infra renova em 3 dias" — WhatsApp</span></li>
+          <li><span class="when">D0</span><span><strong>Stripe cobra:</strong> R$ 300 cartão recorrente · gera fatura</span></li>
+          <li class="fail"><span class="when">D+3</span><span><strong>Smart retry 1:</strong> Stripe retenta · Anna pinga WhatsApp</span></li>
+          <li class="fail"><span class="when">D+7</span><span><strong>Smart retry 2:</strong> última tentativa · aviso de pausa</span></li>
+          <li class="fail"><span class="when">D+8</span><span><strong>Pausa:</strong> motor para de gerar · blog permanece no ar · WhatsApp "regularize quando puder"</span></li>
+          <li><span class="when">∞</span><span><strong>Reativação:</strong> cliente paga · motor retoma no próximo ciclo</span></li>
+        </ul>
+      </div>
+
+      <div class="recur-card">
+        <span class="recur-tag">Painel cliente · uso recorrente</span>
+        <h3>Rotina do cliente ativo</h3>
+        <ul class="recur-steps">
+          <li><span class="when">~4x/mês</span><span><strong>Login:</strong> dashboard de métricas (artigos, ranking, AI Overviews)</span></li>
+          <li><span class="when">Diário</span><span><strong>Email:</strong> novos artigos publicados + indexação</span></li>
+          <li><span class="when">Semanal</span><span><strong>Painel:</strong> calendário 90/mês · fila publicação · revisão</span></li>
+          <li><span class="when">Mensal</span><span><strong>Relatório:</strong> performance + crescimento orgânico</span></li>
+          <li><span class="when">Sob demanda</span><span><strong>Falar com Anna:</strong> escalação humana via WhatsApp</span></li>
+          <li><span class="when">Métricas</span><span>NPS dia 30 &gt; 7 · churn infra &lt; 5% · uptime ≥ 99%</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 16 — DIVIDER PARTE III
+============================================================ -->
+<section class="slide slide-part-divider">
+  <div class="slide-content">
+    <div class="part-tag reveal">Parte III</div>
+    <div class="part-roman reveal">III</div>
+    <h1 class="part-divider-title reveal">
+      O que já foi realizado<br>
+      <em class="serif">8 sprints concluídas.</em>
+    </h1>
+    <p class="part-divider-summary reveal">
+      Tudo abaixo está operante hoje. Lastro pra recriar como sprints concluídas no Linear quando o plano for aprovado. Cada uma destrava a próxima — sem o canônico não tem landing, sem landing não tem lead, sem lead não tem venda, sem venda não tem cliente.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 17 — RESUMO 8 SPRINTS CONCLUÍDAS
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>III · Resumo · 8 sprints concluídas</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.5rem);">
+      A base sólida hoje.
+    </h2>
+    <p class="reveal" style="font-size: clamp(0.82rem, 1.15vw, 0.95rem); color: var(--text-2); max-width: 760px; margin-bottom: clamp(0.5rem, 1.5vh, 0.85rem);">
+      Cada cartão é uma sprint a recriar no Linear como concluída. Lastro operacional do que rodamos — canônico, identidade, site, backend, integrações, agente em produção, propostas, presença e governança.
+    </p>
+
+    <div class="frentes-grid reveal" style="grid-template-columns: repeat(4, 1fr); gap: clamp(0.5rem, 1.1vw, 0.8rem);">
+      <div class="frente-card">
+        <div class="num">C-01</div>
+        <h3>Canônico + Vault</h3>
+        <p>VERDADE_UNICA + 5+ Decision Logs · 16 pastas Obsidian.</p>
+        <div class="meta">✓ Operante</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-02</div>
+        <h3>Identidade + DS</h3>
+        <p>Tokens, componentes React, logos, ícones · monorepo.</p>
+        <div class="meta">✓ Operante</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-03</div>
+        <h3>Site Público V1</h3>
+        <p>Landing + termos + privacidade + plano · Vercel.</p>
+        <div class="meta">✓ buscouai.com</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-04</div>
+        <h3>Backend + Cloud</h3>
+        <p>Supabase schema + RLS + GitHub + Vercel + Cloudflare.</p>
+        <div class="meta">✓ Operante</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-05</div>
+        <h3>Stripe + Cal.com + Propostas</h3>
+        <p>Sandbox · Payment Links · Cal.com integrado · Skill PDF.</p>
+        <div class="meta">✓ Operante</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-06</div>
+        <h3>Anna Mel V1 OpenClaw</h3>
+        <p>Agente em produção 24/7 · UAZapi + Cal.com API + 9 MDs.</p>
+        <div class="meta">✓ Atendendo lead inbound</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-07</div>
+        <h3>Presença Digital</h3>
+        <p>IG + TikTok + LinkedIn + Postforme · 2 publicações cada.</p>
+        <div class="meta">✓ 4 canais ativos</div>
+      </div>
+      <div class="frente-card">
+        <div class="num">C-08</div>
+        <h3>1ª venda + Governança</h3>
+        <p>Innovate LED fechada · SDP v2 · 17 regras de execução.</p>
+        <div class="meta">✓ Cliente ativo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 18 — SPRINT C-01 CONCLUÍDA · CANÔNICO + VAULT
+============================================================ -->
+<section class="slide sprint-slide done">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-01 · canônico</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">01</div>
-        <div class="sprint-num-label">sprint</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao · base</div>
-        <h2 class="reveal">Auth + Painel Admin</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Operante</span>
+        </div>
+        <h2 class="reveal">Posicionamento canônico + Vault Obsidian</h2>
         <p class="sprint-tagline reveal">
-          Sem painel pra gerenciar clientes, cupons e financeiro, nada começa.
+          Tudo que define a empresa, travado e auditável. Toda copy parte daqui.
         </p>
         <ul class="sprint-bullets reveal">
-          <li>Schema: <code>usuarios</code>, <code>organizations</code>, <code>roles</code>, <code>sessions</code></li>
-          <li>Rota <code>/login</code> com Supabase Auth e redirect role-based</li>
-          <li>Painel <code>/admin</code> com visão geral + CRUD de clientes</li>
-          <li>Painel <code>/admin/cupons</code> — cria Stripe Coupon via API</li>
-          <li>Painel <code>/admin/financeiro</code> — MRR, lista compras, Payment Links emitidos</li>
+          <li><strong>VERDADE_UNICA_BUSCOU.md</strong> — 11 seções: definição, posicionamento, ICP, produto, modelo comercial, linguagem, promessa vs entrega, fluxo único, métricas, contato</li>
+          <li><strong>5+ Decision Logs Nível 1</strong> — Reversão Track 1, Política de Desconto, Dual-Track, Infra Mensal, Posicionamento base, Contato Oficial, Anna Humana, Arquitetura OpenClaw</li>
+          <li><strong>Vault Obsidian estruturado</strong> — 16 pastas temáticas (00-Verdade Única até 16-Identidade Visual), templates, frontmatter, links cruzados</li>
+          <li><strong>Governança canônica</strong> — alteração Nível 1 exige Decision Log datado + aprovação dono + cascata de atualização em ≤ 7 dias</li>
+          <li><strong>Skill <code>gerador-proposta-buscou</code></strong> consome esses canônicos pra gerar propostas alinhadas</li>
         </ul>
       </div>
     </div>
@@ -1009,31 +2215,34 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 7 — SPRINT 02: PAGAMENTO + ONBOARDING
+     SLIDE 19 — SPRINT C-02 CONCLUÍDA · IDENTIDADE + DS
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 02 · pagamento</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-02 · identidade</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">02</div>
-        <div class="sprint-num-label">sprint</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao + Vitoria</div>
-        <h2 class="reveal">Pagamento + onboarding cliente</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Operante</span>
+        </div>
+        <h2 class="reveal">Identidade visual + Design System v1</h2>
         <p class="sprint-tagline reveal">
-          Cliente paga → vira organização → entra no painel dele.
+          Tokens canônicos, componentes React e logos prontos pra qualquer superfície.
         </p>
         <ul class="sprint-bullets reveal">
-          <li>Schema: <code>compras</code>, <code>assinaturas_infra</code>, <code>parcelas</code>, <code>clientes_stripe</code></li>
-          <li>API admin que cria Payment Link Stripe com cupom (canal privado)</li>
-          <li>Webhook <code>/api/webhook/stripe</code> processa <code>checkout.session.completed</code> e <code>invoice.*</code></li>
-          <li>Pagamento confirmado → promove lead → cliente → cria organização</li>
-          <li>WhatsApp pós-pagamento com credenciais (V1 manual)</li>
-          <li>Área cliente <code>/painel/onboarding</code> — logo, cores, tom, preferências de imagem</li>
+          <li><strong>Tokens</strong> — cores, espaçamento, tipografia, transições · CSS variables canônicas</li>
+          <li><strong>Paleta dark-first</strong> — bg <code>#08090D</code> · mint <code>#00E5A0</code> (≤10% composição) · brand <code>#7C5CFF</code> · coral só erro crítico (≤2%)</li>
+          <li><strong>Tipografia</strong> — Geist (corpo) · Geist Mono (labels/eyebrow) · Instrument Serif (citações)</li>
+          <li><strong>Logos SVG</strong> — <code>buscou.ai</code> visual / <code>BuscouAI</code> jurídico · ícones 24×24 stroke 1.75 currentColor</li>
+          <li><strong>Componentes React</strong> — Button, Card, SearchBar, Badge · monorepo <code>@buscou/design-system</code> transpilado pelo Next.js</li>
+          <li><strong>Doc narrativo</strong> em <code>base-de-conhecimento/16 - Identidade Visual/</code> com regras de uso e checklist</li>
         </ul>
       </div>
     </div>
@@ -1042,30 +2251,34 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 8 — SPRINT 03: BLOG MULTI-TENANT
+     SLIDE 20 — SPRINT C-03 CONCLUÍDA · SITE PÚBLICO V1
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 03 · provisionamento</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-03 · site público</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">03</div>
-        <div class="sprint-num-label">sprint</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Vitoria + Joao</div>
-        <h2 class="reveal">Blog multi-tenant</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Em produção · buscouai.com</span>
+        </div>
+        <h2 class="reveal">Site público V1 — landing + legais + plano</h2>
         <p class="sprint-tagline reveal">
-          Cliente que pagou tem blog próprio no ar em ≤ 24h.
+          Quatro páginas no ar. Landing consultiva sem preço, CTAs Cal.com integrados, build limpo.
         </p>
         <ul class="sprint-bullets reveal">
-          <li>Decisão arquitetural: subdomain <code>cliente.buscouai.com</code> vs path <code>/b/cliente</code></li>
-          <li>Pipeline: organização criada → blog vazio provisionado automaticamente</li>
-          <li>Templates aplicando branding do cliente (logo, cores, tom)</li>
-          <li>Configuração de domínio próprio do cliente (DNS + SSL)</li>
-          <li>Páginas do blog: home, post, categoria, busca</li>
+          <li><strong>Landing</strong> — hero "Se alguém buscou..." · seção "para quem" com 6 nichos · mockup dashboard navegável · mockup blog · FAQ · CTAs únicos "Agendar diagnóstico"</li>
+          <li><strong>/termos</strong> e <strong>/privacidade</strong> — Termos de Serviço + LGPD com lista de processadores (Supabase, Vercel, Cal.com, Stripe, UAZapi)</li>
+          <li><strong>/plano</strong> — este material (37 slides)</li>
+          <li><strong>Stack</strong> — Next.js 16 · transpila <code>@buscou/design-system</code> · rewrites em <code>next.config.ts</code> servindo HTMLs estáticos</li>
+          <li><strong>Auditoria FE completa</strong> (BAI-122) — CTAs Cal.com URL real, copy canônica, dead CSS removido, a11y dos mocks</li>
+          <li><strong>Deploy Vercel</strong> — automático no push pra <code>main</code> · build limpo · Lighthouse OK</li>
         </ul>
       </div>
     </div>
@@ -1074,33 +2287,53 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 9 — SPRINT 04: MOTOR V1
+     SLIDE 21 — SPRINT C-04 CONCLUÍDA · BACKEND + CLOUD
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 04 · coração do produto</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-04 · backend + cloud</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">04</div>
-        <div class="sprint-num-label">sprint · pesado</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao</div>
-        <h2 class="reveal">Motor V1 — <em class="serif">6 agentes core</em></h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Operante</span>
+        </div>
+        <h2 class="reveal">Backend Supabase + infraestrutura cloud</h2>
         <p class="sprint-tagline reveal">
-          Pipeline E2E publicando 90 conteúdos/mês com qualidade SEO + AIO.
+          Schema multi-tenant pronto. Stack cloud completa: hosting, DNS, tunnels, repo.
         </p>
-        <ul class="sprint-bullets reveal">
-          <li><strong>Pesquisador</strong> — SERP, keywords, gaps de conteúdo</li>
-          <li><strong>Estrategista</strong> — clusters temáticos, calendário 90/mês</li>
-          <li><strong>Redator</strong> — artigos 800–1.200 palavras (answer-first)</li>
-          <li><strong>Revisor</strong> — score SEO + AIO ≥ 75 antes de publicar</li>
-          <li><strong>Publicador</strong> — publica no blog do cliente via API</li>
-          <li><strong>Monitor</strong> — ranking, AI Overviews, Search Console</li>
-          <li><strong>Orquestrador</strong> — coordena tudo via MCP</li>
-        </ul>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco — Supabase</span>
+            <p>Projeto <code>jpripzsyzbxfwqkiclqb</code> · wipe + reschema 23/04 · ~10 tabelas multi-tenant · RLS aplicada · seed dogfood · campos <code>amount_discount_cents</code> e <code>promo_code_used</code> em <code>compras</code> (BAI-118)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Hosting — Vercel</span>
+            <p>Domínio <code>buscouai.com</code> + subdomínios · auto-deploy no push em <code>main</code> · branch protegida · transpila monorepo design-system</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">DNS — Cloudflare</span>
+            <p>Tunnel <code>openclaw-poc</code> com 2 hostnames públicos: <code>openclaw.buscouai.com</code> (dashboard) e <code>uazapi.buscouai.com</code> (webhook bridge)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Repo — GitHub</span>
+            <p>Repo <code>buscou.ai</code> · branches feature por sprint · commits prefixados <code>BAI-X:</code> · PRs para review</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">VPS — OpenClaw</span>
+            <p>Servidor <code>72.60.9.128</code> · Ubuntu · roda Anna Mel + bridge UAZapi + dashboard OpenClaw 24/7</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Email transacional</span>
+            <p>Resend / SMTP preparado · usado por skill de propostas + futuras notificações de cliente</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1108,32 +2341,45 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 10 — SPRINT 05: ANNA MEL V1.1
+     SLIDE 22 — SPRINT C-05 CONCLUÍDA · STRIPE + CAL.COM + PROPOSTAS
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 05 · cadências · paralelo</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-05 · pagamento + agendamento + proposta</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">05</div>
-        <div class="sprint-num-label">sprint · paralela</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao</div>
-        <h2 class="reveal">Anna Mel V1.1</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Operante · 1ª venda fechada</span>
+        </div>
+        <h2 class="reveal">Stripe + Cal.com + Sistema de Propostas</h2>
         <p class="sprint-tagline reveal">
-          Anna automatiza nutrição, fechamento e cobrança recorrente.
+          Tripé que fecha venda hoje — agendamento → reunião → proposta PDF → Payment Link.
         </p>
-        <ul class="sprint-bullets reveal">
-          <li>Cadência nutrição pré-call (D-1 + material de apoio)</li>
-          <li>Cadência confirmação (D-1, 6h, 3h)</li>
-          <li>Cadência pós-reunião (D+1, D+3, D+7) + envio de Payment Link</li>
-          <li>Régua D+27 mensal da infra (R$ 300 recorrente)</li>
-          <li>Webhook Cal.com → Anna (lê reagendamentos pelo lead)</li>
-          <li>Contextos novos: <em class="serif">cliente ativo</em> + <em class="serif">inadimplente</em></li>
-        </ul>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Stripe — Payment Links</span>
+            <p>Sandbox + produção configurados · 2 produtos + 3 prices canônicos (R$ 2.500, R$ 3.000 12x, R$ 300/mês) · Cupons <code>promotion_codes</code> habilitados · webhook <code>checkout.session.completed</code> preparado</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Cal.com — agendamento</span>
+            <p>URL <code>cal.com/buscou.ai/diagnostico-buscouai</code> · event_type <code>5484425</code> · 30 min Cal Video · agenda 24/7 · API v2 integrada (Anna usa)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Skill — gerador-proposta-buscou</span>
+            <p>Em <code>~/.claude/skills/</code> · pipeline 8 passos: extrai vars da transcrição → renderiza template HTML → Chrome headless → PDF light mode → Desktop · template canônico em <code>prototipos/template-proposta-buscou/</code></p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Política de privacidade — propostas</span>
+            <p>Sem CRM mental · sem ata per-cliente · aprendizados absorvidos como playbook abstrato no vault · transcrição não persistida</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1141,31 +2387,61 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 11 — SPRINT 06: TRACKING REAL
+     SLIDE 23 — SPRINT C-06 CONCLUÍDA · ANNA MEL V1 OPENCLAW (DESTAQUE)
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 06 · métricas · paralelo</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-06 · agente em produção</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">06</div>
-        <div class="sprint-num-label">sprint · paralela</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao + Vitoria</div>
-        <h2 class="reveal">Tracking real per-tenant</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Em produção 24/7 · atendendo</span>
+        </div>
+        <h2 class="reveal">Anna Mel V1 — <em class="serif">OpenClaw + UAZapi + Cal.com API</em></h2>
         <p class="sprint-tagline reveal">
-          Substitui o mock estático da landing por dashboard real do cliente.
+          Primeiro agente em produção. Recebe lead WhatsApp, qualifica leve, agenda no chat, escala pra Joao quando sai do script.
         </p>
-        <ul class="sprint-bullets reveal">
-          <li>Google Analytics 4 com auto-provisioning no onboarding</li>
-          <li>Google Tag Manager auto-provisioning</li>
-          <li>Microsoft Clarity per-tenant</li>
-          <li>Página <code>/painel/metricas</code> consumindo GA Data API</li>
-          <li>Atualiza a seção <code>#preview</code> da landing pra refletir dados reais</li>
-        </ul>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Stack — pivot OpenClaw</span>
+            <p>Framework <strong>OpenClaw</strong> + Codex CLI (gpt-5.4-mini) substituiu Next.js/Supabase/Redis original (Decision Log Arquitetura · 24/04). Roda 24/7 no VPS <code>72.60.9.128</code></p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Gateway — UAZapi</span>
+            <p>Instância <code>5527996960847</code> · plano produção · gateway oficial WhatsApp Business · número canônico +55 27 99696-0847</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Bridge customizado</span>
+            <p>Node.js em <code>/root/uazapi-bridge/server.mjs</code> (~16 KB): 5 formas de auth · normaliza payload v2 · debounce 20s (4 msgs em rajada → 1 turno coerente) · sinaliza "digitando..." · observabilidade total (todo drop logado)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Tunnel — Cloudflare</span>
+            <p>Tunnel <code>openclaw-poc</code> com 2 hostnames: <code>openclaw.buscouai.com</code> (dashboard) e <code>uazapi.buscouai.com</code> (webhook bridge)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Cal.com API v2 integrada</span>
+            <p>Anna agenda, remarca e cancela no chat · event_type <code>5484425</code> · slug <code>diagnostico-buscouai</code> · 30 min · sem precisar de painel externo</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Persona — 9 MDs canônicos</span>
+            <p>Em <code>/root/.openclaw/workspace/agents/anna-mel/</code> espelhado em <code>agentes/anna-mel/</code>: IDENTITY, SOUL (10.7 KB), KNOWLEDGE (11.8 KB), SCENARIOS (11.9 KB), TOOLS, USER, AGENTS, MEMORY, HEARTBEAT — split forçado pelo limite hardcoded de 12 KB do framework</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança — Cenário E</span>
+            <p>Anti-exposição: nega "você é IA?" · recusa áudio/ligação (microfone quebrado) · recusa CPF/foto · vivência humana estável (Vitória/ES, escritório, café) · 7 padrões cobertos com resposta-modelo</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Validação E2E em produção</span>
+            <p>25/04 todas passaram: cadeia inbound completa · debounce (4 msgs → 1 turno) · persona humanizada · convenção anti-auto-link da marca ("Buscou" sem ponto, nunca "buscou.ai" cru no WhatsApp)</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1173,30 +2449,53 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 12 — SPRINT 07: OUTBOUND + IG
+     SLIDE 24 — SPRINT C-07 CONCLUÍDA · PRESENÇA DIGITAL
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 07 · topo de funil · paralelo</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-07 · presença digital</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">07</div>
-        <div class="sprint-num-label">sprint · paralela</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao + Vitoria</div>
-        <h2 class="reveal">Outbound + Conteúdo IG</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>4 canais ativos · 2 publicações</span>
+        </div>
+        <h2 class="reveal">Presença digital + conteúdo inicial</h2>
         <p class="sprint-tagline reveal">
-          Topo de funil ativo enquanto o motor entrega.
+          Topo de funil aberto em 4 canais. Estrutura canônica pronta pra escalar publicações.
         </p>
-        <ul class="sprint-bullets reveal">
-          <li>Base IG completa (calendário editorial + tom + playbooks por formato)</li>
-          <li>Próximas publicações IG (carrossel, foto IA, motion 15s)</li>
-          <li>Lista de 50 leads ICP local (clínicas, imobiliárias, advogados, serviços)</li>
-          <li>Script de outbound + cadência de toques no WhatsApp</li>
-        </ul>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Instagram @buscou.ai</span>
+            <p>Post 01 — Carrossel Manifesto (BAI-38/64/66) · Post 02 — Foto IA Dor ICP Local (BAI-39/63/65) · ambos publicados 23/04</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">TikTok @buscou.ai</span>
+            <p>Mesmos 2 posts replicados em formato Photo · publicados 23/04</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">LinkedIn @buscou-ai</span>
+            <p>Mesmos 2 posts replicados em formato post · publicados 23/04</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Postforme</span>
+            <p>Ferramenta de agendamento integrada · permite publicar simultaneamente nos 3 canais</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Estrutura canônica</span>
+            <p>Em <code>prototipos/instagram/post-NN-tipo-slug/</code> · cada pasta: README (ficha técnica) + source + assets (PNGs) + legenda.md · pronta pra replicar</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Tom + linguagem</span>
+            <p>Aplica VERDADE_UNICA · "Buscou" sem ponto · nunca usar termos proibidos · close-up emocional + contexto BR + elemento surreal (heurística pos-feedback)</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1204,30 +2503,53 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 13 — SPRINT 08: POLISH + DOCS
+     SLIDE 25 — SPRINT C-08 CONCLUÍDA · 1ª VENDA + GOVERNANÇA SDP v2
 ============================================================ -->
-<section class="slide sprint-slide">
+<section class="slide sprint-slide done">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>02 · Sprint 08 · fechamento</div>
+    <div class="eyebrow reveal"><span class="dot"></span>III · Sprint C-08 · receita real + processo</div>
 
     <div class="sprint-grid">
       <div class="sprint-num-wrap reveal">
         <div class="sprint-num">08</div>
-        <div class="sprint-num-label">sprint · final</div>
+        <div class="sprint-num-label">concluída</div>
       </div>
 
       <div class="sprint-content">
-        <div class="sprint-owner reveal">Joao + Vitoria</div>
-        <h2 class="reveal">Polish + Documentação V1</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill done reveal"><span class="led"></span>Cliente ativo + processo travado</span>
+        </div>
+        <h2 class="reveal">Primeira venda real + Governança SDP v2</h2>
         <p class="sprint-tagline reveal">
-          V1 estável, documentada, pronta pra escalar.
+          Receita validada com cliente real e processo de execução blindado pra escalar.
         </p>
-        <ul class="sprint-bullets reveal">
-          <li>Testes E2E completos (Stripe + Anna Mel + Onboarding + Motor)</li>
-          <li>Documentação técnica completa no vault Obsidian</li>
-          <li>Roadmap V2 redigido (5 agentes complementares + Stripe Subscription auto)</li>
-          <li>Closeout: V1 do produto inteiro fechada e marcada como entregue</li>
-        </ul>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">1ª venda — Innovate LED</span>
+            <p>Fechada 23/04 · modelo canônico (implementação + infra) · Payment Link Stripe via WhatsApp · Cupom aplicado em canal privado (BAI-71) · onboarding ativo</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">SDD — Spec-Driven Development</span>
+            <p>Toda demanda vira issue Linear antes de executar · spec clara (contexto + requisitos + critérios) · sem código sem spec</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">SDP v2 — 17 regras</span>
+            <p>Start-Do-Proof: A fazer → Em andamento → Revisão → Concluído · DoR + DoD obrigatórios · 4 campos Linear (assignee, priority, labels, dueDate) · marcos de comentário · hierarquia parentId</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Branch strategy</span>
+            <p>Toda issue code-touching nasce em branch própria · merge em <code>main</code> só pós-Revisão · commits prefixados <code>BAI-X:</code> · push autorizado caso-a-caso</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Taxonomia de labels</span>
+            <p>Domínio (operacional, produto, vendas, conteúdo, marketing, agentes, instagram) + Natureza (bug, melhoria, feature) + Estado (umbrella, congelada, funil:topo/meio/fundo)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Heurística de assignee</span>
+            <p>Joao · backend, infra, copy, agentes, canônico · Vitoria · ops externa, contas SaaS, redes sociais, doc operacional · paridade real, não hierarquia</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1235,34 +2557,599 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 14 — MAPA DE EXECUÇÃO
+     SLIDE 26 — DIVIDER PARTE IV
+============================================================ -->
+<section class="slide slide-part-divider">
+  <div class="slide-content">
+    <div class="part-tag reveal">Parte IV</div>
+    <div class="part-roman reveal">IV</div>
+    <h1 class="part-divider-title reveal">
+      Próximos passos<br>
+      <em class="serif">8 sprints até V1 fechada.</em>
+    </h1>
+    <p class="part-divider-summary reveal">
+      Cada sprint pensada com banco de dados, frontend, backend, integrações, fluxos, segurança e observabilidade. Aprovação implica recriação no Linear como issues "A fazer" prontas pra executar.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 27 — RESUMO 8 SPRINTS A FAZER
 ============================================================ -->
 <section class="slide">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>03 · Mapa de execução</div>
-    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.75rem, 2vh, 1.5rem);">
-      Ordem · paralelismo.
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Resumo · 8 sprints planejadas</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.4rem, 1vh, 0.5rem);">
+      O caminho até <em class="serif">V1 fechada</em>.
     </h2>
-    <p class="reveal" style="font-size: var(--body-size); color: var(--text-2); max-width: 720px; margin-bottom: clamp(1rem, 2.5vh, 1.75rem);">
-      Sprints 1 a 4 são <strong style="color: var(--text);">sequenciais obrigatórias</strong>. Cada uma destrava a próxima. Após o Motor (sprint 4), as três frentes 5 / 6 / 7 podem rodar <strong style="color: var(--ai);">em paralelo</strong> dependendo da capacidade de Joao + Vitoria. A sprint 8 só fecha quando todas as paralelas terminarem.
+    <p class="reveal" style="font-size: clamp(0.82rem, 1.15vw, 0.95rem); color: var(--text-2); max-width: 760px; margin-bottom: clamp(0.5rem, 1.5vh, 0.85rem);">
+      Sprints 1-4 sequenciais obrigatórias (cada uma destrava a próxima). 5-7 paralelas após o motor. 8 fecha quando paralelas terminam.
+    </p>
+
+    <div class="frentes-grid reveal" style="grid-template-columns: repeat(4, 1fr); gap: clamp(0.5rem, 1.1vw, 0.8rem);">
+      <div class="frente-card" style="border-color: rgba(124, 92, 255, 0.25);">
+        <div class="num" style="color: var(--brand-300);">A-01 · seq</div>
+        <h3>Auth + Painel Admin</h3>
+        <p>Sem painel pra gerenciar clientes/cupons/financeiro, nada começa.</p>
+        <div class="meta" style="color: var(--brand-300);">Base obrigatória</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(124, 92, 255, 0.25);">
+        <div class="num" style="color: var(--brand-300);">A-02 · seq</div>
+        <h3>Pagamento + Onboarding</h3>
+        <p>Cliente paga → vira organização → entra no painel dele.</p>
+        <div class="meta" style="color: var(--brand-300);">Conversão</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(124, 92, 255, 0.25);">
+        <div class="num" style="color: var(--brand-300);">A-03 · seq</div>
+        <h3>Blog Multi-Tenant</h3>
+        <p>Cliente que pagou tem blog próprio em ≤ 24h.</p>
+        <div class="meta" style="color: var(--brand-300);">Provisionamento</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(124, 92, 255, 0.25);">
+        <div class="num" style="color: var(--brand-300);">A-04 · seq</div>
+        <h3>Motor V1 — 6 agentes core</h3>
+        <p>Pipeline E2E publica 90 conteúdos/mês com qualidade SEO+AIO.</p>
+        <div class="meta" style="color: var(--brand-300);">Coração do produto</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(0, 229, 160, 0.3);">
+        <div class="num" style="color: var(--ai);">A-05 · paralelo</div>
+        <h3>Anna Mel V1.1</h3>
+        <p>Cadências completas: D-1, D+1/D+3/D+7, Payment Link, infra mensal.</p>
+        <div class="meta" style="color: var(--ai);">Automação relacional</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(0, 229, 160, 0.3);">
+        <div class="num" style="color: var(--ai);">A-06 · paralelo</div>
+        <h3>Tracking Real Per-Tenant</h3>
+        <p>GA4 + GTM + Clarity + dashboard cliente substitui mock estático.</p>
+        <div class="meta" style="color: var(--ai);">Métricas reais</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(0, 229, 160, 0.3);">
+        <div class="num" style="color: var(--ai);">A-07 · paralelo</div>
+        <h3>Outbound + Conteúdo IG</h3>
+        <p>Topo de funil ativo enquanto motor entrega.</p>
+        <div class="meta" style="color: var(--ai);">Aquisição</div>
+      </div>
+      <div class="frente-card" style="border-color: rgba(124, 92, 255, 0.32);">
+        <div class="num brand-c">A-08 · final</div>
+        <h3>Polish + Docs V1</h3>
+        <p>Testes E2E · doc completa · roadmap V2 · closeout.</p>
+        <div class="meta brand-c">Fechamento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 28 — SPRINT A-01 · AUTH + PAINEL ADMIN
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-01 · base obrigatória · sequencial</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">01</div>
+        <div class="sprint-num-label">a fazer</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada</span>
+        </div>
+        <h2 class="reveal">Auth + Painel Admin</h2>
+        <p class="sprint-tagline reveal">
+          Sem painel pra gerenciar clientes, cupons e financeiro, nada começa.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>usuarios</code>, <code>organizacoes</code>, <code>roles</code>, <code>sessions</code>, <code>audit_log</code> · RLS por <code>org_id</code> · seed admin Joao + Vitoria</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Frontend</span>
+            <p><code>/login</code> magic-link · <code>/admin</code> dashboard · <code>/admin/clientes</code> CRUD · <code>/admin/cupons</code> emissor Stripe · <code>/admin/financeiro</code> MRR + lista compras</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Backend</span>
+            <p>Supabase Auth (email magic-link) · RPC para criação de cupom Stripe · API admin protegida por role · server actions Next.js</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>Stripe Coupons API · Resend (envio magic-link) · Supabase RLS</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança</span>
+            <p>Magic-link com TTL curto · sessão JWT 7d · RLS força <code>auth.uid()</code> em toda query · audit log de toda ação admin · logout em todos os devices</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Audit log per-action · log de criação de cupom (quem, quando, valor) · alerta Slack pra Joao em ações críticas (criar/deletar cliente)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 29 — SPRINT A-02 · PAGAMENTO + ONBOARDING CLIENTE
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-02 · conversão · sequencial</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">02</div>
+        <div class="sprint-num-label">a fazer</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada</span>
+        </div>
+        <h2 class="reveal">Pagamento + Onboarding cliente</h2>
+        <p class="sprint-tagline reveal">
+          Cliente paga → vira organização → entra no painel dele e configura o blog.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>compras</code> (com <code>amount_discount_cents</code>, <code>promo_code_used</code>) · <code>assinaturas_infra</code> · <code>parcelas</code> · <code>clientes_stripe</code> · <code>onboarding_steps</code> (5 passos com status)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Frontend</span>
+            <p><code>/painel/onboarding</code> wizard 5 passos: domínio, nicho, tom de voz, concorrentes, conexão GSC · skip/save por passo · barra de progresso</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Backend</span>
+            <p>API admin gera Payment Link com cupom · webhook <code>/api/webhook/stripe</code> processa <code>checkout.session.completed</code> + <code>invoice.*</code> + <code>customer.subscription.*</code></p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>Stripe Payment Links + Subscriptions · UAZapi (envio credenciais via WhatsApp na V1 manual) · Anna Mel webhook (V1.1) · Google Search Console OAuth</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Fluxo</span>
+            <p>Aceite proposta → admin gera Payment Link → cliente paga → webhook promove lead a cliente → cria organização → envia credenciais → cliente acessa wizard → dados alimentam Estrategista</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança</span>
+            <p>Webhook Stripe com signing secret obrigatório · idempotency key em todo evento · token de boas-vindas one-time-use · cliente só vê org dele (RLS)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Log de todo webhook recebido · alerta no Slack se webhook falhar · dashboard MRR atualizado em real-time · métrica conversão Aceite → Pagamento → Wizard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 30 — SPRINT A-03 · BLOG MULTI-TENANT
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-03 · provisionamento · sequencial</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">03</div>
+        <div class="sprint-num-label">a fazer</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Vitoria + Joao</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada</span>
+        </div>
+        <h2 class="reveal">Blog multi-tenant</h2>
+        <p class="sprint-tagline reveal">
+          Cliente que pagou tem blog próprio no ar em ≤ 24h, com branding aplicado.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>blogs</code> (org_id, dominio, subdomain, tema_id) · <code>artigos</code> (slug, status, conteudo, score_seo, score_aio) · <code>categorias</code> · <code>capas</code> · indexes em <code>org_id</code> + <code>status</code></p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Frontend público</span>
+            <p>Páginas do blog: home (lista), artigo (post-page), categoria, busca, sobre · SSG por org · revalidate 60s · sitemap + RSS auto-gerados</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Decisão arquitetural</span>
+            <p>Subdomain <code>cliente.buscouai.com</code> (default) vs path <code>/b/cliente</code> vs domínio próprio · cliente escolhe no wizard · Vercel Domains API automatiza</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Branding por cliente</span>
+            <p>Logo, cores primária/secundária, tom · CSS variables runtime · template único renderiza com tokens do cliente · OG image dinâmica</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>Vercel Domains API (criar subdomain/domínio próprio) · Cloudflare DNS · GSC verification automática · Schema.org BlogPosting + Article injetado</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">SEO + AIO técnico</span>
+            <p>llms.txt por blog · sitemap segmentado · Core Web Vitals (LCP &lt; 2.5s) · canonical URLs · structured data · Open Graph completo</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança</span>
+            <p>Cliente não consegue acessar blog de outro cliente (RLS + middleware) · uploads em bucket isolado por org · CSP estrita · rate-limit em busca</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Log de provisionamento (criação domínio, SSL, primeiros artigos) · alerta se SSL não emitir em 5 min · dashboard "blogs ativos / motor pausado / em provisão"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 31 — SPRINT A-04 · MOTOR V1 (6 AGENTES CORE)
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-04 · coração do produto · sequencial · pesado</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">04</div>
+        <div class="sprint-num-label">a fazer · pesado</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada</span>
+        </div>
+        <h2 class="reveal">Motor V1 — <em class="serif">6 agentes core + Orquestrador</em></h2>
+        <p class="sprint-tagline reveal">
+          Pipeline E2E publicando 90 conteúdos/mês com qualidade SEO + AIO ≥ 75.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>agente_runs</code> (run_id, agente, input, output, score, custo_tokens) · <code>calendario_editorial</code> (90 itens/mês por blog) · <code>filas</code> por status · cache de SERPs e keywords</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Pipeline E2E</span>
+            <p>Pesquisador → Estrategista → Redator → Revisor → Visual → Publicador → Monitor · Orquestrador coordena via MCP · retry exponencial em falhas LLM</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Frontend cliente</span>
+            <p><code>/painel/conteudo</code> · calendário 90/mês · fila publicação · revisão pré-publicar · histórico publicado · score SEO+AIO por artigo</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Backend</span>
+            <p>Workers em Vercel Functions ou VPS dedicada (decidir) · scheduler cron 3x/dia · transações em Supabase com isolation · token budget per-cliente</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>Claude (Redator/Revisor) · OpenAI (Pesquisador/Estrategista) · Ahrefs API · DataForSEO · Google Search Console · CMS publicação interna</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Qualidade — Revisor</span>
+            <p>Score mínimo 75 (SEO 0-100 + AIO 0-100 + answer-first 0-100) · loop de regeneração até passar · alerta humano após 3 tentativas falhas</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança</span>
+            <p>Token budget por cliente (alerta em 80%) · sandboxing de prompt injection · output sanitizado antes de salvar · cliente nunca vê run de outro</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Telemetria por agente (latência, custo, score) · dashboard interno "saúde do motor" · alerta se artigo demora &gt; 30 min · custo médio por artigo monitorado</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 32 — SPRINT A-05 · ANNA MEL V1.1
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-05 · cadências completas · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">05</div>
+        <div class="sprint-num-label">a fazer · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada · após Motor V1</span>
+        </div>
+        <h2 class="reveal">Anna Mel V1.1 — <em class="serif">cadências completas</em></h2>
+        <p class="sprint-tagline reveal">
+          Anna automatiza nutrição pré-call, fechamento pós-reunião, Payment Link e cobrança recorrente.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>cadencias</code> (lead_id, tipo, etapa, status, scheduled_at) · <code>mensagens_anna</code> (template_id, payload, sent_at, response_received_at) · <code>contextos</code> (cliente_ativo, inadimplente, em_negociacao)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Régua pré-call</span>
+            <p>D-1 18h: lembrete + material de apoio + qualificação leve · −30 min: confirmação · falta na reunião: cadência reagendar</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Régua pós-reunião + fechamento</span>
+            <p>D+0: "proposta em 24h" · D+1: enviou + esclarecimentos · D+3: educativo SEO/AIO · D+7: toque humano direto · escalação pra Joao se silêncio</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Régua pagamento</span>
+            <p>Aceite → gera Payment Link via API admin (com cupom se há cupom no contexto) → envia WhatsApp → confirma webhook Stripe → envia credenciais painel</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Régua infra mensal</span>
+            <p>D-3: aviso · D0: cobrança Stripe · D+3 falhou: smart retry + WhatsApp · D+7 falhou: última tentativa · D+8: pausa motor + WhatsApp "regularize quando puder"</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações novas</span>
+            <p>Webhook Cal.com → Anna (lê reagendamentos fora do chat) · Stripe Subscriptions webhook · Linear API (cria issue de inadimplência) · Vision/Whisper futuro (V1.2+)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança · canon mantido</span>
+            <p>Cenário E permanece (não admite IA) · convenção anti-auto-link · dados de pagamento nunca passam pelo chat · Payment Link é a única superfície financeira</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Dashboard Anna: cadências ativas, taxa de resposta por etapa, NPS pós-call, churn de infra · log de toda mensagem enviada/recebida com timestamp e contexto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 33 — SPRINT A-06 · TRACKING REAL PER-TENANT
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-06 · métricas reais · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">06</div>
+        <div class="sprint-num-label">a fazer · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada · após Motor V1</span>
+        </div>
+        <h2 class="reveal">Tracking real per-tenant</h2>
+        <p class="sprint-tagline reveal">
+          Substitui o mock estático da landing por dashboard real do cliente — dados de tráfego, ranking, AI Overviews.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco de dados</span>
+            <p><code>tenants_ga4</code> (org_id, property_id, oauth_tokens) · <code>metricas_diarias</code> (org_id, data, sessoes, paginas_vistas, posicao_media, ai_citations) · <code>kpis_mensais</code> agregado</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Provisionamento automático</span>
+            <p>No onboarding: cria GA4 property + GTM container + Clarity site · injeta tags no template do blog · OAuth Google contínuo via service account</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Frontend cliente</span>
+            <p><code>/painel/metricas</code> · cards: sessões, páginas vistas, top artigos, posição média GSC, AI citations · gráficos 30/90 dias · export CSV</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Backend</span>
+            <p>Cron diário: pega dados de GA4 Data API, GSC API, Clarity API, AI Overviews tracker · normaliza · grava em <code>metricas_diarias</code> · cache Redis 1h</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>Google Analytics 4 Data API · Google Search Console API · Microsoft Clarity API · Otterly/AthenaHQ ou AI Overview Tracker (decidir)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Landing dinâmica</span>
+            <p>Seção <code>#preview</code> da landing puxa exemplo agregado anonimizado de cliente real (com consentimento) · refresh diário · fallback no mock estático se API down</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Segurança</span>
+            <p>OAuth tokens criptografados em repouso · cliente só acessa metric da org dele (RLS) · nenhum dado pessoal de visitante (PII) é salvo · LGPD by design</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Alerta se cron falha 2x consecutivas · alerta se GA4 quota hit · dashboard interno "tenants com tracking saudável vs broken"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 34 — SPRINT A-07 · OUTBOUND + CONTEÚDO IG
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-07 · topo de funil · paralelo</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">07</div>
+        <div class="sprint-num-label">a fazer · paralela</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada · após Motor V1</span>
+        </div>
+        <h2 class="reveal">Outbound + Conteúdo IG</h2>
+        <p class="sprint-tagline reveal">
+          Topo de funil ativo enquanto o motor entrega. Inbound (motor) + outbound (humano) em paralelo.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Banco — outbound</span>
+            <p><code>leads_outbound</code> (nome, empresa, nicho, telefone, IG, status, último_contato) · <code>cadencia_outbound</code> (toques D+0/D+3/D+7) · histórico mensagens</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Lista 50 leads ICP local</span>
+            <p>Clínicas + imobiliárias + advogados + serviços locais · pesquisa Google Maps + IG + LinkedIn · validação manual de fit</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Script outbound</span>
+            <p>Mensagem 1: hook contextual (vi seu IG) · Mensagem 2: educacional (dado SEO+AIO) · Mensagem 3: CTA agendar · cadência D+0/D+3/D+7</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Conteúdo IG · base canônica</span>
+            <p>Calendário editorial 4 posts/semana · tom canônico aplicado · playbooks por formato (carrossel, foto IA, motion 15s) · estrutura <code>prototipos/instagram/post-NN-tipo-slug/</code></p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Próximas publicações IG</span>
+            <p>Carrossel "Como apareceu na IA" · Foto IA "Cliente que não aparece" · Motion 15s "3 dias publicando · 1 cliente novo" · publicação via Postforme</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Integrações</span>
+            <p>UAZapi (envio outbound WhatsApp) · Postforme (agendamento IG/TikTok/LinkedIn simultâneo) · Linear (issue por lote de outbound)</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Compliance</span>
+            <p>Não enviar pra leads sem consentimento implícito (referência mútua, IG público) · LGPD respeitada · opt-out imediato em qualquer mensagem · sem pp scraping pesado</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade</span>
+            <p>Métrica: leads_contactados → respostas → agendamentos → vendas · funil outbound separado do inbound · alerta se taxa de resposta &lt; 5% (mexe no script)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 35 — SPRINT A-08 · POLISH + DOCUMENTAÇÃO V1
+============================================================ -->
+<section class="slide sprint-slide todo">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Sprint A-08 · fechamento · final</div>
+
+    <div class="sprint-grid">
+      <div class="sprint-num-wrap reveal">
+        <div class="sprint-num">08</div>
+        <div class="sprint-num-label">a fazer · final</div>
+      </div>
+
+      <div class="sprint-content">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="sprint-owner reveal">Joao + Vitoria</span>
+          <span class="sprint-status-pill todo reveal"><span class="led"></span>Planejada · após paralelas</span>
+        </div>
+        <h2 class="reveal">Polish + Documentação V1</h2>
+        <p class="sprint-tagline reveal">
+          V1 estável, documentada, com testes E2E e roadmap V2 redigido. Pronta pra escalar.
+        </p>
+        <div class="sprint-detail-grid reveal">
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Testes E2E</span>
+            <p>Playwright cobrindo: agendamento → reunião sim → Payment Link → onboarding wizard → blog provisionado → primeiro artigo · cobertura ≥ 80% das jornadas críticas</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Documentação técnica</span>
+            <p>Vault Obsidian: arquitetura completa por módulo · runbook por incidente comum · decision logs cumulativos · onboarding técnico de novo dev</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Documentação operacional</span>
+            <p>SLA per-cliente · regras de escalação · script de suporte · FAQ canônico · playbook "como onboardar Anna Mel num novo cliente"</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Roadmap V2</span>
+            <p>5 agentes complementares (Visual evoluído, Distribuidor LinkedIn/Medium, Suporte, Prospecção, Pagamento auto) · Stripe Subscriptions automáticas · auto-aprendizado de FAQ Anna</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Hardening</span>
+            <p>Pen-test básico · revisão de RLS em todas tabelas · revisão de CSP · LGPD audit (DPIA) · backup + restore testado</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Observabilidade — produção</span>
+            <p>Sentry / Logtail · alertas Slack pra erros críticos · dashboard "saúde da V1": uptime, latência API, taxa de erro motor, taxa cobrança falha</p>
+          </div>
+          <div class="sprint-detail-card">
+            <span class="sd-tag">Closeout</span>
+            <p>V1 marcada como entregue no Linear · Decision Log "V1 fechada" datado · comunicado interno · plano de rampa de aquisição V1.1 → V2 redigido</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 36 — MAPA DE EXECUÇÃO
+============================================================ -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow reveal"><span class="dot"></span>IV · Mapa de execução</div>
+    <h2 class="reveal" style="font-size: var(--h2-size); margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      Ordem · paralelismo · fechamento.
+    </h2>
+    <p class="reveal" style="font-size: var(--body-size); color: var(--text-2); max-width: 720px; margin-bottom: clamp(0.75rem, 2vh, 1.25rem);">
+      Sprints A-01 a A-04 são <strong style="color: var(--text);">sequenciais obrigatórias</strong>. Cada uma destrava a próxima. Após o Motor (A-04), as três frentes A-05 / A-06 / A-07 podem rodar <strong style="color: var(--ai);">em paralelo</strong> dependendo da capacidade de Joao + Vitoria. A sprint A-08 só fecha quando todas as paralelas terminarem.
     </p>
 
     <div class="mapa-grid reveal">
-      <div class="mapa-node sequencial"><div class="num">01</div><div class="label">Auth + Admin</div></div>
+      <div class="mapa-node sequencial"><div class="num">A-01</div><div class="label">Auth + Admin</div></div>
       <div class="mapa-arrow">→</div>
-      <div class="mapa-node sequencial"><div class="num">02</div><div class="label">Pagamento</div></div>
+      <div class="mapa-node sequencial"><div class="num">A-02</div><div class="label">Pagamento</div></div>
       <div class="mapa-arrow">→</div>
-      <div class="mapa-node sequencial"><div class="num">03</div><div class="label">Blog</div></div>
+      <div class="mapa-node sequencial"><div class="num">A-03</div><div class="label">Blog</div></div>
       <div class="mapa-arrow">→</div>
-      <div class="mapa-node sequencial"><div class="num">04</div><div class="label">Motor</div></div>
+      <div class="mapa-node sequencial"><div class="num">A-04</div><div class="label">Motor</div></div>
       <div class="mapa-arrow">→</div>
       <div class="mapa-bracket">
-        <div class="mapa-node paralelo"><div class="num">05</div><div class="label">Anna V1.1</div></div>
-        <div class="mapa-node paralelo"><div class="num">06</div><div class="label">Tracking</div></div>
-        <div class="mapa-node paralelo"><div class="num">07</div><div class="label">Outbound + IG</div></div>
+        <div class="mapa-node paralelo"><div class="num">A-05</div><div class="label">Anna V1.1</div></div>
+        <div class="mapa-node paralelo"><div class="num">A-06</div><div class="label">Tracking</div></div>
+        <div class="mapa-node paralelo"><div class="num">A-07</div><div class="label">Outbound + IG</div></div>
       </div>
       <div class="mapa-arrow">→</div>
-      <div class="mapa-node fechamento"><div class="num">08</div><div class="label">Polish + Docs</div></div>
+      <div class="mapa-node fechamento"><div class="num">A-08</div><div class="label">Polish + Docs</div></div>
     </div>
 
     <div class="mapa-legend reveal">
@@ -1275,11 +3162,11 @@ em.serif {
 
 
 <!-- ============================================================
-     SLIDE 15 — V1 FECHADA
+     SLIDE 37 — V1 FECHADA
 ============================================================ -->
 <section class="slide slide-final">
   <div class="slide-content">
-    <div class="eyebrow reveal"><span class="dot"></span>04 · Definição de pronto</div>
+    <div class="eyebrow reveal"><span class="dot"></span>Definição de pronto</div>
 
     <h2 class="reveal">
       V1 fechada quando<br>
@@ -1287,36 +3174,37 @@ em.serif {
     </h2>
 
     <p class="lead reveal">
-      Lead chega na landing → agenda <span class="mint">Cal.com</span> → reunião acontece → recebe <span class="mint">Payment Link</span> via WhatsApp → paga → recebe credenciais → faz onboarding → blog vai ao ar em ≤7 dias → motor publica 3 artigos/dia → cliente vê <span class="mint">métricas reais</span>.
+      Lead chega na landing → agenda <span class="mint">Cal.com</span> → reunião acontece → recebe <span class="mint">Payment Link</span> via WhatsApp → paga → recebe credenciais → faz onboarding → blog vai ao ar em ≤7 dias → motor publica 3 artigos/dia → cliente vê <span class="mint">métricas reais</span> → mês 2 a infra renova automaticamente.
     </p>
 
     <ul class="closing-bullets reveal">
       <li>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
-        Anna Mel automatizando Lead inbound + cadências completas pós-reunião
+        Anna Mel V1.1 automatizando lead inbound + cadências completas pré/pós/fechamento + Payment Link + infra mensal
       </li>
       <li>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
-        Documentação técnica completa publicada no vault Obsidian
+        Documentação técnica e operacional completa publicada no vault Obsidian
       </li>
       <li>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
-        Pelo menos 1 cliente real ativado, pagando e rodando a infra
+        3+ clientes reais ativos · pagando infra · motor rodando 3 artigos/dia em cada
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Roadmap V2 redigido com agentes complementares + auto-renovação + Anna V2
       </li>
     </ul>
 
     <div class="footer-meta reveal">
-      <span><a class="brand-lockup">buscou<span class="ai">.ai</span></a> · roadmap v1</span>
-      <span>2026 · plano de execução</span>
+      <span><a class="brand-lockup">buscou<span class="ai">.ai</span></a> · material de estudo v1 · 2026-04-25</span>
+      <span>4 partes · 37 slides · pronto pra revisar com Vitoria</span>
     </div>
   </div>
 </section>
 
 
 <script>
-/* ============================================================
-   Slide presentation controller
-============================================================ */
 class SlidePresentation {
   constructor() {
     this.slides = document.querySelectorAll('.slide');
