@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empresa — Dashboard buscou.ai</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090D; --bg-elev-1: #0F1117; --bg-elev-2: #161823; --bg-elev-3: #1C1F2C;
+  --border: #1F2230; --border-strong: #2E3142;
+  --text: #ECEDF0; --text-2: #A4A7B3; --text-3: #6B6E7B; --text-4: #4A4D5A;
+  --brand: #7C5CFF; --brand-300: #A88FFF; --brand-soft: rgba(124, 92, 255, 0.12);
+  --ai: #00E5A0; --ai-300: #57F0C0; --ai-soft: rgba(0, 229, 160, 0.08); --ai-glow: rgba(0, 229, 160, 0.45);
+  --coral: #FF6B3D; --coral-soft: rgba(255, 107, 61, 0.12);
+  --whatsapp: #25D366;
+  --font-sans: 'Geist', -apple-system, sans-serif; --font-mono: 'Geist Mono', ui-monospace, monospace; --font-serif: 'Instrument Serif', serif;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 18px; --radius-xl: 24px; --radius-pill: 100px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 14px; line-height: 1.5; letter-spacing: -0.005em; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+::selection { background: var(--ai); color: var(--bg); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--text-2); letter-spacing: 0; }
+
+.brand { font-family: var(--font-sans); font-weight: 500; letter-spacing: -0.04em; display: inline-flex; align-items: baseline; color: var(--text); font-size: 16px; }
+.brand .ai { color: var(--ai); font-family: var(--font-mono); letter-spacing: -0.02em; text-shadow: 0 0 14px var(--ai-glow); }
+.eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ai); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,229,160,0.6); } 70% { box-shadow: 0 0 0 10px rgba(0,229,160,0); } 100% { box-shadow: 0 0 0 0 rgba(0,229,160,0); } }
+
+/* TOPBAR */
+.topbar { position: sticky; top: 0; z-index: 50; height: 56px; background: rgba(8, 9, 13, 0.85); backdrop-filter: saturate(140%) blur(14px); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 16px; }
+.workspace-switcher { display: flex; align-items: center; gap: 10px; padding: 6px 10px 6px 6px; border-radius: var(--radius-md); border: 1px solid transparent; color: var(--text); transition: background 200ms var(--ease), border-color 200ms var(--ease); }
+.workspace-switcher:hover { background: var(--bg-elev-2); border-color: var(--border); }
+.workspace-avatar { width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg, var(--brand), var(--ai)); color: var(--bg); font-family: var(--font-mono); font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+.workspace-name { font-size: 13px; font-weight: 500; letter-spacing: -0.01em; }
+.workspace-switcher .chev { color: var(--text-3); }
+.icon-btn { position: relative; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--text-2); transition: background 200ms var(--ease), color 200ms var(--ease); }
+.icon-btn:hover { background: var(--bg-elev-2); color: var(--text); }
+.icon-btn .badge { position: absolute; top: 6px; right: 6px; min-width: 16px; height: 16px; padding: 0 4px; background: var(--ai); color: var(--bg); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 9px; font-weight: 500; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg); }
+.user-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--ai)); color: var(--bg); font-family: var(--font-mono); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 200ms var(--ease); }
+.user-avatar:hover { transform: scale(1.06); }
+
+/* SIDEBAR */
+.sidebar { position: fixed; left: 0; top: 56px; bottom: 0; width: 240px; background: var(--bg-elev-1); border-right: 1px solid var(--border); padding: 24px 16px 16px; display: flex; flex-direction: column; overflow-y: auto; }
+.nav-group-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); margin: 8px 12px 8px; font-weight: 500; }
+.nav-group-label:not(:first-child) { margin-top: 24px; }
+.sidebar nav ul { display: flex; flex-direction: column; gap: 2px; }
+.sidebar nav a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--radius-md); color: var(--text-2); font-size: 13px; font-weight: 500; transition: background 200ms var(--ease), color 200ms var(--ease); }
+.sidebar nav a:hover { background: var(--bg-elev-2); color: var(--text); }
+.sidebar nav a.active { background: var(--ai-soft); color: var(--ai); }
+.sidebar nav a svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+.sidebar nav a.active svg { opacity: 1; }
+.sidebar-footer { margin-top: auto; padding: 16px 12px; border-top: 1px solid var(--border); }
+.sidebar-help { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+.sidebar-help-link { font-size: 13px; color: var(--text); font-weight: 500; cursor: pointer; transition: color 200ms var(--ease); }
+.sidebar-help-link:hover { color: var(--ai); }
+
+.main { margin-left: 240px; padding: 32px 40px 96px; max-width: 1280px; }
+
+/* PAGE HEADER */
+.page-header { margin-bottom: 28px; }
+.page-header .eyebrow { margin-bottom: 16px; }
+.page-header h1 { font-size: 40px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; }
+.page-header h1 em { color: var(--text); }
+.page-header .page-sub { font-size: 15px; color: var(--text-2); letter-spacing: -0.005em; max-width: 720px; }
+
+/* TABS — bottom-border underline style */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-3);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--ai); border-bottom-color: var(--ai); }
+.tab .tab-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-4);
+  background: var(--bg-elev-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* TAB CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* FORM */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.form-section {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.form-section-header {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.form-section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.form-section-title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.form-section-title em { color: var(--text-2); }
+.form-section-body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-field { display: flex; flex-direction: column; gap: 7px; }
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.form-input,
+.form-textarea {
+  padding: 11px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  outline: none;
+  transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease);
+  width: 100%;
+}
+.form-input.mono { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0; }
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--ai);
+  box-shadow: 0 0 0 3px var(--ai-soft);
+}
+.form-textarea {
+  min-height: 70px;
+  resize: vertical;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+/* Input com badge inline (WhatsApp verificado) */
+.input-row {
+  position: relative;
+}
+.input-row .form-input { padding-right: 122px; }
+.input-row .verified-badge {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--ai-soft);
+  color: var(--ai);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.verified-badge svg { width: 11px; height: 11px; }
+
+/* CITY PILLS */
+.city-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.city-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 6px 5px 12px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.city-x {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  color: var(--text-3);
+  font-size: 14px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms var(--ease), color 150ms var(--ease);
+}
+.city-x:hover { color: var(--coral); background: var(--coral-soft); }
+.city-add {
+  padding: 5px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+  background: transparent;
+  transition: all 200ms var(--ease);
+}
+.city-add:hover {
+  color: var(--ai);
+  border-color: var(--ai);
+  border-style: solid;
+}
+
+/* PLACEHOLDER (outras tabs) */
+.placeholder {
+  padding: 80px 32px;
+  text-align: center;
+  background: var(--bg-elev-1);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+.placeholder-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--text-3);
+}
+.placeholder h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.025em;
+}
+.placeholder h3 em { color: var(--text-2); }
+.placeholder p {
+  color: var(--text-2);
+  font-size: 14px;
+  max-width: 420px;
+  margin: 0 auto 16px;
+  line-height: 1.55;
+}
+.placeholder .em-construcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 5px 12px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+}
+.placeholder .em-construcao .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brand-300);
+}
+
+/* SUBSCRIPTION CARD */
+.subscription-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-top: 32px;
+  overflow: hidden;
+}
+.sub-header {
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.sub-header h3 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-top: 6px;
+}
+.sub-header h3 em { color: var(--text-2); }
+.sub-header .plan-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--ai-soft);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ai);
+}
+.sub-header .plan-tag .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ai);
+  box-shadow: 0 0 6px var(--ai-glow);
+}
+
+.sub-body { padding: 8px 24px; }
+.sub-line {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sub-line:last-child { border-bottom: none; }
+.sub-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--ai-soft);
+  color: var(--ai);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub-icon svg { width: 14px; height: 14px; }
+.sub-content { display: flex; flex-direction: column; gap: 3px; }
+.sub-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.sub-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: 0;
+}
+.sub-meta strong { color: var(--text-2); font-weight: 500; }
+.sub-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.sub-status.paid { background: var(--ai-soft); color: var(--ai); }
+.sub-status.active { background: var(--ai-soft); color: var(--ai); }
+
+.sub-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: transparent;
+  transition: all 200ms var(--ease);
+}
+.btn-ghost:hover {
+  background: var(--bg-elev-2);
+  color: var(--text);
+  border-color: var(--ai);
+}
+.btn-ghost svg { width: 14px; height: 14px; }
+
+/* WA */
+.wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 100; display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px 12px 16px; background: var(--whatsapp); color: #fff; font-size: 13px; font-weight: 500; letter-spacing: -0.005em; border-radius: var(--radius-pill); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.35); transition: transform 200ms var(--ease); }
+.wa-float:hover { transform: translateY(-2px); }
+.wa-float::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-pill); border: 2px solid var(--whatsapp); animation: wa-ring 2.4s ease-out infinite; pointer-events: none; }
+@keyframes wa-ring { 0% { opacity: 0.5; transform: scale(1); } 100% { opacity: 0; transform: scale(1.18); } }
+
+@media (max-width: 1100px) { .form-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 24px 20px 96px; } .topbar .workspace-name { display: none; } .sub-line { grid-template-columns: 28px 1fr; } .sub-status { grid-column: 2; justify-self: start; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="dashboard-home.html" class="brand">buscou<span class="ai">.ai</span></a>
+    <button class="workspace-switcher">
+      <span class="workspace-avatar">CV</span>
+      <span class="workspace-name">Clínica Odonto Vitória</span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="badge">3</span></button>
+    <button class="user-avatar">DM</button>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <nav>
+    <div class="nav-group-label">Workspace</div>
+    <ul>
+      <li><a href="dashboard-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Visão geral</a></li>
+      <li><a href="buscas-capturadas.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4-4"/></svg>Buscas capturadas</a></li>
+      <li><a href="respostas-ia.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="m16.95 7.05 2.12-2.12"/><path d="M21 12h-3"/><path d="m16.95 16.95 2.12 2.12"/><path d="M12 21v-3"/><path d="m7.05 16.95-2.12 2.12"/><path d="M3 12h3"/><path d="m7.05 7.05-2.12-2.12"/><circle cx="12" cy="12" r="3"/></svg>Respostas em IA</a></li>
+      <li><a href="conteudo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>Conteúdo</a></li>
+      <li><a href="conversoes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-9.5 9.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Conversões</a></li>
+    </ul>
+    <div class="nav-group-label">Configuração</div>
+    <ul>
+      <li><a href="empresa-config.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 10h.01"/></svg>Empresa</a></li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sidebar-help">Suporte 24/7 via WhatsApp</div>
+    <a class="sidebar-help-link">Falar com a Anna Mel →</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="page-header">
+    <span class="eyebrow"><span class="dot"></span>Configuração</span>
+    <h1>Empresa</h1>
+    <p class="page-sub">Tudo sobre seu negócio que <em>o motor usa</em> pra escrever, otimizar e te colocar em todo lugar.</p>
+  </section>
+
+  <!-- TABS -->
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-target="perfil">Perfil</button>
+    <button class="tab" data-target="icp">ICP &amp; Nicho</button>
+    <button class="tab" data-target="tom">Tom de voz</button>
+    <button class="tab" data-target="integracoes">Integrações</button>
+    <button class="tab" data-target="time">Time</button>
+    <button class="tab" data-target="plano">Plano <span class="tab-tag">ATIVO</span></button>
+  </div>
+
+  <!-- TAB: PERFIL (active) -->
+  <section class="tab-content active" data-tab="perfil">
+
+    <div class="form-grid">
+
+      <!-- COLUNA ESQUERDA: INFORMAÇÕES BÁSICAS -->
+      <div class="form-section">
+        <header class="form-section-header">
+          <div class="form-section-eyebrow">Identidade</div>
+          <h3 class="form-section-title">Informações <em>básicas</em></h3>
+        </header>
+        <div class="form-section-body">
+
+          <div class="form-field">
+            <label class="form-label">Nome fantasia</label>
+            <input class="form-input" type="text" value="Clínica Odonto Vitória">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Razão social</label>
+            <input class="form-input" type="text" value="Clínica Odontológica Vitória LTDA">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">CNPJ</label>
+            <input class="form-input mono" type="text" value="12.345.678/0001-90">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Telefone</label>
+            <input class="form-input mono" type="text" value="+55 27 3345-7892">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">WhatsApp principal</label>
+            <div class="input-row">
+              <input class="form-input mono" type="text" value="+55 27 99696-0847">
+              <span class="verified-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Verificado
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA: ENDEREÇO & ATENDIMENTO -->
+      <div class="form-section">
+        <header class="form-section-header">
+          <div class="form-section-eyebrow">Localização</div>
+          <h3 class="form-section-title">Endereço <em>&amp; atendimento</em></h3>
+        </header>
+        <div class="form-section-body">
+
+          <div class="form-field">
+            <label class="form-label">Endereço completo</label>
+            <input class="form-input" type="text" value="Av. Saturnino de Brito, 1234, sala 502">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Bairro · Cidade · CEP</label>
+            <input class="form-input" type="text" value="Praia do Canto · Vitória / ES · 29055-180">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Horário de atendimento</label>
+            <textarea class="form-textarea">Seg-Sex 8h às 19h
+Sáb 8h às 13h
+Domingo fechado · plantão emergência via WhatsApp</textarea>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Cidades atendidas</label>
+            <div class="city-pills">
+              <span class="city-pill">Vitória <button class="city-x" aria-label="Remover">×</button></span>
+              <span class="city-pill">Vila Velha <button class="city-x" aria-label="Remover">×</button></span>
+              <span class="city-pill">Serra <button class="city-x" aria-label="Remover">×</button></span>
+              <span class="city-pill">Cariacica <button class="city-x" aria-label="Remover">×</button></span>
+              <button class="city-add">+ Adicionar cidade</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TAB: ICP -->
+  <section class="tab-content" data-tab="icp">
+    <div class="placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <h3>ICP &amp; <em>Nicho</em></h3>
+      <p>Especialidades, faixa etária do paciente, ticket médio, raio de atendimento. Quanto mais o motor sabe, mais preciso ele escreve.</p>
+      <span class="em-construcao"><span class="dot"></span>Em construção</span>
+    </div>
+  </section>
+
+  <!-- TAB: TOM DE VOZ -->
+  <section class="tab-content" data-tab="tom">
+    <div class="placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Tom de <em>voz</em></h3>
+      <p>Como o motor escreve seus artigos: formal ou próximo, técnico ou acessível, informativo ou vendedor. Você define, a IA executa.</p>
+      <span class="em-construcao"><span class="dot"></span>Em construção</span>
+    </div>
+  </section>
+
+  <!-- TAB: INTEGRAÇÕES -->
+  <section class="tab-content" data-tab="integracoes">
+    <div class="placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <h3>Integrações</h3>
+      <p>Google Business, Calendly, RD Station, WhatsApp Business API. Conecte seu CRM e o funil fica completo.</p>
+      <span class="em-construcao"><span class="dot"></span>Em construção</span>
+    </div>
+  </section>
+
+  <!-- TAB: TIME -->
+  <section class="tab-content" data-tab="time">
+    <div class="placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Time</h3>
+      <p>Membros que acessam o dashboard. Defina quem vê buscas, quem aprova conteúdo, quem só lê os relatórios.</p>
+      <span class="em-construcao"><span class="dot"></span>Em construção</span>
+    </div>
+  </section>
+
+  <!-- TAB: PLANO -->
+  <section class="tab-content" data-tab="plano">
+    <div class="placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </div>
+      <h3>Plano</h3>
+      <p>Detalhes da assinatura, faturamento, upgrade. Veja o status resumido logo abaixo.</p>
+      <span class="em-construcao"><span class="dot"></span>Em construção</span>
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTION CARD (sempre visível, fim da página) -->
+  <div class="subscription-card">
+    <header class="sub-header">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Plano ativo</span>
+        <h3 style="margin-top: 6px;">Status da <em>assinatura</em></h3>
+      </div>
+      <span class="plan-tag"><span class="dot"></span>Em dia</span>
+    </header>
+
+    <div class="sub-body">
+
+      <div class="sub-line">
+        <span class="sub-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <div class="sub-content">
+          <div class="sub-title">Implementação</div>
+          <div class="sub-meta">Paga em <strong>23/01/2026</strong> · <strong>R$ 2.500</strong> · pagamento único</div>
+        </div>
+        <span class="sub-status paid">Paga</span>
+      </div>
+
+      <div class="sub-line">
+        <span class="sub-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <div class="sub-content">
+          <div class="sub-title">Infra mensal</div>
+          <div class="sub-meta">Próxima fatura <strong>R$ 300</strong> em <strong>23/05/2026</strong> · cobrança recorrente</div>
+        </div>
+        <span class="sub-status active">Ativa</span>
+      </div>
+
+    </div>
+
+    <footer class="sub-footer">
+      <button class="btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+        Ver histórico de pagamentos
+      </button>
+    </footer>
+  </div>
+
+</main>
+
+<a href="https://wa.me/5500000000000" class="wa-float">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+  <span>Falar com a Anna Mel</span>
+</a>
+
+<script>
+  // Tabs (Perfil active default)
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      const content = document.querySelector(`[data-tab="${target}"]`);
+      if (content) content.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

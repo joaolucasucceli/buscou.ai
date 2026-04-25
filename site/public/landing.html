@@ -1239,6 +1239,29 @@ section { padding: 100px 0; position: relative; }
   box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(124,92,255,0.08);
   position: relative;
 }
+a.browser-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+}
+a.browser-link:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 56px 140px rgba(0,0,0,0.7), 0 0 120px rgba(0,229,160,0.18);
+}
+.preview-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+.preview-cta-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
 .browser-bar {
   padding: 12px 16px;
   background: var(--bg-elev-2);
@@ -1572,6 +1595,7 @@ footer {
       <a href="#para-quem">Para quem</a>
       <a href="#recursos">Recursos</a>
       <a href="/exemplo/blog" target="_blank" rel="noopener">Blog</a>
+      <a href="/exemplo/dashboard" target="_blank" rel="noopener">Dashboard</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="header-cta">
@@ -1904,7 +1928,7 @@ footer {
       <p>Cada busca, cada aparição, cada cliente. Transparência total do primeiro ao último clique.</p>
     </div>
 
-    <div class="browser">
+    <a class="browser browser-link" href="/exemplo/dashboard" target="_blank" rel="noopener" aria-label="Abrir exemplo do dashboard em nova aba">
       <div class="browser-bar">
         <div class="browser-dots"><span></span><span></span><span></span></div>
         <div class="browser-url">
@@ -2016,6 +2040,11 @@ footer {
           </div>
         </div>
       </div>
+    </a>
+
+    <div class="preview-cta">
+      <a href="/exemplo/dashboard" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Explorar dashboard →</a>
+      <span class="preview-cta-note">Abre o protótipo do dashboard em nova aba</span>
     </div>
   </div>
 </section>
