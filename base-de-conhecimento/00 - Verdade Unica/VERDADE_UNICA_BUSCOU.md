@@ -320,6 +320,8 @@ A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnosti
 
 **Quando usar (perfil do cliente):** todo cliente passa pelo mesmo caminho, seja decidido, indeciso, ICP primario ou secundario. A qualificacao acontece na reuniao.
 
+**Ponto de entrada via WhatsApp — Anna Mel:** lead que chega direto pelo numero `+55 27 99696-0847` cai com a [[Anna Mel - V1 OpenClaw]], atendente que **se apresenta como humana** (canonico desde 2026-04-25 — ver [[Decision Log - 2026-04-25 - Anna Mel pivota humana]]). Anna qualifica leve, responde duvidas canonicas (sem expor preco), agenda reuniao via Cal.com API e escala pro Joao quando necessario. **V1 nao envia Payment Link, nao faz cadencia D-1/D+1/D+3/D+7, nao faz regua de cobranca** — esses passos abaixo (8-21) que mencionam Anna Mel descrevem o estado-alvo V1.1+/V2; em V1 manual o Joao+Vitoria executam esses passos com copy assinado "equipe buscou.ai".
+
 1. Cliente chega na landing `www.buscouai.com`.
 2. Clica em **"Agendar diagnostico"** (CTA unico de conversao — aparece em header, hero, final-cta).
 3. Modal abre: nome, telefone, empresa, @IG da empresa.

@@ -14,6 +14,10 @@ atualizado: 2026-04-23
 **Decision Logs vigentes:**
 - [[Decision Log - 2026-04-23]] — posicionamento, ICP, produto, oferta-base, linguagem.
 - [[Decision Log - 2026-04-23 - Infra Mensal]] — evolucao para modelo implementacao + infra mensal.
+- [[Decision Log - 2026-04-24 - Reversao Track 1]] — fluxo unico consultivo (revoga Track 1 self-service).
+- [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]] — implementacao via Cupom Stripe; infra inegociavel.
+- [[Decision Log - 2026-04-24 - Arquitetura Anna Mel OpenClaw]] — pivot da stack da Anna Mel pra OpenClaw + Codex CLI no VPS, escopo reduzido MVP.
+- [[Decision Log - 2026-04-25 - Anna Mel pivota humana]] — Nivel 1: Anna nao admite IA, apresenta-se como atendente humana. Sistema de seguranca anti-exposicao.
 
 ---
 

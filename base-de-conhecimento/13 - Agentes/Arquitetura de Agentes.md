@@ -44,6 +44,16 @@ Entram na V1 completa. No MVP inicial (primeiros 10-20 clientes) alguns podem ro
 
 ---
 
+## Agente lead-facing (camada separada do motor)
+
+Alem do motor de 12 componentes acima (que produz 90 conteudos/mes), existe **um agente lead-facing** que opera fora dessa cadeia:
+
+13. **[[Anna Mel - V1 OpenClaw]]** — atende WhatsApp inbound em `+55 27 99696-0847`, qualifica lead, agenda diagnostico via Cal.com API, escala pro Joao quando necessario. **Apresenta-se como atendente humana** (decisao canonica 2026-04-25). Stack: framework OpenClaw + Codex CLI no VPS 72.60.9.128 + UAZapi (gateway WhatsApp) + Cal.com API. Nao faz parte do motor de conteudo — e camada separada de funil/conversao.
+
+A Anna Mel **nao se comunica com o Orquestrador nem com os 11 agentes do motor** — opera em workspace separado. Integracao motor↔Anna fica pra V1.1+ (ex: Anna receber sinais do Monitor sobre ranking pra usar em conversa com lead, ou notificar lead quando primeiro artigo do motor publicar).
+
+---
+
 ## Mapa
 
 ```
