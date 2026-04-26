@@ -4,7 +4,12 @@
 
 Tecnologia que coloca empresas em resultados de busca (Google) e em respostas de IA (ChatGPT, Gemini, Perplexity, Claude, AI Overviews) automaticamente. Blog (estrutura) + Motor publicando 90 conteudos/mes.
 
-**ICP primario:** negocios locais (clinicas, imobiliarias, advogados, servicos locais).
+**Modelo comercial canonico** (atualizado em 2026-04-25):
+- **Implementacao** R$ 3.000 fixo (a vista PIX ou 12x R$ 250 cartao). Negociavel caso-a-caso via cupom Stripe (piso R$ 1.000).
+- **Infra mensal** R$ 500/mes a partir do mes 2. Negociavel caso-a-caso via cupom (piso R$ 300/mes).
+- Valores **nunca expostos em copy publico** — so em reuniao + proposta + Payment Link via WhatsApp.
+
+**ICP primario:** negocios locais — clinicas (odontologicas, esteticas, medicas, veterinarias), imobiliarias e corretores, advogados e escritorios juridicos, **alimentacao** (restaurantes, padarias, hamburguerias, food trucks com presenca digital — adicionado em 2026-04-25), servicos locais (contabilidade, marketing, consultoria, assistencia tecnica, reformas).
 
 **Nome da marca:** `buscou.ai` (visual) / `BuscouAI` (juridico). Nunca "Buscou.ai", "Buscou.AI" ou "BUSCOU.AI".
 
@@ -16,10 +21,11 @@ Governanca de alteracoes em [Governanca - Decisoes Canonicas.md](base-de-conheci
 
 **Decision Logs vigentes:**
 
+- [Pricing + ICP + Timeline + Anna V1 manual (2026-04-25)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-25%20-%20Pricing%20%2B%20ICP%20%2B%20Timeline%20%2B%20Anna%20V1%20manual.md) — **canonico vigente** pos-reuniao Joao + Vitoria. 10 mudancas: implementacao R$ 3.000 fixo, infra R$ 500/mes (negociavel ate R$ 300), politica desconto cobre ambas linhas, ICP +alimentacao, blog instantaneo, Anna V1 escopo confirmado, governanca 3-niveis pausada, 1a venda sem nominar cliente, skill distribuida pra Vitoria.
 - [Reversao Track 1 (2026-04-24)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Reversao%20Track%201.md) — fluxo unico consultivo, sem preco publico, Payment Link Stripe via WhatsApp.
-- [Politica de Desconto Implementacao (2026-04-24)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Politica%20de%20Desconto%20Implementacao.md) — implementacao negociavel via Cupom Stripe (canal privado); infra mensal inegociavel.
-- [Infra Mensal (2026-04-23)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-23%20-%20Infra%20Mensal.md) — modelo implementacao + infra mensal.
-- [Posicionamento + ICP base (2026-04-23)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-23.md) — alterado em 2026-04-24 pela Reversao Track 1 (pagamento agora via Payment Link), mas posicionamento, ICP e oferta-base preservados.
+- [Politica de Desconto Implementacao (2026-04-24)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Politica%20de%20Desconto%20Implementacao.md) — implementacao negociavel via Cupom Stripe (canal privado); estendido em 2026-04-25 pra cobrir tambem infra.
+- [Infra Mensal (2026-04-23)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-23%20-%20Infra%20Mensal.md) — modelo implementacao + infra mensal (valores e politica de inegociabilidade revogados parcialmente em 2026-04-25).
+- [Posicionamento + ICP base (2026-04-23)](base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-23.md) — alterado em 2026-04-24 pela Reversao Track 1 e em 2026-04-25 (pricing + ICP +alimentacao); posicionamento e oferta-base preservados.
 
 Decision Logs revogados/absorvidos ficam arquivados com header de revogacao no topo. Nao usar como referencia ativa.
 

@@ -8,6 +8,13 @@ aprovacao: Joao Lucas Ucceli — 2026-04-24
 
 # Decision Log — 2026-04-24 — Politica de Desconto de Implementacao
 
+> **ESTENDIDO em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). A politica de desconto deixa de ser exclusiva da implementacao e passa a cobrir **tambem a infra mensal**:
+> - **Implementacao** (one-time, agora R$ 3.000 fixo) — continua negociavel caso-a-caso via Cupom Stripe. Piso operacional: R$ 1.000 (66% off).
+> - **Infra mensal** (recurring, agora R$ 500/mes) — **passa a ser negociavel** ate R$ 300/mes (piso). Operada via Cupom Stripe Subscription **ou** Payment Link separado de R$ 300 (a definir apos investigacao tecnica pendente — ver Decision Log 2026-04-25 §"Cupom recorrente — investigacao Stripe").
+> - **Aprovador unico** (dono Joao), **canal de aplicacao privado** (Payment Link via WhatsApp), **ancora publica preservada** (R$ 3.000 + R$ 500/mes em copy publico) — todas essas regras continuam validas.
+>
+> O restante deste Decision Log (mecanica do cupom Stripe, registro obrigatorio em Linear, sinais de alerta, absorcao do Beneficio Parceiro Networking) permanece valido.
+
 ## Contexto
 
 Em 24/04/2026, ao fim do dia, o Joao fechou uma venda em que o cliente quer pagar **R$ 1.000 de implementacao** (contra os R$ 2.500 canonicos a vista) — desconto de R$ 1.500, equivalente a 60% off na implementacao. Sinalizou ainda que esse padrao vai se repetir ("nao so ele, tem varios clientes que eu tambem vou dar esse cupom").

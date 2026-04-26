@@ -2,7 +2,7 @@
 tipo: indice
 area: Empresa
 tags: [verdade-unica, canonico, posicionamento, produto, oferta, icp, contato, trava]
-atualizado: 2026-04-23
+atualizado: 2026-04-25
 status: CANONICO — NAO ALTERAR SEM DECISION LOG
 ---
 
@@ -14,6 +14,7 @@ status: CANONICO — NAO ALTERAR SEM DECISION LOG
 >
 > **Alteracao**: exige Decision Log datado (ver [[Governanca - Decisoes Canonicas]]).
 > **Ultimas alteracoes Nivel 1:**
+> - **2026-04-25** — **Pricing + ICP + Timeline + Anna V1 manual** (ver [[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). 10 mudancas canonicas pos-reuniao Joao + Vitoria: implementacao **R$ 3.000 fixo** (negociavel), infra mensal **R$ 500/mes** (negociavel ate R$ 300), politica de desconto cobre ambas linhas, ICP primario **+alimentacao**, timeline **blog instantaneo apos onboarding** (era 7 dias), escopo Anna V1 confirmado (manual no fechamento, automatico em pre-call/pos-pagamento/onboarding/regua infra), governanca 3-niveis pausada, 1a venda real registrada sem nominar cliente, skill gerador-proposta distribuida pra Vitoria.
 > - **2026-04-24 (noite)** — **Reversao Track 1 Self-Service** (ver [[Decision Log - 2026-04-24 - Reversao Track 1]]). Revoga parcialmente o Dual-Track da manha: remove Track 1 self-service da landing. Fluxo volta a ser **unico consultivo** — landing nao expoe preco, pagamento via Payment Link Stripe enviado por WhatsApp pela Anna Mel (ou dono/Vitoria em V1 manual) pos-reuniao. Politica de Desconto preservada (cupons continuam, canal de aplicacao muda pra Payment Link).
 > - **2026-04-24 (tarde)** — **Politica de Desconto de Implementacao** (ver [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]]). Implementacao passa a ser **negociavel caso a caso** via Cupom Stripe, aplicado em canal privado, nunca exposto em copy publico. Infra mensal permanece **inegociavel** (R$ 300/mes). Limite trimestral de 3 aplicacoes (do Parceiro Networking) e revogado. Beneficio Parceiro Networking e absorvido pela politica geral.
 > - **2026-04-24 (manha)** — ~~Dual-Track V1: self-service Stripe + consultivo Cal.com~~ **(parcialmente revogado pela Reversao Track 1 acima)** — ver [[Decision Log - 2026-04-24 - Dual-Track]]. Track 2 consultivo preservado como fluxo unico; Track 1 self-service removido.
@@ -69,6 +70,7 @@ E **tecnologia vendida como produto fechado**: estrutura (blog) + motor
 - Clinicas (odontologicas, esteticas, medicas, veterinarias)
 - Imobiliarias e corretores
 - Advogados e escritorios juridicos
+- **Alimentacao** (restaurantes, padarias, hamburguerias, comidas tipicas regionais, food trucks com presenca digital) — adicionado em 2026-04-25 ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). Volume alto de buscas locais ("melhor restaurante perto de mim") + AI Overviews ja respondem essas queries — fit perfeito de SEO + AIO.
 - Servicos locais (contabilidade, marketing, consultoria, assistencia tecnica, reformas)
 
 ### Secundario (atende, mas nao e foco de comunicacao)
@@ -108,15 +110,21 @@ Comercialmente, esses componentes se traduzem em **duas linhas de pagamento** (v
 
 ### Timeline de ativacao (canonica)
 
-- **Em ate 7 dias:** blog no ar, identidade aplicada, estrutura SEO+AIO, motor ativo.
+> **Atualizado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). SLA de "blog em 7 dias" passou a "blog instantaneo apos onboarding" — o motor multi-tenant ja esta pronto, blog e ativado no mesmo dia em que o cliente conclui o wizard de onboarding (5 passos).
+
+- **Apos pagamento confirmado:** Anna Mel envia credenciais do painel e link do wizard.
+- **Wizard concluido pelo cliente** (5 passos: dominio, nicho, tom, concorrentes, GSC): blog ativado **no mesmo dia**.
+- **Em 24-48h pos-ativacao:** primeiro lote de artigos publicado.
 - **Em ate 30 dias:** indexacao no Google, primeiras impressoes, primeiras aparicoes em IA.
 - **Mes 1 (0-30 dias):** incluso na implementacao — cliente nao paga infra ainda.
-- **Mes 2 em diante:** infra mensal de R$ 300 comeca a ser cobrada.
+- **Mes 2 em diante:** infra mensal de R$ 500 comeca a ser cobrada (negociavel ate R$ 300 — ver §5.2).
 - **A partir dai:** presenca organica escala continuamente enquanto a infra estiver ativa.
+
+**O gargalo do "blog publicando" e o cliente concluir o wizard + aprovar o calendario inicial dos primeiros artigos** — o lado tecnico (provisionamento + agentes) e instantaneo.
 
 ### O que o cliente recebe
 
-1. Blog publicado e funcionando em dominio proprio (ate 7 dias) — permanente.
+1. Blog publicado e funcionando em dominio proprio (instantaneo apos wizard) — permanente.
 2. 90 conteudos/mes gerados automaticamente (~720K caracteres) — enquanto infra ativa.
 3. Presenca organica crescente em Google + IAs (primeiros sinais em 30 dias).
 
@@ -128,9 +136,11 @@ O cliente paga **duas coisas** — separadas e explicitas:
 
 ### 5.1 — Implementacao (one-time)
 
+> **Atualizado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]) — preco-ancora unificado em R$ 3.000 (era R$ 2.500 a vista / R$ 3.000 em 12x). Negociavel caso-a-caso via cupom.
+
 | Forma de pagamento | Valor |
 |---|---|
-| **A vista** | **R$ 2.500** |
+| **A vista (PIX)** | **R$ 3.000** |
 | **Parcelado ate 12x (cliente assume juros)** | **R$ 3.000** (12x de R$ 250) |
 
 **Cobre:**
@@ -141,22 +151,32 @@ O cliente paga **duas coisas** — separadas e explicitas:
 
 **Pago uma vez.** Link de pagamento enviado via WhatsApp apos o cliente aceitar a proposta personalizada (ver secao 8 — Estrutura de venda). A vista via Pix ou cartao. Parcelado via cartao de credito (12x).
 
+**Negociavel caso-a-caso** (ver §5.3) via Cupom Stripe aplicado no Payment Link enviado por WhatsApp. Piso operacional de referencia: R$ 1.000 (60% off do ancora).
+
 ### 5.2 — Infra mensal (recurring)
+
+> **Atualizado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]) — preco-ancora subiu pra R$ 500/mes (era R$ 300/mes inegociavel). Agora **negociavel ate R$ 300/mes** (piso).
 
 | Item | Valor |
 |---|---|
-| **Infra mensal (a partir do mes 2)** | **R$ 300/mes** |
+| **Infra mensal (a partir do mes 2)** | **R$ 500/mes** (negociavel ate R$ 300/mes) |
 
 **Cobre:**
 - Tokens LLM do motor (Claude, OpenAI) para gerar os 90 conteudos/mes.
 - APIs externas (Ahrefs, DataForSEO, Google Search Console, Stripe).
 - Hospedagem e infra do pipeline de producao.
 
-**Natureza:** passthrough de custo operacional com margem pequena. Nao e mensalidade de servico — e taxa de infraestrutura que permite o motor rodar.
+**Custo operacional real estimado:** ~R$ 50/mes por cliente. Margem com R$ 500 ≈ R$ 450; com piso R$ 300 ≈ R$ 250.
+
+**Natureza:** passthrough de custo operacional com margem operacional. Nao e mensalidade de servico — e taxa de infraestrutura que permite o motor rodar.
 
 **Cobrado via:** cartao recorrente cadastrado no onboarding (pode ser o mesmo cartao do parcelamento da implementacao).
 
 **Primeira cobranca:** mes 2 (30 dias apos o blog ir ao ar).
+
+**Negociavel caso-a-caso** (ver §5.3) via Cupom Stripe Subscription ou Payment Link separado R$ 300 (depende de investigacao tecnica pendente — ver Decision Log 2026-04-25 §"Cupom recorrente — investigacao Stripe").
+
+**Meta operacional:** 300 clientes ativos a R$ 500/mes = R$ 150K MRR.
 
 ### Politica de inadimplencia (infra)
 
@@ -168,16 +188,16 @@ Se o cliente deixar de pagar a infra mensal:
 4. Cliente recebe notificacoes em cada tentativa + aviso de pausa.
 5. Ao regularizar: motor retoma no proximo ciclo.
 
-### 5.3 — Politica de desconto de implementacao
+### 5.3 — Politica de desconto (implementacao + infra)
 
-Fonte canonica: [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]].
+> **Atualizado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]) — politica passa a cobrir as **duas linhas**. Infra agora tambem e negociavel (ate R$ 300 piso). Fonte canonica original: [[Decision Log - 2026-04-24 - Politica de Desconto Implementacao]].
 
-A partir de 2026-04-24, a politica de desconto da buscou.ai separa dois eixos:
+A politica de desconto da buscou.ai cobre dois eixos:
 
-1. **Implementacao (one-time)** — **negociavel caso a caso**, dentro de limites operacionais, via Cupom Stripe (`promotion_codes`).
-2. **Infra mensal (recurring, R$ 300/mes)** — **inegociavel em qualquer cenario**. Passthrough de custo operacional — sem margem pra absorver desconto.
+1. **Implementacao (one-time, R$ 3.000)** — **negociavel caso a caso**, dentro de limites operacionais, via Cupom Stripe (`promotion_codes`). Piso de referencia: R$ 1.000 (60% off).
+2. **Infra mensal (recurring, R$ 500/mes)** — **negociavel ate R$ 300/mes** (piso). Operada via Cupom Stripe Subscription **ou** Payment Link separado de R$ 300 (a definir apos investigacao tecnica pendente).
 
-**Ancora publica preservada.** Toda copy publica (landing, redes, email, anuncios, carrosseis) mostra sempre o preco canonico cheio: R$ 2.500 a vista ou R$ 3.000 em 12x. Descontos **nunca** aparecem em material publico — sao aplicados em canal privado apos negociacao com o dono.
+**Ancora publica preservada.** Toda copy publica (landing, redes, email, anuncios, carrosseis) mostra sempre o preco canonico cheio: R$ 3.000 implementacao + R$ 500/mes infra. Descontos **nunca** aparecem em material publico — sao aplicados em canal privado apos negociacao com o dono.
 
 **Canal tecnico.** Desconto e aplicado via Stripe Checkout com `allow_promotion_codes: true`. Cupom emitido pelo dono, nominal ao cliente, uso unico.
 
@@ -185,9 +205,9 @@ Regras:
 - **Aprovador unico:** o dono (Joao Lucas Ucceli). Nem Vitoria, nem Anna Mel, nem qualquer outro agente emite cupom.
 - **Reuniao e canal obrigatorio** (pos-Reversao Track 1, ver [[Decision Log - 2026-04-24 - Reversao Track 1]]): cupom so e emitido apos reuniao + proposta personalizada. Nao ha self-service sem reuniao.
 - **Canal de aplicacao do cupom:** Payment Link do Stripe enviado via WhatsApp pela Anna Mel (ou Joao/Vitoria em V1 manual) ja com o cupom aplicado ou codigo enviado pra cliente inserir.
-- **Infra nunca desconta.** Cupons atuam exclusivamente no price de implementacao. R$ 300/mes e fixo.
+- **Infra agora negociavel** (mudou em 2026-04-25). Cupons podem atuar em ambas as linhas: implementacao **e** infra. Piso da infra: R$ 300/mes.
 - **Registro obrigatorio:** toda emissao de cupom gera issue Linear (labels `vendas` + `operacional`) e aplicacao e registrada na tabela "Historico de aplicacoes" do Decision Log.
-- **Referencia operacional de piso:** evitar ir abaixo de R$ 1.000 de implementacao (60% off) salvo excecoes documentadas.
+- **Referencia operacional de piso:** evitar ir abaixo de R$ 1.000 de implementacao (66% off do ancora R$ 3.000) e R$ 300 de infra mensal (40% off do ancora R$ 500) salvo excecoes documentadas.
 - **Sem limite trimestral fixo** (limite 3/trimestre do Parceiro Networking foi revogado). Em contrapartida, ticket medio real e monitorado mensalmente.
 
 **Sinais de alerta** (gatilham novo Decision Log pra reavaliar preco-ancora):
@@ -245,7 +265,7 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | "plano total" / "pacote total" | Nunca unificar implementacao + infra como pacote. |
 | "checkout direto na landing" / "comprar agora" (em copy publico) | Revogado em 2026-04-24 noite ([[Decision Log - 2026-04-24 - Reversao Track 1]]). Landing nao tem mais botao de compra direta. |
 | "self-service" (em copy publico) | Revogado em 2026-04-24 noite. Uso interno/docs OK como referencia historica. |
-| "preco na landing" / expor "R$ 2.500" / "R$ 3.000" / "R$ 300" em copy publico | Revogado em 2026-04-24 noite. Valores so aparecem em reuniao + proposta personalizada + Payment Link enviado via WhatsApp. |
+| "preco na landing" / expor "R$ 3.000" / "R$ 500" em copy publico | Revogado em 2026-04-24 noite. Valores ancora atualizados em 2026-04-25 (eram R$ 2.500/3.000/300 → agora R$ 3.000/500). So aparecem em reuniao + proposta personalizada + Payment Link enviado via WhatsApp. |
 
 ### PERMITIDO e recomendado
 
@@ -273,12 +293,15 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 
 ### Como falar do modelo comercial
 
-- **Certo:** "R$ 2.500 a vista (ou 12x R$ 250) de implementacao + R$ 300/mes de infra a partir do mes 2."
+> **Atualizado em 2026-04-25** com novos valores-ancora.
+
+- **Certo:** "R$ 3.000 de implementacao (a vista PIX ou 12x R$ 250 cartao) + R$ 500/mes de infra a partir do mes 2."
 - **Certo:** "Paga a implementacao uma vez e a infra que mantem o motor rodando."
 - **Certo:** "Mes 1 incluso na implementacao. A infra mensal comeca no mes 2."
-- **Errado:** "Plano mensal de R$ 300."
-- **Errado:** "Assinatura de R$ 300."
+- **Errado:** "Plano mensal de R$ 500."
+- **Errado:** "Assinatura de R$ 500."
 - **Errado:** "Mensalidade do servico."
+- **Em copy publico:** nunca expor R$ 3.000 nem R$ 500 — valores so em reuniao + proposta + Payment Link.
 
 ### Nome da marca (obrigatorio)
 
@@ -297,7 +320,7 @@ O cliente nao compra um servico mensal. Compra a tecnologia (implementacao) e pa
 | Automacao | Motor publica 3x/dia sem intervencao do cliente | Coerente (enquanto infra ativa) |
 | Implementacao unica | Cliente paga a implementacao 1x (a vista ou 12x), apos aceite da proposta personalizada enviada pos-reuniao de diagnostico | Coerente |
 | Diagnostico e proposta personalizada | Reuniao de 30-60 min + documento escrito (PDF/HTML) em 24h | Coerente |
-| Infra mensal transparente | R$ 300/mes via cartao recorrente, cobre tokens e APIs | Coerente |
+| Infra mensal transparente | R$ 500/mes (negociavel ate R$ 300) via cartao recorrente, cobre tokens e APIs | Coerente |
 | Mes 1 incluso | Motor opera no mes 1 sem cobranca de infra | Coerente |
 | Motor pausa sem pagamento | Nao gera novo conteudo; blog e artigos antigos ficam no ar | Coerente |
 | Resultado organico | Volume de 90 conteudos/mes gera presenca crescente em 3-6 meses | Honesto |
@@ -320,7 +343,30 @@ A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnosti
 
 **Quando usar (perfil do cliente):** todo cliente passa pelo mesmo caminho, seja decidido, indeciso, ICP primario ou secundario. A qualificacao acontece na reuniao.
 
-**Ponto de entrada via WhatsApp — Anna Mel:** lead que chega direto pelo numero `+55 27 99696-0847` cai com a [[Anna Mel - V1 OpenClaw]], atendente que **se apresenta como humana** (canonico desde 2026-04-25 — ver [[Decision Log - 2026-04-25 - Anna Mel pivota humana]]). Anna qualifica leve, responde duvidas canonicas (sem expor preco), agenda reuniao via Cal.com API e escala pro Joao quando necessario. **V1 nao envia Payment Link, nao faz cadencia D-1/D+1/D+3/D+7, nao faz regua de cobranca** — esses passos abaixo (8-21) que mencionam Anna Mel descrevem o estado-alvo V1.1+/V2; em V1 manual o Joao+Vitoria executam esses passos com copy assinado "equipe buscou.ai".
+**Ponto de entrada via WhatsApp — Anna Mel:** lead que chega direto pelo numero `+55 27 99696-0847` cai com a [[Anna Mel - V1 OpenClaw]], atendente que **se apresenta como humana** (canonico desde 2026-04-25 — ver [[Decision Log - 2026-04-25 - Anna Mel pivota humana]]). Anna qualifica leve, responde duvidas canonicas (sem expor preco), agenda reuniao via Cal.com API e escala pro Joao quando necessario.
+
+### Mapa canonico V1 — Anna ✓ vs Manual (Joao)
+
+> **Confirmado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). Algumas etapas ficam intencionalmente manuais por escolha do dono — nao por limitacao tecnica.
+
+| Etapa | V1 (hoje) | Alvo V1.1+ |
+|---|---|---|
+| Lead inbound (WhatsApp recebe lead novo) | **Anna ✓** | Anna |
+| Pre-call: confirmacao agendamento + lembrete D-1 + material de apoio | **Anna ✓** | Anna |
+| Reuniao 30 min | Joao + Vitoria | Joao + Vitoria (humano sempre) |
+| Pos-reuniao: confirmacao "proposta em 24h" | **Manual (Joao)** | Anna |
+| Envio da proposta PDF | **Manual (Joao)** | Anna |
+| Cadencia D+1 / D+3 / D+7 fechamento | **Manual (Joao)** | Anna |
+| Negociacao (cupom) | **Manual (Joao)** | Joao (sempre — aprovador unico) |
+| Envio Payment Link Stripe | **Manual (Joao)** | Anna |
+| Confirmacao do pagamento (webhook Stripe) | Sistema | Sistema |
+| Boas-vindas + credenciais painel | **Anna ✓** | Anna |
+| Onboarding wizard (acompanhamento) | **Anna ✓** | Anna |
+| Blog ativado + primeiro lote publicado | Sistema | Sistema |
+| Regua infra D-3 / D0 / D+3 / D+7 (mensal a partir do mes 2) | **Anna ✓** | Anna |
+| Suporte sob demanda | **Anna ✓** | Anna |
+
+Os passos abaixo (8-21) descrevem o **estado-alvo V1.1+/V2**. Em V1, ler junto com a tabela acima — etapas marcadas "Manual (Joao)" sao executadas por Joao+Vitoria via WhatsApp pessoal, sem mencionar Anna Mel.
 
 1. Cliente chega na landing `www.buscouai.com`.
 2. Clica em **"Agendar diagnostico"** (CTA unico de conversao — aparece em header, hero, final-cta).
@@ -339,9 +385,9 @@ A compra tem **um unico caminho**: fluxo consultivo via agendamento de diagnosti
 15. Webhook `/api/webhook/stripe` promove `lead` → `cliente`, grava em `compras` com `amount_discount_cents` + `promo_code_used` preenchidos (ver BAI-118).
 16. **Anna Mel** (V2) ou Joao/Vitoria (V1 manual) enviam via WhatsApp: confirmacao + credenciais do painel + primeiros passos + prazo 7 dias.
 17. Cliente acessa painel, preenche dados de onboarding (dominio, nicho, regiao, tom de voz) que alimentam os agentes.
-18. Blog no ar em ate 7 dias, motor publicando 3x/dia.
+18. Cliente conclui wizard → blog ativado **no mesmo dia** (motor multi-tenant ja pronto). Primeiro lote publicado em 24-48h.
 19. **Dia 27 pos-pagamento:** Anna Mel envia link de subscription da infra:
-    - **Cartao:** Stripe Subscription R$ 300/mes auto-renovavel.
+    - **Cartao:** Stripe Subscription R$ 500/mes auto-renovavel (ou R$ 300 com cupom se houve negociacao).
     - **PIX:** pagamento unico mensal, Anna Mel repete a regua.
 20. Regua mensal Anna Mel: D-3 avisa, D0 cobra, recupera se falhar.
 21. Cliente recusa (passo 12-13) → Anna Mel encerra cadencia educada, lead entra em nurturing de longo prazo.

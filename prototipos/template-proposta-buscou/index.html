@@ -856,10 +856,10 @@ p + p { margin-top: clamp(10px, 1.5vh, 14px); }
       </div>
     </div>
 
-    <div class="infra-bar">
+    <div class="infra-bar {{PRICING_INFRA_CLASS}}">
       <div>
         <span class="infra-label">Infra mensal</span>
-        <span class="infra-value">R$ 300<span style="color: var(--text-2); font-size: 15px; font-weight: 400;"> / mês</span></span>
+        <span class="infra-value">{{PRICING_INFRA_STRIKETHROUGH}}R$ {{PRICING_INFRA_DISPLAY}}<span style="color: var(--text-2); font-size: 15px; font-weight: 400;"> / mês</span></span>
       </div>
       <div class="infra-desc">
         Começa no <strong style="color: var(--text);">mês 2</strong> (mês 1 incluso na implementação). Cobre tokens LLM (Claude, OpenAI) pros 90 conteúdos, APIs de SEO/AIO, hospedagem do pipeline. Passthrough — se deixar de pagar, o motor pausa; blog e conteúdo já publicado ficam no ar.
@@ -869,8 +869,8 @@ p + p { margin-top: clamp(10px, 1.5vh, 14px); }
     <div class="card" style="margin-top: 20px;">
       <span class="eyebrow" style="margin-bottom: 10px;">Ano 1 — total transparente</span>
       <p style="color: var(--text); font-size: 16px; line-height: 1.7;">
-        À vista: <strong style="color: var(--text);">R$ {{PRICING_AVISTA_DISPLAY}}</strong> (implementação) <strong style="color: var(--text);">+ R$ 300 × 11 meses</strong> (infra, mês 2 a 12) = <strong class="mint" style="font-size: 18px;">R$ {{YEAR1_AVISTA_TOTAL}} no primeiro ano</strong> · média R$ {{YEAR1_AVISTA_AVG}}/mês.<br>
-        Em 12×: R$ 3.000 (implementação) + R$ 300 × 11 = <strong>R$ 6.300 no primeiro ano</strong> · média R$ 525/mês.
+        À vista: <strong style="color: var(--text);">R$ {{PRICING_AVISTA_DISPLAY}}</strong> (implementação) <strong style="color: var(--text);">+ R$ {{PRICING_INFRA_DISPLAY}} × 11 meses</strong> (infra, mês 2 a 12) = <strong class="mint" style="font-size: 18px;">R$ {{YEAR1_AVISTA_TOTAL}} no primeiro ano</strong> · média R$ {{YEAR1_AVISTA_AVG}}/mês.<br>
+        Em 12×: R$ 3.000 (implementação) + R$ {{PRICING_INFRA_DISPLAY}} × 11 = <strong>R$ {{YEAR1_PARCELADO_TOTAL}} no primeiro ano</strong> · média R$ {{YEAR1_PARCELADO_AVG}}/mês.
       </p>
     </div>
   </div>
@@ -882,13 +882,13 @@ p + p { margin-top: clamp(10px, 1.5vh, 14px); }
 <section class="slide" id="s8">
   <div class="slide-inner container">
     <span class="eyebrow"><span class="dot"></span>07 · Quando acontece</span>
-    <h2>Em 7 dias no ar. Em 30 dias aparecendo.</h2>
+    <h2>Blog ativado no mesmo dia. Em 30 dias aparecendo.</h2>
 
     <div class="timeline-grid">
       <div class="timeline-step">
-        <div class="when">D + 7 dias</div>
+        <div class="when">Imediato</div>
         <div class="what">Blog no ar</div>
-        <p class="detail">Domínio configurado, identidade aplicada, estrutura SEO+AIO técnica pronta, motor ativo. Primeiros artigos começam a ser publicados.</p>
+        <p class="detail">Após o pagamento confirmado e o wizard de onboarding (5 passos: domínio, nicho, tom, concorrentes, conexão GSC) concluído por vocês, o blog é provisionado no mesmo dia. Identidade aplicada, estrutura SEO+AIO técnica pronta, motor ativo. Primeiros artigos publicados em 24-48h.</p>
       </div>
       <div class="timeline-step">
         <div class="when">D + 30 dias</div>

@@ -8,6 +8,14 @@ aprovacao: Joao Lucas Ucceli — 2026-04-23
 
 # Decision Log — 2026-04-23 — Infra Mensal
 
+> **REVOGADO PARCIALMENTE em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). Modelo de duas linhas (implementacao + infra mensal) preservado. **Mudaram apenas os valores-ancora e a politica de inegociabilidade da infra:**
+> - **Implementacao:** R$ 2.500/3.000 → **R$ 3.000 fixo** (a vista PIX ou 12x R$ 250 cartao).
+> - **Infra mensal:** R$ 300 inegociavel → **R$ 500/mes negociavel ate R$ 300/mes** (piso).
+> - **Politica de desconto** estendida: agora cobre tambem infra (era so implementacao em 2026-04-24).
+> - **Timeline:** "blog em 7 dias" → "blog instantaneo apos onboarding" (motor multi-tenant ja pronto).
+>
+> O resto deste Decision Log (justificativa do modelo, politica de inadimplencia, mecanica do passthrough de custo) permanece valido como contexto historico.
+
 ## Contexto
 
 Apos a Fase 1-6 do saneamento (Decision Log anterior em [[Decision Log - 2026-04-23]]), uma segunda auditoria ao modelo identificou que o custo operacional real por cliente (tokens LLM + APIs SEO/AIO + hospedagem do pipeline) nao cabia dentro do ticket unico de R$ 2.500-3.000 por cliente, considerando 90 conteudos/mes por tempo indeterminado. Sem passar esse custo ao cliente:

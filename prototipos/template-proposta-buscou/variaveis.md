@@ -2,8 +2,10 @@
 tipo: template
 area: Vendas
 tags: [template, proposta, skill, gerador-proposta-buscou]
-atualizado: 2026-04-24
+atualizado: 2026-04-25
 ---
+
+> **Atualizado em 2026-04-25** ([[Decision Log - 2026-04-25 - Pricing + ICP + Timeline + Anna V1 manual]]). Valores-ancora subiram (implementação R$ 2.500 → **R$ 3.000**, infra R$ 300 → **R$ 500/mês**). Política de cupom rígida (3 casos) absorvida pela política caso-a-caso (janelas R$ 1.000–3.000 implementação, R$ 300–500/mês infra).
 
 # Variáveis do template de proposta buscou.ai
 
@@ -99,34 +101,44 @@ Se não houver brindes: string vazia.
 
 ## Valores (slide 7) — pricing canônico + condicional
 
-### Preço à vista
+### Preço à vista (implementação)
 
-**4 placeholders controlam o card principal:**
+**5 placeholders controlam o card principal:**
 
 | Placeholder | Regra |
 |---|---|
-| `{{PRICING_AVISTA_CLASS}}` | `highlight` se tiver desconto canônico aplicado, senão string vazia |
-| `{{PRICING_AVISTA_STRIKETHROUGH}}` | Se tiver desconto: `<span class="price-strikethrough">R$ 2.500</span>` + ` ` (espaço). Se não: string vazia |
-| `{{PRICING_AVISTA_DISPLAY}}` | Valor numérico SEM `R$`, formatado BR. Ex: `2.000`, `2.200`, `2.500` |
-| `{{PRICING_AVISTA_SUBLABEL}}` | Subtexto curto: `Pix · pagamento único` **OU** `Pix · pagamento único · R$ 1.000 off exclusivo parceria networking` **OU** `Pix · pagamento único · R$ 300 off early client com case` |
+| `{{PRICING_AVISTA_CLASS}}` | `highlight` se tiver cupom aplicado (preço abaixo do ancora R$ 3.000), senão string vazia |
+| `{{PRICING_AVISTA_STRIKETHROUGH}}` | Se tiver cupom: `<span class="price-strikethrough">R$ 3.000</span>` + ` ` (espaço). Se não: string vazia |
+| `{{PRICING_AVISTA_DISPLAY}}` | Valor numérico SEM `R$`, formatado BR. Ex: `1.000`, `2.000`, `3.000` (janela canônica R$ 1.000–3.000) |
+| `{{PRICING_AVISTA_SUBLABEL}}` | Subtexto curto: `Pix · pagamento único` **OU** `Pix · pagamento único · cupom aplicado` |
 | `{{PRICING_AVISTA_NOTE_EXTRA}}` | Sufixo extra no price-note. Ex: ` + integração CRM` (começa com espaço) ou string vazia |
 
 ### Badge do desconto (só aparece se `{{PRICING_AVISTA_CLASS}}=highlight`)
 
 `{{DISCOUNT_BADGE}}` — texto curto dentro do badge flutuante. Ex:
-- `Benefício exclusivo — parceria de networking`
-- `Early client com case`
+- `Cupom aplicado · canal privado`
+- Não usar mais "parceria networking" / "early client" como justificativa nominal — política unificada.
 
-Se não há desconto, badge vira irrelevante (class `highlight` não aplicada, `::before` não renderiza).
+Se não há cupom, badge vira irrelevante (class `highlight` não aplicada, `::before` não renderiza).
+
+### Infra mensal (novo bloco — pricing variável)
+
+**3 placeholders controlam a linha da infra:**
+
+| Placeholder | Regra |
+|---|---|
+| `{{PRICING_INFRA_CLASS}}` | `highlight` se infra tem cupom (abaixo do ancora R$ 500/mês), senão string vazia |
+| `{{PRICING_INFRA_STRIKETHROUGH}}` | Se tiver cupom: `<span class="price-strikethrough">R$ 500/mês</span>` + ` ` (espaço). Se não: string vazia |
+| `{{PRICING_INFRA_DISPLAY}}` | Valor numérico SEM `R$/mês`, formatado BR. Ex: `300`, `400`, `500` (janela canônica R$ 300–500) |
 
 ### Ano 1 — cálculos derivados
 
 | Placeholder | Cálculo |
 |---|---|
-| `{{YEAR1_AVISTA_TOTAL}}` | `PRICING_AVISTA_DISPLAY + (300 × 11)`. Ex: 2.000 → **5.300**, 2.500 → **5.800** |
-| `{{YEAR1_AVISTA_AVG}}` | `YEAR1_AVISTA_TOTAL / 12` arredondado. Ex: 5.300 → **441**, 5.800 → **483** |
+| `{{YEAR1_AVISTA_TOTAL}}` | `PRICING_AVISTA_DISPLAY + (PRICING_INFRA_DISPLAY × 11)`. Ex: 3.000 + (500 × 11) = **8.500** (default canônico); 1.000 + (300 × 11) = **4.300** (cupom max) |
+| `{{YEAR1_AVISTA_AVG}}` | `YEAR1_AVISTA_TOTAL / 12` arredondado. Ex: 8.500 → **708**, 4.300 → **358** |
 
-Valores parcelados (12×) são **fixos R$ 3.000 / R$ 250 / R$ 6.300 / R$ 525** — não variam, hardcoded no template.
+Valores parcelados (12×) — placeholder dinâmico baseado no preço com cupom (não mais hardcoded). Calcular: `PRICING_AVISTA_DISPLAY / 12` (parcelas), e Ano 1 parcelado = `PRICING_AVISTA_DISPLAY + (PRICING_INFRA_DISPLAY × 11)`.
 
 ---
 
@@ -140,17 +152,18 @@ Se não houver contato específico, usar genérico: `Oi João, aqui é da {COMPA
 
 ---
 
-## Tabela de descontos canônicos vigentes
+## Tabela de janela canônica vigente
 
-Fonte: [Decision Log — 2026-04-24 — Benefício Parceiro Networking](../../base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-24%20-%20Beneficio%20Parceiro%20Networking.md)
+Fonte: [Decision Log — 2026-04-25 — Pricing + ICP + Timeline + Anna V1 manual](../../base-de-conhecimento/05%20-%20Modelo%20de%20Negocio/Decision%20Log%20-%202026-04-25%20-%20Pricing%20%2B%20ICP%20%2B%20Timeline%20%2B%20Anna%20V1%20manual.md)
 
-| Desconto | Valor | Preço final à vista | Quando aplicar |
+| Linha | Ancora canônico | Valor com cupom (piso) | Quando descontar |
 |---|---|---|---|
-| Nenhum (padrão) | — | R$ 2.500 | Default. Sem justificativa canônica pra desconto |
-| Parceiro networking | R$ 1.000 off | R$ 2.000 | Indicação direta de parceiro pré-estabelecido. Limite 3/quarter. Aprovação do dono |
-| Primeiros 5 clientes com case | R$ 300 off | R$ 2.200 | Cliente topou virar case (prova social, entrevista). Limite: primeiros 5 |
+| Implementação | R$ 3.000 | R$ 1.000 (66% off) | Caso-a-caso, dono aprova, cupom Stripe no Payment Link |
+| Infra mensal | R$ 500/mês | R$ 300/mês (40% off) | Caso-a-caso, dono aprova, cupom Subscription **ou** Payment Link separado R$ 300 |
 
-**Sem outros descontos.** Se o dono pedir um valor diferente desses 3, a skill deve pausar e perguntar antes de gerar a proposta.
+**Default sem cupom:** R$ 3.000 implementação + R$ 500/mês infra (paga mês 2 em diante).
+
+**Fora da janela canônica** (acima do ancora ou abaixo dos pisos R$ 1.000 / R$ 300): a skill **pausa** e pede Decision Log novo antes de gerar a proposta.
 
 ---
 
@@ -158,10 +171,11 @@ Fonte: [Decision Log — 2026-04-24 — Benefício Parceiro Networking](../../ba
 
 Antes de renderizar, a skill verifica:
 
-- [ ] Todas as variáveis obrigatórias (empresa, nicho, região, datas, preço) têm valor
+- [ ] Todas as variáveis obrigatórias (empresa, nicho, região, datas, preço implementação, preço infra) têm valor
 - [ ] Data de expiração = meeting_date + 7 dias
-- [ ] Preço à vista bate com um dos 3 canônicos da tabela
-- [ ] Cálculos derivados (`YEAR1_AVISTA_*`) conferem com preço à vista
+- [ ] Preço implementação dentro da janela R$ 1.000–3.000
+- [ ] Preço infra dentro da janela R$ 300–500/mês
+- [ ] Cálculos derivados (`YEAR1_AVISTA_*`) conferem com `PRICING_AVISTA_DISPLAY` + (`PRICING_INFRA_DISPLAY` × 11)
 - [ ] WhatsApp URL está properly encoded
 - [ ] Clusters têm 6-8 chips relevantes ao nicho
 - [ ] Brindes (`SCOPE_EXTRA_ITEMS`) só aparecem se negociados (sem adicionar entre as "features padrão")
